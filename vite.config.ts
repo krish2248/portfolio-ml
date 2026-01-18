@@ -6,8 +6,7 @@ import path from 'path'
 export default defineConfig({
   plugins: [react()],
   // Base path for GitHub Pages deployment
-  // Change 'opencodePortfolio' to your repository name
-  base: '/opencodePortfolio/',
+  base: '/portfolio-ml/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

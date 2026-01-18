@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- Primary Meta Tags -->
+    <title>Krish Soni | Aspiring ML Engineer</title>
+    <meta name="title" content="Krish Soni | Aspiring ML Engineer" />
+    <meta name="description" content="Developer transitioning into Machine Learning. Explore my ML projects, data science work, and full-stack applications." />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sonikrish.com/" />
+    <meta property="og:title" content="Krish Soni | Aspiring ML Engineer" />
+    <meta property="og:description" content="Developer transitioning into Machine Learning. Explore my ML projects, data science work, and full-stack applications." />
+    <meta property="og:image" content="/og-image.png" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://sonikrish.com/" />
+    <meta property="twitter:title" content="Krish Soni | Aspiring ML Engineer" />
+    <meta property="twitter:description" content="Developer transitioning into Machine Learning. Explore my ML projects, data science work, and full-stack applications." />
+    <meta property="twitter:image" content="/og-image.png" />
+    
+    <!-- Preconnect to Google Fonts for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Google Fonts - Terminal/Monospace fonts -->
+    <!-- IBM Plex Mono: Clean, professional monospace -->
+    <!-- JetBrains Mono: Developer favorite with ligatures -->
+    <!-- Share Tech Mono: Retro-futuristic display font -->
+    <link 
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Share+Tech+Mono&display=swap" 
+      rel="stylesheet" 
+    />
+    
+    <!-- Theme color for browser chrome -->
+    <meta name="theme-color" content="#fefdfb" />
+    
+    <!-- Prevent flash of unstyled content -->
+    <style>
+      /* Critical CSS - prevent FOUC */
+      html {
+        background-color: #fefdfb;
+      }
+      html.dark {
+        background-color: #0a0a0a;
+      }
+      /* Hide content until React hydrates */
+      #root {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      #root.hydrated {
+        opacity: 1;
+      }
+    </style>
+    
+    <!-- Inline script to set theme before render (prevents flash) -->
+    <script>
+      (function() {
+        const savedTheme = localStorage.getItem('portfolio-theme');
+        
+        // If explicitly saved as dark, use dark. Otherwise default to light.
+        if (savedTheme === 'dark') {
+          document.documentElement.classList.remove('light');
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+          document.documentElement.classList.add('light');
+          // Save light as default if nothing was saved
+          if (!savedTheme) {
+            localStorage.setItem('portfolio-theme', 'light');
+          }
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <!-- Main React application root -->
+    <div id="root"></div>
+    
+    <!-- Hydration script -->
+    <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Mark root as hydrated after load -->
+    <script>
+      window.addEventListener('load', function() {
+        document.getElementById('root').classList.add('hydrated');
+      });
+    </script>
+    
+    <!-- Noscript fallback -->
+    <noscript>
+      <div style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #0a0a0a;
+        color: #00ff41;
+        font-family: monospace;
+        text-align: center;
+        padding: 2rem;
+      ">
+        <div>
+          <h1 style="font-size: 2rem; margin-bottom: 1rem;">
+            > JAVASCRIPT REQUIRED_
+          </h1>
+          <p>
+            This portfolio requires JavaScript to display properly.<br>
+            Please enable JavaScript in your browser settings.
+          </p>
+        </div>
+      </div>
+    </noscript>
+  </body>
+</html>

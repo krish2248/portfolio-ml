@@ -84,9 +84,22 @@ const Hero: FC<HeroProps> = memo(({ onBootComplete, skipBoot = false }) => {
             initial="hidden"
             animate="visible"
             variants={staggerContainer}
-            className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+            className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
           >
-            <IntroContent />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+              {/* Left side - Intro text */}
+              <div className="text-center lg:text-left">
+                <IntroContent />
+              </div>
+              
+              {/* Right side - Coding animation */}
+              <motion.div
+                variants={fadeInUp}
+                className="hidden lg:block"
+              >
+                <CodingAnimation />
+              </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -107,6 +120,116 @@ const Hero: FC<HeroProps> = memo(({ onBootComplete, skipBoot = false }) => {
 })
 
 Hero.displayName = 'Hero'
+
+/**
+ * Dense code matrix animation with random characters in a grid pattern
+ */
+const CodingAnimation: FC = () => {
+  const [grid, setGrid] = useState<string[][]>([])
+  const [highlightCells, setHighlightCells] = useState<Set<string>>(new Set())
+  
+  // Characters to use in the matrix
+  const chars = '{}[]()<>:;=+-*/&|!?@#$%^~0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+  
+  // Generate random character
+  const generateChar = () => chars[Math.floor(Math.random() * chars.length)]
+
+  // Grid dimensions
+  const cols = 28
+  const rows = 18
+
+  useEffect(() => {
+    // Initialize grid
+    const initialGrid = Array.from({ length: rows }, () =>
+      Array.from({ length: cols }, () => generateChar())
+    )
+    setGrid(initialGrid)
+
+    // Randomly change characters to create animation effect
+    const interval = setInterval(() => {
+      setGrid(prev => {
+        const newGrid = prev.map(row => [...row])
+        // Change ~15% of cells randomly each tick
+        const numChanges = Math.floor(cols * rows * 0.15)
+        for (let i = 0; i < numChanges; i++) {
+          const r = Math.floor(Math.random() * rows)
+          const c = Math.floor(Math.random() * cols)
+          newGrid[r][c] = generateChar()
+        }
+        return newGrid
+      })
+      
+      // Update highlight cells for glow effect
+      const newHighlights = new Set<string>()
+      const numHighlights = 8
+      for (let i = 0; i < numHighlights; i++) {
+        const r = Math.floor(Math.random() * rows)
+        const c = Math.floor(Math.random() * cols)
+        newHighlights.add(`${r}-${c}`)
+      }
+      setHighlightCells(newHighlights)
+    }, 100)
+
+    return () => clearInterval(interval)
+  }, [])
+
+  return (
+    <div className="relative w-full h-[400px] overflow-hidden rounded-lg bg-terminal-black/50">
+      {/* Dense character grid */}
+      <div 
+        className="absolute inset-0 flex flex-col items-center justify-center font-mono text-sm leading-tight select-none"
+        style={{ fontSize: '14px', lineHeight: '20px' }}
+      >
+        {grid.map((row, rowIndex) => (
+          <div key={rowIndex} className="flex">
+            {row.map((char, colIndex) => {
+              const isHighlight = highlightCells.has(`${rowIndex}-${colIndex}`)
+              const isCenterArea = 
+                rowIndex >= rows/2 - 3 && rowIndex <= rows/2 + 2 &&
+                colIndex >= cols/2 - 6 && colIndex <= cols/2 + 5
+              
+              return (
+                <span
+                  key={colIndex}
+                  className={cn(
+                    'w-[14px] text-center transition-all duration-150',
+                    isCenterArea 
+                      ? 'text-transparent' 
+                      : isHighlight 
+                        ? 'text-phosphor-bright' 
+                        : 'text-phosphor/70'
+                  )}
+                  style={{
+                    textShadow: isHighlight && !isCenterArea ? '0 0 8px var(--color-text)' : 'none'
+                  }}
+                >
+                  {char}
+                </span>
+              )
+            })}
+          </div>
+        ))}
+      </div>
+
+      {/* Subtle edge gradients */}
+      <div className="absolute inset-0 bg-gradient-to-r from-terminal-black/60 via-transparent to-terminal-black/60 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-terminal-black/40 via-transparent to-terminal-black/40 pointer-events-none" />
+      
+      {/* Center highlight text */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.5, duration: 0.5 }}
+          className="text-center"
+        >
+          <div className="text-5xl font-bold text-phosphor text-glow-strong mb-2">{'<ML/>'}</div>
+          <div className="text-sm text-phosphor-dim font-mono">Building Intelligent Systems</div>
+        </motion.div>
+      </div>
+    </div>
+  )
+}
 
 /**
  * Boot screen with BIOS-style messages
@@ -195,7 +318,7 @@ const IntroContent: FC = () => {
       {/* CTA Buttons */}
       <motion.div
         variants={fadeInUp}
-        className="flex flex-wrap items-center justify-center gap-4"
+        className="flex flex-wrap items-center justify-center lg:justify-start gap-4"
       >
         <Button
           onClick={() => {
@@ -217,7 +340,7 @@ const IntroContent: FC = () => {
       {/* Social Links */}
       <motion.div
         variants={fadeInUp}
-        className="mt-12 flex items-center justify-center gap-6"
+        className="mt-12 flex items-center justify-center lg:justify-start gap-6"
       >
         <SocialLink href={socialLinks.github} label="GitHub" />
         <SocialLink href={socialLinks.linkedin} label="LinkedIn" />

@@ -45,6 +45,8 @@ export const socialLinks = {
 export const navLinks = [
   { name: 'home', href: '#home', command: 'cd ~/' },
   { name: 'about', href: '#about', command: 'cat about.txt' },
+  { name: 'education', href: '#education', command: 'cat resume.edu' },
+  { name: 'experience', href: '#experience', command: 'cat journey.log' },
   { name: 'projects', href: '#projects', command: 'ls projects/' },
   { name: 'skills', href: '#skills', command: 'htop' },
   { name: 'contact', href: '#contact', command: 'mail --send' },
@@ -98,6 +100,153 @@ export const aboutContent = {
     { label: 'Status', value: 'LEARNING' },
   ],
 }
+
+// ═══════════════════════════════════════════════════════════════════════════
+// EDUCATION
+// ═══════════════════════════════════════════════════════════════════════════
+
+export interface Education {
+  id: string
+  degree: string
+  institution: string
+  location: string
+  period: string
+  grade?: string
+  description?: string
+}
+
+export const education: Education[] = [
+  {
+    id: 'masters-ml',
+    degree: "Master's in Machine Learning",
+    institution: 'Pursuing',
+    location: 'India',
+    period: '2025 - Present',
+    description: 'Specializing in Deep Learning, NLP, and Computer Vision',
+  },
+  {
+    id: 'bachelors-cs',
+    degree: "Bachelor's in Computer Science",
+    institution: 'University',
+    location: 'India',
+    period: '2021 - 2024',
+    grade: '8.5 CGPA',
+    description: 'Focused on Software Engineering and Data Structures',
+  },
+  {
+    id: 'hsc',
+    degree: 'Higher Secondary (12th)',
+    institution: 'High School',
+    location: 'India',
+    period: '2019 - 2021',
+    grade: '85%',
+    description: 'Science stream with Computer Science',
+  },
+]
+
+// ═══════════════════════════════════════════════════════════════════════════
+// CERTIFICATIONS
+// ═══════════════════════════════════════════════════════════════════════════
+
+export interface Certification {
+  id: string
+  title: string
+  issuer: string
+  date: string
+  credentialUrl?: string
+}
+
+export const certifications: Certification[] = [
+  {
+    id: 'ml-specialization',
+    title: 'Machine Learning Specialization',
+    issuer: 'Coursera - Stanford',
+    date: '2024',
+    credentialUrl: '#',
+  },
+  {
+    id: 'deep-learning',
+    title: 'Deep Learning Specialization',
+    issuer: 'Coursera - DeepLearning.AI',
+    date: '2024',
+    credentialUrl: '#',
+  },
+  {
+    id: 'python-data-science',
+    title: 'Python for Data Science',
+    issuer: 'IBM',
+    date: '2023',
+    credentialUrl: '#',
+  },
+  {
+    id: 'web-dev-bootcamp',
+    title: 'The Complete Web Developer Bootcamp',
+    issuer: 'Udemy',
+    date: '2022',
+    credentialUrl: '#',
+  },
+]
+
+// ═══════════════════════════════════════════════════════════════════════════
+// EXPERIENCE / CAREER JOURNEY
+// ═══════════════════════════════════════════════════════════════════════════
+
+export interface Experience {
+  id: string
+  title: string
+  company: string
+  type: 'full-time' | 'part-time' | 'freelance' | 'internship' | 'remote'
+  location: string
+  period: string
+  description: string
+  achievements: string[]
+}
+
+export const experiences: Experience[] = [
+  {
+    id: 'ml-research',
+    title: 'ML Research Assistant',
+    company: 'University Lab',
+    type: 'internship',
+    location: 'Remote',
+    period: 'Jan 2025 - Present',
+    description: 'Working on ML research projects focusing on NLP and computer vision applications.',
+    achievements: [
+      'Developed NLP models for text classification',
+      'Implemented data pipelines for large datasets',
+      'Contributed to research paper on sentiment analysis',
+    ],
+  },
+  {
+    id: 'fullstack-dev',
+    title: 'Full-Stack Developer',
+    company: 'Freelance',
+    type: 'freelance',
+    location: 'Remote',
+    period: 'Jun 2023 - Dec 2024',
+    description: 'Built web applications for various clients using modern tech stack.',
+    achievements: [
+      'Developed 10+ full-stack web applications',
+      'Implemented REST APIs with Node.js and Express',
+      'Built responsive UIs with React and Tailwind',
+      'Integrated payment gateways and third-party APIs',
+    ],
+  },
+  {
+    id: 'web-intern',
+    title: 'Web Development Intern',
+    company: 'Tech Startup',
+    type: 'internship',
+    location: 'India',
+    period: 'Jan 2023 - May 2023',
+    description: 'Worked on frontend development and learned agile methodologies.',
+    achievements: [
+      'Built responsive landing pages',
+      'Learned React and modern JavaScript',
+      'Collaborated in agile team environment',
+    ],
+  },
+]
 
 // ═══════════════════════════════════════════════════════════════════════════
 // PROJECTS

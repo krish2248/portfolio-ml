@@ -13,7 +13,7 @@ import { ThemeProvider } from './context/ThemeContext'
 import { CRTOverlay, Navbar, Footer } from './components/layout'
 
 // Section Components
-import { Hero, About, Projects, Skills, Contact } from './components/sections'
+import { Hero, About, Education, Experience, Projects, Skills, Contact } from './components/sections'
 
 // Project Components
 import { ProjectLightbox } from './components/projects'
@@ -98,6 +98,12 @@ const PortfolioContent: FC = () => {
         {/* About Section */}
         <About />
 
+        {/* Education & Certifications Section */}
+        <Education />
+
+        {/* Career Journey Section */}
+        <Experience />
+
         {/* Projects Section */}
         <Projects onProjectSelect={handleProjectSelect} />
 
@@ -156,7 +162,7 @@ const MatrixRain: FC = () => {
       ctx.fillStyle = 'rgba(0, 0, 0, 0.05)'
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-      ctx.fillStyle = '#00ff41'
+      ctx.fillStyle = '#7ec699'
       ctx.font = '15px monospace'
 
       for (let i = 0; i < drops.length; i++) {

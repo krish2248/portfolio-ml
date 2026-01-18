@@ -93,7 +93,7 @@ const Navbar: FC<NavbarProps> = memo(({ showAfterBoot = true, bootComplete = tru
             : 'bg-transparent'
         )}
       >
-        <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav className="w-full px-4 sm:px-6 lg:px-12">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo / Home */}
             <motion.a
@@ -116,7 +116,7 @@ const Navbar: FC<NavbarProps> = memo(({ showAfterBoot = true, bootComplete = tru
             </motion.a>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-1">
+            <div className="hidden md:flex items-center gap-4 lg:gap-6">
               {navLinks.map((link) => (
                 <NavLink
                   key={link.name}
@@ -131,7 +131,7 @@ const Navbar: FC<NavbarProps> = memo(({ showAfterBoot = true, bootComplete = tru
               ))}
 
               {/* Separator */}
-              <div className="w-px h-6 bg-phosphor-muted/50 mx-2" />
+              <div className="w-px h-6 bg-phosphor-muted/50 mx-1" />
 
               {/* Theme Toggle */}
               <ThemeToggle />
@@ -287,9 +287,9 @@ const NavLink: FC<NavLinkProps> = memo(({ href, command, isActive, onClick }) =>
       href={href}
       onClick={onClick}
       className={cn(
-        'relative px-3 py-2 rounded',
-        'font-mono text-sm',
-        'transition-all duration-200',
+        'relative px-2 py-1.5 rounded',
+        'font-mono text-xs lg:text-sm',
+        'transition-all duration-200 whitespace-nowrap',
         isActive
           ? 'text-phosphor'
           : 'text-phosphor-dim hover:text-phosphor'

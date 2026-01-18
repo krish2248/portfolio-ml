@@ -8,35 +8,35 @@ export default {
   theme: {
     extend: {
       // ═══════════════════════════════════════════════════════════════
-      // RETRO-TERMINAL COLOR PALETTE
-      // Phosphor green CRT aesthetic with amber and cyan accents
+      // OSAKA JADE COLOR PALETTE
+      // Dark jade green aesthetic with soft jade accents
       // ═══════════════════════════════════════════════════════════════
       colors: {
         terminal: {
-          black: '#0a0a0a',      // Deep void black - main background
-          dark: '#0d1117',       // Slightly lifted black
-          darker: '#050505',     // Even deeper for contrast
+          black: '#1a2421',      // Dark jade background
+          dark: '#232f2b',       // Slightly lighter jade
+          darker: '#141c19',     // Even deeper for contrast
         },
         phosphor: {
-          DEFAULT: '#00ff41',    // Classic terminal green
-          bright: '#00ff6a',     // Brighter variant
-          dim: '#00cc33',        // Dimmed state
-          muted: '#006615',      // Very dim for tertiary text
-          glow: 'rgba(0, 255, 65, 0.15)', // Ambient glow
+          DEFAULT: '#7ec699',    // Osaka jade green
+          bright: '#98d4b1',     // Brighter jade
+          dim: '#5a9a78',        // Dimmed state
+          muted: '#3d6b54',      // Very dim for tertiary text
+          glow: 'rgba(126, 198, 153, 0.15)', // Ambient glow
         },
         amber: {
-          DEFAULT: '#ffb000',    // Amber terminal variant
-          dim: '#cc8c00',
+          DEFAULT: '#c4a35a',    // Muted gold/amber
+          dim: '#a68a45',
         },
         cyan: {
-          DEFAULT: '#00ffff',    // Cyan for links/highlights
-          dim: '#00cccc',
+          DEFAULT: '#98d4b1',    // Bright jade for links/highlights
+          dim: '#7ec699',
         },
         // Light mode colors (paper printout aesthetic)
         paper: {
-          DEFAULT: '#fefdfb',    // Clean warm white
-          dark: '#f7f5f2',       // Subtle cream for cards
-          darker: '#e7e5e4',     // Border color
+          DEFAULT: '#f6f5dd',    // Cream white
+          dark: '#dfe0c0',       // Darker cream for cards
+          darker: '#b8b99f',     // Border color
           ink: '#1c1917',        // Rich warm charcoal
           muted: '#78716c',      // Muted stone gray
           accent: '#166534',     // Deep forest green
@@ -89,10 +89,10 @@ export default {
         },
         'glow-pulse': {
           '0%, 100%': { 
-            textShadow: '0 0 5px rgba(0, 255, 65, 0.5), 0 0 10px rgba(0, 255, 65, 0.3)',
+            textShadow: '0 0 5px rgba(126, 198, 153, 0.5), 0 0 10px rgba(126, 198, 153, 0.3)',
           },
           '50%': { 
-            textShadow: '0 0 10px rgba(0, 255, 65, 0.8), 0 0 20px rgba(0, 255, 65, 0.5), 0 0 30px rgba(0, 255, 65, 0.3)',
+            textShadow: '0 0 10px rgba(126, 198, 153, 0.8), 0 0 20px rgba(126, 198, 153, 0.5), 0 0 30px rgba(126, 198, 153, 0.3)',
           },
         },
         typing: {
@@ -137,14 +137,14 @@ export default {
         '128': '32rem',
       },
       // ═══════════════════════════════════════════════════════════════
-      // BOX SHADOWS - Glow effects
+      // BOX SHADOWS - Glow effects (Osaka Jade)
       // ═══════════════════════════════════════════════════════════════
       boxShadow: {
-        'glow': '0 0 10px rgba(0, 255, 65, 0.3), 0 0 20px rgba(0, 255, 65, 0.2)',
-        'glow-lg': '0 0 20px rgba(0, 255, 65, 0.4), 0 0 40px rgba(0, 255, 65, 0.2)',
-        'glow-cyan': '0 0 10px rgba(0, 255, 255, 0.3), 0 0 20px rgba(0, 255, 255, 0.2)',
-        'glow-amber': '0 0 10px rgba(255, 176, 0, 0.3), 0 0 20px rgba(255, 176, 0, 0.2)',
-        'terminal': 'inset 0 0 50px rgba(0, 255, 65, 0.03)',
+        'glow': '0 0 10px rgba(126, 198, 153, 0.3), 0 0 20px rgba(126, 198, 153, 0.2)',
+        'glow-lg': '0 0 20px rgba(126, 198, 153, 0.4), 0 0 40px rgba(126, 198, 153, 0.2)',
+        'glow-cyan': '0 0 10px rgba(152, 212, 177, 0.3), 0 0 20px rgba(152, 212, 177, 0.2)',
+        'glow-amber': '0 0 10px rgba(196, 163, 90, 0.3), 0 0 20px rgba(196, 163, 90, 0.2)',
+        'terminal': 'inset 0 0 50px rgba(126, 198, 153, 0.03)',
       },
       // ═══════════════════════════════════════════════════════════════
       // BACKDROP BLUR

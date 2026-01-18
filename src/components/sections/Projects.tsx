@@ -167,7 +167,7 @@ const ProjectCard: FC<ProjectCardProps> = memo(({ project, onClick }) => {
   return (
     <motion.article
       className={cn(
-        'group relative p-5 rounded-lg cursor-pointer',
+        'group relative p-5 rounded-lg cursor-pointer project-card',
         'border border-phosphor-muted/50 bg-terminal-dark/50',
         'hover:border-phosphor hover:bg-terminal-dark/80',
         'transition-all duration-300'
@@ -176,13 +176,6 @@ const ProjectCard: FC<ProjectCardProps> = memo(({ project, onClick }) => {
       whileHover={{ y: -4 }}
       whileTap={{ scale: 0.98 }}
     >
-      {/* Featured badge */}
-      {project.featured && (
-        <div className="absolute -top-2 -right-2">
-          <Badge variant="filled" size="sm">FEATURED</Badge>
-        </div>
-      )}
-
       {/* Project header */}
       <div className="flex items-start justify-between mb-3">
         <div className="flex items-center gap-2">
@@ -191,7 +184,6 @@ const ProjectCard: FC<ProjectCardProps> = memo(({ project, onClick }) => {
             {project.title}
           </h3>
         </div>
-        <span className="font-mono text-xs text-phosphor-muted">{project.year}</span>
       </div>
 
       {/* Description */}

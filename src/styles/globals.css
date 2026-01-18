@@ -13,18 +13,18 @@
    ═══════════════════════════════════════════════════════════════════════════ */
 
 :root {
-  /* Terminal colors - Dark mode (default) */
-  --color-bg: #0a0a0a;
-  --color-bg-secondary: #0d1117;
-  --color-text: #00ff41;
-  --color-text-dim: #00cc33;
-  --color-text-muted: #006615;
-  --color-accent: #00ffff;
-  --color-accent-secondary: #ffb000;
-  --color-border: #00ff41;
-  --color-border-dim: #004d13;
-  --color-glow: rgba(0, 255, 65, 0.4);
-  --color-glow-subtle: rgba(0, 255, 65, 0.15);
+  /* Terminal colors - Dark mode (Osaka Jade theme) */
+  --color-bg: #1a2421;
+  --color-bg-secondary: #232f2b;
+  --color-text: #7ec699;
+  --color-text-dim: #5a9a78;
+  --color-text-muted: #3d6b54;
+  --color-accent: #98d4b1;
+  --color-accent-secondary: #c4a35a;
+  --color-border: #7ec699;
+  --color-border-dim: #3d5347;
+  --color-glow: rgba(126, 198, 153, 0.4);
+  --color-glow-subtle: rgba(126, 198, 153, 0.15);
   
   /* Font stacks */
   --font-mono: 'IBM Plex Mono', 'JetBrains Mono', 'Fira Code', monospace;
@@ -43,14 +43,14 @@
 /* Light mode (Clean Modern Paper aesthetic) */
 .light {
   --color-bg: #f6f5dd;
-  --color-bg-secondary: #f7f5f2;
+  --color-bg-secondary: #dfe0c0;
   --color-text: #1c1917;
   --color-text-dim: #44403c;
   --color-text-muted: #78716c;
   --color-accent: #166534;
   --color-accent-secondary: #ea580c;
   --color-border: #292524;
-  --color-border-dim: #e7e5e4;
+  --color-border-dim: #b8b99f;
   --color-glow: rgba(22, 101, 52, 0.08);
   --color-glow-subtle: rgba(22, 101, 52, 0.04);
 }
@@ -67,6 +67,20 @@
   html {
     @apply scroll-smooth;
     scroll-padding-top: 5rem; /* Account for fixed navbar */
+    font-size: 15px; /* Base font size */
+  }
+  
+  /* Scale up for larger screens */
+  @media (min-width: 1440px) {
+    html {
+      font-size: 16px;
+    }
+  }
+  
+  @media (min-width: 1920px) {
+    html {
+      font-size: 17px;
+    }
   }
   
   body {
@@ -139,19 +153,19 @@
   }
   
   h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl;
+    @apply text-5xl md:text-6xl lg:text-7xl;
   }
   
   h2 {
-    @apply text-2xl md:text-3xl lg:text-4xl;
+    @apply text-3xl md:text-4xl lg:text-5xl;
   }
   
   h3 {
-    @apply text-xl md:text-2xl;
+    @apply text-2xl md:text-3xl;
   }
   
   p {
-    @apply text-sm md:text-base leading-relaxed;
+    @apply text-base md:text-lg leading-relaxed;
   }
   
   a {
@@ -231,12 +245,12 @@
   
   /* Container utility */
   .container-terminal {
-    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 2xl:max-w-7xl;
   }
   
   /* Section spacing */
   .section-padding {
-    @apply py-16 md:py-24 lg:py-32;
+    @apply py-16 md:py-20 lg:py-24;
   }
   
   /* Gradient text */
@@ -298,7 +312,7 @@
   left: 0;
   width: 100%;
   height: 4px;
-  background: rgba(0, 255, 65, 0.08);
+  background: rgba(126, 198, 153, 0.08);
   animation: scanline-move 6s linear infinite;
   pointer-events: none;
   z-index: 9998;
@@ -361,11 +375,11 @@
 
 /* Phosphor glow on text elements */
 .phosphor-text {
-  color: #00ff41;
+  color: #7ec699;
   text-shadow: 
-    0 0 2px #00ff41,
-    0 0 5px rgba(0, 255, 65, 0.5),
-    0 0 10px rgba(0, 255, 65, 0.3);
+    0 0 2px #7ec699,
+    0 0 5px rgba(126, 198, 153, 0.5),
+    0 0 10px rgba(126, 198, 153, 0.3);
 }
 
 /* Screen on/off animation */
@@ -415,13 +429,13 @@
   @apply border border-phosphor-muted rounded-lg overflow-hidden;
   background: rgba(13, 17, 23, 0.8);
   box-shadow: 
-    0 0 1px rgba(0, 255, 65, 0.3),
-    inset 0 0 30px rgba(0, 255, 65, 0.02);
+    0 0 1px rgba(126, 198, 153, 0.3),
+    inset 0 0 30px rgba(126, 198, 153, 0.02);
 }
 
 .terminal-window-header {
   @apply flex items-center gap-2 px-4 py-2 border-b border-phosphor-muted;
-  background: rgba(0, 255, 65, 0.05);
+  background: rgba(126, 198, 153, 0.05);
 }
 
 .terminal-window-title {
@@ -465,8 +479,8 @@
 
 .btn-terminal:hover {
   box-shadow: 
-    0 0 10px rgba(0, 255, 65, 0.4),
-    0 0 20px rgba(0, 255, 65, 0.2);
+    0 0 10px rgba(126, 198, 153, 0.4),
+    0 0 20px rgba(126, 198, 153, 0.2);
 }
 
 /* Light mode button */
@@ -523,7 +537,7 @@
 
 .progress-terminal-fill {
   @apply h-full bg-phosphor transition-all duration-1000 ease-out;
-  box-shadow: 0 0 10px rgba(0, 255, 65, 0.4);
+  box-shadow: 0 0 10px rgba(126, 198, 153, 0.4);
 }
 
 .light .progress-terminal {
@@ -553,8 +567,8 @@
 .card-terminal:hover {
   @apply border-phosphor;
   box-shadow: 
-    0 0 20px rgba(0, 255, 65, 0.1),
-    inset 0 0 30px rgba(0, 255, 65, 0.03);
+    0 0 20px rgba(126, 198, 153, 0.1),
+    inset 0 0 30px rgba(126, 198, 153, 0.03);
 }
 
 .light .card-terminal {
@@ -803,4 +817,23 @@
   background-color: var(--color-accent) !important;
   border-color: var(--color-accent) !important;
   color: var(--color-bg) !important;
+}
+
+/* Ensure all section backgrounds use the main bg color */
+.light .bg-terminal-dark\/30,
+.light .bg-terminal-dark\/50,
+.light .bg-terminal-dark\/80 {
+  background-color: var(--color-bg) !important;
+}
+
+/* Project card overrides - must come after bg-terminal-dark rules */
+.light .project-card,
+.light .project-card.bg-terminal-dark\/50 {
+  background-color: var(--color-bg-secondary) !important;
+  border-color: var(--color-border-dim) !important;
+}
+
+.light .project-card:hover {
+  background-color: var(--color-bg-secondary) !important;
+  border-color: var(--color-border) !important;
 }

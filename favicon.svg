@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Terminal cursor favicon -->
+  <rect width="32" height="32" rx="4" fill="#0a0a0a"/>
+  <rect x="6" y="8" width="4" height="16" fill="#00ff41">
+    <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+  </rect>
+  <text x="12" y="21" font-family="monospace" font-size="12" fill="#00ff41">_</text>
+</svg>

@@ -75,36 +75,36 @@ const CodeBlock: FC = () => {
         </div>
         
         {/* Code content */}
-        <div className="p-6 font-mono text-xs sm:text-sm leading-relaxed overflow-x-auto dark:text-slate-100 text-indigo-900">
+        <div className="p-6 font-mono text-xs sm:text-sm leading-relaxed overflow-x-auto dark:text-slate-300 text-indigo-900">
           <pre><code>
             <span className="dark:text-slate-500 text-indigo-400">// TypeScript · ML Engineer 🔒</span>
             <br />
-            <span className="dark:text-blue-400 text-purple-600">interface</span> <span className="dark:text-indigo-400 text-indigo-600">Developer</span> {'{'}
+            <span className="dark:text-slate-300">interface</span> <span className="dark:text-slate-300">Developer</span> {'{'}
             <br />
-            {'  '}name:    <span className="dark:text-yellow-300 text-pink-500">string</span>;
+            {'  '}name:    <span className="dark:text-slate-300">string</span>;
             <br />
-            {'  '}stack:   <span className="dark:text-yellow-300 text-pink-500">string</span>[];
+            {'  '}stack:   <span className="dark:text-slate-300">string</span>[];
             <br />
-            {'  '}deploy:  (model: <span className="dark:text-yellow-300 text-pink-500">string</span>) <span className="dark:text-blue-400 text-purple-600">=&gt;</span> <span className="dark:text-indigo-400 text-indigo-600">Promise</span>&lt;<span className="dark:text-yellow-300 text-pink-500">void</span>&gt;;
+            {'  '}deploy:  (model: <span className="dark:text-slate-300">string</span>) <span className="dark:text-slate-300">=&gt;</span> <span className="dark:text-slate-300">Promise</span>&lt;<span className="dark:text-slate-300">void</span>&gt;;
             <br />
             {'}'}
             <br />
-            <span className="dark:text-blue-400 text-purple-600">const</span> <span className="dark:text-blue-300 text-blue-600">me</span>: <span className="dark:text-indigo-400 text-indigo-600">Developer</span> = {'{'}
+            <span className="dark:text-slate-300">const</span> <span className="dark:text-slate-300">me</span>: <span className="dark:text-slate-300">Developer</span> = {'{'}
             <br />
-            {'  '}name:  <span className="dark:text-green-300 text-green-600">"Krish Soni"</span>,
+            {'  '}name:  <span className="dark:text-slate-300">"Krish Soni"</span>,
             <br />
-            {'  '}stack: [<span className="dark:text-green-300 text-green-600">"PyTorch"</span>, <span className="dark:text-green-300 text-green-600">"HuggingFace"</span>, <span className="dark:text-green-300 text-green-600">"React"</span>,
+            {'  '}stack: [<span className="dark:text-slate-300">"PyTorch"</span>, <span className="dark:text-slate-300">"HuggingFace"</span>, <span className="dark:text-slate-300">"React"</span>,
             <br />
-            {'    '}<span className="dark:text-green-300 text-green-600">"TensorFlow"</span>, <span className="dark:text-green-300 text-green-600">"TypeScript"</span>, <span className="dark:text-green-300 text-green-600">"AWS"</span>],
+            {'    '}<span className="dark:text-slate-300">"TensorFlow"</span>, <span className="dark:text-slate-300">"TypeScript"</span>, <span className="dark:text-slate-300">"AWS"</span>],
             <br />
             <br />
-            {'  '}deploy: <span className="dark:text-blue-400 text-purple-600">async</span> (model) <span className="dark:text-blue-400 text-purple-600">=&gt;</span> {'{'}
+            {'  '}deploy: <span className="dark:text-slate-300">async</span> (model) <span className="dark:text-slate-300">=&gt;</span> {'{'}
             <br />
-            {'    '}<span className="dark:text-blue-400 text-purple-600">const</span> <span className="dark:text-blue-300 text-blue-600">pipeline</span> = <span className="dark:text-yellow-300 text-pink-500">buildMLPipeline</span>(model);
+            {'    '}<span className="dark:text-slate-300">const</span> <span className="dark:text-slate-300">pipeline</span> = <span className="dark:text-slate-300">buildMLPipeline</span>(model);
             <br />
-            {'    '}<span className="dark:text-blue-400 text-purple-600">await</span> <span className="dark:text-yellow-300 text-pink-500">pushToAWS</span>(pipeline);
+            {'    '}<span className="dark:text-slate-300">await</span> <span className="dark:text-slate-300">pushToAWS</span>(pipeline);
             <br />
-            {'    '}console.<span className="dark:text-yellow-300 text-pink-500">log</span>(<span className="dark:text-green-300 text-green-600">"🚀 Deployed to production!"</span>);
+            {'    '}console.<span className="dark:text-slate-300">log</span>(<span className="dark:text-slate-300">"🚀 Deployed to production!"</span>);
             <br />
             {'  }'}
             <br />

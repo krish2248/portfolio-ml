@@ -7,93 +7,62 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {
-      // ═══════════════════════════════════════════════════════════════
-      // OSAKA JADE COLOR PALETTE
-      // Dark jade green aesthetic with soft jade accents
-      // ═══════════════════════════════════════════════════════════════
+      // ═══════════════════════════════════════════════════════════════════════
+      // NORMAL COLOR PALETTE
+      // Clean dark and light mode colors
+      // ═══════════════════════════════════════════════════════════════════════
       colors: {
-        terminal: {
-          black: '#1a2421',      // Dark jade background
-          dark: '#232f2b',       // Slightly lighter jade
-          darker: '#141c19',     // Even deeper for contrast
+        primary: {
+          50: '#eff6ff',
+          100: '#dbeafe',
+          200: '#bfdbfe',
+          300: '#93c5fd',
+          400: '#60a5fa',
+          500: '#3b82f6',
+          600: '#2563eb',
+          700: '#1d4ed8',
+          800: '#1e40af',
+          900: '#1e3a8a',
         },
-        phosphor: {
-          DEFAULT: '#7ec699',    // Osaka jade green
-          bright: '#98d4b1',     // Brighter jade
-          dim: '#5a9a78',        // Dimmed state
-          muted: '#3d6b54',      // Very dim for tertiary text
-          glow: 'rgba(126, 198, 153, 0.15)', // Ambient glow
-        },
-        amber: {
-          DEFAULT: '#c4a35a',    // Muted gold/amber
-          dim: '#a68a45',
-        },
-        cyan: {
-          DEFAULT: '#98d4b1',    // Bright jade for links/highlights
-          dim: '#7ec699',
-        },
-        // Light mode colors (paper printout aesthetic)
-        paper: {
-          DEFAULT: '#f6f5dd',    // Cream white
-          dark: '#dfe0c0',       // Darker cream for cards
-          darker: '#b8b99f',     // Border color
-          ink: '#1c1917',        // Rich warm charcoal
-          muted: '#78716c',      // Muted stone gray
-          accent: '#166534',     // Deep forest green
-          orange: '#ea580c',     // Vibrant orange accent
+        slate: {
+          50: '#f8fafc',
+          100: '#f1f5f9',
+          200: '#e2e8f0',
+          300: '#cbd5e1',
+          400: '#94a3b8',
+          500: '#64748b',
+          600: '#475569',
+          700: '#334155',
+          800: '#1e293b',
+          900: '#0f172a',
+          950: '#020617',
         },
       },
-      // ═══════════════════════════════════════════════════════════════
-      // TYPOGRAPHY - Monospace fonts for terminal aesthetic
-      // NO Inter, NO generic fonts - distinctive choices only
-      // ═══════════════════════════════════════════════════════════════
+      // ═══════════════════════════════════════════════════════════════════════
+      // TYPOGRAPHY - Clean modern fonts
+      // ═══════════════════════════════════════════════════════════════════════
       fontFamily: {
         mono: ['IBM Plex Mono', 'JetBrains Mono', 'Fira Code', 'monospace'],
-        display: ['Share Tech Mono', 'VT323', 'monospace'],
-        body: ['JetBrains Mono', 'Source Code Pro', 'monospace'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Inter', 'system-ui', 'sans-serif'],
+        body: ['Inter', 'system-ui', 'sans-serif'],
       },
-      // ═══════════════════════════════════════════════════════════════
-      // ANIMATIONS - CRT effects, typing, glows
-      // ═══════════════════════════════════════════════════════════════
+      // ═══════════════════════════════════════════════════════════════════════
+      // ANIMATIONS - Clean modern animations
+      // ═══════════════════════════════════════════════════════════════════════
       animation: {
         'blink': 'blink 1s step-end infinite',
         'blink-fast': 'blink 0.5s step-end infinite',
-        'flicker': 'flicker 8s infinite',
-        'flicker-fast': 'flicker 4s infinite',
-        'scanline': 'scanline 8s linear infinite',
-        'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
         'typing': 'typing 2s steps(30) forwards',
         'slide-up': 'slide-up 0.5s ease-out forwards',
         'slide-down': 'slide-down 0.3s ease-out forwards',
         'fade-in': 'fade-in 0.5s ease-out forwards',
         'scale-in': 'scale-in 0.3s ease-out forwards',
-        'glitch': 'glitch 0.3s ease-in-out',
-        'boot-line': 'boot-line 0.05s ease-out forwards',
       },
       keyframes: {
         blink: {
           '0%, 100%': { opacity: '1' },
           '50%': { opacity: '0' },
-        },
-        flicker: {
-          '0%, 100%': { opacity: '1' },
-          '92%': { opacity: '1' },
-          '93%': { opacity: '0.85' },
-          '94%': { opacity: '1' },
-          '97%': { opacity: '0.9' },
-          '98%': { opacity: '1' },
-        },
-        scanline: {
-          '0%': { transform: 'translateY(-100%)' },
-          '100%': { transform: 'translateY(100vh)' },
-        },
-        'glow-pulse': {
-          '0%, 100%': { 
-            textShadow: '0 0 5px rgba(126, 198, 153, 0.5), 0 0 10px rgba(126, 198, 153, 0.3)',
-          },
-          '50%': { 
-            textShadow: '0 0 10px rgba(126, 198, 153, 0.8), 0 0 20px rgba(126, 198, 153, 0.5), 0 0 30px rgba(126, 198, 153, 0.3)',
-          },
         },
         typing: {
           'from': { width: '0' },
@@ -115,40 +84,27 @@ export default {
           'from': { opacity: '0', transform: 'scale(0.95)' },
           'to': { opacity: '1', transform: 'scale(1)' },
         },
-        glitch: {
-          '0%': { transform: 'translate(0)' },
-          '20%': { transform: 'translate(-2px, 2px)' },
-          '40%': { transform: 'translate(-2px, -2px)' },
-          '60%': { transform: 'translate(2px, 2px)' },
-          '80%': { transform: 'translate(2px, -2px)' },
-          '100%': { transform: 'translate(0)' },
-        },
-        'boot-line': {
-          'from': { opacity: '0', transform: 'translateX(-10px)' },
-          'to': { opacity: '1', transform: 'translateX(0)' },
-        },
       },
-      // ═══════════════════════════════════════════════════════════════
+      // ═══════════════════════════════════════════════════════════════════════
       // SPACING & SIZING
-      // ═══════════════════════════════════════════════════════════════
+      // ═══════════════════════════════════════════════════════════════════════
       spacing: {
         '18': '4.5rem',
         '88': '22rem',
         '128': '32rem',
       },
-      // ═══════════════════════════════════════════════════════════════
-      // BOX SHADOWS - Glow effects (Osaka Jade)
-      // ═══════════════════════════════════════════════════════════════
+      // ═══════════════════════════════════════════════════════════════════════
+      // BOX SHADOWS - Clean modern shadows
+      // ═══════════════════════════════════════════════════════════════════════
       boxShadow: {
-        'glow': '0 0 10px rgba(126, 198, 153, 0.3), 0 0 20px rgba(126, 198, 153, 0.2)',
-        'glow-lg': '0 0 20px rgba(126, 198, 153, 0.4), 0 0 40px rgba(126, 198, 153, 0.2)',
-        'glow-cyan': '0 0 10px rgba(152, 212, 177, 0.3), 0 0 20px rgba(152, 212, 177, 0.2)',
-        'glow-amber': '0 0 10px rgba(196, 163, 90, 0.3), 0 0 20px rgba(196, 163, 90, 0.2)',
-        'terminal': 'inset 0 0 50px rgba(126, 198, 153, 0.03)',
+        'glow': '0 0 10px rgba(59, 130, 246, 0.3)',
+        'glow-lg': '0 0 20px rgba(59, 130, 246, 0.4)',
+        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+        'card-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
       },
-      // ═══════════════════════════════════════════════════════════════
+      // ═══════════════════════════════════════════════════════════════════════
       // BACKDROP BLUR
-      // ═══════════════════════════════════════════════════════════════
+      // ═══════════════════════════════════════════════════════════════════════
       backdropBlur: {
         xs: '2px',
       },

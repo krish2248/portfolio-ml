@@ -1,6 +1,5 @@
 /**
  * Skills Section Component
- * htop-style system monitor display
  */
 
 import { FC, memo } from 'react'
@@ -10,12 +9,8 @@ import { skills, SkillCategory, Skill } from '../../lib/data'
 import { fadeInUp, staggerContainer, skillItem } from '../../lib/animations'
 import { useInView } from '../../hooks/useInView'
 import Section from '../layout/Section'
-import { TerminalWindow, ProgressBar } from '../ui'
+import { ProgressBar } from '../ui'
 
-/**
- * Skills section styled like htop system monitor
- * Shows skill categories with animated progress bars
- */
 const Skills: FC = memo(() => {
   const { ref, inView: isInView } = useInView({ threshold: 0.1, triggerOnce: true })
 
@@ -27,42 +22,25 @@ const Skills: FC = memo(() => {
         animate={isInView ? 'visible' : 'hidden'}
         variants={staggerContainer}
       >
-        {/* htop-style header */}
         <motion.div variants={fadeInUp} className="mb-8">
-          <TerminalWindow title="htop - skill monitor">
-            {/* Top bar like htop */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-              <SystemStat label="Processes" value={skills.reduce((acc, cat) => acc + cat.skills.length, 0).toString()} />
-              <SystemStat label="Categories" value={skills.length.toString()} />
-              <SystemStat label="Avg Level" value={`${Math.round(skills.reduce((acc, cat) => acc + cat.skills.reduce((a, s) => a + s.level, 0) / cat.skills.length, 0) / skills.length)}%`} />
-              <SystemStat label="Status" value="ACTIVE" color="phosphor" />
-            </div>
-          </TerminalWindow>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <SystemStat label="Skills" value={skills.reduce((acc, cat) => acc + cat.skills.length, 0).toString()} />
+            <SystemStat label="Categories" value={skills.length.toString()} />
+            <SystemStat label="Focus" value="ML/AI" color="blue" />
+            <SystemStat label="Status" value="ACTIVE" color="green" />
+          </div>
         </motion.div>
 
-        {/* Skills grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {skills.map((category, catIndex) => (
-            <motion.div
-              key={category.name}
-              variants={fadeInUp}
-              custom={catIndex}
-            >
-              <SkillCategoryCard
-                category={category}
-                isInView={isInView}
-                delay={catIndex * 0.2}
-              />
+            <motion.div key={category.name} variants={fadeInUp} custom={catIndex}>
+              <SkillCategoryCard category={category} isInView={isInView} delay={catIndex * 0.2} />
             </motion.div>
           ))}
         </div>
 
-        {/* ASCII art decoration */}
-        <motion.div
-          variants={fadeInUp}
-          className="mt-12 text-center"
-        >
-          <pre className="inline-block font-mono text-[8px] md:text-xs text-phosphor-muted leading-tight opacity-50">
+        <motion.div variants={fadeInUp} className="mt-12 text-center">
+          <pre className="inline-block font-mono text-[8px] md:text-xs dark:text-slate-600 text-slate-400 leading-tight opacity-50">
 {`╔══════════════════════════════════════════════════╗
 ║  "The only way to do great work is to love it"   ║
 ║                    - Steve Jobs                   ║
@@ -76,72 +54,35 @@ const Skills: FC = memo(() => {
 
 Skills.displayName = 'Skills'
 
-/**
- * System stat display (htop style)
- */
-interface SystemStatProps {
-  label: string
-  value: string
-  color?: 'phosphor' | 'cyan' | 'amber'
-}
-
-const SystemStat: FC<SystemStatProps> = ({ label, value, color = 'cyan' }) => {
-  const colorClasses = {
-    phosphor: 'text-phosphor',
-    cyan: 'text-cyan',
-    amber: 'text-amber',
-  }
-
+const SystemStat: FC<{ label: string; value: string; color?: 'blue' | 'green' | 'amber' }> = ({ label, value, color = 'blue' }) => {
+  const colorClasses = { blue: 'text-blue-500', green: 'text-green-500', amber: 'text-amber-500' }
   return (
-    <div className="font-mono text-sm">
-      <span className="text-phosphor-muted">{label}: </span>
+    <div className="font-mono text-sm p-3 bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-lg">
+      <span className="dark:text-slate-500 text-slate-500">{label}: </span>
       <span className={colorClasses[color]}>{value}</span>
     </div>
   )
 }
 
-/**
- * Individual skill category card
- */
-interface SkillCategoryCardProps {
-  category: SkillCategory
-  isInView: boolean
-  delay: number
-}
-
-const SkillCategoryCard: FC<SkillCategoryCardProps> = memo(({ category, isInView, delay }) => {
+const SkillCategoryCard: FC<{ category: SkillCategory; isInView: boolean; delay: number }> = memo(({ category, isInView, delay }) => {
   return (
-    <motion.div
-      className={cn(
-        'p-5 rounded-lg',
-        'border border-phosphor-muted/50 bg-terminal-dark/50',
-        'hover:border-phosphor/50 transition-all duration-300'
-      )}
-    >
-      {/* Category header */}
+    <motion.div className={cn(
+      'p-5 rounded-lg',
+      'border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50',
+      'hover:border-blue-500 transition-all duration-300'
+    )}>
       <div className="flex items-center justify-between mb-4">
-        <h3 className="font-display text-lg text-phosphor">
-          <span className="text-phosphor-muted">{'// '}</span>
+        <h3 className="font-semibold text-lg dark:text-white text-slate-900">
+          <span className="text-blue-500">{'// '}</span>
           {category.name}
         </h3>
-        <span className="font-mono text-xs text-phosphor-muted">
-          {category.skills.length} skills
-        </span>
+        <span className="font-mono text-xs dark:text-slate-500 text-slate-500">{category.skills.length} skills</span>
       </div>
 
-      {/* Skills list */}
       <motion.ul
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
-        variants={{
-          hidden: {},
-          visible: {
-            transition: {
-              staggerChildren: 0.1,
-              delayChildren: delay,
-            },
-          },
-        }}
+        variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1, delayChildren: delay } } }}
         className="space-y-3"
       >
         {category.skills.map((skill, index) => (
@@ -154,36 +95,14 @@ const SkillCategoryCard: FC<SkillCategoryCardProps> = memo(({ category, isInView
 
 SkillCategoryCard.displayName = 'SkillCategoryCard'
 
-/**
- * Individual skill item with progress bar
- */
-interface SkillItemProps {
-  skill: Skill
-  index: number
-  isInView: boolean
-}
-
-const SkillItem: FC<SkillItemProps> = memo(({ skill, index, isInView }) => {
+const SkillItem: FC<{ skill: Skill; index: number; isInView: boolean }> = memo(({ skill, index, isInView }) => {
   return (
-    <motion.li
-      variants={skillItem}
-      custom={index}
-      className="group"
-    >
+    <motion.li variants={skillItem} custom={index} className="group">
       <div className="flex items-center justify-between mb-1">
-        <span className="font-mono text-sm text-phosphor-dim group-hover:text-phosphor transition-colors">
-          {skill.name}
-        </span>
-        <span className="font-mono text-xs text-phosphor-muted">
-          {skill.level}%
-        </span>
+        <span className="font-mono text-sm dark:text-slate-400 text-slate-600 group-hover:text-blue-500 transition-colors">{skill.name}</span>
+        <span className="font-mono text-xs dark:text-slate-500 text-slate-500">{skill.level}%</span>
       </div>
-      <ProgressBar
-        value={skill.level}
-        animated={isInView}
-        variant="default"
-        showValue={false}
-      />
+      <ProgressBar value={skill.level} animated={isInView} variant="default" showValue={false} />
     </motion.li>
   )
 })

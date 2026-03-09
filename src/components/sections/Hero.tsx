@@ -1,280 +1,149 @@
 /**
  * Hero Section Component
- * BIOS-style boot sequence with typing animation intro
  */
 
-import { FC, useState, useEffect, memo } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { cn } from '../../lib/utils'
+import { FC, memo } from 'react'
+import { motion } from 'framer-motion'
 import { siteConfig, socialLinks } from '../../lib/data'
-import { useBootSequence } from '../../hooks/useBootSequence'
 import { useTypewriter } from '../../hooks/useTypewriter'
-import { screenOn, fadeInUp, staggerContainer } from '../../lib/animations'
+import { fadeInUp, staggerContainer } from '../../lib/animations'
 import { Button } from '../ui'
 
-interface HeroProps {
-  /** Callback when boot sequence completes */
-  onBootComplete?: () => void
-  /** Skip boot sequence (for returning visitors) */
-  skipBoot?: boolean
-}
-
-/**
- * Hero section with animated BIOS-style boot sequence
- * Shows terminal boot messages, then reveals the main intro
- */
-const Hero: FC<HeroProps> = memo(({ onBootComplete, skipBoot = false }) => {
-  const [showIntro, setShowIntro] = useState(skipBoot)
-  
-  const { isComplete: bootComplete, lines } = useBootSequence({
-    enabled: !skipBoot,
-    onComplete: () => {
-      setTimeout(() => {
-        setShowIntro(true)
-        onBootComplete?.()
-      }, 500)
-    },
-  })
-
-  // Skip boot on subsequent visits (optional - check sessionStorage)
-  useEffect(() => {
-    const hasBooted = sessionStorage.getItem('portfolio-booted')
-    if (hasBooted && !skipBoot) {
-      setShowIntro(true)
-      onBootComplete?.()
-    }
-  }, [skipBoot, onBootComplete])
-
-  // Mark as booted
-  useEffect(() => {
-    if (bootComplete) {
-      sessionStorage.setItem('portfolio-booted', 'true')
-    }
-  }, [bootComplete])
-
+const Hero: FC = memo(() => {
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-radial from-terminal-dark via-terminal-black to-terminal-black opacity-80" />
+      {/* Solid background */}
+      <div className="absolute inset-0 dark:bg-slate-950 bg-white" />
 
-      {/* Boot Sequence */}
-      <AnimatePresence mode="wait">
-        {!showIntro && (
-          <motion.div
-            key="boot"
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            variants={screenOn}
-            className="relative z-10 w-full max-w-3xl mx-auto px-4"
-          >
-            <BootScreen lines={lines} />
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={staggerContainer}
+        className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20"
+      >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          {/* Left side - Intro text */}
+          <div className="text-center lg:text-left">
+            <IntroContent />
+          </div>
+          
+          {/* Right side - Code Block */}
+          <motion.div variants={fadeInUp} className="hidden lg:block">
+            <CodeBlock />
+            <StatsGrid />
           </motion.div>
-        )}
-      </AnimatePresence>
+        </div>
+      </motion.div>
 
-      {/* Main Intro Content */}
-      <AnimatePresence>
-        {showIntro && (
-          <motion.div
-            key="intro"
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-            className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-          >
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-              {/* Left side - Intro text */}
-              <div className="text-center lg:text-left">
-                <IntroContent />
-              </div>
-              
-              {/* Right side - Coding animation */}
-              <motion.div
-                variants={fadeInUp}
-                className="hidden lg:block"
-              >
-                <CodingAnimation />
-              </motion.div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Wave Divider */}
+      <div className="absolute bottom-0 left-0 right-0 -z-10">
+        <svg viewBox="0 0 1440 64" preserveAspectRatio="none" className="w-full h-16 dark:fill-slate-950 fill-white">
+          <path d="M0,32 C240,64 480,0 720,32 C960,64 1200,0 1440,32 L1440,64 L0,64 Z"/>
+        </svg>
+      </div>
 
       {/* Scroll indicator */}
-      {showIntro && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2, duration: 0.5 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        >
-          <ScrollIndicator />
-        </motion.div>
-      )}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 0.5 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      >
+        <ScrollIndicator />
+      </motion.div>
     </section>
   )
 })
 
 Hero.displayName = 'Hero'
 
-/**
- * Dense code matrix animation with random characters in a grid pattern
- */
-const CodingAnimation: FC = () => {
-  const [grid, setGrid] = useState<string[][]>([])
-  const [highlightCells, setHighlightCells] = useState<Set<string>>(new Set())
-  
-  // Characters to use in the matrix
-  const chars = '{}[]()<>:;=+-*/&|!?@#$%^~0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
-  
-  // Generate random character
-  const generateChar = () => chars[Math.floor(Math.random() * chars.length)]
-
-  // Grid dimensions
-  const cols = 28
-  const rows = 18
-
-  useEffect(() => {
-    // Initialize grid
-    const initialGrid = Array.from({ length: rows }, () =>
-      Array.from({ length: cols }, () => generateChar())
-    )
-    setGrid(initialGrid)
-
-    // Randomly change characters to create animation effect
-    const interval = setInterval(() => {
-      setGrid(prev => {
-        const newGrid = prev.map(row => [...row])
-        // Change ~15% of cells randomly each tick
-        const numChanges = Math.floor(cols * rows * 0.15)
-        for (let i = 0; i < numChanges; i++) {
-          const r = Math.floor(Math.random() * rows)
-          const c = Math.floor(Math.random() * cols)
-          newGrid[r][c] = generateChar()
-        }
-        return newGrid
-      })
-      
-      // Update highlight cells for glow effect
-      const newHighlights = new Set<string>()
-      const numHighlights = 8
-      for (let i = 0; i < numHighlights; i++) {
-        const r = Math.floor(Math.random() * rows)
-        const c = Math.floor(Math.random() * cols)
-        newHighlights.add(`${r}-${c}`)
-      }
-      setHighlightCells(newHighlights)
-    }, 100)
-
-    return () => clearInterval(interval)
-  }, [])
-
+const CodeBlock: FC = () => {
   return (
-    <div className="relative w-full h-[400px] overflow-hidden rounded-lg bg-terminal-black/50">
-      {/* Dense character grid */}
-      <div 
-        className="absolute inset-0 flex flex-col items-center justify-center font-mono text-sm leading-tight select-none"
-        style={{ fontSize: '14px', lineHeight: '20px' }}
-      >
-        {grid.map((row, rowIndex) => (
-          <div key={rowIndex} className="flex">
-            {row.map((char, colIndex) => {
-              const isHighlight = highlightCells.has(`${rowIndex}-${colIndex}`)
-              const isCenterArea = 
-                rowIndex >= rows/2 - 3 && rowIndex <= rows/2 + 2 &&
-                colIndex >= cols/2 - 6 && colIndex <= cols/2 + 5
-              
-              return (
-                <span
-                  key={colIndex}
-                  className={cn(
-                    'w-[14px] text-center transition-all duration-150',
-                    isCenterArea 
-                      ? 'text-transparent' 
-                      : isHighlight 
-                        ? 'text-phosphor-bright' 
-                        : 'text-phosphor/70'
-                  )}
-                  style={{
-                    textShadow: isHighlight && !isCenterArea ? '0 0 8px var(--color-text)' : 'none'
-                  }}
-                >
-                  {char}
-                </span>
-              )
-            })}
+    <div className="relative">
+      <div className="relative dark:bg-[#0f1419] bg-[#f5f3ff] rounded-xl overflow-hidden dark:border-slate-700 border border-indigo-200">
+        {/* Window header */}
+        <div className="flex items-center gap-2 px-4 py-3 dark:bg-[#161b22] bg-[#eef2ff] border-b dark:border-slate-700 border-indigo-200">
+          <div className="flex gap-2">
+            <span className="w-3 h-3 rounded-full bg-red-500/80" />
+            <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
+            <span className="w-3 h-3 rounded-full bg-green-500/80" />
           </div>
-        ))}
-      </div>
-
-      {/* Subtle edge gradients */}
-      <div className="absolute inset-0 bg-gradient-to-r from-terminal-black/60 via-transparent to-terminal-black/60 pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-b from-terminal-black/40 via-transparent to-terminal-black/40 pointer-events-none" />
-      
-      {/* Center highlight text */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.5, duration: 0.5 }}
-          className="text-center"
-        >
-          <div className="text-5xl font-bold text-phosphor text-glow-strong mb-2">{'<ML/>'}</div>
-          <div className="text-sm text-phosphor-dim font-mono">Building Intelligent Systems</div>
-        </motion.div>
-      </div>
-    </div>
-  )
-}
-
-/**
- * Boot screen with BIOS-style messages
- */
-interface BootScreenProps {
-  lines: string[]
-}
-
-const BootScreen: FC<BootScreenProps> = ({ lines }) => {
-  return (
-    <div className="terminal-window font-mono text-sm">
-      <div className="terminal-window-header">
-        <div className="flex gap-2">
-          <span className="w-3 h-3 rounded-full bg-red-500/80" />
-          <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
-          <span className="w-3 h-3 rounded-full bg-green-500/80" />
+          <span className="ml-4 text-xs dark:text-slate-400 text-indigo-500 font-mono">developer.ts</span>
         </div>
-        <span className="terminal-window-title ml-4">system_boot.sh</span>
-      </div>
-      <div className="terminal-window-content min-h-[300px]">
-        {lines.map((line, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.05 }}
-            className={cn(
-              'whitespace-pre-wrap',
-              line.includes('OK') && 'text-phosphor',
-              line.includes('═') && 'text-phosphor-dim',
-              line.startsWith('>') && 'text-cyan'
-            )}
-          >
-            {line || '\u00A0'}
-          </motion.div>
-        ))}
-        <span className="animate-blink">█</span>
+        
+        {/* Code content */}
+        <div className="p-6 font-mono text-xs sm:text-sm leading-relaxed overflow-x-auto dark:text-slate-100 text-indigo-900">
+          <pre><code>
+            <span className="dark:text-slate-500 text-indigo-400">// TypeScript · ML Engineer 🔒</span>
+            <br />
+            <span className="dark:text-blue-400 text-purple-600">interface</span> <span className="dark:text-indigo-400 text-indigo-600">Developer</span> {'{'}
+            <br />
+            {'  '}name:    <span className="dark:text-yellow-300 text-pink-500">string</span>;
+            <br />
+            {'  '}stack:   <span className="dark:text-yellow-300 text-pink-500">string</span>[];
+            <br />
+            {'  '}deploy:  (model: <span className="dark:text-yellow-300 text-pink-500">string</span>) <span className="dark:text-blue-400 text-purple-600">=&gt;</span> <span className="dark:text-indigo-400 text-indigo-600">Promise</span>&lt;<span className="dark:text-yellow-300 text-pink-500">void</span>&gt;;
+            <br />
+            {'}'}
+            <br />
+            <span className="dark:text-blue-400 text-purple-600">const</span> <span className="dark:text-blue-300 text-blue-600">me</span>: <span className="dark:text-indigo-400 text-indigo-600">Developer</span> = {'{'}
+            <br />
+            {'  '}name:  <span className="dark:text-green-300 text-green-600">"Krish Soni"</span>,
+            <br />
+            {'  '}stack: [<span className="dark:text-green-300 text-green-600">"PyTorch"</span>, <span className="dark:text-green-300 text-green-600">"HuggingFace"</span>, <span className="dark:text-green-300 text-green-600">"React"</span>,
+            <br />
+            {'    '}<span className="dark:text-green-300 text-green-600">"TensorFlow"</span>, <span className="dark:text-green-300 text-green-600">"TypeScript"</span>, <span className="dark:text-green-300 text-green-600">"AWS"</span>],
+            <br />
+            <br />
+            {'  '}deploy: <span className="dark:text-blue-400 text-purple-600">async</span> (model) <span className="dark:text-blue-400 text-purple-600">=&gt;</span> {'{'}
+            <br />
+            {'    '}<span className="dark:text-blue-400 text-purple-600">const</span> <span className="dark:text-blue-300 text-blue-600">pipeline</span> = <span className="dark:text-yellow-300 text-pink-500">buildMLPipeline</span>(model);
+            <br />
+            {'    '}<span className="dark:text-blue-400 text-purple-600">await</span> <span className="dark:text-yellow-300 text-pink-500">pushToAWS</span>(pipeline);
+            <br />
+            {'    '}console.<span className="dark:text-yellow-300 text-pink-500">log</span>(<span className="dark:text-green-300 text-green-600">"🚀 Deployed to production!"</span>);
+            <br />
+            {'  }'}
+            <br />
+            {'}'};
+            <br />
+            <br />
+            <span className="dark:text-slate-500 text-indigo-400">// Building intelligent systems...</span>
+          </code></pre>
+        </div>
       </div>
     </div>
   )
 }
 
-/**
- * Main intro content after boot completes
- */
+const StatsGrid: FC = () => {
+  const stats = [
+    { value: '10+', label: 'Projects' },
+    { value: '3+', label: 'Internships' },
+    { value: '5+', label: 'Hackathons' },
+  ]
+
+  return (
+    <div className="grid grid-cols-3 gap-3 mt-4">
+      {stats.map((stat, index) => (
+        <motion.div
+          key={index}
+          variants={fadeInUp}
+          className="dark:bg-slate-800/50 bg-white border dark:border-slate-700 border-slate-200 rounded-xl p-3 text-center"
+        >
+          <p className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-indigo-500 bg-clip-text text-transparent">
+            {stat.value}
+          </p>
+          <p className="text-xs dark:text-slate-400 text-slate-500 mt-1">{stat.label}</p>
+        </motion.div>
+      ))}
+    </div>
+  )
+}
+
 const IntroContent: FC = () => {
   const { displayedText: tagline } = useTypewriter({
     text: siteConfig.tagline,
@@ -284,35 +153,48 @@ const IntroContent: FC = () => {
 
   return (
     <>
-      {/* Greeting */}
       <motion.div variants={fadeInUp} className="mb-4">
-        <span className="inline-block font-mono text-sm md:text-base text-phosphor-dim">
-          <span className="text-phosphor-muted">{'>'}</span> Hello, World! I'm
+        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full dark:bg-slate-800/50 bg-blue-50 border dark:border-slate-700 border-blue-100 text-xs font-mono dark:text-blue-400 text-blue-600">
+          <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
+          Open to AI & Software Roles
         </span>
       </motion.div>
 
-      {/* Name */}
+      <motion.div variants={fadeInUp} className="mb-4">
+        <span className="font-mono text-sm md:text-base dark:text-slate-400 text-slate-600">
+          <span className="text-blue-500">{'<'}</span> Hello, I'm<span className="text-blue-500">{'/>'}</span>
+        </span>
+      </motion.div>
+
       <motion.h1
         variants={fadeInUp}
-        className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold mb-4"
+        className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4"
       >
-        <span className="text-phosphor text-glow-strong">{siteConfig.name}</span>
+        <span className="dark:text-white text-slate-900">{siteConfig.name}</span>
       </motion.h1>
 
-      {/* Title */}
       <motion.div variants={fadeInUp} className="mb-6">
-        <h2 className="text-xl sm:text-2xl md:text-3xl font-display text-phosphor-dim">
+        <h2 className="text-xl sm:text-2xl md:text-3xl dark:text-slate-300 text-slate-700">
           {siteConfig.title}
         </h2>
       </motion.div>
 
-      {/* Tagline with typing effect */}
       <motion.div variants={fadeInUp} className="mb-8 h-8">
-        <p className="font-mono text-base md:text-lg text-cyan">
-          <span className="text-phosphor-muted">{'// '}</span>
+        <p className="font-mono text-base md:text-lg dark:text-slate-400 text-slate-600">
           {tagline}
           <span className="animate-blink">_</span>
         </p>
+      </motion.div>
+
+      {/* Social Links */}
+      <motion.div
+        variants={fadeInUp}
+        className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-8"
+      >
+        <SocialButton href={siteConfig.resumeUrl} label="Resume" icon="📄" />
+        <SocialButton href={socialLinks.github} label="GitHub" icon="GH" />
+        <SocialButton href={socialLinks.linkedin} label="LinkedIn" icon="IN" />
+        <SocialButton href={socialLinks.medium} label="Medium" icon="M" />
       </motion.div>
 
       {/* CTA Buttons */}
@@ -320,79 +202,43 @@ const IntroContent: FC = () => {
         variants={fadeInUp}
         className="flex flex-wrap items-center justify-center lg:justify-start gap-4"
       >
-        <Button
-          onClick={() => {
-            document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })
-          }}
-        >
-          View Projects
+        <Button onClick={() => document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })}>
+          View My Work
+          <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
         </Button>
-        <Button
-          variant="ghost"
-          onClick={() => {
-            document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })
-          }}
-        >
-          Get In Touch
+        <Button variant="ghost" onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}>
+          Contact Me
         </Button>
-      </motion.div>
-
-      {/* Social Links */}
-      <motion.div
-        variants={fadeInUp}
-        className="mt-12 flex items-center justify-center lg:justify-start gap-6"
-      >
-        <SocialLink href={socialLinks.github} label="GitHub" />
-        <SocialLink href={socialLinks.linkedin} label="LinkedIn" />
-        <SocialLink href={socialLinks.twitter} label="Twitter" />
       </motion.div>
     </>
   )
 }
 
-/**
- * Social link component
- */
-interface SocialLinkProps {
-  href: string
-  label: string
-}
-
-const SocialLink: FC<SocialLinkProps> = ({ href, label }) => (
+const SocialButton: FC<{ href: string; label: string; icon: string }> = ({ href, label, icon }) => (
   <motion.a
     href={href}
     target="_blank"
     rel="noopener noreferrer"
     aria-label={label}
-    className="font-mono text-sm text-phosphor-dim hover:text-phosphor transition-colors"
+    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800/50 hover:border-blue-500 hover:text-blue-500 transition-all duration-200 font-mono text-sm"
     whileHover={{ y: -2 }}
   >
-    [{label.toLowerCase()}]
+    <span>{icon}</span>
+    <span>{label}</span>
   </motion.a>
 )
 
-/**
- * Scroll down indicator
- */
 const ScrollIndicator: FC = () => (
   <motion.div
-    className="flex flex-col items-center gap-2 text-phosphor-muted"
+    className="flex flex-col items-center gap-2 dark:text-slate-500 text-slate-400"
     animate={{ y: [0, 5, 0] }}
     transition={{ duration: 2, repeat: Infinity }}
   >
     <span className="font-mono text-xs">scroll</span>
-    <svg
-      className="w-5 h-5"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M19 14l-7 7m0 0l-7-7m7 7V3"
-      />
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
     </svg>
   </motion.div>
 )

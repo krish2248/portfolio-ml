@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "description": "A retro-terminal themed developer portfolio built with React, TypeScript, and Tailwind CSS",
+  "homepage": "https://krish2248.github.io/portfolio-ml/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

@@ -34,7 +34,9 @@ export const siteConfig = {
 export const socialLinks = {
   github: 'https://github.com/krish2248',
   linkedin: 'https://www.linkedin.com/in/krish-soni-460932228/',
-  twitter: 'https://www.instagram.com/notkrish03/',  // Using Instagram instead
+  twitter: 'https://www.instagram.com/notkrish03/',
+  medium: 'https://medium.com/@krish2248',
+  portfolio: 'https://krish2248.github.io/',
   email: 'mailto:sonikrish2248@gmail.com',
 }
 
@@ -68,6 +70,8 @@ export const aboutContent = {
     `Currently preparing for my Master's in Machine Learning, where I aim to 
      deepen my expertise in neural networks, computer vision, and NLP while 
      contributing to cutting-edge research.`,
+    `I love building things that matter. When I'm not coding, you'll find me 
+     exploring new ML research papers or working on side projects.`,
   ],
   
   // ASCII art for the about section (optional)

@@ -21,18 +21,18 @@ const About: FC = memo(() => {
         variants={staggerContainer}
         className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start"
       >
-        {/* Left: GitHub Stats, Interests, Spotify */}
+        {/* Left: GitHub Stats, Spotify */}
         <motion.div variants={fadeInUp} className="space-y-4">
-          {/* GitHub Contribution Graph */}
+          {/* GitHub Stats */}
           <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
             <div className="px-4 py-3 border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900">
-              <span className="text-slate-400 font-mono text-sm">github contributions</span>
+              <span className="text-slate-400 font-mono text-sm">contributions</span>
             </div>
             <div className="p-5">
               <div className="flex items-center justify-between mb-4">
                 <div className="text-center">
                   <div className="text-xl font-bold text-green-500">1,234</div>
-                  <div className="text-xs dark:text-slate-500 text-slate-500">Total</div>
+                  <div className="text-xs dark:text-slate-500 text-slate-500">Contributions</div>
                 </div>
                 <div className="text-center">
                   <div className="text-xl font-bold text-blue-500">89</div>
@@ -43,89 +43,14 @@ const About: FC = memo(() => {
                   <div className="text-xs dark:text-slate-500 text-slate-500">PRs</div>
                 </div>
               </div>
-              {/* GitHub-style contribution grid */}
-              <div className="flex flex-col gap-1">
-                <div className="flex gap-1 justify-center">
-                  {[0.2, 0.4, 0.6, 0.8, 1, 0.8, 0.6, 0.4, 0.2, 0, 0.2, 0.4].map((val, i) => (
-                    <div key={i} className="w-3 h-3 rounded-sm bg-green-500" style={{ opacity: val }} />
-                  ))}
-                </div>
-                <div className="flex gap-1 justify-center">
-                  {[0.4, 0.6, 0.8, 1, 1, 0.8, 0.6, 0.4, 0.2, 0.4, 0.6, 0.8].map((val, i) => (
-                    <div key={i} className="w-3 h-3 rounded-sm bg-green-500" style={{ opacity: val }} />
-                  ))}
-                </div>
-                <div className="flex gap-1 justify-center">
-                  {[0.6, 0.8, 1, 0.8, 0.6, 0.4, 0.2, 0, 0.2, 0.4, 0.6, 0.8].map((val, i) => (
-                    <div key={i} className="w-3 h-3 rounded-sm bg-green-500" style={{ opacity: val }} />
-                  ))}
-                </div>
-                <div className="flex gap-1 justify-center">
-                  {[0.8, 1, 0.8, 0.6, 0.4, 0.2, 0, 0.2, 0.4, 0.6, 0.8, 1].map((val, i) => (
-                    <div key={i} className="w-3 h-3 rounded-sm bg-green-500" style={{ opacity: val }} />
-                  ))}
-                </div>
-                <div className="flex gap-1 justify-center">
-                  {[1, 0.8, 0.6, 0.4, 0.2, 0, 0.2, 0.4, 0.6, 0.8, 1, 0.8].map((val, i) => (
-                    <div key={i} className="w-3 h-3 rounded-sm bg-green-500" style={{ opacity: val }} />
-                  ))}
-                </div>
-                <div className="flex gap-1 justify-center">
-                  {[0.6, 0.4, 0.2, 0, 0.2, 0.4, 0.6, 0.8, 1, 0.8, 0.6, 0.4].map((val, i) => (
-                    <div key={i} className="w-3 h-3 rounded-sm bg-green-500" style={{ opacity: val }} />
-                  ))}
-                </div>
-                <div className="flex gap-1 justify-center">
-                  {[0.2, 0, 0.2, 0.4, 0.6, 0.8, 1, 0.8, 0.6, 0.4, 0.2, 0].map((val, i) => (
-                    <div key={i} className="w-3 h-3 rounded-sm bg-green-500" style={{ opacity: val }} />
-                  ))}
-                </div>
-                <div className="flex gap-1 justify-center">
-                  {[0, 0.2, 0.4, 0.6, 0.8, 1, 0.8, 0.6, 0.4, 0.2, 0, 0.2].map((val, i) => (
-                    <div key={i} className="w-3 h-3 rounded-sm bg-green-500" style={{ opacity: val }} />
-                  ))}
-                </div>
-                <div className="flex gap-1 justify-center">
-                  {[0.2, 0.4, 0.6, 0.8, 1, 0.8, 0.6, 0.4, 0.2, 0, 0.2, 0.4].map((val, i) => (
-                    <div key={i} className="w-3 h-3 rounded-sm bg-green-500" style={{ opacity: val }} />
-                  ))}
-                </div>
-                <div className="flex gap-1 justify-center">
-                  {[0.6, 0.8, 1, 0.8, 0.6, 0.4, 0.2, 0, 0.2, 0.4, 0.6, 0.8].map((val, i) => (
-                    <div key={i} className="w-3 h-3 rounded-sm bg-green-500" style={{ opacity: val }} />
-                  ))}
-                </div>
-                <div className="flex gap-1 justify-center">
-                  {[1, 0.8, 0.6, 0.4, 0.2, 0, 0.2, 0.4, 0.6, 0.8, 1, 0.8].map((val, i) => (
-                    <div key={i} className="w-3 h-3 rounded-sm bg-green-500" style={{ opacity: val }} />
-                  ))}
-                </div>
-                <div className="flex gap-1 justify-center">
-                  {[0.6, 0.4, 0.2, 0, 0.2, 0.4, 0.6, 0.8, 1, 0.8, 0.6, 0.4].map((val, i) => (
-                    <div key={i} className="w-3 h-3 rounded-sm bg-green-500" style={{ opacity: val }} />
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Interests */}
-          <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
-            <div className="px-4 py-3 border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900">
-              <span className="text-slate-400 font-mono text-sm">interests</span>
-            </div>
-            <div className="p-5 space-y-3">
-              <div className="flex items-center gap-3">
-                <span className="text-xl">⚽</span>
-                <span className="font-mono text-sm dark:text-slate-300 text-slate-700">FC Barcelona</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="text-xl">🔴</span>
-                <span className="font-mono text-sm dark:text-slate-300 text-slate-700">Liverpool FC</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="text-xl">📚</span>
-                <span className="font-mono text-sm dark:text-slate-300 text-slate-700">Reading Books</span>
+              <div className="flex gap-1 justify-center">
+                {[45, 32, 56, 78, 92, 65, 48, 34, 67, 89, 72, 51].map((val, i) => (
+                  <div
+                    key={i}
+                    className="w-3 h-3 rounded-sm bg-green-500"
+                    style={{ opacity: val / 100 }}
+                  />
+                ))}
               </div>
             </div>
           </div>

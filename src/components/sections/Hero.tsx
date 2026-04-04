@@ -16,7 +16,7 @@ const Hero: FC = memo(() => {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Solid background */}
-      <div className="absolute inset-0 dark:bg-slate-950 bg-white" />
+      <div className="absolute inset-0 dark:bg-slate-900 bg-white" />
 
       <motion.div
         initial="hidden"
@@ -40,7 +40,7 @@ const Hero: FC = memo(() => {
 
       {/* Wave Divider */}
       <div className="absolute bottom-0 left-0 right-0 -z-10">
-        <svg viewBox="0 0 1440 64" preserveAspectRatio="none" className="w-full h-16 dark:fill-slate-950 fill-white">
+        <svg viewBox="0 0 1440 64" preserveAspectRatio="none" className="w-full h-16 dark:fill-slate-900 fill-white">
           <path d="M0,32 C240,64 480,0 720,32 C960,64 1200,0 1440,32 L1440,64 L0,64 Z"/>
         </svg>
       </div>
@@ -63,19 +63,19 @@ Hero.displayName = 'Hero'
 const CodeBlock: FC = () => {
   return (
     <div className="relative">
-      <div className="relative dark:bg-[#0f1419] bg-[#f5f3ff] rounded-xl overflow-hidden dark:border-slate-700 border border-indigo-200">
+      <div className="relative dark:bg-slate-800 bg-[#f5f3ff] rounded-xl overflow-hidden dark:border-slate-700 border border-indigo-200">
         {/* Window header */}
-        <div className="flex items-center gap-2 px-4 py-3 dark:bg-[#161b22] bg-[#eef2ff] border-b dark:border-slate-700 border-indigo-200">
-          <div className="flex gap-2">
-            <span className="w-3 h-3 rounded-full bg-red-500/80" />
-            <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
-            <span className="w-3 h-3 rounded-full bg-green-500/80" />
+        <div className="flex items-center gap-2 px-3 py-2 dark:bg-slate-900 bg-[#eef2ff] border-b dark:border-slate-700 border-indigo-200">
+          <div className="flex gap-1.5">
+            <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+            <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+            <span className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
           </div>
-          <span className="ml-4 text-xs dark:text-slate-400 text-indigo-500 font-mono">developer.ts</span>
+          <span className="ml-3 text-xs dark:text-slate-400 text-indigo-500 font-mono">developer.ts</span>
         </div>
-        
+
         {/* Code content */}
-        <div className="p-6 font-mono text-xs sm:text-sm leading-relaxed overflow-x-auto dark:text-slate-300 text-indigo-900">
+        <div className="p-4 font-mono text-xs leading-relaxed overflow-x-auto dark:text-slate-300 text-indigo-900">
           <pre><code>
             <span className="dark:text-slate-500 text-indigo-400">// TypeScript · ML Engineer 🔒</span>
             <br />
@@ -134,7 +134,7 @@ const StatsGrid: FC = () => {
           variants={fadeInUp}
           className="dark:bg-slate-800/50 bg-white border dark:border-slate-700 border-slate-200 rounded-xl p-3 text-center"
         >
-          <p className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-indigo-500 bg-clip-text text-transparent">
+          <p className="text-2xl font-bold text-blue-500">
             {stat.value}
           </p>
           <p className="text-xs dark:text-slate-400 text-slate-500 mt-1">{stat.label}</p>

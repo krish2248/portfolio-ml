@@ -12,7 +12,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: 'border-2 border-blue-500 text-blue-500 bg-transparent hover:bg-blue-500 hover:text-white focus:ring-blue-500 dark:focus:ring-offset-slate-900 focus:ring-offset-white',
+        default: 'border-2 border-blue-500 text-blue-500 bg-transparent hover:bg-blue-500 hover:text-white dark:hover:text-slate-900 focus:ring-blue-500 dark:focus:ring-offset-slate-900 focus:ring-offset-white',
         ghost: 'text-blue-500 hover:bg-blue-50 dark:hover:bg-blue-500/10 focus:ring-blue-500/50 dark:focus:ring-offset-slate-900 focus:ring-offset-white',
         link: 'text-blue-500 underline-offset-4 hover:underline focus:ring-blue-500 dark:focus:ring-offset-slate-900 focus:ring-offset-white',
         accent: 'border-2 border-amber-500 text-amber-500 bg-transparent hover:bg-amber-500 hover:text-white focus:ring-amber-500 dark:focus:ring-offset-slate-900 focus:ring-offset-white',

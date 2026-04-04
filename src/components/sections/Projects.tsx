@@ -52,7 +52,7 @@ Projects.displayName = 'Projects'
 
 const FilterTab: FC<{ active: boolean; onClick: () => void; count: number; children: React.ReactNode }> = ({ active, onClick, count, children }) => (
   <button onClick={onClick} className={cn('px-3 py-1.5 rounded font-mono text-sm transition-all duration-200',
-    active ? 'bg-blue-500 text-white border border-blue-500' : 'dark:text-slate-400 text-slate-600 border border-slate-300 dark:border-slate-600 hover:border-blue-500 hover:text-blue-500')}>
+    active ? 'bg-blue-500 text-white dark:text-slate-900 border border-blue-500' : 'dark:text-slate-400 text-slate-600 border border-slate-300 dark:border-slate-600 hover:border-blue-500 hover:text-blue-500')}>
     {children}<span className="ml-2 text-xs dark:text-slate-500 text-slate-400">({count})</span>
   </button>
 )
@@ -85,7 +85,7 @@ const ProjectCard: FC<{ project: Project; onClick: () => void }> = memo(({ proje
         <div className="flex items-center gap-2">
           {project.liveUrl && (
             <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} 
-              className="px-3 py-1.5 text-xs font-mono rounded border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-all">
+              className="px-3 py-1.5 text-xs font-mono rounded border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white dark:hover:text-slate-900 transition-all">
               Live
             </a>
           )}

@@ -24,6 +24,18 @@ export default {
           800: '#1e40af',
           900: '#1e3a8a',
         },
+        blue: {
+          50: 'rgb(var(--accent-rgb) / 0.05)',
+          100: 'rgb(var(--accent-rgb) / 0.1)',
+          200: 'rgb(var(--accent-rgb) / 0.15)',
+          300: 'rgb(var(--accent-rgb) / <alpha-value>)',
+          400: 'rgb(var(--accent-rgb) / <alpha-value>)',
+          500: 'rgb(var(--accent-rgb) / <alpha-value>)',
+          600: 'rgb(var(--accent-rgb) / <alpha-value>)',
+          700: 'rgb(var(--accent-rgb) / <alpha-value>)',
+          800: 'rgb(var(--accent-rgb) / <alpha-value>)',
+          900: 'rgb(var(--accent-rgb) / <alpha-value>)',
+        },
         slate: {
           50: '#f8fafc',
           100: '#f1f5f9',

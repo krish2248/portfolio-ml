@@ -50,7 +50,7 @@ export function ThemeProvider({ children, defaultTheme = 'light' }: ThemeProvide
     // Update meta theme-color
     const metaThemeColor = document.querySelector('meta[name="theme-color"]')
     if (metaThemeColor) {
-      metaThemeColor.setAttribute('content', theme === 'dark' ? '#0a0a0a' : '#fefdfb')
+      metaThemeColor.setAttribute('content', theme === 'dark' ? '#091413' : '#fefdfb')
     }
   }, [theme])
 

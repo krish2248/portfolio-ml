@@ -31,21 +31,21 @@ export default {
           300: '#cbd5e1',
           400: '#94a3b8',
           500: '#64748b',
-          600: '#475569',
-          700: '#334155',
-          800: '#1e293b',
-          900: '#0f172a',
-          950: '#020617',
+          600: '#1e3a35',
+          700: '#162b27',
+          800: '#0f1f1c',
+          900: '#091413',
+          950: '#060e0c',
         },
       },
       // ═══════════════════════════════════════════════════════════════════════
       // TYPOGRAPHY - Clean modern fonts
       // ═══════════════════════════════════════════════════════════════════════
       fontFamily: {
-        mono: ['IBM Plex Mono', 'JetBrains Mono', 'Fira Code', 'monospace'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Inter', 'system-ui', 'sans-serif'],
-        body: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['Arial', 'Helvetica', 'sans-serif'],
+        sans: ['Arial', 'Helvetica', 'sans-serif'],
+        display: ['Arial', 'Helvetica', 'sans-serif'],
+        body: ['Arial', 'Helvetica', 'sans-serif'],
       },
       // ═══════════════════════════════════════════════════════════════════════
       // ANIMATIONS - Clean modern animations

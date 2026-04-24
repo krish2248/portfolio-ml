@@ -5,9 +5,7 @@ import path from 'path'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  // Base path for GitHub Pages deployment
-  // Change 'opencodePortfolio' to your repository name
-  base: '/portfolio-ml/',
+  base: '/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

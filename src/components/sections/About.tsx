@@ -37,15 +37,15 @@ const About: FC = memo(() => {
                 aria-label="View GitHub profile"
               >
                 <img
-                  src="https://ghchart.rshah.org/22c55e/krish2248"
-                  alt="Krish Soni's GitHub contribution graph"
+                  src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=krish2248&theme=transparent"
+                  alt="Krish Soni's GitHub profile summary (all-time)"
                   className="w-full h-auto"
                   loading="lazy"
                 />
               </a>
               <img
-                src="https://github-readme-stats.vercel.app/api?username=krish2248&show_icons=true&hide_border=true&bg_color=00000000&icon_color=22c55e&title_color=22c55e&text_color=64748b&count_private=true"
-                alt="Krish Soni's GitHub stats"
+                src="https://github-readme-stats.vercel.app/api?username=krish2248&show_icons=true&include_all_commits=true&count_private=true&hide=contribs,prs,issues,stars&hide_border=true&hide_title=true&bg_color=00000000&icon_color=22c55e&text_color=64748b"
+                alt="Krish Soni's all-time GitHub commits"
                 className="w-full h-auto"
                 loading="lazy"
               />

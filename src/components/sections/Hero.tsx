@@ -156,7 +156,7 @@ const IntroContent: FC = () => {
       <motion.div variants={fadeInUp} className="mb-4">
         <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full dark:bg-slate-800/50 bg-blue-50 border dark:border-slate-700 border-blue-100 text-xs font-mono dark:text-blue-400 text-blue-600">
           <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
-          Open to AI & Software Roles
+          Working at PRM Pharmaceuticals
         </span>
       </motion.div>
 

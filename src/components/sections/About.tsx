@@ -92,18 +92,18 @@ const About: FC = memo(() => {
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <KnowMeCard
-                  title="Futology"
+                  title="Fut-Score"
                   tag="football"
-                  thumbnail="https://opengraph.githubassets.com/1/krish2248/Futology"
-                  websiteUrl="https://krish2248.github.io/Futology/"
-                  githubUrl="https://github.com/krish2248/Futology"
+                  thumbnail="https://opengraph.githubassets.com/1/krish2248/Fut-Score"
+                  websiteUrl="https://krish2248.github.io/Fut-Score/"
+                  githubUrl="https://github.com/krish2248/Fut-Score"
                 />
                 <KnowMeCard
                   title="Coffee Journal"
                   tag="coffee"
-                  thumbnail="https://opengraph.githubassets.com/1/krish2248/Coffee-Journal---v1.-Type-3-Vol9"
-                  websiteUrl="https://krish2248.github.io/Coffee-Journal---v1.-Type-3-Vol9/"
-                  githubUrl="https://github.com/krish2248/Coffee-Journal---v1.-Type-3-Vol9"
+                  thumbnail="https://opengraph.githubassets.com/1/krish2248/Coffee-Journal"
+                  websiteUrl="https://krish2248.github.io/Coffee-Journal/"
+                  githubUrl="https://github.com/krish2248/Coffee-Journal"
                 />
                 <KnowMeCard
                   title="Text Adventure"

@@ -19,40 +19,66 @@ const About: FC = memo(() => {
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
         variants={staggerContainer}
-        className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start"
+        className="space-y-8"
       >
-        {/* Left: GitHub Stats, Spotify */}
-        <motion.div variants={fadeInUp} className="space-y-4">
-          {/* GitHub Stats */}
-          <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
-            <div className="px-4 py-3 border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900">
-              <span className="text-slate-400 font-mono text-sm">contributions</span>
-            </div>
-            <div className="p-5 space-y-4">
-              <a
-                href={socialLinks.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block"
-                aria-label="View GitHub profile"
-              >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          {/* Left: GitHub Stats */}
+          <motion.div variants={fadeInUp} className="space-y-4">
+            <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
+              <div className="px-4 py-3 border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900">
+                <span className="text-slate-400 font-mono text-sm">contributions</span>
+              </div>
+              <div className="p-5 space-y-4">
+                <a
+                  href={socialLinks.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                  aria-label="View GitHub profile"
+                >
+                  <img
+                    src="https://ghchart.rshah.org/22c55e/krish2248"
+                    alt="Krish Soni's GitHub contribution graph"
+                    className="w-full h-auto"
+                    loading="lazy"
+                  />
+                </a>
                 <img
-                  src="https://ghchart.rshah.org/22c55e/krish2248"
-                  alt="Krish Soni's GitHub contribution graph"
+                  src="https://github-readme-stats.vercel.app/api?username=krish2248&show_icons=true&include_all_commits=true&count_private=true&hide=contribs&hide_border=true&bg_color=00000000&icon_color=22c55e&title_color=22c55e&text_color=64748b"
+                  alt="Krish Soni's GitHub stats"
                   className="w-full h-auto"
                   loading="lazy"
                 />
-              </a>
-              <img
-                src="https://github-readme-stats.vercel.app/api?username=krish2248&show_icons=true&include_all_commits=true&count_private=true&hide=contribs&hide_border=true&bg_color=00000000&icon_color=22c55e&title_color=22c55e&text_color=64748b"
-                alt="Krish Soni's GitHub stats"
-                className="w-full h-auto"
-                loading="lazy"
-              />
+              </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Know Me */}
+          {/* Right: About Text */}
+          <motion.div variants={fadeInUp} className="space-y-6">
+            <div className="space-y-6">
+              {aboutContent.paragraphs.map((paragraph, index) => (
+                <motion.p
+                  key={index}
+                  variants={fadeInUp}
+                  custom={index}
+                  className="dark:text-slate-400 text-slate-600 leading-relaxed text-sm md:text-base"
+                >
+                  {paragraph}
+                </motion.p>
+              ))}
+            </div>
+
+            <motion.div variants={fadeInUp} className="flex flex-wrap gap-3 pt-2">
+              <InfoLink href={siteConfig.resumeUrl} label="Resume" icon="📄" />
+              <InfoLink href={socialLinks.github} label="GitHub" icon="GH" external />
+              <InfoLink href={socialLinks.linkedin} label="LinkedIn" icon="IN" external />
+              <InfoLink href={socialLinks.medium} label="Medium" icon="M" external />
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* Know Me — full width row of 4 horizontal cards */}
+        <motion.div variants={fadeInUp}>
           <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
             <div className="px-4 py-3 border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900">
               <span className="text-slate-400 font-mono text-sm">know-me</span>
@@ -64,7 +90,7 @@ const About: FC = memo(() => {
                 <span className="text-blue-500">indie games</span> and{' '}
                 <span className="text-blue-500">classic literature books</span>.
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <KnowMeCard
                   title="Futology"
                   tag="football"
@@ -96,29 +122,6 @@ const About: FC = memo(() => {
               </div>
             </div>
           </div>
-        </motion.div>
-
-        {/* Right: About Text */}
-        <motion.div variants={fadeInUp} className="space-y-6">
-          <div className="space-y-6">
-            {aboutContent.paragraphs.map((paragraph, index) => (
-              <motion.p
-                key={index}
-                variants={fadeInUp}
-                custom={index}
-                className="dark:text-slate-400 text-slate-600 leading-relaxed text-sm md:text-base"
-              >
-                {paragraph}
-              </motion.p>
-            ))}
-          </div>
-
-          <motion.div variants={fadeInUp} className="flex flex-wrap gap-3 pt-2">
-            <InfoLink href={siteConfig.resumeUrl} label="Resume" icon="📄" />
-            <InfoLink href={socialLinks.github} label="GitHub" icon="GH" external />
-            <InfoLink href={socialLinks.linkedin} label="LinkedIn" icon="IN" external />
-            <InfoLink href={socialLinks.medium} label="Medium" icon="M" external />
-          </motion.div>
         </motion.div>
       </motion.div>
     </Section>

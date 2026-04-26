@@ -199,7 +199,7 @@ export interface Experience {
   id: string
   title: string
   company: string
-  type: 'full-time' | 'part-time' | 'freelance' | 'internship' | 'remote'
+  type: 'full-time' | 'part-time' | 'freelance' | 'internship' | 'remote' | 'hackathon'
   location: string
   period: string
   description: string
@@ -253,6 +253,22 @@ export const experiences: Experience[] = [
       'Built Flutter mobile UIs using Dart and Material design components.',
       'Worked with JSON data structures and consumed REST APIs from within Flutter apps.',
       'Implemented API fetching, data parsing, and reactive UI updates.',
+    ],
+  },
+  {
+    id: 'hackathon-2022',
+    title: 'Hackathon — Student Life Cycle Management System',
+    company: 'Gyanmanjari Institute of Technology',
+    type: 'hackathon',
+    location: 'Bhavnagar, India',
+    period: 'Jul 2022',
+    description:
+      'Designed and built an academic portal: a web-based Student Life Cycle Management System enabling online lectures, assignment workflows, and faculty-student communication.',
+    achievements: [
+      'Implemented role-based access for Admin, Faculty, and Student users.',
+      'Built features for online lectures, assignment upload/submission, notices, and queries.',
+      'Designed use-case and context-level diagrams to model the system end-to-end.',
+      'Stack: PHP, MySQL, HTML, CSS, JavaScript, AJAX (XAMPP). Team of two.',
     ],
   },
 ]

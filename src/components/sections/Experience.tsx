@@ -11,16 +11,31 @@ import { fadeInUp, staggerContainer } from '../../lib/animations'
 import { useInView } from '../../hooks/useInView'
 import Section from '../layout/Section'
 
-interface ExperienceItem { id: string; type: 'experience'; title: string; company: string; type2: 'full-time' | 'part-time' | 'freelance' | 'internship' | 'remote'; location: string; period: string; description: string; achievements: string[] }
+interface ExperienceItem { id: string; type: 'experience'; title: string; company: string; type2: 'full-time' | 'part-time' | 'freelance' | 'internship' | 'remote' | 'hackathon'; location: string; period: string; description: string; achievements: string[] }
 interface EducationItem { id: string; type: 'education'; degree: string; institution: string; location: string; period: string; grade?: string; description?: string }
 type TimelineItem = ExperienceItem | EducationItem
+
+// Explicit display order, top → bottom. Items not listed here are appended.
+const TIMELINE_ORDER = [
+  'masters-ml',
+  'ielts',
+  'prm-data-scientist',
+  'ithub-fullstack-intern',
+  'infolabz-flutter-intern',
+  'hackathon-2022',
+  'btech-gtu',
+]
 
 const combinedTimeline: TimelineItem[] = [
   ...experiences.map(e => ({ ...e, type: 'experience' as const, type2: e.type })),
   ...education.map(e => ({ ...e, type: 'education' as const, title: e.degree, company: e.institution, description: e.description || '', achievements: [], type2: 'full-time' as const })),
 ].sort((a, b) => {
-  const getYear = (item: TimelineItem): number => { const match = item.period.match(/\d{4}/); return match ? parseInt(match[0]) : 0 }
-  return getYear(b) - getYear(a)
+  const ai = TIMELINE_ORDER.indexOf(a.id)
+  const bi = TIMELINE_ORDER.indexOf(b.id)
+  if (ai === -1 && bi === -1) return 0
+  if (ai === -1) return 1
+  if (bi === -1) return -1
+  return ai - bi
 })
 
 const Experience: FC = memo(() => {

@@ -5,11 +5,10 @@
 import { FC, memo } from 'react'
 import { motion } from 'framer-motion'
 import { cn } from '../../lib/utils'
-import { skills, SkillCategory, Skill } from '../../lib/data'
-import { fadeInUp, staggerContainer, skillItem } from '../../lib/animations'
+import { skills, SkillCategory } from '../../lib/data'
+import { fadeInUp, staggerContainer } from '../../lib/animations'
 import { useInView } from '../../hooks/useInView'
 import Section from '../layout/Section'
-import { ProgressBar } from '../ui'
 
 const Skills: FC = memo(() => {
   const { ref, inView: isInView } = useInView({ threshold: 0.1, triggerOnce: true })
@@ -34,7 +33,7 @@ const Skills: FC = memo(() => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {skills.map((category, catIndex) => (
             <motion.div key={category.name} variants={fadeInUp} custom={catIndex}>
-              <SkillCategoryCard category={category} isInView={isInView} delay={catIndex * 0.2} />
+              <SkillCategoryCard category={category} />
             </motion.div>
           ))}
         </div>
@@ -64,49 +63,44 @@ const SystemStat: FC<{ label: string; value: string; color?: 'blue' | 'green' | 
   )
 }
 
-const SkillCategoryCard: FC<{ category: SkillCategory; isInView: boolean; delay: number }> = memo(({ category, isInView, delay }) => {
+const SkillCategoryCard: FC<{ category: SkillCategory }> = memo(({ category }) => {
   return (
-    <motion.div className={cn(
-      'p-4 rounded-lg',
-      'border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50',
-      'hover:border-blue-500 transition-all duration-300'
-    )}>
-      <div className="flex items-center justify-between mb-3">
+    <div
+      className={cn(
+        'p-5 rounded-lg h-full',
+        'border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50',
+        'hover:border-blue-500/50 transition-all duration-300'
+      )}
+    >
+      <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-100 dark:border-slate-700/60">
         <h3 className="font-semibold text-base dark:text-white text-slate-900">
           <span className="text-blue-500">{'// '}</span>
           {category.name}
         </h3>
-        <span className="font-mono text-xs dark:text-slate-500 text-slate-500">{category.skills.length} skills</span>
+        <span className="font-mono text-xs dark:text-slate-500 text-slate-500">{category.skills.length}</span>
       </div>
 
-      <motion.ul
-        initial="hidden"
-        animate={isInView ? 'visible' : 'hidden'}
-        variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1, delayChildren: delay } } }}
-        className="space-y-2"
-      >
-        {category.skills.map((skill, index) => (
-          <SkillItem key={skill.name} skill={skill} index={index} isInView={isInView} />
+      <ul className="flex flex-wrap gap-2">
+        {category.skills.map((skill) => (
+          <li
+            key={skill.name}
+            className={cn(
+              'font-mono text-sm px-3 py-1.5 rounded-md',
+              'border border-slate-200 dark:border-slate-700',
+              'bg-slate-50 dark:bg-slate-800',
+              'dark:text-slate-300 text-slate-700',
+              'hover:border-blue-500/60 hover:text-blue-500 dark:hover:text-blue-400',
+              'transition-colors duration-200'
+            )}
+          >
+            {skill.name}
+          </li>
         ))}
-      </motion.ul>
-    </motion.div>
+      </ul>
+    </div>
   )
 })
 
 SkillCategoryCard.displayName = 'SkillCategoryCard'
-
-const SkillItem: FC<{ skill: Skill; index: number; isInView: boolean }> = memo(({ skill, index, isInView }) => {
-  return (
-    <motion.li variants={skillItem} custom={index} className="group">
-      <div className="flex items-center justify-between mb-1">
-        <span className="font-mono text-sm dark:text-slate-400 text-slate-600 group-hover:text-blue-500 transition-colors">{skill.name}</span>
-        <span className="font-mono text-xs dark:text-slate-500 text-slate-500">{skill.level}%</span>
-      </div>
-      <ProgressBar value={skill.level} animated={isInView} variant="default" showValue={false} size="sm" />
-    </motion.li>
-  )
-})
-
-SkillItem.displayName = 'SkillItem'
 
 export default Skills

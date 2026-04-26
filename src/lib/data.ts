@@ -293,7 +293,7 @@ export interface Project {
 
 export const projects: Project[] = [
   // ═══════════════════════════════════════════════════════════════
-  // FEATURED PROJECTS (5) - ML Focus First
+  // FEATURED PROJECTS (6) - ML Focus First
   // ═══════════════════════════════════════════════════════════════
   {
     id: 'breast-cancer-predictor',
@@ -394,7 +394,7 @@ export const projects: Project[] = [
     image: '/images/projects/rpsls.png',
     technologies: ['React', 'Redux', 'TypeScript', 'Socket.IO', 'Node.js', 'SCSS'],
     githubUrl: 'https://github.com/krish2248/Rock-Paper-Scissors-Lizard-Spock',
-    featured: false,
+    featured: true,
     status: 'deployed',
     year: '2025',
     challenges: `Implemented real-time game state synchronization across clients. 

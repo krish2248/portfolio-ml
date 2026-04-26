@@ -137,14 +137,6 @@ export const education: Education[] = [
     description: 'Applying for Master\'s in AI/ML programs in Germany.',
   },
   {
-    id: 'coding-cloud-ds',
-    degree: 'Data Science — Professional Course (4 months)',
-    institution: 'Coding Cloud Institute',
-    location: 'Ahmedabad, India',
-    period: 'Sept 2025 - Dec 2025',
-    description: 'Hands-on data science training: Python, NumPy, Pandas, data visualization (Matplotlib, Seaborn, Plotly), statistics & probability, SQL, exploratory data analysis, machine learning with Scikit-learn (regression, classification, clustering), introduction to deep learning, NLP fundamentals, model deployment with Streamlit, and end-to-end capstone projects.',
-  },
-  {
     id: 'btech-gtu',
     degree: "Bachelor's in Computer Engineering",
     institution: 'Gujarat Technological University (GTU)',

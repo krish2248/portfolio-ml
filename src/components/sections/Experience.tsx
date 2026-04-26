@@ -19,7 +19,6 @@ type TimelineItem = ExperienceItem | EducationItem
 const TIMELINE_ORDER = [
   'masters-ml',
   'ielts',
-  'coding-cloud-ds',
   'prm-data-scientist',
   'ithub-fullstack-intern',
   'infolabz-flutter-intern',

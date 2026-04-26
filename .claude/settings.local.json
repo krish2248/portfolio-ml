@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -E \"\\\\.\\(html|css|js|jsx|tsx|ts\\)$|^d\")",
+      "Bash(npm run:*)",
+      "Bash(gh run:*)",
+      "Bash(npx vite *)",
+      "Bash(git -C /c/Users/sonik/Desktop/opencodePortfolio remote -v)",
+      "Bash(git -C /c/Users/sonik/Desktop/opencodePortfolio branch -a)",
+      "Bash(git -C /c/Users/sonik/Desktop/opencodePortfolio show origin/gh-pages:CNAME)",
+      "Bash(bun run *)",
+      "Bash(bunx gh-pages *)",
+      "Bash(git -C /c/Users/sonik/Desktop/opencodePortfolio fetch origin gh-pages)",
+      "Bash(curl -sI http://sonikrish.com/)",
+      "Bash(curl -sL http://sonikrish.com/)",
+      "Bash(git -C /c/Users/sonik/Desktop/opencodePortfolio show origin/gh-pages:index.html)",
+      "Bash(git -C /c/Users/sonik/Desktop/opencodePortfolio log origin/gh-pages --oneline -3)",
+      "Bash(gh api *)",
+      "Bash(git -C /c/Users/sonik/Desktop/opencodePortfolio status -s)",
+      "Bash(git -C /c/Users/sonik/Desktop/opencodePortfolio diff --stat)",
+      "Bash(git -C /c/Users/sonik/Desktop/opencodePortfolio add package.json vite.config.ts public/CNAME)",
+      "Bash(git -C /c/Users/sonik/Desktop/opencodePortfolio commit -m ' *)",
+      "Bash(git -C /c/Users/sonik/Desktop/opencodePortfolio push origin master)",
+      "Bash(curl -sI https://sonikrish.com/)",
+      "Bash(curl -sL https://sonikrish.com/)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "WebFetch(domain:www.codingcloud.co.in)",
+      "WebFetch(domain:github.com)"
+    ]
+  }
+}

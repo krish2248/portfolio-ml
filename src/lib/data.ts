@@ -265,7 +265,7 @@ export const experiences: Experience[] = [
   {
     id: 'hackathon-2022',
     title: 'SSIP Hackathon (24hr) — Student Life Cycle Management System',
-    company: 'Government Engineering College, Bhavnagar (GEC Bhavnagar)',
+    company: 'GEC Bhavnagar',
     type: 'hackathon',
     location: 'Bhavnagar, India',
     period: 'Jul 2022',

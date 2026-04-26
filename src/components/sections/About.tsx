@@ -52,22 +52,24 @@ const About: FC = memo(() => {
             </div>
           </div>
 
-          {/* Spotify Playlist */}
+          {/* Know Me */}
           <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
             <div className="px-4 py-3 border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900">
-              <span className="text-slate-400 font-mono text-sm">spotify</span>
+              <span className="text-slate-400 font-mono text-sm">know-me</span>
             </div>
-            <div className="p-2">
-              <iframe 
-                style={{ borderRadius: '12px' }} 
-                src="https://open.spotify.com/embed/playlist/44C6WWaRGjk1exEyloQKbz?utm_source=generator&theme=0" 
-                width="100%" 
-                height="152" 
-                frameBorder="0" 
-                allowFullScreen 
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                loading="lazy"
-              />
+            <div className="p-5 space-y-4">
+              <p className="font-mono text-sm dark:text-slate-300 text-slate-700">
+                I'm a mix of <span className="text-blue-500">football</span>,{' '}
+                <span className="text-blue-500">coffee</span>,{' '}
+                <span className="text-blue-500">indie games</span> and{' '}
+                <span className="text-blue-500">classic literature books</span>.
+              </p>
+              <div className="grid grid-cols-2 gap-2">
+                <KnowMeLink href="https://krish2248.github.io/Futology/" label="Futology" tag="football" />
+                <KnowMeLink href="https://krish2248.github.io/Coffee-Journal---v1.-Type-3-Vol9/" label="Coffee Journal" tag="coffee" />
+                <KnowMeLink href="https://krish2248.github.io/Text-Adventure-Game/" label="Text Adventure" tag="indie games" />
+                <KnowMeLink href="https://krish2248.github.io/Vellum-Codex/" label="Vellum Codex" tag="literature" />
+              </div>
             </div>
           </div>
         </motion.div>
@@ -111,6 +113,19 @@ const InfoLink: FC<{ href: string; label: string; icon: string; external?: boole
   >
     <span>{icon}</span>
     <span>{label}</span>
+  </motion.a>
+)
+
+const KnowMeLink: FC<{ href: string; label: string; tag: string }> = ({ href, label, tag }) => (
+  <motion.a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex flex-col items-start gap-0.5 px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 hover:border-blue-500 hover:text-blue-500 transition-all duration-200"
+    whileHover={{ y: -2 }}
+  >
+    <span className="font-mono text-sm dark:text-slate-200 text-slate-800">{label}</span>
+    <span className="font-mono text-xs dark:text-slate-500 text-slate-500">{tag}</span>
   </motion.a>
 )
 

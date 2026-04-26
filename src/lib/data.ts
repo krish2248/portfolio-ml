@@ -19,7 +19,7 @@ export const siteConfig = {
     'Developer transitioning into Machine Learning, combining full-stack development experience with a passion for data science and intelligent systems.',
   email: 'sonikrish2248@gmail.com',
   location: 'India',
-  availability: "Pursuing Master's in ML",
+  availability: "Applying for Master's in AI/ML — Germany",
   resumeUrl: '/resume.pdf',
   
   // Meta/SEO
@@ -121,30 +121,21 @@ export interface Education {
 
 export const education: Education[] = [
   {
+    id: 'ielts',
+    degree: 'IELTS — Overall Band 7.5',
+    institution: 'British Council',
+    location: 'India',
+    period: 'Dec 2025',
+    grade: '7.5',
+    description: 'English language proficiency exam (Academic).',
+  },
+  {
     id: 'masters-ml',
-    degree: "Master's in Machine Learning",
-    institution: 'Pursuing',
-    location: 'India',
-    period: '2025 - Present',
-    description: 'Specializing in Deep Learning, NLP, and Computer Vision',
-  },
-  {
-    id: 'bachelors-cs',
-    degree: "Bachelor's in Computer Science",
-    institution: 'University',
-    location: 'India',
-    period: '2021 - 2024',
-    grade: '8.5 CGPA',
-    description: 'Focused on Software Engineering and Data Structures',
-  },
-  {
-    id: 'hsc',
-    degree: 'Higher Secondary (12th)',
-    institution: 'High School',
-    location: 'India',
-    period: '2019 - 2021',
-    grade: '85%',
-    description: 'Science stream with Computer Science',
+    degree: "Master's in AI/ML",
+    institution: 'Applying — Germany',
+    location: 'Germany',
+    period: 'Applying',
+    description: 'Applying for Master\'s in AI/ML programs in Germany.',
   },
 ]
 
@@ -208,46 +199,21 @@ export interface Experience {
 
 export const experiences: Experience[] = [
   {
-    id: 'ml-research',
-    title: 'ML Research Assistant',
-    company: 'University Lab',
-    type: 'internship',
-    location: 'Remote',
-    period: 'Jan 2025 - Present',
-    description: 'Working on ML research projects focusing on NLP and computer vision applications.',
-    achievements: [
-      'Developed NLP models for text classification',
-      'Implemented data pipelines for large datasets',
-      'Contributed to research paper on sentiment analysis',
-    ],
-  },
-  {
-    id: 'fullstack-dev',
-    title: 'Full-Stack Developer',
-    company: 'Freelance',
-    type: 'freelance',
-    location: 'Remote',
-    period: 'Jun 2023 - Dec 2024',
-    description: 'Built web applications for various clients using modern tech stack.',
-    achievements: [
-      'Developed 10+ full-stack web applications',
-      'Implemented REST APIs with Node.js and Express',
-      'Built responsive UIs with React and Tailwind',
-      'Integrated payment gateways and third-party APIs',
-    ],
-  },
-  {
-    id: 'web-intern',
-    title: 'Web Development Intern',
-    company: 'Tech Startup',
-    type: 'internship',
+    id: 'prm-data-scientist',
+    title: 'Data Scientist',
+    company: 'PRM and Company',
+    type: 'full-time',
     location: 'India',
-    period: 'Jan 2023 - May 2023',
-    description: 'Worked on frontend development and learned agile methodologies.',
+    period: 'Jun 2025 - Present',
+    description:
+      'Driving data-informed sales and distribution decisions through statistical analysis, performance modelling, and competitive benchmarking.',
     achievements: [
-      'Built responsive landing pages',
-      'Learned React and modern JavaScript',
-      'Collaborated in agile team environment',
+      'Visualized and analyzed regional sales data to guide purchase decisions and optimize product distribution.',
+      'Delivered statistical analysis on sales trends, scheme success, and product performance for the sales manager.',
+      'Identified underperforming regions and recommended discontinuation of low-growth products, lifting sales by 8% in struggling areas via targeted product-scheme combinations.',
+      'Studied competitor product performance and designed data-driven scheme patterns that accelerated sales by 17%.',
+      'Provided actionable insights on potential product success using historical and current quarterly data.',
+      'Improved sales and marketing efficiency by surfacing patterns, opportunities, and recommended improvements.',
     ],
   },
 ]

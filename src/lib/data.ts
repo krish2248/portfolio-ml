@@ -137,6 +137,15 @@ export const education: Education[] = [
     period: 'Applying',
     description: 'Applying for Master\'s in AI/ML programs in Germany.',
   },
+  {
+    id: 'btech-gtu',
+    degree: "Bachelor's in Computer Engineering",
+    institution: 'Gujarat Technological University (GTU)',
+    location: 'India',
+    period: 'Sept 2021 - May 2025',
+    grade: '7.73 CGPA',
+    description: 'Computer Engineering — coursework in software engineering, data structures, databases, and AI fundamentals.',
+  },
 ]
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -214,6 +223,36 @@ export const experiences: Experience[] = [
       'Studied competitor product performance and designed data-driven scheme patterns that accelerated sales by 17%.',
       'Provided actionable insights on potential product success using historical and current quarterly data.',
       'Improved sales and marketing efficiency by surfacing patterns, opportunities, and recommended improvements.',
+    ],
+  },
+  {
+    id: 'ithub-fullstack-intern',
+    title: 'Full-Stack Developer Intern',
+    company: 'IT Hub Software Solutions',
+    type: 'internship',
+    location: 'Bhavnagar, India',
+    period: 'Jan 2025 - Apr 2025',
+    description:
+      '12-week training-and-development internship in full-stack web development under the guidance of Piyush Danani.',
+    achievements: [
+      'Contributed to development, testing, and maintenance of client-facing web applications.',
+      'Worked across the full stack — building UI, integrating backend logic, and validating functionality.',
+      'Collaborated with the team to translate project requirements into shipped features.',
+    ],
+  },
+  {
+    id: 'infolabz-flutter-intern',
+    title: 'Flutter & Dart Intern',
+    company: 'InfoLabz IT Services Pvt. Ltd.',
+    type: 'internship',
+    location: 'Ahmedabad, India',
+    period: 'Jun 2024 - Jul 2024',
+    description:
+      'Two-week summer internship focused on Flutter cross-platform mobile app development with Material UI.',
+    achievements: [
+      'Built Flutter mobile UIs using Dart and Material design components.',
+      'Worked with JSON data structures and consumed REST APIs from within Flutter apps.',
+      'Implemented API fetching, data parsing, and reactive UI updates.',
     ],
   },
 ]

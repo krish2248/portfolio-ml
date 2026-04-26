@@ -96,7 +96,7 @@ const Contact: FC = memo(() => {
             <div className="grid grid-cols-2 gap-3">
               <SocialButton href={socialLinks.github} label="GitHub" icon="GH" />
               <SocialButton href={socialLinks.linkedin} label="LinkedIn" icon="IN" />
-              <SocialButton href={socialLinks.twitter} label="Twitter" icon="TW" />
+              <SocialButton href={socialLinks.medium} label="Medium" icon="M" />
               <SocialButton href={socialLinks.email} label="Email" icon="@" />
             </div>
           </div>

@@ -28,30 +28,27 @@ const About: FC = memo(() => {
             <div className="px-4 py-3 border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900">
               <span className="text-slate-400 font-mono text-sm">contributions</span>
             </div>
-            <div className="p-5">
-              <div className="flex items-center justify-between mb-4">
-                <div className="text-center">
-                  <div className="text-xl font-bold text-green-500">1,234</div>
-                  <div className="text-xs dark:text-slate-500 text-slate-500">Contributions</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-xl font-bold text-blue-500">89</div>
-                  <div className="text-xs dark:text-slate-500 text-slate-500">Commits</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-xl font-bold text-purple-500">45</div>
-                  <div className="text-xs dark:text-slate-500 text-slate-500">PRs</div>
-                </div>
-              </div>
-              <div className="flex gap-1 justify-center">
-                {[45, 32, 56, 78, 92, 65, 48, 34, 67, 89, 72, 51].map((val, i) => (
-                  <div
-                    key={i}
-                    className="w-3 h-3 rounded-sm bg-green-500"
-                    style={{ opacity: val / 100 }}
-                  />
-                ))}
-              </div>
+            <div className="p-5 space-y-4">
+              <a
+                href={socialLinks.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block"
+                aria-label="View GitHub profile"
+              >
+                <img
+                  src="https://ghchart.rshah.org/22c55e/krish2248"
+                  alt="Krish Soni's GitHub contribution graph"
+                  className="w-full h-auto"
+                  loading="lazy"
+                />
+              </a>
+              <img
+                src="https://github-readme-stats.vercel.app/api?username=krish2248&show_icons=true&hide_border=true&bg_color=00000000&icon_color=22c55e&title_color=22c55e&text_color=64748b&count_private=true"
+                alt="Krish Soni's GitHub stats"
+                className="w-full h-auto"
+                loading="lazy"
+              />
             </div>
           </div>
 

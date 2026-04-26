@@ -34,7 +34,6 @@ export const siteConfig = {
 export const socialLinks = {
   github: 'https://github.com/krish2248',
   linkedin: 'https://www.linkedin.com/in/krish-soni-460932228/',
-  twitter: 'https://www.instagram.com/notkrish03/',
   medium: 'https://medium.com/@krish2248',
   portfolio: 'https://krish2248.github.io/',
   email: 'mailto:sonikrish2248@gmail.com',
@@ -123,8 +122,8 @@ export const education: Education[] = [
   {
     id: 'ielts',
     degree: 'IELTS — Overall Band 7.5',
-    institution: 'British Council',
-    location: 'India',
+    institution: 'IDP',
+    location: 'Ahmedabad, India',
     period: 'Dec 2025',
     grade: '7.5',
     description: 'English language proficiency exam (Academic).',
@@ -138,10 +137,18 @@ export const education: Education[] = [
     description: 'Applying for Master\'s in AI/ML programs in Germany.',
   },
   {
+    id: 'coding-cloud-ds',
+    degree: 'Data Science — Professional Course (4 months)',
+    institution: 'Coding Cloud Institute',
+    location: 'Ahmedabad, India',
+    period: 'Sept 2025 - Dec 2025',
+    description: 'Hands-on data science training: Python, NumPy, Pandas, data visualization (Matplotlib, Seaborn, Plotly), statistics & probability, SQL, exploratory data analysis, machine learning with Scikit-learn (regression, classification, clustering), introduction to deep learning, NLP fundamentals, model deployment with Streamlit, and end-to-end capstone projects.',
+  },
+  {
     id: 'btech-gtu',
     degree: "Bachelor's in Computer Engineering",
     institution: 'Gujarat Technological University (GTU)',
-    location: 'India',
+    location: 'Bhavnagar, India',
     period: 'Sept 2021 - May 2025',
     grade: '7.73 CGPA',
     description: 'Computer Engineering — coursework in software engineering, data structures, databases, and AI fundamentals.',
@@ -212,7 +219,7 @@ export const experiences: Experience[] = [
     title: 'Data Scientist',
     company: 'PRM and Company',
     type: 'full-time',
-    location: 'India',
+    location: 'Bhavnagar, India',
     period: 'Jun 2025 - Present',
     description:
       'Driving data-informed sales and distribution decisions through statistical analysis, performance modelling, and competitive benchmarking.',
@@ -257,13 +264,13 @@ export const experiences: Experience[] = [
   },
   {
     id: 'hackathon-2022',
-    title: 'Hackathon — Student Life Cycle Management System',
-    company: 'Gyanmanjari Institute of Technology',
+    title: 'SSIP Hackathon (24hr) — Student Life Cycle Management System',
+    company: 'Government Engineering College, Bhavnagar (GEC Bhavnagar)',
     type: 'hackathon',
     location: 'Bhavnagar, India',
     period: 'Jul 2022',
     description:
-      'Designed and built an academic portal: a web-based Student Life Cycle Management System enabling online lectures, assignment workflows, and faculty-student communication.',
+      'Built an academic portal in a 24-hour SSIP hackathon: a web-based Student Life Cycle Management System enabling online lectures, assignment workflows, and faculty-student communication.',
     achievements: [
       'Implemented role-based access for Admin, Faculty, and Student users.',
       'Built features for online lectures, assignment upload/submission, notices, and queries.',
@@ -612,7 +619,7 @@ Let's connect!
   Email:    ${siteConfig.email}
   GitHub:   ${socialLinks.github}
   LinkedIn: ${socialLinks.linkedin}
-  Twitter:  ${socialLinks.twitter}
+  Medium:   ${socialLinks.medium}
   `,
   'sudo hire-me': `
   

@@ -10,6 +10,3 @@ export * from './layout'
 
 // Section Components
 export * from './sections'
-
-// Project Components
-export * from './projects'

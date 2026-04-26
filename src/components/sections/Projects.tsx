@@ -11,9 +11,7 @@ import { useInView } from '../../hooks/useInView'
 import Section from '../layout/Section'
 import { Badge } from '../ui'
 
-interface ProjectsProps { onProjectSelect?: (project: Project) => void }
-
-const Projects: FC<ProjectsProps> = memo(({ onProjectSelect }) => {
+const Projects: FC = memo(() => {
   const { ref, inView: isInView } = useInView({ threshold: 0.1, triggerOnce: true })
   const [filter, setFilter] = useState<'all' | 'featured'>('featured')
 
@@ -33,7 +31,7 @@ const Projects: FC<ProjectsProps> = memo(({ onProjectSelect }) => {
         <AnimatePresence mode="popLayout">
           {filteredProjects.map((project, index) => (
             <motion.div key={project.id} variants={projectCard} custom={index} layout exit={{ opacity: 0, scale: 0.9 }}>
-              <ProjectCard project={project} onClick={() => onProjectSelect?.(project)} />
+              <ProjectCard project={project} />
             </motion.div>
           ))}
         </AnimatePresence>
@@ -57,19 +55,18 @@ const FilterTab: FC<{ active: boolean; onClick: () => void; count: number; child
   </button>
 )
 
-const ProjectCard: FC<{ project: Project; onClick: () => void }> = memo(({ project, onClick }) => {
+const ProjectCard: FC<{ project: Project }> = memo(({ project }) => {
   const statusColors = { 'deployed': 'text-green-500', 'in-progress': 'text-amber-500', 'archived': 'dark:text-slate-500 text-slate-500' }
   const statusIcons = { 'deployed': '●', 'in-progress': '◐', 'archived': '○' }
 
   return (
-    <motion.article className={cn('group relative p-5 rounded-lg cursor-pointer',
+    <article className={cn('group relative p-5 rounded-lg',
       'border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50',
-      'hover:border-blue-500 hover:bg-slate-50 dark:hover:bg-slate-800', 'transition-all duration-300')}
-      onClick={onClick} whileHover={{ y: -4 }} whileTap={{ scale: 0.98 }}>
+      'hover:border-blue-500 transition-all duration-300')}>
       <div className="flex items-start justify-between mb-3">
         <div className="flex items-center gap-2">
           <span className="text-blue-500">📁</span>
-          <h3 className="font-semibold text-lg dark:text-white text-slate-900 group-hover:text-blue-500 transition-all">{project.title}</h3>
+          <h3 className="font-semibold text-lg dark:text-white text-slate-900">{project.title}</h3>
         </div>
       </div>
 
@@ -84,24 +81,20 @@ const ProjectCard: FC<{ project: Project; onClick: () => void }> = memo(({ proje
         <span className={cn('font-mono text-xs', statusColors[project.status])}>{statusIcons[project.status]} {project.status}</span>
         <div className="flex items-center gap-2">
           {project.liveUrl && (
-            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} 
+            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer"
               className="px-3 py-1.5 text-xs font-mono rounded border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white dark:hover:text-slate-900 transition-all">
               Live
             </a>
           )}
           {project.githubUrl && (
-            <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} 
+            <a href={project.githubUrl} target="_blank" rel="noopener noreferrer"
               className="px-3 py-1.5 text-xs font-mono rounded border border-slate-300 dark:border-slate-600 dark:text-slate-300 text-slate-600 hover:border-blue-500 hover:text-blue-500 transition-all">
               GitHub
             </a>
           )}
         </div>
       </div>
-
-      <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-        <div className="absolute inset-0 rounded-lg border border-blue-500/30" />
-      </div>
-    </motion.article>
+    </article>
   )
 })
 

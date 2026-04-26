@@ -47,7 +47,7 @@ const Footer: FC = memo(() => {
             <div className="flex flex-wrap gap-3">
               <SocialLink href={socialLinks.github} label="GitHub" icon="gh" />
               <SocialLink href={socialLinks.linkedin} label="LinkedIn" icon="in" />
-              <SocialLink href={socialLinks.twitter} label="Twitter" icon="tw" />
+              <SocialLink href={socialLinks.medium} label="Medium" icon="m" />
               <SocialLink href={socialLinks.email} label="Email" icon="@" />
             </div>
             <motion.a href={siteConfig.resumeUrl} target="_blank" rel="noopener noreferrer"

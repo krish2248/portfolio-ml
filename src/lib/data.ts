@@ -1,112 +1,348 @@
 /**
- * ═══════════════════════════════════════════════════════════════════════════
- * PORTFOLIO DATA - CUSTOMIZE THIS FILE FOR YOUR OWN PORTFOLIO
- * ═══════════════════════════════════════════════════════════════════════════
- * 
- * All personal content is centralized here for easy customization.
- * Update the values below with your own information.
+ * Portfolio content. Everything the site renders lives here.
  */
 
-// ═══════════════════════════════════════════════════════════════════════════
-// SITE CONFIGURATION
-// ═══════════════════════════════════════════════════════════════════════════
+// ─── Site ────────────────────────────────────────────────────────────────────
 
 export const siteConfig = {
   name: 'Krish Soni',
-  title: 'Aspiring ML Engineer & Full-Stack Developer',
-  tagline: 'Building intelligent systems through code, data, and curiosity',
+  fullName: 'Krish Hemang Soni',
+  role: 'M.Sc. Data Science student, TU Dortmund',
+  statement:
+    'I turn messy business data into decisions, and build the software that puts those decisions in front of people.',
+  intro:
+    'Until October 2026 I was the data scientist at PRM & Company, a pharmaceutical manufacturer in India, where I ran sales and marketing analytics and built the company’s online shop and KPI dashboard. I’ve now started the M.Sc. in Data Science at TU Dortmund.',
   description:
-    'Developer transitioning into Machine Learning, combining full-stack development experience with a passion for data science and intelligent systems.',
+    'Krish Soni, M.Sc. Data Science student at TU Dortmund. Open to Werkstudent, internship and HiWi / research assistant roles in data science, analytics and ML engineering.',
   email: 'sonikrish2248@gmail.com',
-  location: 'India',
-  availability: "Applying for Master's in AI/ML — Germany",
-  resumeUrl: '/resume.pdf',
-  
-  // Meta/SEO
+  location: 'Dortmund, Germany',
+  // Leave empty until the final CV is in public/; the CV links hide themselves.
+  resumeUrl: '',
   siteUrl: 'https://sonikrish.com/',
-  ogImage: '/og-image.png',
+  updated: 'October 2026',
 }
 
-// ═══════════════════════════════════════════════════════════════════════════
-// SOCIAL LINKS
-// ═══════════════════════════════════════════════════════════════════════════
+export const availability = {
+  from: 'November 2026',
+  roles: ['Werkstudent', 'Internship', 'HiWi / research assistant'],
+  terms: 'Dortmund or remote · up to 20 h/week during the semester, full-time in semester breaks',
+}
 
 export const socialLinks = {
   github: 'https://github.com/krish2248',
   linkedin: 'https://www.linkedin.com/in/krish-soni-460932228/',
-  medium: 'https://medium.com/@krish2248',
-  portfolio: 'https://krish2248.github.io/',
+  medium: 'https://medium.com/@sonikrish2248',
+  youtube: 'https://www.youtube.com/@krishsoni1',
   email: 'mailto:sonikrish2248@gmail.com',
 }
 
-// ═══════════════════════════════════════════════════════════════════════════
-// NAVIGATION LINKS
-// ═══════════════════════════════════════════════════════════════════════════
-
 export const navLinks = [
-  { name: 'home', href: '#home', command: 'cd ~/' },
-  { name: 'about', href: '#about', command: 'cat about.txt' },
-  { name: 'education', href: '#education', command: 'cat resume.edu' },
-  { name: 'experience', href: '#experience', command: 'cat journey.log' },
-  { name: 'projects', href: '#projects', command: 'ls projects/' },
-  { name: 'skills', href: '#skills', command: 'htop' },
-  { name: 'contact', href: '#contact', command: 'mail --send' },
+  { name: 'Open to', href: '#open-to' },
+  { name: 'Projects', href: '#projects' },
+  { name: 'Experience', href: '#experience' },
+  { name: 'Education', href: '#education' },
+  { name: 'Contact', href: '#contact' },
 ]
 
-// ═══════════════════════════════════════════════════════════════════════════
-// ABOUT SECTION CONTENT
-// ═══════════════════════════════════════════════════════════════════════════
+export const quickFacts = [
+  { label: 'Now', value: 'M.Sc. Data Science, TU Dortmund' },
+  { label: 'Before', value: 'Data Scientist, PRM & Company' },
+  { label: 'Degree', value: 'B.E. Computer Engineering, top 15%' },
+  { label: 'Based in', value: 'Dortmund, Germany' },
+  { label: 'Languages', value: 'English (IELTS 7.5), Hindi, Gujarati' },
+]
 
-export const aboutContent = {
-  paragraphs: [
-    `I'm a developer transitioning into Machine Learning, combining 1-2 years of 
-     full-stack development experience with a growing passion for data science 
-     and intelligent systems.`,
-    `My journey spans from interactive web applications to Python-based ML projects 
-     including recommendation systems, predictive models, and diagnostic tools. 
-     I believe strong engineering fundamentals are essential for building robust 
-     ML systems.`,
-    `Currently preparing for my Master's in Machine Learning, where I aim to 
-     deepen my expertise in neural networks, computer vision, and NLP while 
-     contributing to cutting-edge research.`,
-    `I love building things that matter. When I'm not coding, you'll find me 
-     exploring new ML research papers or working on side projects.`,
-  ],
-  
-  // ASCII art for the about section (optional)
-  asciiArt: `
-    ╔═══════════════════════════╗
-    ║   ░░░▓▓▓▓▓▓▓░░░          ║
-    ║   ░░▓████████▓░░         ║
-    ║   ░▓██▀▀██▀▀██▓░         ║
-    ║   ░▓██  ██  ██▓░         ║
-    ║   ░░▓████████▓░░         ║
-    ║   ░░░▓▓▓▓▓▓▓░░░          ║
-    ╚═══════════════════════════╝
-  `,
-  
-  // Neofetch-style system info
-  systemInfo: {
-    os: 'ML Engineer OS v2.0',
-    shell: 'Python + Jupyter',
-    languages: 'Python, JS, TypeScript, PHP, SQL',
-    editor: 'VS Code + Jupyter Lab',
-    theme: 'Phosphor Green',
-    uptime: '1-2 years coding',
+// ─── What I'm looking for ────────────────────────────────────────────────────
+
+export const openTo = [
+  {
+    title: 'Werkstudent',
+    body: 'Data science, analytics or ML engineering in a product or business team: reporting and dashboards, data pipelines, statistical analysis, forecasting, and the internal tools around them.',
   },
-  
-  // Quick facts for display
-  quickFacts: [
-    { label: 'Experience', value: '1-2 Years' },
-    { label: 'Projects', value: '30+' },
-    { label: 'Focus', value: 'ML/AI' },
-    { label: 'Status', value: 'LEARNING' },
-  ],
+  {
+    title: 'Internship',
+    body: 'A data science or ML engineering internship during the semester breaks, ideally where models actually reach users or decisions rather than staying in a notebook.',
+  },
+  {
+    title: 'HiWi / research assistant',
+    body: 'Supporting a chair or research group at TU Dortmund with data preparation, statistical analysis, experiment tooling, visualisation, or web front ends for research software.',
+  },
+]
+
+// ─── Projects ────────────────────────────────────────────────────────────────
+
+export type CoverMotif =
+  | 'pitch'
+  | 'pulse'
+  | 'scatter'
+  | 'bars'
+  | 'listings'
+  | 'classroom'
+  | 'board'
+  | 'nodes'
+  | 'tiles'
+  | 'battery'
+  | 'books'
+  | 'cup'
+  | 'branches'
+  | 'scores'
+
+export interface Project {
+  id: string
+  title: string
+  summary: string
+  kind: string
+  technologies: string[]
+  motif: CoverMotif
+  liveUrl?: string
+  githubUrl?: string
+  year: string
 }
 
-// ═══════════════════════════════════════════════════════════════════════════
-// EDUCATION
-// ═══════════════════════════════════════════════════════════════════════════
+export const featuredProjects: Project[] = [
+  {
+    id: 'futology',
+    title: 'FUTOLOGY',
+    kind: 'ML · Analytics',
+    summary:
+      'Football intelligence platform: live scores alongside ML match prediction, player clustering, fan-sentiment analysis, transfer-value estimation and fantasy-lineup optimisation. My largest project, from data ingestion to the interactive front end.',
+    technologies: ['TypeScript', 'React', 'Machine learning'],
+    motif: 'pitch',
+    liveUrl: 'https://krish2248.github.io/futology/',
+    githubUrl: 'https://github.com/krish2248/futology',
+    year: '2026',
+  },
+  {
+    id: 'prm-commerce',
+    title: 'PRM Herbovilla',
+    kind: 'Work · Data product',
+    summary:
+      'Direct-to-consumer shop I designed and built for PRM & Company: catalogue, cart, checkout, payments and order management, with a live dashboard for revenue trends, regional orders and top products.',
+    technologies: ['Shopify', 'Liquid', 'Analytics'],
+    motif: 'bars',
+    liveUrl: 'https://prmherbovilla.com',
+    githubUrl: 'https://github.com/krish2248/PRM-SHOPIFY',
+    year: '2025',
+  },
+  {
+    id: 'medxai',
+    title: 'MedXAI',
+    kind: 'ML · Explainable AI',
+    summary:
+      'Multi-modal medical explainable-AI system with a Wellness Atlas, for research and teaching. Predictions come with interpretability output so they can be examined rather than trusted blindly.',
+    technologies: ['Python', 'Explainable AI'],
+    motif: 'pulse',
+    githubUrl: 'https://github.com/krish2248/medxai',
+    year: '2026',
+  },
+  {
+    id: 'auto-valuator',
+    title: 'Auto-Valuator',
+    kind: 'ML · Regression',
+    summary:
+      'Predicts the resale value of a used car from its attributes. Covers feature engineering, model selection and evaluation end to end.',
+    technologies: ['Python', 'scikit-learn', 'pandas'],
+    motif: 'scatter',
+    githubUrl: 'https://github.com/krish2248/Auto-Valuator',
+    year: '2025',
+  },
+  {
+    id: 'rems',
+    title: 'Real Estate Management System',
+    kind: 'Full stack · Internship',
+    summary:
+      'Production system I built solo at IT Hub: role-based access for buyers, sellers, agents and admins, multi-criteria search, lead management, payment gateways and document verification.',
+    technologies: ['PHP', 'MySQL', 'JavaScript'],
+    motif: 'listings',
+    githubUrl: 'https://github.com/krish2248/REMS',
+    year: '2025',
+  },
+  {
+    id: 'connect4-nemotron',
+    title: 'Connect 4 vs Nemotron',
+    kind: 'LLM · Game',
+    summary:
+      'Connect 4 against an LLM opponent. The board state is serialised into the prompt and every move the model returns is validated against the legal moves.',
+    technologies: ['JavaScript', 'NVIDIA Nemotron'],
+    motif: 'board',
+    githubUrl: 'https://github.com/krish2248/Connect4-nemotron-ultra-',
+    year: '2026',
+  },
+]
+
+export const moreProjects: Project[] = [
+  {
+    id: 'ai-agent',
+    title: 'AI Agent v14',
+    kind: 'LLM',
+    summary: 'My first LLM agent: Llama-4 through the Groq API, exploring tool use and multi-step tasks.',
+    technologies: ['Python', 'Groq API'],
+    motif: 'nodes',
+    githubUrl: 'https://github.com/krish2248/AI-Agent-V.14',
+    year: '2025',
+  },
+  {
+    id: 'virtual-classroom',
+    title: 'Virtual Classroom',
+    kind: 'Full stack',
+    summary: 'Live classes through the Zoom API plus assignment submission, built under faculty supervision at GMIT.',
+    technologies: ['JavaScript', 'PHP', 'Zoom API'],
+    motif: 'classroom',
+    githubUrl: 'https://github.com/krish2248/Virtual-Classroom-Using-Zoom-API',
+    year: '2024',
+  },
+  {
+    id: 'ampere',
+    title: 'Ampere',
+    kind: 'Android',
+    summary: 'Offline battery, charging and thermal diagnostics for Android.',
+    technologies: ['Kotlin', 'Jetpack Compose'],
+    motif: 'battery',
+    githubUrl: 'https://github.com/krish2248/ampere',
+    year: '2026',
+  },
+  {
+    id: '2048-dark',
+    title: '2048 Dark',
+    kind: 'Web · Android',
+    summary: 'Shipped twice: a zero-dependency single-file web game and a native Android build.',
+    technologies: ['JavaScript', 'Kotlin'],
+    motif: 'tiles',
+    liveUrl: 'https://krish2248.github.io/2048-Dark/',
+    githubUrl: 'https://github.com/krish2248/2048-Dark',
+    year: '2026',
+  },
+  {
+    id: 'rpsls',
+    title: 'Rock-Paper-Scissors-Lizard-Spock',
+    kind: 'Real-time web',
+    summary: 'Online multiplayer game with a separate Socket.IO game server.',
+    technologies: ['React', 'Redux', 'Socket.IO'],
+    motif: 'nodes',
+    githubUrl: 'https://github.com/krish2248/Rock-Paper-Scissors-Lizard-Spock',
+    year: '2025',
+  },
+]
+
+/** Small things built around what I like. Shown with covers in "Outside work". */
+export const personalProjects: Project[] = [
+  {
+    id: 'fut-score',
+    title: 'Fut-Score',
+    kind: 'football',
+    summary: 'Personalised football scores hub.',
+    technologies: ['TypeScript'],
+    motif: 'scores',
+    liveUrl: 'https://futology.vercel.app',
+    githubUrl: 'https://github.com/krish2248/Fut-Score',
+    year: '2026',
+  },
+  {
+    id: 'coffee-journal',
+    title: 'Coffee Journal',
+    kind: 'coffee',
+    summary: 'A personal library of specialty coffees I’ve tried.',
+    technologies: ['TypeScript'],
+    motif: 'cup',
+    liveUrl: 'https://krish2248.github.io/Coffee-Journal/',
+    githubUrl: 'https://github.com/krish2248/Coffee-Journal',
+    year: '2026',
+  },
+  {
+    id: 'text-adventure',
+    title: 'Text Adventure',
+    kind: 'indie games',
+    summary: 'Nine branching stories, including The Count of Monte Cristo.',
+    technologies: ['JavaScript'],
+    motif: 'branches',
+    liveUrl: 'https://krish2248.github.io/Text-Adventure-Game/',
+    githubUrl: 'https://github.com/krish2248/Text-Adventure-Game',
+    year: '2025',
+  },
+  {
+    id: 'vellum-codex',
+    title: 'Vellum Codex',
+    kind: 'literature',
+    summary: 'Archive of my book collection, with search and read tracking.',
+    technologies: ['JavaScript'],
+    motif: 'books',
+    liveUrl: 'https://krish2248.github.io/Vellum-Codex/',
+    githubUrl: 'https://github.com/krish2248/Vellum-Codex',
+    year: '2025',
+  },
+]
+
+// ─── Experience ──────────────────────────────────────────────────────────────
+
+export interface Experience {
+  id: string
+  title: string
+  company: string
+  location: string
+  period: string
+  type: string
+  points: string[]
+  stack?: string
+}
+
+export const experiences: Experience[] = [
+  {
+    id: 'prm',
+    title: 'Data Scientist',
+    company: 'PRM & Company (PRM Pharmaceuticals)',
+    location: 'Bhavnagar, India',
+    period: 'Jun 2025 – Oct 2026',
+    type: 'Full-time',
+    points: [
+      'Ran statistical and visual analysis across the commercial pipeline (sales, online orders, customer reviews, purchase and manufacturing orders) as the evidence base for sales and marketing decisions.',
+      'Evaluated promotional schemes and isolated underperforming regions and products. The findings changed distribution strategy: 8% sales recovery in those regions and 17% growth in the targeted product segments.',
+      'Modelled demand by season and geography to decide which products to push where and when; the same analysis targeted the social-media ad campaigns.',
+      'Consolidated inconsistent multi-source sales and operations data into audit-ready datasets for Annual General Meeting reporting.',
+      'Designed and built prmherbovilla.com, the company’s direct-to-consumer shop, with a live KPI dashboard for the business team.',
+    ],
+    stack: 'Python, pandas, statistical analysis, Shopify',
+  },
+  {
+    id: 'ithub',
+    title: 'Full-Stack Developer Intern',
+    company: 'IT Hub Software Solutions',
+    location: 'Bhavnagar, India',
+    period: 'Jan 2025 – Apr 2025',
+    type: 'Internship',
+    points: [
+      'Sole developer of a production Real Estate Management System, delivered against a 12-week milestone plan.',
+      'Designed the relational schema from ER models and sped up property search over large datasets with indexing, query optimisation and caching.',
+      'Built role-based access control and Razorpay / PayPal integration, and ran unit, integration, load and security testing.',
+    ],
+    stack: 'PHP, MySQL, JavaScript, Apache',
+  },
+  {
+    id: 'infolabz',
+    title: 'Flutter Developer Intern',
+    company: 'InfoLabz IT Services',
+    location: 'Ahmedabad, India',
+    period: 'Jun 2024 – Jul 2024',
+    type: 'Internship',
+    points: [
+      'Built a cross-platform news app on the Inshorts News API with Material UI, list and grid builders, and JSON parsing.',
+    ],
+    stack: 'Flutter, Dart, REST APIs',
+  },
+  {
+    id: 'ssip-hackathon',
+    title: 'SSIP 24-hour Hackathon',
+    company: 'GEC Bhavnagar',
+    location: 'Bhavnagar, India',
+    period: 'Jul 2022',
+    type: 'Hackathon',
+    points: [
+      'Built a Student Life Cycle Management System in a team of two: role-based portal for admins, faculty and students with lectures, assignments and notices.',
+    ],
+    stack: 'PHP, MySQL, JavaScript, AJAX',
+  },
+]
+
+// ─── Education ───────────────────────────────────────────────────────────────
 
 export interface Education {
   id: string
@@ -114,527 +350,78 @@ export interface Education {
   institution: string
   location: string
   period: string
-  grade?: string
-  description?: string
+  details: string[]
 }
 
 export const education: Education[] = [
   {
-    id: 'ielts',
-    degree: 'IELTS — Overall Band 7.5',
-    institution: 'IDP',
-    location: 'Ahmedabad, India',
-    period: 'Dec 2025',
-    grade: '7.5',
-    description: 'English language proficiency exam (Academic).',
+    id: 'tu-dortmund',
+    degree: 'M.Sc. Data Science',
+    institution: 'TU Dortmund University',
+    location: 'Dortmund, Germany',
+    period: 'Oct 2026 – 2028 (expected)',
+    details: ['Started in the winter semester 2026/27.'],
   },
   {
-    id: 'masters-ml',
-    degree: "Master's in AI/ML",
-    institution: 'Applying — Germany',
-    location: 'Germany',
-    period: 'Applying',
-    description: 'Applying for Master\'s in AI/ML programs in Germany.',
-  },
-  {
-    id: 'btech-gtu',
-    degree: "Bachelor's in Computer Engineering",
-    institution: 'Gujarat Technological University (GTU)',
+    id: 'gtu',
+    degree: 'B.E. Computer Engineering',
+    institution: 'Gyanmanjari Institute of Technology, Gujarat Technological University',
     location: 'Bhavnagar, India',
-    period: 'Sept 2021 - May 2025',
-    grade: '7.73 CGPA',
-    description: 'Computer Engineering — coursework in software engineering, data structures, databases, and AI fundamentals.',
-  },
-]
-
-// ═══════════════════════════════════════════════════════════════════════════
-// CERTIFICATIONS
-// ═══════════════════════════════════════════════════════════════════════════
-
-export interface Certification {
-  id: string
-  title: string
-  issuer: string
-  date: string
-  credentialUrl?: string
-}
-
-export const certifications: Certification[] = [
-  {
-    id: 'ml-specialization',
-    title: 'Machine Learning Specialization',
-    issuer: 'Coursera - Stanford',
-    date: '2024',
-    credentialUrl: '#',
-  },
-  {
-    id: 'deep-learning',
-    title: 'Deep Learning Specialization',
-    issuer: 'Coursera - DeepLearning.AI',
-    date: '2024',
-    credentialUrl: '#',
-  },
-  {
-    id: 'python-data-science',
-    title: 'Python for Data Science',
-    issuer: 'IBM',
-    date: '2023',
-    credentialUrl: '#',
-  },
-  {
-    id: 'web-dev-bootcamp',
-    title: 'The Complete Web Developer Bootcamp',
-    issuer: 'Udemy',
-    date: '2022',
-    credentialUrl: '#',
-  },
-]
-
-// ═══════════════════════════════════════════════════════════════════════════
-// EXPERIENCE / CAREER JOURNEY
-// ═══════════════════════════════════════════════════════════════════════════
-
-export interface Experience {
-  id: string
-  title: string
-  company: string
-  type: 'full-time' | 'part-time' | 'freelance' | 'internship' | 'remote' | 'hackathon'
-  location: string
-  period: string
-  description: string
-  achievements: string[]
-}
-
-export const experiences: Experience[] = [
-  {
-    id: 'prm-data-scientist',
-    title: 'Data Scientist',
-    company: 'PRM and Company',
-    type: 'full-time',
-    location: 'Bhavnagar, India',
-    period: 'Jun 2025 - Present',
-    description:
-      'Driving data-informed sales and distribution decisions through statistical analysis, performance modelling, and competitive benchmarking.',
-    achievements: [
-      'Visualized and analyzed regional sales data to guide purchase decisions and optimize product distribution.',
-      'Delivered statistical analysis on sales trends, scheme success, and product performance for the sales manager.',
-      'Identified underperforming regions and recommended discontinuation of low-growth products, lifting sales by 8% in struggling areas via targeted product-scheme combinations.',
-      'Studied competitor product performance and designed data-driven scheme patterns that accelerated sales by 17%.',
-      'Provided actionable insights on potential product success using historical and current quarterly data.',
-      'Improved sales and marketing efficiency by surfacing patterns, opportunities, and recommended improvements.',
-    ],
-  },
-  {
-    id: 'ithub-fullstack-intern',
-    title: 'Full-Stack Developer Intern',
-    company: 'IT Hub Software Solutions',
-    type: 'internship',
-    location: 'Bhavnagar, India',
-    period: 'Jan 2025 - Apr 2025',
-    description:
-      '12-week training-and-development internship in full-stack web development under the guidance of Piyush Danani.',
-    achievements: [
-      'Contributed to development, testing, and maintenance of client-facing web applications.',
-      'Worked across the full stack — building UI, integrating backend logic, and validating functionality.',
-      'Collaborated with the team to translate project requirements into shipped features.',
-    ],
-  },
-  {
-    id: 'infolabz-flutter-intern',
-    title: 'Flutter & Dart Intern',
-    company: 'InfoLabz IT Services Pvt. Ltd.',
-    type: 'internship',
-    location: 'Ahmedabad, India',
-    period: 'Jun 2024 - Jul 2024',
-    description:
-      'Two-week summer internship focused on Flutter cross-platform mobile app development with Material UI.',
-    achievements: [
-      'Built Flutter mobile UIs using Dart and Material design components.',
-      'Worked with JSON data structures and consumed REST APIs from within Flutter apps.',
-      'Implemented API fetching, data parsing, and reactive UI updates.',
-    ],
-  },
-  {
-    id: 'hackathon-2022',
-    title: 'SSIP Hackathon (24hr) — Student Life Cycle Management System',
-    company: 'GEC Bhavnagar',
-    type: 'hackathon',
-    location: 'Bhavnagar, India',
-    period: 'Jul 2022',
-    description:
-      'Built an academic portal in a 24-hour SSIP hackathon: a web-based Student Life Cycle Management System enabling online lectures, assignment workflows, and faculty-student communication.',
-    achievements: [
-      'Implemented role-based access for Admin, Faculty, and Student users.',
-      'Built features for online lectures, assignment upload/submission, notices, and queries.',
-      'Designed use-case and context-level diagrams to model the system end-to-end.',
-      'Stack: PHP, MySQL, HTML, CSS, JavaScript, AJAX (XAMPP). Team of two.',
+    period: 'Jun 2021 – May 2025',
+    details: [
+      'CGPA 7.73 / 10, top 15% of the cohort; top 5% in Software Engineering. Roughly German grade 2.1 and 240 ECTS.',
+      'Coursework: Machine Learning, Big Data Analytics, Cloud Computing, IoT, Information Security, Software Engineering, Data Structures & Algorithms, DBMS.',
     ],
   },
 ]
 
-// ═══════════════════════════════════════════════════════════════════════════
-// PROJECTS
-// ═══════════════════════════════════════════════════════════════════════════
+// ─── Skills ──────────────────────────────────────────────────────────────────
 
-export interface Project {
-  id: string
-  title: string
-  shortDescription: string
-  fullDescription: string
-  image: string
-  technologies: string[]
-  liveUrl?: string
-  githubUrl?: string
-  featured: boolean
-  status: 'deployed' | 'in-progress' | 'archived'
-  year: string
-  challenges?: string
-}
+export const skills: { group: string; items: string[] }[] = [
+  { group: 'Data & ML', items: ['pandas', 'NumPy', 'scikit-learn', 'TensorFlow', 'Matplotlib', 'Seaborn', 'Jupyter'] },
+  { group: 'Statistics', items: ['Hypothesis testing', 'Regression', 'Clustering', 'Forecasting', 'Sentiment analysis'] },
+  { group: 'Languages', items: ['Python', 'SQL', 'TypeScript', 'JavaScript', 'Java', 'PHP', 'Kotlin', 'Dart'] },
+  { group: 'Web & apps', items: ['React', 'Node.js', 'Tailwind CSS', 'REST APIs', 'Socket.IO', 'Flutter', 'Jetpack Compose'] },
+  { group: 'Data stores', items: ['MySQL', 'ER modelling', 'Indexing & query optimisation'] },
+  { group: 'LLM tooling', items: ['Groq API', 'NVIDIA Nemotron', 'Local quantised models'] },
+  { group: 'Tools', items: ['Git', 'Shopify (Liquid)', 'LaTeX', 'Apache', 'VS Code'] },
+]
 
-export const projects: Project[] = [
-  // ═══════════════════════════════════════════════════════════════
-  // FEATURED PROJECTS (6) - ML Focus First
-  // ═══════════════════════════════════════════════════════════════
-  {
-    id: 'breast-cancer-predictor',
-    title: 'Breast Cancer Diagnosis Predictor',
-    shortDescription: 'ML-powered diagnostic tool with Streamlit UI and radar chart visualization',
-    fullDescription: `A machine learning-powered tool designed to assist medical professionals in 
-      diagnosing breast cancer. Using a set of measurements, the app predicts whether a breast 
-      mass is benign or malignant. Features visual representation using radar charts and displays 
-      predicted diagnosis with probability scores. Built with Streamlit for an interactive UI.`,
-    image: '/images/projects/cancer-predictor.png',
-    technologies: ['Python', 'Streamlit', 'Scikit-learn', 'Pandas', 'Plotly'],
-    githubUrl: 'https://github.com/krish2248/streamlit-App-Cancer',
-    featured: true,
-    status: 'deployed',
-    year: '2025',
-    challenges: `Implemented custom radar chart visualization for multi-dimensional medical data. 
-      Balanced model accuracy with interpretability for medical professionals.`,
-  },
-  {
-    id: 'ecommerce-analysis',
-    title: 'E-Commerce Customer Analysis',
-    shortDescription: 'Linear Regression model predicting customer spending patterns',
-    fullDescription: `Exploratory data analysis and predictive modeling project analyzing customer 
-      behavior in e-commerce. Built a Linear Regression model to predict yearly customer spending 
-      based on features like session length, time on app, and membership duration. Includes 
-      comprehensive EDA with pairplots, correlation analysis, and business insights.`,
-    image: '/images/projects/ecommerce-analysis.png',
-    technologies: ['Python', 'Pandas', 'Matplotlib', 'Seaborn', 'Scikit-learn'],
-    githubUrl: 'https://github.com/krish2248/Linear-Regression-Project',
-    featured: true,
-    status: 'deployed',
-    year: '2025',
-    challenges: `Performed feature engineering to identify key predictors. Interpreted regression 
-      coefficients to provide actionable business recommendations.`,
-  },
-  {
-    id: 'ad-click-prediction',
-    title: 'Ad Click Prediction Model',
-    shortDescription: 'Logistic Regression for predicting advertisement click-through rates',
-    fullDescription: `Machine learning project applying Logistic Regression to predict whether 
-      users will click on advertisements. Analyzes user behavior metrics including daily time 
-      on site, age, area income, and internet usage. Features comprehensive EDA, data 
-      preprocessing, and model evaluation with ROC curves and confusion matrices.`,
-    image: '/images/projects/ad-prediction.png',
-    technologies: ['Python', 'NumPy', 'Seaborn', 'Scikit-learn', 'Matplotlib'],
-    githubUrl: 'https://github.com/krish2248/Logistic-Regression-Project',
-    featured: true,
-    status: 'deployed',
-    year: '2025',
-    challenges: `Handled categorical feature encoding and feature scaling. Optimized 
-      hyperparameters for improved classification accuracy.`,
-  },
-  {
-    id: 'movie-recommendation',
-    title: 'Movie Recommendation System',
-    shortDescription: 'Content-based and collaborative filtering recommendation engine',
-    fullDescription: `A recommendation system that suggests movies based on user preferences 
-      and viewing history. Implements both content-based filtering and collaborative filtering 
-      approaches. Built with Python and leverages pandas for data manipulation and analysis.`,
-    image: '/images/projects/movie-rec.png',
-    technologies: ['Python', 'Pandas', 'NumPy', 'Scikit-learn'],
-    githubUrl: 'https://github.com/krish2248/Python-Mini-Programs',
-    featured: true,
-    status: 'deployed',
-    year: '2025',
-    challenges: `Designed efficient similarity computation for large movie datasets. 
-      Balanced between recommendation diversity and relevance.`,
-  },
-  {
-    id: 'virtual-classroom',
-    title: 'Virtual Classroom Platform',
-    shortDescription: 'Full-featured educational platform with Zoom API integration',
-    fullDescription: `A comprehensive virtual classroom system with assignment submission, 
-      multi-role support (Admin, Faculty, HOD, Students), and Zoom API integration for 
-      live video sessions. Features user authentication, profile management, and a 
-      complete educational workflow management system.`,
-    image: '/images/projects/virtual-classroom.png',
-    technologies: ['JavaScript', 'PHP', 'MySQL', 'Zoom API', 'CSS'],
-    githubUrl: 'https://github.com/krish2248/Virtual-Classroom-Using-Zoom-API',
-    featured: true,
-    status: 'deployed',
-    year: '2025',
-    challenges: `Integrated Zoom API for seamless video conferencing. Designed role-based 
-      access control for different user types with secure authentication.`,
-  },
+// ─── References ──────────────────────────────────────────────────────────────
 
-  // ═══════════════════════════════════════════════════════════════
-  // OTHER PROJECTS (7) - Engineering Breadth
-  // ═══════════════════════════════════════════════════════════════
+export const references = [
   {
-    id: 'rpsls-game',
-    title: 'Rock-Paper-Scissors-Lizard-Spock',
-    shortDescription: 'Real-time multiplayer game with Socket.IO and React',
-    fullDescription: `A modern implementation of the classic RPSLS game featuring both offline 
-      and online multiplayer modes. Built with React, Redux, and TypeScript on the frontend 
-      with a Node.js/Socket.IO backend for real-time gameplay. Includes animations, sound 
-      effects, and a Klingon-themed loading screen.`,
-    image: '/images/projects/rpsls.png',
-    technologies: ['React', 'Redux', 'TypeScript', 'Socket.IO', 'Node.js', 'SCSS'],
-    githubUrl: 'https://github.com/krish2248/Rock-Paper-Scissors-Lizard-Spock',
-    featured: true,
-    status: 'deployed',
-    year: '2025',
-    challenges: `Implemented real-time game state synchronization across clients. 
-      Designed responsive UI with smooth animations for gameplay feedback.`,
+    quote:
+      'Through his efforts, the company achieved notable improvements, including an 8% sales increase in previously underperforming areas and a 17% overall growth in targeted product segments.',
+    name: 'Sagar Makwana',
+    role: 'Head of HR, PRM & Company',
   },
   {
-    id: 'rems',
-    title: 'Real Estate Management System',
-    shortDescription: 'Property listing and management platform with admin panel',
-    fullDescription: `A web-based Real Estate Management System for browsing, listing, and 
-      managing properties. Features property search by state, user authentication, 
-      property CRUD operations, contact functionality, and a comprehensive admin panel 
-      for system management.`,
-    image: '/images/projects/rems.png',
-    technologies: ['PHP', 'MySQL', 'JavaScript', 'CSS', 'HTML'],
-    githubUrl: 'https://github.com/krish2248/REMS',
-    featured: false,
-    status: 'deployed',
-    year: '2025',
+    quote:
+      'One of the most dependable and inventive students in his cohort, eager to apply concepts beyond the textbook.',
+    name: 'Prof. Prashant J. Viradiya',
+    role: 'Head of Department, Computer Engineering, GMIT',
   },
   {
-    id: 'calculator',
-    title: 'Multi-Purpose Calculator',
-    shortDescription: '12+ calculators including BMI, EMI, SIP, and more',
-    fullDescription: `A versatile web-based calculator application with multiple calculators 
-      for various purposes: BMI, EMI, car loan, SIP, FD, fuel cost, and more. Features 
-      a light/dark mode toggle, responsive design, and a clean user interface.`,
-    image: '/images/projects/calculator.png',
-    technologies: ['HTML', 'CSS', 'JavaScript'],
-    liveUrl: 'https://krish2248.github.io/Multi-Purpose-Calculator/',
-    githubUrl: 'https://github.com/krish2248/Multi-Purpose-Calculator',
-    featured: false,
-    status: 'deployed',
-    year: '2025',
-  },
-  {
-    id: 'vellum-codex',
-    title: 'Vellum Codex',
-    shortDescription: 'Digital book library with search, sort, and theme toggle',
-    fullDescription: `A beautifully crafted digital library showcasing a personal book 
-      collection. Features search functionality, sorting by read status or author, 
-      dark/light theme toggle, and LocalStorage persistence for read/unread states. 
-      Inspired by vintage paper textures and the joy of reading.`,
-    image: '/images/projects/vellum-codex.png',
-    technologies: ['HTML', 'CSS', 'JavaScript', 'LocalStorage'],
-    liveUrl: 'https://krish2248.github.io/Vellum-Codex/',
-    githubUrl: 'https://github.com/krish2248/Vellum-Codex',
-    featured: false,
-    status: 'deployed',
-    year: '2025',
-  },
-  {
-    id: 'text-adventure',
-    title: 'Text Adventure Game',
-    shortDescription: '9 interactive storylines including The Count of Monte Cristo',
-    fullDescription: `A browser-based interactive storytelling experience with 9 different 
-      adventures including Medieval Fantasy, Dungeon Crawl, Prison Escape, Horror Mansion, 
-      CIA Mission, and The Count of Monte Cristo. Features multiple choices, branching 
-      paths, and various endings for high replayability.`,
-    image: '/images/projects/text-adventure.png',
-    technologies: ['HTML', 'CSS', 'JavaScript'],
-    liveUrl: 'https://krish2248.github.io/Text-Adventure-Game/',
-    githubUrl: 'https://github.com/krish2248/Text-Adventure-Game',
-    featured: false,
-    status: 'deployed',
-    year: '2025',
-  },
-  {
-    id: 'tic-tac-toe',
-    title: 'Tic-Tac-Toe',
-    shortDescription: 'Enhanced game with timer, score tracking, and dark mode',
-    fullDescription: `An enhanced version of the classic Tic-Tac-Toe game featuring 
-      responsive design, dark mode toggle, score tracking, and a 10-second timer 
-      for each player's turn. Includes winning animations and reset functionality.`,
-    image: '/images/projects/tic-tac-toe.png',
-    technologies: ['HTML', 'CSS', 'JavaScript'],
-    liveUrl: 'https://krish2248.github.io/Tic-Tac-Toe/',
-    githubUrl: 'https://github.com/krish2248/Tic-Tac-Toe',
-    featured: false,
-    status: 'deployed',
-    year: '2025',
-  },
-  {
-    id: 'dice',
-    title: 'Dice Roller',
-    shortDescription: 'D&D dice application with sound effects and animations',
-    fullDescription: `A web application for rolling various types of dice (d4, d6, d8, d10, 
-      d12, d20, d100) commonly used in tabletop games like Dungeons & Dragons. Features 
-      clickable dice images, sound effects, pop animations, and responsive design.`,
-    image: '/images/projects/dice.png',
-    technologies: ['HTML', 'CSS', 'JavaScript'],
-    liveUrl: 'https://krish2248.github.io/Dice/',
-    githubUrl: 'https://github.com/krish2248/Dice',
-    featured: false,
-    status: 'deployed',
-    year: '2025',
+    quote:
+      'A curious, disciplined, and methodical learner. He was always receptive to feedback, improving his code structure and documentation after every review.',
+    name: 'Prof. Ritesh D. Chimnani',
+    role: 'Assistant Professor, Computer Engineering, GMIT',
   },
 ]
 
-// ═══════════════════════════════════════════════════════════════════════════
-// SKILLS
-// ═══════════════════════════════════════════════════════════════════════════
+// ─── Learning in public ──────────────────────────────────────────────────────
 
-export interface Skill {
-  name: string
-  level: number // 0-100
-  icon?: string
-}
-
-export interface SkillCategory {
-  name: string
-  skills: Skill[]
-}
-
-export const skills: SkillCategory[] = [
-  {
-    name: 'Machine Learning & Data Science',
-    skills: [
-      { name: 'Python', level: 85 },
-      { name: 'Pandas', level: 80 },
-      { name: 'NumPy', level: 80 },
-      { name: 'Matplotlib/Seaborn', level: 75 },
-      { name: 'Scikit-learn', level: 70 },
-      { name: 'Jupyter Notebooks', level: 85 },
-    ],
-  },
-  {
-    name: 'Web Development',
-    skills: [
-      { name: 'JavaScript', level: 85 },
-      { name: 'React', level: 75 },
-      { name: 'TypeScript', level: 70 },
-      { name: 'HTML/CSS', level: 90 },
-      { name: 'PHP', level: 70 },
-    ],
-  },
-  {
-    name: 'Databases & APIs',
-    skills: [
-      { name: 'MySQL', level: 75 },
-      { name: 'Socket.IO', level: 65 },
-      { name: 'REST APIs', level: 70 },
-      { name: 'Streamlit', level: 65 },
-    ],
-  },
-  {
-    name: 'Tools & Infrastructure',
-    skills: [
-      { name: 'Git', level: 90 },
-      { name: 'VS Code', level: 95 },
-      { name: 'Linux', level: 60 },
-      { name: 'LaTeX', level: 55 },
-    ],
-  },
+export const studyRepos = [
+  { name: 'Mathematics for Programming', url: 'https://github.com/krish2248/Mathematics-For-Programming' },
+  { name: 'Machine Learning', url: 'https://github.com/krish2248/Machine-Learning-Lecture-Files' },
+  { name: 'Deep Learning', url: 'https://github.com/krish2248/Deep-Learning' },
+  { name: 'pandas', url: 'https://github.com/krish2248/Pandas' },
+  { name: 'NumPy', url: 'https://github.com/krish2248/Numpy' },
+  { name: 'Matplotlib', url: 'https://github.com/krish2248/Matplotlib' },
+  { name: 'Core Python', url: 'https://github.com/krish2248/Core-Python-Files' },
 ]
-
-// ═══════════════════════════════════════════════════════════════════════════
-// BOOT SEQUENCE MESSAGES
-// ═══════════════════════════════════════════════════════════════════════════
-
-export const bootSequence = [
-  'BIOS v2.0.25 - Portfolio OS',
-  '════════════════════════════════════════',
-  '',
-  'Checking memory.............. 16GB OK',
-  'Loading personality module... OK',
-  'Initializing creativity...... OK',
-  'Compiling experiences........ OK',
-  'Mounting projects............ OK',
-  'Starting dev server.......... OK',
-  '',
-  '> System ready.',
-  '> Type "help" for available commands.',
-  '',
-]
-
-// ═══════════════════════════════════════════════════════════════════════════
-// TERMINAL COMMANDS (Easter egg)
-// ═══════════════════════════════════════════════════════════════════════════
-
-export const terminalCommands: Record<string, string> = {
-  help: `
-Available commands:
-  about     - Display information about me
-  projects  - List all projects
-  skills    - Show my tech stack
-  contact   - Get my contact info
-  clear     - Clear the terminal
-  sudo hire-me - ??? 
-  `,
-  about: `
-Name: ${siteConfig.name}
-Role: ${siteConfig.title}
-Location: ${siteConfig.location}
-Status: ${siteConfig.availability}
-
-${aboutContent.paragraphs[0]}
-  `,
-  projects: `
-Featured Projects:
-${projects
-  .filter((p) => p.featured)
-  .map((p) => `  - ${p.title} (${p.year})`)
-  .join('\n')}
-
-Run 'projects --all' to see all projects.
-  `,
-  skills: `
-Tech Stack:
-${skills.map((cat) => `  ${cat.name}: ${cat.skills.map((s) => s.name).join(', ')}`).join('\n')}
-  `,
-  contact: `
-Let's connect!
-  Email:    ${siteConfig.email}
-  GitHub:   ${socialLinks.github}
-  LinkedIn: ${socialLinks.linkedin}
-  Medium:   ${socialLinks.medium}
-  `,
-  'sudo hire-me': `
-  
-  ████████╗██╗  ██╗ █████╗ ███╗   ██╗██╗  ██╗███████╗██╗
-  ╚══██╔══╝██║  ██║██╔══██╗████╗  ██║██║ ██╔╝██╔════╝██║
-     ██║   ███████║███████║██╔██╗ ██║█████╔╝ ███████╗██║
-     ██║   ██╔══██║██╔══██║██║╚██╗██║██╔═██╗ ╚════██║╚═╝
-     ██║   ██║  ██║██║  ██║██║ ╚████║██║  ██╗███████║██╗
-     ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝╚═╝
-  
-  I appreciate your interest! Let's chat:
-  → ${siteConfig.email}
-  
-  `,
-  clear: '__CLEAR__',
-}
-
-// ═══════════════════════════════════════════════════════════════════════════
-// FOOTER CONTENT
-// ═══════════════════════════════════════════════════════════════════════════
 
 export const footerContent = {
-  copyright: `© ${new Date().getFullYear()} Krish Soni`,
-  builtWith: 'Built with React, TypeScript & Tailwind',
-  source: 'https://github.com/krish2248/opencodePortfolio',
+  source: 'https://github.com/krish2248/portfolio-ml',
 }

@@ -1,110 +1,47 @@
-/**
- * Experience Section Component
- * Combined Education & Experience timeline with center line
- */
-
-import { FC, memo } from 'react'
-import { motion } from 'framer-motion'
-import { cn } from '../../lib/utils'
-import { experiences, education } from '../../lib/data'
-import { fadeInUp, staggerContainer } from '../../lib/animations'
-import { useInView } from '../../hooks/useInView'
+import { FC } from 'react'
+import { experiences, references } from '@/lib/data'
 import Section from '../layout/Section'
 
-interface ExperienceItem { id: string; type: 'experience'; title: string; company: string; type2: 'full-time' | 'part-time' | 'freelance' | 'internship' | 'remote' | 'hackathon'; location: string; period: string; description: string; achievements: string[] }
-interface EducationItem { id: string; type: 'education'; degree: string; institution: string; location: string; period: string; grade?: string; description?: string }
-type TimelineItem = ExperienceItem | EducationItem
-
-// Explicit display order, top → bottom. Items not listed here are appended.
-const TIMELINE_ORDER = [
-  'masters-ml',
-  'ielts',
-  'prm-data-scientist',
-  'ithub-fullstack-intern',
-  'infolabz-flutter-intern',
-  'hackathon-2022',
-  'btech-gtu',
-]
-
-const combinedTimeline: TimelineItem[] = [
-  ...experiences.map(e => ({ ...e, type: 'experience' as const, type2: e.type })),
-  ...education.map(e => ({ ...e, type: 'education' as const, title: e.degree, company: e.institution, description: e.description || '', achievements: [], type2: 'full-time' as const })),
-].sort((a, b) => {
-  const ai = TIMELINE_ORDER.indexOf(a.id)
-  const bi = TIMELINE_ORDER.indexOf(b.id)
-  if (ai === -1 && bi === -1) return 0
-  if (ai === -1) return 1
-  if (bi === -1) return -1
-  return ai - bi
-})
-
-const Experience: FC = memo(() => {
-  const { ref, inView: isInView } = useInView({ threshold: 0.1, triggerOnce: true })
-
-  return (
-    <Section id="experience" terminalHeader="EXPERIENCE & EDUCATION">
-      <motion.div ref={ref as React.RefObject<HTMLDivElement>} initial="hidden" animate={isInView ? 'visible' : 'hidden'} variants={staggerContainer} className="max-w-5xl mx-auto">
-        <div className="relative">
-          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-blue-500/30 -translate-x-1/2" />
-          {combinedTimeline.map((item, index) => <TimelineItem key={item.id} item={item} index={index} isLeft={index % 2 === 0} />)}
-        </div>
-      </motion.div>
-    </Section>
-  )
-})
-
-Experience.displayName = 'Experience'
-
-const TimelineItem: FC<{ item: TimelineItem; index: number; isLeft: boolean }> = ({ item, index, isLeft }) => {
-  const isEducation = item.type === 'education'
-
-  return (
-    <motion.div variants={fadeInUp} custom={index} className={cn('relative mb-6', isLeft ? 'pr-12' : 'pl-12')} style={{ marginLeft: isLeft ? '0' : '50%', marginRight: isLeft ? '50%' : '0' }}>
-      <motion.div className={cn('p-5 rounded-lg', 'border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800', 'hover:border-blue-500 transition-all duration-300')}>
-        {/* Header with date on same line */}
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
-          <h3 className="font-semibold text-lg dark:text-white text-slate-900">
-            {isEducation ? (item as EducationItem).degree : (item as ExperienceItem).title}
-          </h3>
-          <span className="font-mono text-sm text-blue-500 whitespace-nowrap">{item.period}</span>
-        </div>
-        
-        {/* Company/Institution */}
-        <div className="flex flex-wrap items-center gap-2 mb-3">
-          <span className="font-medium dark:text-slate-300 text-slate-700">
-            {isEducation ? (item as EducationItem).institution : (item as ExperienceItem).company}
-          </span>
-          <span className="dark:text-slate-500 text-slate-500">•</span>
-          <span className="dark:text-slate-500 text-slate-500">{item.location}</span>
-          {!isEducation && (
-            <span className="ml-2 px-2 py-0.5 rounded text-xs uppercase bg-blue-500/10 text-blue-500 border border-blue-500/20">
-              {(item as ExperienceItem).type2}
-            </span>
-          )}
-        </div>
-
-        {/* Grade for education */}
-        {isEducation && (item as EducationItem).grade && (
-          <div className="font-mono text-sm text-blue-500 mb-3">
-            Grade: {(item as EducationItem).grade}
+const Experience: FC = () => (
+  <Section id="experience" title="Experience">
+    <ol className="space-y-12">
+      {experiences.map((job) => (
+        <li key={job.id} className="grid gap-2 sm:grid-cols-[9.5rem_1fr] sm:gap-6">
+          <div className="font-mono text-xs leading-6 text-muted">
+            {job.period}
+            <span className="block">{job.type}</span>
           </div>
-        )}
+          <div>
+            <h3 className="font-medium text-ink">
+              {job.title} <span className="font-normal text-ink-2">· {job.company}</span>
+            </h3>
+            <p className="text-sm text-muted">{job.location}</p>
+            <ul className="mt-3 space-y-2">
+              {job.points.map((point) => (
+                <li key={point} className="relative pl-4 text-sm leading-relaxed text-ink-2 before:absolute before:left-0 before:top-[0.6em] before:h-px before:w-2 before:bg-line-strong">
+                  {point}
+                </li>
+              ))}
+            </ul>
+            {job.stack && <p className="mt-3 font-mono text-xs text-muted">{job.stack}</p>}
+          </div>
+        </li>
+      ))}
+    </ol>
 
-        <p className="font-mono text-sm dark:text-slate-400 text-slate-600 mb-3">{isEducation ? (item as EducationItem).description : (item as ExperienceItem).description}</p>
-
-        {!isEducation && (item as ExperienceItem).achievements.length > 0 && (
-          <ul className="space-y-1">
-            {(item as ExperienceItem).achievements.map((achievement, i) => (
-              <li key={i} className="font-mono text-sm dark:text-slate-400 text-slate-600 flex items-start gap-2">
-                <span className="text-blue-500">▸</span>
-                {achievement}
-              </li>
-            ))}
-          </ul>
-        )}
-      </motion.div>
-    </motion.div>
-  )
-}
+    <h3 className="eyebrow mt-16">What people I’ve worked with say</h3>
+    <div className="mt-4 grid gap-6 md:grid-cols-3">
+      {references.map((ref) => (
+        <figure key={ref.name} className="border-l-2 border-accent pl-4">
+          <blockquote className="font-serif text-[1.05rem] italic leading-relaxed text-ink-2">“{ref.quote}”</blockquote>
+          <figcaption className="mt-3 text-sm">
+            <span className="text-ink">{ref.name}</span>
+            <span className="block text-muted">{ref.role}</span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </Section>
+)
 
 export default Experience

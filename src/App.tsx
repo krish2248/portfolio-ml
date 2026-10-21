@@ -1,51 +1,28 @@
-/**
- * App Component
- * Main application component that assembles all sections
- */
-
 import { FC } from 'react'
-
-// Context
 import { ThemeProvider } from './context/ThemeContext'
-
-// Layout Components
 import { Navbar, Footer } from './components/layout'
+import { Hero, OpenTo, Projects, Experience, Education, Elsewhere, Contact } from './components/sections'
 
-// Section Components
-import { Hero, About, Experience, Projects, Skills, Contact } from './components/sections'
-
-/**
- * Main App component
- * Wraps everything in providers and assembles the portfolio
- */
-const App: FC = () => {
-  return (
-    <ThemeProvider>
-      <PortfolioContent />
-    </ThemeProvider>
-  )
-}
-
-/**
- * Portfolio content with all sections
- */
-const PortfolioContent: FC = () => {
-  return (
-    <div className="relative min-h-screen" style={{ backgroundColor: 'var(--color-bg)' }}>
-      <Navbar />
-
-      <main className="relative z-10">
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Experience />
-        <Contact />
-      </main>
-
-      <Footer />
-    </div>
-  )
-}
+const App: FC = () => (
+  <ThemeProvider>
+    <a
+      href="#main"
+      className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded focus:bg-ink focus:px-3 focus:py-2 focus:text-bg"
+    >
+      Skip to content
+    </a>
+    <Navbar />
+    <main id="main">
+      <Hero />
+      <OpenTo />
+      <Projects />
+      <Experience />
+      <Education />
+      <Elsewhere />
+      <Contact />
+    </main>
+    <Footer />
+  </ThemeProvider>
+)
 
 export default App

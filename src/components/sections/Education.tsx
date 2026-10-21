@@ -1,101 +1,37 @@
-/**
- * Education Section Component
- * Vertical career timeline display
- */
-
-import { FC, memo } from 'react'
-import { motion } from 'framer-motion'
-import { cn } from '../../lib/utils'
-import { education } from '../../lib/data'
-import { fadeInUp, staggerContainer } from '../../lib/animations'
-import { useInView } from '../../hooks/useInView'
+import { FC } from 'react'
+import { education, skills } from '@/lib/data'
 import Section from '../layout/Section'
 
-const Education: FC = memo(() => {
-  const { ref, inView: isInView } = useInView({ threshold: 0.1, triggerOnce: true })
-
-  return (
-    <Section id="education" terminalHeader="EDUCATION">
-      <motion.div
-        ref={ref as React.RefObject<HTMLDivElement>}
-        initial="hidden"
-        animate={isInView ? 'visible' : 'hidden'}
-        variants={staggerContainer}
-        className="max-w-3xl mx-auto"
-      >
-        <div className="relative">
-          {education.map((edu, index) => (
-            <TimelineItem key={edu.id} item={edu} index={index} />
-          ))}
-        </div>
-      </motion.div>
-    </Section>
-  )
-})
-
-Education.displayName = 'Education'
-
-interface TimelineItemProps {
-  item: {
-    id: string
-    degree: string
-    institution: string
-    location: string
-    period: string
-    grade?: string
-    description?: string
-  }
-  index: number
-}
-
-const TimelineItem: FC<TimelineItemProps> = ({ item, index }) => {
-  const isLast = index === education.length - 1
-
-  return (
-    <motion.div
-      variants={fadeInUp}
-      custom={index}
-      className={cn('relative pl-8 pb-8', !isLast && 'pb-8')}
-    >
-      {!isLast && (
-        <div className="absolute left-[11px] top-6 bottom-0 w-px bg-phosphor-muted" />
-      )}
-      
-      <div className="absolute left-0 top-1 w-6 h-6 rounded-full bg-terminal-dark border-2 border-phosphor flex items-center justify-center">
-        <div className="w-2 h-2 rounded-full bg-cyan" />
-      </div>
-
-      <motion.div
-        className={cn(
-          'p-4 rounded-lg',
-          'border border-phosphor-muted bg-terminal-dark/50',
-          'hover:border-phosphor transition-all duration-300'
-        )}
-        whileHover={{ x: 4 }}
-      >
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
-          <h3 className="font-display text-lg text-phosphor">{item.degree}</h3>
-          <span className="font-mono text-sm text-cyan">{item.period}</span>
-        </div>
-        
-        <div className="font-mono text-sm text-phosphor-dim mb-2">
-          <span className="text-phosphor">{item.institution}</span>
-          <span className="text-phosphor-muted"> — {item.location}</span>
-        </div>
-
-        {item.grade && (
-          <div className="font-mono text-sm text-green">
-            <span className="text-phosphor-muted">Grade: </span>
-            {item.grade}
+const Education: FC = () => (
+  <Section id="education" title="Education & skills">
+    <ol className="space-y-10">
+      {education.map((item) => (
+        <li key={item.id} className="grid gap-2 sm:grid-cols-[9.5rem_1fr] sm:gap-6">
+          <div className="font-mono text-xs leading-6 text-muted">{item.period}</div>
+          <div>
+            <h3 className="font-medium text-ink">{item.degree}</h3>
+            <p className="text-sm text-ink-2">
+              {item.institution} <span className="text-muted">· {item.location}</span>
+            </p>
+            {item.details.map((detail) => (
+              <p key={detail} className="mt-2 text-sm leading-relaxed text-ink-2">
+                {detail}
+              </p>
+            ))}
           </div>
-        )}
+        </li>
+      ))}
+    </ol>
 
-        {item.description && (
-          <p className="font-mono text-sm text-phosphor-dim mt-2">{item.description}</p>
-        )}
-      </motion.div>
-    </motion.div>
-  )
-}
+    <dl className="mt-14 border-t border-line">
+      {skills.map((row) => (
+        <div key={row.group} className="grid gap-1 border-b border-line py-3 sm:grid-cols-[9.5rem_1fr] sm:gap-6">
+          <dt className="text-sm text-muted">{row.group}</dt>
+          <dd className="text-sm text-ink-2">{row.items.join(', ')}</dd>
+        </div>
+      ))}
+    </dl>
+  </Section>
+)
 
 export default Education

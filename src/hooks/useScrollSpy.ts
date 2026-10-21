@@ -36,13 +36,8 @@ export function useScrollSpy({
       }
     }
 
-    // If we're at the top of the page, set the first section as active
-    if (window.scrollY < 100 && sectionIds.length > 0) {
-      currentSection = sectionIds[0]
-    }
-
     // If we're at the bottom of the page, set the last section as active
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
+    if (window.scrollY > 0 && window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
       currentSection = sectionIds[sectionIds.length - 1]
     }
 

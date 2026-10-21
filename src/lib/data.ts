@@ -11,7 +11,7 @@ export const siteConfig = {
   statement:
     'I turn messy business data into decisions, and build the software that puts those decisions in front of people.',
   intro:
-    'Until October 2026 I was the data scientist at PRM & Company, a pharmaceutical manufacturer in India, where I ran sales and marketing analytics and built the company’s online shop and KPI dashboard. I’ve now started the M.Sc. in Data Science at TU Dortmund.',
+    'Until October 2026 I was the data scientist at PRM & Company, a pharmaceutical company in India, where I ran sales and marketing analytics and built the company’s online shop and KPI dashboard. I’ve now started the M.Sc. in Data Science at TU Dortmund.',
   description:
     'Krish Soni, M.Sc. Data Science student at TU Dortmund. Open to Werkstudent, internship and HiWi / research assistant roles in data science, analytics and ML engineering.',
   email: 'sonikrish2248@gmail.com',
@@ -294,7 +294,7 @@ export const experiences: Experience[] = [
     period: 'Jun 2025 – Oct 2026',
     type: 'Full-time',
     points: [
-      'Ran statistical and visual analysis across the commercial pipeline (sales, online orders, customer reviews, purchase and manufacturing orders) as the evidence base for sales and marketing decisions.',
+      'Ran statistical and visual analysis across the commercial pipeline (sales, online orders, customer reviews and purchase orders) as the evidence base for sales and marketing decisions.',
       'Evaluated promotional schemes and isolated underperforming regions and products. The findings changed distribution strategy: 8% sales recovery in those regions and 17% growth in the targeted product segments.',
       'Modelled demand by season and geography to decide which products to push where and when; the same analysis targeted the social-media ad campaigns.',
       'Consolidated inconsistent multi-source sales and operations data into audit-ready datasets for Annual General Meeting reporting.',

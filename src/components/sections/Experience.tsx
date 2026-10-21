@@ -32,9 +32,9 @@ const Experience: FC = () => (
     <h3 className="eyebrow mt-16">What people I’ve worked with say</h3>
     <div className="mt-4 grid gap-6 md:grid-cols-3">
       {references.map((ref) => (
-        <figure key={ref.name} className="border-l-2 border-accent pl-4">
+        <figure key={ref.name} className="flex flex-col border-l-2 border-accent pl-4">
           <blockquote className="font-serif text-[1.05rem] italic leading-relaxed text-ink-2">“{ref.quote}”</blockquote>
-          <figcaption className="mt-3 text-sm">
+          <figcaption className="mt-auto min-h-[4.5rem] pt-3 text-sm">
             <span className="text-ink">{ref.name}</span>
             <span className="block text-muted">{ref.role}</span>
           </figcaption>

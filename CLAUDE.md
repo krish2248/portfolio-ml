@@ -39,7 +39,7 @@ Personal portfolio of Krish Hemang Soni. Read this first in any new session.
 | `944f13f` | Full redesign: TU Dortmund content, new sections, drawn covers, new design. Deleted dead code, unused deps and 3 dead project repos (cancer predictor, linear and logistic regression all 404). Fixed the Fut-Score link. Replaced the fake contact form with direct links |
 | `3f18dd9` | Reference quote names aligned (figcaption `mt-auto min-h-[4.5rem]`) |
 | `a1a92f9` | PRM described as "a pharmaceutical company"; removed "manufacturing orders" from the first PRM bullet |
-| (next commit) | First PRM bullet now says "analysed and visualised data … in Python"; stack line lists Matplotlib, Seaborn |
+| `94af85d` | First PRM bullet now says "analysed and visualised data … in Python"; stack line lists Matplotlib, Seaborn |
 
 **Undo:**
 - Everything: `git revert 944f13f 3f18dd9 a1a92f9`.

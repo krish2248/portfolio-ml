@@ -5,7 +5,7 @@ Personal portfolio of Krish Hemang Soni. Read this first in any new session.
 ## Who / why
 
 - Krish is doing an **M.Sc. Data Science at TU Dortmund**, winter intake 2026/27, 2026–2028. He lives in Dortmund.
-- He was a **Data Scientist at PRM & Company (PRM Pharmaceuticals)** in Bhavnagar, India, from 2 Jun 2025 to **31 Oct 2026**. Describe PRM as "a pharmaceutical company": never "manufacturer", and don't mention manufacturing.
+- He was a **Data Scientist at PRM & Company (PRM Pharmaceuticals)** in Bhavnagar, India, from 2 Jun 2025 to **31 Oct 2026**. Describe PRM as "a pharmaceutical company": never "manufacturer", and don't mention manufacturing. His PRM work: data analysis, data visualisation (Python libraries only), website development. Do **not** add SEO or app development to the PRM entry.
 - The site's goal is to land **Werkstudent, internship and HiWi / research assistant** roles in data science, analytics and ML engineering, available from **November 2026**.
 - Content sources are his CV drafts. `Krish_Hemang_Soni_CV_Academic.pdf` (in his Downloads folder) is the most complete, together with the PRM recommendation letter and a LinkedIn post about the PRM work. None of the CVs are final.
 
@@ -39,6 +39,7 @@ Personal portfolio of Krish Hemang Soni. Read this first in any new session.
 | `944f13f` | Full redesign: TU Dortmund content, new sections, drawn covers, new design. Deleted dead code, unused deps and 3 dead project repos (cancer predictor, linear and logistic regression all 404). Fixed the Fut-Score link. Replaced the fake contact form with direct links |
 | `3f18dd9` | Reference quote names aligned (figcaption `mt-auto min-h-[4.5rem]`) |
 | `a1a92f9` | PRM described as "a pharmaceutical company"; removed "manufacturing orders" from the first PRM bullet |
+| (next commit) | First PRM bullet now says "analysed and visualised data … in Python"; stack line lists Matplotlib, Seaborn |
 
 **Undo:**
 - Everything: `git revert 944f13f 3f18dd9 a1a92f9`.

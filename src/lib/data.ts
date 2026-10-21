@@ -294,13 +294,13 @@ export const experiences: Experience[] = [
     period: 'Jun 2025 – Oct 2026',
     type: 'Full-time',
     points: [
-      'Ran statistical and visual analysis across the commercial pipeline (sales, online orders, customer reviews and purchase orders) as the evidence base for sales and marketing decisions.',
+      'Analysed and visualised data across the commercial pipeline (sales, online orders, customer reviews and purchase orders) in Python, producing the charts and statistics behind sales and marketing decisions.',
       'Evaluated promotional schemes and isolated underperforming regions and products. The findings changed distribution strategy: 8% sales recovery in those regions and 17% growth in the targeted product segments.',
       'Modelled demand by season and geography to decide which products to push where and when; the same analysis targeted the social-media ad campaigns.',
       'Consolidated inconsistent multi-source sales and operations data into audit-ready datasets for Annual General Meeting reporting.',
       'Designed and built prmherbovilla.com, the company’s direct-to-consumer shop, with a live KPI dashboard for the business team.',
     ],
-    stack: 'Python, pandas, statistical analysis, Shopify',
+    stack: 'Python, pandas, Matplotlib, Seaborn, statistical analysis, Shopify',
   },
   {
     id: 'ithub',

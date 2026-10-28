@@ -28,6 +28,8 @@ Personal portfolio of Krish Hemang Soni. Read this first in any new session.
 - `public/`: `Krish_Soni_Resume.pdf` (CV button in Hero + Contact via `siteConfig.resumeUrl`), `krish-soni.jpg` (hero portrait, 480×600 crop of his car selfie, `siteConfig.photoUrl`), `og-image.jpg` (1200×630 social preview; rendered from an HTML card with headless Chrome, regenerate it if name/role/availability change).
 - Fonts: IBM Plex Sans (body), IBM Plex Mono (metadata), Source Serif 4 (headings), loaded in `index.html`.
 
+- Medium handle is `@krish2248` (confirmed by Krish, 28 Oct 2026).
+
 ## Design rules Krish asked for
 
 - It should look deliberate, **not "vibe-coded"**. Avoid fake terminal commands, emoji icons, ASCII boxes, macOS window dots, typewriter effects, inflated stats, generic GitHub OG thumbnails and hover wobble everywhere.
@@ -57,6 +59,5 @@ Personal portfolio of Krish Hemang Soni. Read this first in any new session.
 
 ## Next up (pending)
 
-1. Confirm the Medium handle. The site uses `@sonikrish2248`; the old site had `@krish2248`. It isn't on the final CVs. Medium blocks automated checks.
-2. Optional: drop the reference quotes if he'd rather keep them CV-only.
-3. After 31 Oct 2026, re-read the hero/intro so PRM reads as a past job.
+1. Optional: drop the reference quotes if he'd rather keep them CV-only.
+2. After 31 Oct 2026, re-read the hero/intro so PRM reads as a past job.

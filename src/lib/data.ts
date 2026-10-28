@@ -32,7 +32,7 @@ export const availability = {
 export const socialLinks = {
   github: 'https://github.com/krish2248',
   linkedin: 'https://www.linkedin.com/in/krish-soni-460932228/',
-  medium: 'https://medium.com/@sonikrish2248',
+  medium: 'https://medium.com/@krish2248',
   youtube: 'https://www.youtube.com/@krishsoni1',
   email: 'mailto:sonikrish2248@gmail.com',
 }

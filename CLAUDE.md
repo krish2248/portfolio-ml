@@ -46,13 +46,13 @@ Personal portfolio of Krish Hemang Soni. Read this first in any new session.
 | tag `pre-reorder-2026-10` (= `5ebf85d`) | Backup before the section reorder (old order: Open to, Projects, Experience, Education, Elsewhere, Contact) |
 | `69a4029` | Sections and nav reordered: Open to, Experience, Education & skills, Projects, Elsewhere, Contact |
 | tag `pre-cv-2026-10` (= `fbe0d16`) | Backup before the final-CV sync |
-| `fbe0d16` | Final CV sync: resume PDF, hero photo, OG image, German A1, content matched to final CVs |
+| `73b652c` | Final CV sync: resume PDF, hero photo, OG image, German A1, content matched to final CVs |
 
 **Undo:**
 - Everything: `git revert 944f13f 3f18dd9 a1a92f9`.
 - One file: `git checkout pre-redesign-2026-10 -- <path>`.
 - View the old version: `git show pre-redesign-2026-10:<path>`.
-- Final-CV sync only: `git checkout pre-cv-2026-10 -- src index.html` and delete the 3 new files in `public/`.
+- Final-CV sync only: `git revert 73b652c`.
 - Section order only: `git revert 69a4029`, or `git checkout pre-reorder-2026-10 -- src/App.tsx src/lib/data.ts`.
 
 ## Next up (pending)

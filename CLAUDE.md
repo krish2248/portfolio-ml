@@ -26,7 +26,7 @@ Personal portfolio of Krish Hemang Soni. Read this first in any new session.
 - `src/styles/globals.css`: colour tokens for light (warm paper `#f6f5f0`) and dark (forest green `#091413`, his choice). Components use the token colours (`bg`, `surface`, `plate`, `ink`, `ink-2`, `muted`, `line`, `line-strong`, `accent`) rather than `dark:` variants.
   - The cover colour is named `plate` because `bg-cover` clashes with a built-in Tailwind utility.
   - Opacity modifiers like `bg-bg/95` don't work on these `var()` colours.
-- `public/`: `Krish_Soni_Resume.pdf` (CV button in Hero + Contact via `siteConfig.resumeUrl`), `og-image.jpg` (1200×630 social preview, still includes his photo; rendered from an HTML card with headless Chrome, regenerate it if name/role/availability change).
+- `public/`: `Krish_Soni_Resume.pdf` (CV button in Hero + Contact via `siteConfig.resumeUrl`), `og-image.jpg` (1200×630 social preview with the "ks" logo, **no photo**). Source is `scripts/og-card.html`; to regenerate after a name/role/availability change, edit it and run Chrome headless: `chrome --headless=new --hide-scrollbars --window-size=1200,630 --virtual-time-budget=8000 --screenshot=og.png file:///<abs path>/scripts/og-card.html`, then save as JPEG to `public/og-image.jpg`.
 - Fonts: IBM Plex Sans (body), IBM Plex Mono (metadata), Source Serif 4 (headings), loaded in `index.html`.
 - Medium handle is `@krish2248` (confirmed by Krish, 28 Oct 2026).
 
@@ -75,15 +75,15 @@ What Krish asked for, in order, and what was done (all pushed and deployed):
    - OG/social preview image made (`public/og-image.jpg`, includes his light-mode car selfie).
 3. **Photo**: first the formal CV photo, then he swapped to a car selfie (light mode) + green-lit car selfie (dark mode). **Then he asked to remove the photo from both modes**: done. Source images are still in his Downloads (`Natural Car Selfie with Earphones.png`, `Neon Green Car Selfie.png`).
 4. **Medium** handle confirmed as `@krish2248`.
-5. **EN/DE language switch** added next to the theme toggle. German text is Claude's translation; not yet reviewed by a native speaker.
-6. Deleted the stale `plan/IMPLEMENTATION_PLAN.md`.
+5. **Link preview**: photo replaced by the "ks" site logo (Krish's request). No photo anywhere on the site now.
+6. **EN/DE language switch** added next to the theme toggle. German text is Claude's translation; not yet reviewed by a native speaker.
+7. Deleted the stale `plan/IMPLEMENTATION_PLAN.md`.
 
 Krish said he is **"just getting started"** and that **there's a lot to change in the resume**. Expect more edits next session.
 
 ## Next up (pending)
 
 1. **Updated resume from Krish.** He is reworking it (a lot to change, including removing "manufacturer"/manufacturing wording). When it arrives: replace `public/Krish_Soni_Resume.pdf`, re-check the site against it, and mirror every content change in **both** `data.ts` and `data.de.ts`. Re-read it fully before publishing (privacy: no address or DOB on the public file).
-2. **OG image still shows his photo.** He removed the photo from the site but hasn't said whether the share preview should keep it. Ask; if not, regenerate a text-only card (HTML → headless Chrome screenshot at 1200×630, see `public/og-image.jpg`).
-3. Have a German speaker review the German text (hero statement and "Offen für" first).
-4. Optional: drop the reference quotes if he'd rather keep them CV-only.
-5. After 31 Oct 2026, re-read the hero/intro so PRM reads as a past job.
+2. Have a German speaker review the German text (hero statement and "Offen für" first).
+3. Optional: drop the reference quotes if he'd rather keep them CV-only.
+4. After 31 Oct 2026, re-read the hero/intro so PRM reads as a past job.

@@ -7,6 +7,7 @@ const links = [
   { label: 'LinkedIn', value: 'krish-soni-460932228', href: socialLinks.linkedin },
   { label: 'GitHub', value: 'krish2248', href: socialLinks.github },
   { label: 'Medium', value: '@sonikrish2248', href: socialLinks.medium },
+  ...(siteConfig.resumeUrl ? [{ label: 'CV', value: 'Download PDF', href: siteConfig.resumeUrl }] : []),
 ]
 
 const Contact: FC = () => (

@@ -37,14 +37,23 @@ const Hero: FC = () => (
         </div>
       </div>
 
-      <dl className="self-end border-t border-line lg:mb-1">
-        {quickFacts.map((fact) => (
-          <div key={fact.label} className="grid grid-cols-[6rem_1fr] gap-3 border-b border-line py-3 text-sm">
-            <dt className="text-muted">{fact.label}</dt>
-            <dd className="text-ink-2">{fact.value}</dd>
-          </div>
-        ))}
-      </dl>
+      <div className="self-end lg:mb-1">
+        <img
+          src={siteConfig.photoUrl}
+          alt={`Portrait of ${siteConfig.fullName}`}
+          width={480}
+          height={600}
+          className="mb-6 w-32 rounded-md border border-line sm:w-36"
+        />
+        <dl className="border-t border-line">
+          {quickFacts.map((fact) => (
+            <div key={fact.label} className="grid grid-cols-[6rem_1fr] gap-3 border-b border-line py-3 text-sm">
+              <dt className="text-muted">{fact.label}</dt>
+              <dd className="text-ink-2">{fact.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
     </div>
   </section>
 )

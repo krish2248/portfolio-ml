@@ -42,32 +42,14 @@ const Hero: FC = () => {
           </div>
         </div>
 
-        <div className="self-end lg:mb-1">
-          {/* One portrait per theme; the photos themselves differ, so tokens can't do this. */}
-          <img
-            src={siteConfig.photoUrl}
-            alt={t.hero.portraitAlt(siteConfig.fullName)}
-            width={480}
-            height={600}
-            className="mb-6 w-32 rounded-md border border-line sm:w-36 dark:hidden"
-          />
-          <img
-            src={siteConfig.photoUrlDark}
-            alt={t.hero.portraitAlt(siteConfig.fullName)}
-            width={480}
-            height={600}
-            loading="lazy"
-            className="mb-6 hidden w-32 rounded-md border border-line sm:w-36 dark:block"
-          />
-          <dl className="border-t border-line">
-            {quickFacts.map((fact) => (
-              <div key={fact.label} className="grid grid-cols-[6rem_1fr] gap-3 border-b border-line py-3 text-sm">
-                <dt className="text-muted">{fact.label}</dt>
-                <dd className="text-ink-2">{fact.value}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
+        <dl className="self-end border-t border-line lg:mb-1">
+          {quickFacts.map((fact) => (
+            <div key={fact.label} className="grid grid-cols-[6rem_1fr] gap-3 border-b border-line py-3 text-sm">
+              <dt className="text-muted">{fact.label}</dt>
+              <dd className="text-ink-2">{fact.value}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
     </section>
   )

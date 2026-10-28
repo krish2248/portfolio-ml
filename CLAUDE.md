@@ -26,7 +26,7 @@ Personal portfolio of Krish Hemang Soni. Read this first in any new session.
 - `src/styles/globals.css`: colour tokens for light (warm paper `#f6f5f0`) and dark (forest green `#091413`, his choice). Components use the token colours (`bg`, `surface`, `plate`, `ink`, `ink-2`, `muted`, `line`, `line-strong`, `accent`) rather than `dark:` variants.
   - The cover colour is named `plate` because `bg-cover` clashes with a built-in Tailwind utility.
   - Opacity modifiers like `bg-bg/95` don't work on these `var()` colours.
-- `public/`: `Krish_Soni_Resume.pdf` (CV button in Hero + Contact via `siteConfig.resumeUrl`), `krish-soni.jpg` (light-mode hero portrait, 480×600 crop of his car selfie, `siteConfig.photoUrl`), `krish-soni-dark.jpg` (dark-mode portrait, green-lit version of the same selfie, `siteConfig.photoUrlDark`; Hero swaps them with `dark:hidden` / `hidden dark:block`), `og-image.jpg` (1200×630 social preview; rendered from an HTML card with headless Chrome, regenerate it if name/role/availability change).
+- `public/`: `Krish_Soni_Resume.pdf` (CV button in Hero + Contact via `siteConfig.resumeUrl`), `og-image.jpg` (1200×630 social preview, still includes his photo; rendered from an HTML card with headless Chrome, regenerate it if name/role/availability change).
 - Fonts: IBM Plex Sans (body), IBM Plex Mono (metadata), Source Serif 4 (headings), loaded in `index.html`.
 
 - Medium handle is `@krish2248` (confirmed by Krish, 28 Oct 2026).
@@ -50,6 +50,8 @@ Personal portfolio of Krish Hemang Soni. Read this first in any new session.
 | `69a4029` | Sections and nav reordered: Open to, Experience, Education & skills, Projects, Elsewhere, Contact |
 | tag `pre-cv-2026-10` (= `fbe0d16`) | Backup before the final-CV sync |
 | `73b652c` | Final CV sync: resume PDF, hero photo, OG image, German A1, content matched to final CVs |
+| tag `pre-nophoto-2026-10` | Backup before removing the hero photo |
+| (nophoto commit) | Hero photo removed in both themes (Krish's request) |
 | tag `pre-i18n-2026-10` (= `9769df9`) | Backup before the German version |
 | `efb3832` | EN/DE language switch, full German translation |
 

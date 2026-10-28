@@ -38,12 +38,21 @@ const Hero: FC = () => (
       </div>
 
       <div className="self-end lg:mb-1">
+        {/* One portrait per theme; the photos themselves differ, so tokens can't do this. */}
         <img
           src={siteConfig.photoUrl}
           alt={`Portrait of ${siteConfig.fullName}`}
           width={480}
           height={600}
-          className="mb-6 w-32 rounded-md border border-line sm:w-36"
+          className="mb-6 w-32 rounded-md border border-line sm:w-36 dark:hidden"
+        />
+        <img
+          src={siteConfig.photoUrlDark}
+          alt={`Portrait of ${siteConfig.fullName}`}
+          width={480}
+          height={600}
+          loading="lazy"
+          className="mb-6 hidden w-32 rounded-md border border-line sm:w-36 dark:block"
         />
         <dl className="border-t border-line">
           {quickFacts.map((fact) => (

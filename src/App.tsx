@@ -15,9 +15,9 @@ const App: FC = () => (
     <main id="main">
       <Hero />
       <OpenTo />
-      <Projects />
       <Experience />
       <Education />
+      <Projects />
       <Elsewhere />
       <Contact />
     </main>

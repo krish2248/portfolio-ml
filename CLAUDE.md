@@ -18,7 +18,7 @@ Personal portfolio of Krish Hemang Soni. Read this first in any new session.
 ## Where things live
 
 - `src/lib/data.ts`: **all content**: site config, availability, open-to roles, projects (featured, more, personal), experience, education, skills, references, study repos.
-- `src/components/sections/`: Hero, OpenTo, Projects, Experience (includes the references quotes), Education (includes skills), Elsewhere, Contact.
+- `src/components/sections/`: Hero, OpenTo, Experience (includes the references quotes), Education (includes skills), Projects, Elsewhere, Contact. That is also the page order (set in `src/App.tsx`; nav order in `navLinks` in data.ts).
 - `src/components/ui/ProjectCover.tsx`: drawn SVG project thumbnails. Each project picks one with `motif` in data.ts. To add a motif, add it to the `CoverMotif` type and the `motifs` map.
 - `src/styles/globals.css`: colour tokens for light (warm paper `#f6f5f0`) and dark (forest green `#091413`, his choice). Components use the token colours (`bg`, `surface`, `plate`, `ink`, `ink-2`, `muted`, `line`, `line-strong`, `accent`) rather than `dark:` variants.
   - The cover colour is named `plate` because `bg-cover` clashes with a built-in Tailwind utility.
@@ -40,11 +40,14 @@ Personal portfolio of Krish Hemang Soni. Read this first in any new session.
 | `3f18dd9` | Reference quote names aligned (figcaption `mt-auto min-h-[4.5rem]`) |
 | `a1a92f9` | PRM described as "a pharmaceutical company"; removed "manufacturing orders" from the first PRM bullet |
 | `94af85d` | First PRM bullet now says "analysed and visualised data … in Python"; stack line lists Matplotlib, Seaborn |
+| tag `pre-reorder-2026-10` (= `5ebf85d`) | Backup before the section reorder (old order: Open to, Projects, Experience, Education, Elsewhere, Contact) |
+| (reorder commit) | Sections and nav reordered: Open to, Experience, Education & skills, Projects, Elsewhere, Contact |
 
 **Undo:**
 - Everything: `git revert 944f13f 3f18dd9 a1a92f9`.
 - One file: `git checkout pre-redesign-2026-10 -- <path>`.
 - View the old version: `git show pre-redesign-2026-10:<path>`.
+- Section order only: `git checkout pre-reorder-2026-10 -- src/App.tsx src/lib/data.ts`.
 
 ## Next up (pending)
 

@@ -38,9 +38,9 @@ export const socialLinks = {
 
 export const navLinks = [
   { name: 'Open to', href: '#open-to' },
-  { name: 'Projects', href: '#projects' },
   { name: 'Experience', href: '#experience' },
   { name: 'Education', href: '#education' },
+  { name: 'Projects', href: '#projects' },
   { name: 'Contact', href: '#contact' },
 ]
 

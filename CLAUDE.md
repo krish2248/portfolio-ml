@@ -51,7 +51,7 @@ Personal portfolio of Krish Hemang Soni. Read this first in any new session.
 | tag `pre-cv-2026-10` (= `fbe0d16`) | Backup before the final-CV sync |
 | `73b652c` | Final CV sync: resume PDF, hero photo, OG image, German A1, content matched to final CVs |
 | tag `pre-nophoto-2026-10` | Backup before removing the hero photo |
-| (nophoto commit) | Hero photo removed in both themes (Krish's request) |
+| `714081c` | Hero photo removed in both themes (Krish's request) |
 | tag `pre-i18n-2026-10` (= `9769df9`) | Backup before the German version |
 | `efb3832` | EN/DE language switch, full German translation |
 

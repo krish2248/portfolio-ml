@@ -27,7 +27,8 @@
       "Bash(git commit -m ' *)",
       "Bash(git push *)",
       "WebFetch(domain:www.codingcloud.co.in)",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "Bash(curl -s \"https://api.github.com/users/krish2248/repos?per_page=100&sort=updated\")"
     ]
   }
 }

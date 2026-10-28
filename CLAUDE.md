@@ -41,13 +41,13 @@ Personal portfolio of Krish Hemang Soni. Read this first in any new session.
 | `a1a92f9` | PRM described as "a pharmaceutical company"; removed "manufacturing orders" from the first PRM bullet |
 | `94af85d` | First PRM bullet now says "analysed and visualised data … in Python"; stack line lists Matplotlib, Seaborn |
 | tag `pre-reorder-2026-10` (= `5ebf85d`) | Backup before the section reorder (old order: Open to, Projects, Experience, Education, Elsewhere, Contact) |
-| (reorder commit) | Sections and nav reordered: Open to, Experience, Education & skills, Projects, Elsewhere, Contact |
+| `69a4029` | Sections and nav reordered: Open to, Experience, Education & skills, Projects, Elsewhere, Contact |
 
 **Undo:**
 - Everything: `git revert 944f13f 3f18dd9 a1a92f9`.
 - One file: `git checkout pre-redesign-2026-10 -- <path>`.
 - View the old version: `git show pre-redesign-2026-10:<path>`.
-- Section order only: `git checkout pre-reorder-2026-10 -- src/App.tsx src/lib/data.ts`.
+- Section order only: `git revert 69a4029`, or `git checkout pre-reorder-2026-10 -- src/App.tsx src/lib/data.ts`.
 
 ## Next up (pending)
 

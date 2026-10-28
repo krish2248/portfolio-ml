@@ -2,7 +2,9 @@ import { FC, useEffect, useState } from 'react'
 import { cn } from '@/lib/utils'
 import { navLinks, siteConfig } from '@/lib/data'
 import { useScrollSpy } from '@/hooks/useScrollSpy'
+import { useLanguage } from '@/context/LanguageContext'
 import ThemeToggle from '../ui/ThemeToggle'
+import LanguageToggle from '../ui/LanguageToggle'
 
 const sectionIds = navLinks.map((link) => link.href.slice(1))
 
@@ -10,6 +12,7 @@ const Navbar: FC = () => {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const active = useScrollSpy({ sectionIds, offset: 120 })
+  const { t } = useLanguage()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -49,11 +52,12 @@ const Navbar: FC = () => {
                     active === link.href.slice(1) ? 'bg-accent-soft text-ink' : 'text-muted hover:text-ink'
                   )}
                 >
-                  {link.name}
+                  {t.nav[link.key]}
                 </a>
               </li>
             ))}
           </ul>
+          <LanguageToggle />
           <ThemeToggle />
           <button
             type="button"
@@ -62,7 +66,7 @@ const Navbar: FC = () => {
             aria-controls="mobile-menu"
             onClick={() => setMenuOpen((open) => !open)}
           >
-            {menuOpen ? 'Close' : 'Menu'}
+            {menuOpen ? t.menu.close : t.menu.open}
           </button>
         </div>
       </nav>
@@ -76,7 +80,7 @@ const Navbar: FC = () => {
                 onClick={() => setMenuOpen(false)}
                 className="block border-b border-line py-3 text-base text-ink-2 last:border-0"
               >
-                {link.name}
+                {t.nav[link.key]}
               </a>
             </li>
           ))}

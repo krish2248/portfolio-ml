@@ -1,5 +1,6 @@
 import { FC } from 'react'
-import { featuredProjects, moreProjects, Project } from '@/lib/data'
+import { Project } from '@/lib/data'
+import { useLanguage } from '@/context/LanguageContext'
 import Section from '../layout/Section'
 import ProjectCover from '../ui/ProjectCover'
 
@@ -10,28 +11,32 @@ export function coverCaption(project: Project): string | undefined {
   return undefined
 }
 
-const Projects: FC = () => (
-  <Section id="projects" title="Projects" note="Data and ML work first, then the software I’ve shipped around it.">
-    <div className="grid gap-x-6 gap-y-10 sm:grid-cols-2">
-      {featuredProjects.map((project) => (
-        <ProjectCard key={project.id} project={project} />
-      ))}
-    </div>
+const Projects: FC = () => {
+  const { t, c } = useLanguage()
 
-    <h3 className="eyebrow mt-16">More projects</h3>
-    <ul className="mt-4 border-t border-line">
-      {moreProjects.map((project) => (
-        <li key={project.id} className="grid gap-1 border-b border-line py-4 sm:grid-cols-[14rem_1fr_auto] sm:items-baseline sm:gap-6">
-          <span className="font-medium text-ink">{project.title}</span>
-          <span className="text-sm text-ink-2">
-            {project.summary} <span className="text-muted">{project.technologies.join(', ')}</span>
-          </span>
-          <ProjectLinks project={project} />
-        </li>
-      ))}
-    </ul>
-  </Section>
-)
+  return (
+    <Section id="projects" title={t.projects.title} note={t.projects.note}>
+      <div className="grid gap-x-6 gap-y-10 sm:grid-cols-2">
+        {c.featuredProjects.map((project) => (
+          <ProjectCard key={project.id} project={project} />
+        ))}
+      </div>
+
+      <h3 className="eyebrow mt-16">{t.projects.more}</h3>
+      <ul className="mt-4 border-t border-line">
+        {c.moreProjects.map((project) => (
+          <li key={project.id} className="grid gap-1 border-b border-line py-4 sm:grid-cols-[14rem_1fr_auto] sm:items-baseline sm:gap-6">
+            <span className="font-medium text-ink">{project.title}</span>
+            <span className="text-sm text-ink-2">
+              {project.summary} <span className="text-muted">{project.technologies.join(', ')}</span>
+            </span>
+            <ProjectLinks project={project} />
+          </li>
+        ))}
+      </ul>
+    </Section>
+  )
+}
 
 const ProjectCard: FC<{ project: Project }> = ({ project }) => {
   const primaryUrl = project.liveUrl ?? project.githubUrl
@@ -65,19 +70,23 @@ const ProjectCard: FC<{ project: Project }> = ({ project }) => {
   )
 }
 
-export const ProjectLinks: FC<{ project: Project }> = ({ project }) => (
-  <span className="flex gap-4 text-sm">
-    {project.liveUrl && (
-      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="link">
-        Live<span className="sr-only"> site for {project.title}</span> ↗
-      </a>
-    )}
-    {project.githubUrl && (
-      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="link">
-        Code<span className="sr-only"> for {project.title}</span> ↗
-      </a>
-    )}
-  </span>
-)
+export const ProjectLinks: FC<{ project: Project }> = ({ project }) => {
+  const { t } = useLanguage()
+
+  return (
+    <span className="flex gap-4 text-sm">
+      {project.liveUrl && (
+        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="link">
+          {t.projects.live}<span className="sr-only">{t.projects.liveSr(project.title)}</span> ↗
+        </a>
+      )}
+      {project.githubUrl && (
+        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="link">
+          {t.projects.code}<span className="sr-only">{t.projects.codeSr(project.title)}</span> ↗
+        </a>
+      )}
+    </span>
+  )
+}
 
 export default Projects

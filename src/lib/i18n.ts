@@ -21,7 +21,6 @@ const uiEn = {
     availableFrom: (from: string) => `Available from ${from}`,
     email: 'Email me',
     cv: 'CV (PDF)',
-    portraitAlt: (name: string) => `Portrait of ${name}`,
   },
   openTo: {
     title: 'Open to',
@@ -89,7 +88,6 @@ const uiDe: UI = {
     availableFrom: (from: string) => `Verfügbar ab ${from}`,
     email: 'E-Mail schreiben',
     cv: 'Lebenslauf (PDF, Englisch)',
-    portraitAlt: (name: string) => `Porträt von ${name}`,
   },
   openTo: {
     title: 'Offen für',

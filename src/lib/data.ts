@@ -18,8 +18,6 @@ export const siteConfig = {
   location: 'Dortmund, Germany',
   // Public CV (no address or date of birth). Set to '' to hide the CV links.
   resumeUrl: '/Krish_Soni_Resume.pdf',
-  photoUrl: '/krish-soni.jpg',
-  photoUrlDark: '/krish-soni-dark.jpg',
   siteUrl: 'https://sonikrish.com/',
   updated: 'October 2026',
 }

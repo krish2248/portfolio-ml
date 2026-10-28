@@ -16,8 +16,9 @@ export const siteConfig = {
     'Krish Soni, M.Sc. Data Science student at TU Dortmund. Open to Werkstudent, internship and HiWi / research assistant roles in data science, analytics and ML engineering.',
   email: 'sonikrish2248@gmail.com',
   location: 'Dortmund, Germany',
-  // Leave empty until the final CV is in public/; the CV links hide themselves.
-  resumeUrl: '',
+  // Public CV (no address or date of birth). Set to '' to hide the CV links.
+  resumeUrl: '/Krish_Soni_Resume.pdf',
+  photoUrl: '/krish-soni.jpg',
   siteUrl: 'https://sonikrish.com/',
   updated: 'October 2026',
 }
@@ -49,7 +50,7 @@ export const quickFacts = [
   { label: 'Before', value: 'Data Scientist, PRM & Company' },
   { label: 'Degree', value: 'B.E. Computer Engineering, top 15%' },
   { label: 'Based in', value: 'Dortmund, Germany' },
-  { label: 'Languages', value: 'English (IELTS 7.5), Hindi, Gujarati' },
+  { label: 'Languages', value: 'English C1 (IELTS 7.5), German A1, Hindi, Gujarati' },
 ]
 
 // ─── What I'm looking for ────────────────────────────────────────────────────
@@ -103,10 +104,10 @@ export const featuredProjects: Project[] = [
   {
     id: 'futology',
     title: 'FUTOLOGY',
-    kind: 'ML · Analytics',
+    kind: 'Web · Analytics',
     summary:
-      'Football intelligence platform: live scores alongside ML match prediction, player clustering, fan-sentiment analysis, transfer-value estimation and fantasy-lineup optimisation. My largest project, from data ingestion to the interactive front end.',
-    technologies: ['TypeScript', 'React', 'Machine learning'],
+      'Football analytics web app with live scores, OTP login and a prediction game with leaderboards; 530+ commits across two iterations. Next milestone: a FastAPI ML service with an XGBoost match predictor, k-means player clustering and SHAP-based transfer valuation.',
+    technologies: ['Next.js', 'TypeScript', 'Supabase'],
     motif: 'pitch',
     liveUrl: 'https://krish2248.github.io/futology/',
     githubUrl: 'https://github.com/krish2248/futology',
@@ -140,8 +141,8 @@ export const featuredProjects: Project[] = [
     title: 'Auto-Valuator',
     kind: 'ML · Regression',
     summary:
-      'Predicts the resale value of a used car from its attributes. Covers feature engineering, model selection and evaluation end to end.',
-    technologies: ['Python', 'scikit-learn', 'pandas'],
+      'Predicts the resale value of a used car from age, mileage, make and condition. Five regression models compared; the best reaches R² above 0.85.',
+    technologies: ['Python', 'scikit-learn', 'XGBoost'],
     motif: 'scatter',
     githubUrl: 'https://github.com/krish2248/Auto-Valuator',
     year: '2025',
@@ -205,7 +206,7 @@ export const moreProjects: Project[] = [
     id: '2048-dark',
     title: '2048 Dark',
     kind: 'Web · Android',
-    summary: 'Shipped twice: a zero-dependency single-file web game and a native Android build.',
+    summary: 'Shipped twice: a zero-dependency single-file web game with undo, hints and 13 achievements, and a native Android build.',
     technologies: ['JavaScript', 'Kotlin'],
     motif: 'tiles',
     liveUrl: 'https://krish2248.github.io/2048-Dark/',
@@ -216,8 +217,8 @@ export const moreProjects: Project[] = [
     id: 'rpsls',
     title: 'Rock-Paper-Scissors-Lizard-Spock',
     kind: 'Real-time web',
-    summary: 'Online multiplayer game with a separate Socket.IO game server.',
-    technologies: ['React', 'Redux', 'Socket.IO'],
+    summary: 'Online multiplayer game with a separate Socket.IO game server, an offline mode, and installable as a PWA.',
+    technologies: ['React', 'Redux Toolkit', 'Socket.IO'],
     motif: 'nodes',
     githubUrl: 'https://github.com/krish2248/Rock-Paper-Scissors-Lizard-Spock',
     year: '2025',
@@ -241,8 +242,8 @@ export const personalProjects: Project[] = [
     id: 'coffee-journal',
     title: 'Coffee Journal',
     kind: 'coffee',
-    summary: 'A personal library of specialty coffees I’ve tried.',
-    technologies: ['TypeScript'],
+    summary: '60+ specialty coffees from 25+ Indian roasters, with flavour radar charts and nine brewing guides.',
+    technologies: ['Astro', 'React', 'Three.js'],
     motif: 'cup',
     liveUrl: 'https://krish2248.github.io/Coffee-Journal/',
     githubUrl: 'https://github.com/krish2248/Coffee-Journal',
@@ -263,7 +264,7 @@ export const personalProjects: Project[] = [
     id: 'vellum-codex',
     title: 'Vellum Codex',
     kind: 'literature',
-    summary: 'Archive of my book collection, with search and read tracking.',
+    summary: 'Archive of my 74 books, with a statistics dashboard, genre filters, search and reading status.',
     technologies: ['JavaScript'],
     motif: 'books',
     liveUrl: 'https://krish2248.github.io/Vellum-Codex/',
@@ -297,10 +298,10 @@ export const experiences: Experience[] = [
       'Analysed and visualised data across the commercial pipeline (sales, online orders, customer reviews and purchase orders) in Python, producing the charts and statistics behind sales and marketing decisions.',
       'Evaluated promotional schemes and isolated underperforming regions and products. The findings changed distribution strategy: 8% sales recovery in those regions and 17% growth in the targeted product segments.',
       'Modelled demand by season and geography to decide which products to push where and when; the same analysis targeted the social-media ad campaigns.',
-      'Consolidated inconsistent multi-source sales and operations data into audit-ready datasets for Annual General Meeting reporting.',
+      'Consolidated inconsistent multi-source sales and operations data into audit-ready datasets for Annual General Meeting reporting, and built Excel reporting for management, such as a dispatch analysis of 1,427 shipments.',
       'Designed and built prmherbovilla.com, the company’s direct-to-consumer shop, with a live KPI dashboard for the business team.',
     ],
-    stack: 'Python, pandas, Matplotlib, Seaborn, statistical analysis, Shopify',
+    stack: 'Python, pandas, Matplotlib, Seaborn, Excel, statistical analysis, Shopify',
   },
   {
     id: 'ithub',
@@ -357,10 +358,12 @@ export const education: Education[] = [
   {
     id: 'tu-dortmund',
     degree: 'M.Sc. Data Science',
-    institution: 'TU Dortmund University',
+    institution: 'TU Dortmund University, Faculty of Statistics',
     location: 'Dortmund, Germany',
-    period: 'Oct 2026 – 2028 (expected)',
-    details: ['Started in the winter semester 2026/27.'],
+    period: 'Oct 2026 – Sep 2028 (expected)',
+    details: [
+      'Current modules: Statistical Theory (measure-theoretic probability, decision theory), Advanced R, Data Science in Context.',
+    ],
   },
   {
     id: 'gtu',
@@ -369,8 +372,8 @@ export const education: Education[] = [
     location: 'Bhavnagar, India',
     period: 'Jun 2021 – May 2025',
     details: [
-      'CGPA 7.73 / 10, top 15% of the cohort; top 5% in Software Engineering. Roughly German grade 2.1 and 240 ECTS.',
-      'Coursework: Machine Learning, Big Data Analytics, Cloud Computing, IoT, Information Security, Software Engineering, Data Structures & Algorithms, DBMS.',
+      'CGPA 7.73 / 10, top 15% of the cohort. About German grade 2.1 (modified Bavarian formula) and 240 ECTS.',
+      'Relevant courses: Probability and Statistics, Discrete Mathematics, Data Structures, Algorithms, Database Systems, Artificial Intelligence, Big Data Analytics.',
     ],
   },
 ]
@@ -378,11 +381,11 @@ export const education: Education[] = [
 // ─── Skills ──────────────────────────────────────────────────────────────────
 
 export const skills: { group: string; items: string[] }[] = [
-  { group: 'Data & ML', items: ['pandas', 'NumPy', 'scikit-learn', 'TensorFlow', 'Matplotlib', 'Seaborn', 'Jupyter'] },
+  { group: 'Data & ML', items: ['pandas', 'NumPy', 'scikit-learn', 'XGBoost', 'TensorFlow', 'Matplotlib', 'Seaborn', 'Jupyter', 'Excel'] },
   { group: 'Statistics', items: ['Hypothesis testing', 'Regression', 'Clustering', 'Forecasting', 'Sentiment analysis'] },
-  { group: 'Languages', items: ['Python', 'SQL', 'TypeScript', 'JavaScript', 'Java', 'PHP', 'Kotlin', 'Dart'] },
-  { group: 'Web & apps', items: ['React', 'Node.js', 'Tailwind CSS', 'REST APIs', 'Socket.IO', 'Flutter', 'Jetpack Compose'] },
-  { group: 'Data stores', items: ['MySQL', 'ER modelling', 'Indexing & query optimisation'] },
+  { group: 'Languages', items: ['Python', 'SQL', 'R', 'TypeScript', 'JavaScript', 'Java', 'PHP', 'Kotlin', 'Dart'] },
+  { group: 'Web & apps', items: ['React', 'Next.js', 'Node.js', 'Tailwind CSS', 'REST APIs', 'Socket.IO', 'Flutter', 'Jetpack Compose'] },
+  { group: 'Data stores', items: ['MySQL', 'PostgreSQL / Supabase', 'ER modelling', 'Indexing & query optimisation'] },
   { group: 'LLM tooling', items: ['Groq API', 'NVIDIA Nemotron', 'Local quantised models'] },
   { group: 'Tools', items: ['Git', 'Shopify (Liquid)', 'LaTeX', 'Apache', 'VS Code'] },
 ]

@@ -20,6 +20,7 @@ Personal portfolio of Krish Hemang Soni. Read this first in any new session.
 ## Where things live
 
 - `src/lib/data.ts`: **all content**: site config, availability, open-to roles, projects (featured, more, personal), experience, education, skills, references, study repos.
+- **Two languages (EN/DE).** `src/lib/data.ts` is the English content; `src/lib/data.de.ts` overrides the text by id (projects, jobs, education) for German. Interface text (nav, titles, buttons) is in `src/lib/i18n.ts`. Components read both through `useLanguage()` (`src/context/LanguageContext.tsx`): `t` = interface text, `c` = content. The EN | DE switch sits next to the theme toggle; default is English, the choice is saved, and `?lang=de` links straight to German. **When you change English content, update data.de.ts too.** Reference quotes stay in the original English.
 - `src/components/sections/`: Hero, OpenTo, Experience (includes the references quotes), Education (includes skills), Projects, Elsewhere, Contact. That is also the page order (set in `src/App.tsx`; nav order in `navLinks` in data.ts).
 - `src/components/ui/ProjectCover.tsx`: drawn SVG project thumbnails. Each project picks one with `motif` in data.ts. To add a motif, add it to the `CoverMotif` type and the `motifs` map.
 - `src/styles/globals.css`: colour tokens for light (warm paper `#f6f5f0`) and dark (forest green `#091413`, his choice). Components use the token colours (`bg`, `surface`, `plate`, `ink`, `ink-2`, `muted`, `line`, `line-strong`, `accent`) rather than `dark:` variants.
@@ -49,6 +50,8 @@ Personal portfolio of Krish Hemang Soni. Read this first in any new session.
 | `69a4029` | Sections and nav reordered: Open to, Experience, Education & skills, Projects, Elsewhere, Contact |
 | tag `pre-cv-2026-10` (= `fbe0d16`) | Backup before the final-CV sync |
 | `73b652c` | Final CV sync: resume PDF, hero photo, OG image, German A1, content matched to final CVs |
+| tag `pre-i18n-2026-10` | Backup before the German version |
+| (i18n commit) | EN/DE language switch, full German translation |
 
 **Undo:**
 - Everything: `git revert 944f13f 3f18dd9 a1a92f9`.

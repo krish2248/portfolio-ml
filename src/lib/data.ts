@@ -38,13 +38,14 @@ export const socialLinks = {
   email: 'mailto:sonikrish2248@gmail.com',
 }
 
+/** Labels come from `ui.nav` in i18n.ts. */
 export const navLinks = [
-  { name: 'Open to', href: '#open-to' },
-  { name: 'Experience', href: '#experience' },
-  { name: 'Education', href: '#education' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Contact', href: '#contact' },
-]
+  { key: 'openTo', href: '#open-to' },
+  { key: 'experience', href: '#experience' },
+  { key: 'education', href: '#education' },
+  { key: 'projects', href: '#projects' },
+  { key: 'contact', href: '#contact' },
+] as const
 
 export const quickFacts = [
   { label: 'Now', value: 'M.Sc. Data Science, TU Dortmund' },
@@ -429,3 +430,22 @@ export const studyRepos = [
 export const footerContent = {
   source: 'https://github.com/krish2248/portfolio-ml',
 }
+
+// ─── Language bundle ─────────────────────────────────────────────────────────
+
+/** Everything that changes with the language. German overrides live in data.de.ts. */
+export const contentEn = {
+  siteConfig,
+  availability,
+  quickFacts,
+  openTo,
+  featuredProjects,
+  moreProjects,
+  personalProjects,
+  experiences,
+  education,
+  skills,
+  references,
+}
+
+export type Content = typeof contentEn

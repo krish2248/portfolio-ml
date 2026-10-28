@@ -1,9 +1,11 @@
 import { FC } from 'react'
 import { useTheme } from '@/context/ThemeContext'
+import { useLanguage } from '@/context/LanguageContext'
 
 const ThemeToggle: FC = () => {
   const { toggleTheme, isDark } = useTheme()
-  const label = `Switch to ${isDark ? 'light' : 'dark'} mode`
+  const { t } = useLanguage()
+  const label = isDark ? t.theme.toLight : t.theme.toDark
 
   return (
     <button

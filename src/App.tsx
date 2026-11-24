@@ -28,8 +28,8 @@ const Page: FC = () => {
       <main id="main">
         <Hero />
         <Now />
-        <Projects />
         <Experience />
+        <Projects />
         <Education />
         <Skills />
         <Contact />

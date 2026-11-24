@@ -25,7 +25,7 @@ export function render(lang: Lang) {
     c.hero.statement,
     c.now.updated,
     ...c.now.items,
-    ...c.projects.items.flatMap((p) => [p.title, p.badge ?? '', p.summary, p.url ?? '', ...(p.stack ?? [])]),
+    ...c.projects.items.flatMap((p) => [p.title, p.badge ?? '', p.summary, p.url ?? '', p.live ?? '', ...(p.stack ?? [])]),
     ...moreProjects.flatMap((p) => [p.title, p.url]),
     ...c.experience.items.flatMap((job) => [job.period, job.role, job.company, job.location, job.text]),
     ...c.experience.quotes.flatMap((ref) => [ref.quote, ref.name, ref.role]),
@@ -34,5 +34,5 @@ export function render(lang: Lang) {
     c.contact.locationValue,
   ].filter(Boolean)
 
-  return { html, mustContain, meta: c.meta }
+  return { html, mustContain, meta: c.meta, cv: site.cv }
 }

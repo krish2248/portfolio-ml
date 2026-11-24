@@ -13,7 +13,7 @@ const Projects: FC = () => {
       <div className="grid gap-x-6 gap-y-10 sm:grid-cols-2">
         {projects.items.map((project, i) => (
           // The first project takes the full row.
-          <ProjectCard key={project.id} project={project} wide={i === 0} codeLabel={projects.code} />
+          <ProjectCard key={project.id} project={project} wide={i === 0} />
         ))}
       </div>
 
@@ -29,8 +29,9 @@ const Projects: FC = () => {
   )
 }
 
-const ProjectCard: FC<{ project: Project; wide: boolean; codeLabel: string }> = ({ project, wide, codeLabel }) => {
-  const { title, badge, summary, stack, url, motif } = project
+const ProjectCard: FC<{ project: Project; wide: boolean }> = ({ project, wide }) => {
+  const { projects } = useLanguage().c
+  const { title, badge, summary, stack, url, live, motif } = project
   const frame = 'block overflow-hidden rounded-lg border border-line'
   const cover = <ProjectCover motif={motif} caption={url?.replace('https://github.com/', '')} />
 
@@ -69,12 +70,20 @@ const ProjectCard: FC<{ project: Project; wide: boolean; codeLabel: string }> = 
         {(stack || url) && (
           <div className="mt-auto flex items-end justify-between gap-4 pt-4">
             <span className="font-mono text-xs text-muted">{stack?.join(' · ')}</span>
-            {url && (
-              <a href={url} target="_blank" rel="noopener noreferrer" className="link shrink-0 text-sm">
-                {codeLabel}
-                <span className="sr-only">: {title}</span> ↗
-              </a>
-            )}
+            <span className="flex shrink-0 gap-4 text-sm">
+              {live && (
+                <a href={live} target="_blank" rel="noopener noreferrer" className="link">
+                  {projects.live}
+                  <span className="sr-only">: {title}</span> ↗
+                </a>
+              )}
+              {url && (
+                <a href={url} target="_blank" rel="noopener noreferrer" className="link">
+                  {projects.code}
+                  <span className="sr-only">: {title}</span> ↗
+                </a>
+              )}
+            </span>
           </div>
         )}
       </div>

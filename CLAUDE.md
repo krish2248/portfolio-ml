@@ -20,7 +20,7 @@ Personal portfolio of Krish Hemang Soni. Read this first in any new session.
 ## Where things live
 
 - `src/content.ts`: **all text, English and German**, in one file (links and quotes shared at the top, then `en`, then `de`). **When you change English, change German too.** Components read it with `useLanguage()` (`src/context/LanguageContext.tsx`), where `c` is the content. Language helpers: `src/lib/lang.ts`. The EN | DE switch sits next to the theme toggle and the choice is saved. English is at `/`, German at `/de/`; `?lang=de` redirects to `/de/`. Reference quotes stay in the original English (Krish: keep them).
-- `src/components/sections/`, in page order (set in `src/App.tsx`; nav in `Navbar.tsx`): Hero, Now, Projects, Experience (with quotes), Education, Skills, Contact.
+- `src/components/sections/`, in page order (set in `src/App.tsx`; nav in `Navbar.tsx`): Hero, Now, Experience (with quotes; Krish wants it before Projects), Projects, Education, Skills, Contact.
 - `src/components/ui/ProjectCover.tsx`: drawn SVG project covers, picked with `motif` in content.ts. Add new ones to `CoverMotif` and `motifs`. Ten unused covers were deleted on 24 Nov 2026 (in git: `git show pre-rewrite-2026-11:src/components/ui/ProjectCover.tsx`).
 - `src/styles/globals.css`: colour tokens for light (warm paper `#f6f5f0`) and dark (forest green `#091413`, his choice). Components use the token colours (`bg`, `surface`, `plate`, `ink`, `ink-2`, `muted`, `line`, `line-strong`, `accent`) rather than `dark:` variants.
   - The cover colour is named `plate` because `bg-cover` clashes with a built-in Tailwind utility.

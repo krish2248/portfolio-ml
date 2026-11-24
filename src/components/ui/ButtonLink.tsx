@@ -6,7 +6,8 @@ interface ButtonLinkProps {
   children: ReactNode
   variant?: 'primary' | 'secondary'
   external?: boolean
-  download?: boolean
+  /** File name to save as. */
+  download?: string
   className?: string
 }
 

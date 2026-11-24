@@ -7,7 +7,7 @@
  *
  * Runs after `vite build` (client) and `vite build --ssr` (src/entry-server.tsx).
  */
-import { mkdir, readFile, rm, writeFile } from 'node:fs/promises'
+import { access, mkdir, readFile, rm, writeFile } from 'node:fs/promises'
 
 const SSR_DIR = new URL('../node_modules/.prerender/', import.meta.url)
 const DIST = new URL('../dist/', import.meta.url)
@@ -31,7 +31,12 @@ function replaceThree(html, from, to) {
 const decode = (html) =>
   html.replaceAll('&lt;', '<').replaceAll('&gt;', '>').replaceAll('&quot;', '"').replaceAll('&#x27;', "'").replaceAll('&amp;', '&')
 
-const { meta: en } = render('en')
+const { meta: en, cv } = render('en')
+
+// The Download CV button must never point at a missing file.
+await access(new URL(`.${cv}`, DIST)).catch(() => {
+  throw new Error(`prerender: ${cv} is missing from dist/. Put the PDF in public${cv}`)
+})
 
 for (const lang of ['en', 'de']) {
   const { html: app, mustContain, meta } = render(lang)

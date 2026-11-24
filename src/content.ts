@@ -14,6 +14,7 @@ export const site = {
   name: 'Krish Soni',
   fullName: 'Krish Hemang Soni',
   email: 'sonikrish2248@gmail.com',
+  /** public/cv/Krish_Soni_CV.pdf: replace that file to update the CV, keeping the name. */
   cv: '/cv/Krish_Soni_CV.pdf',
   github: 'https://github.com/krish2248',
   linkedin: 'https://www.linkedin.com/in/krish-soni-460932228/',
@@ -44,6 +45,8 @@ export interface Project {
   summary: string
   stack?: string[]
   url?: string
+  /** Live demo. */
+  live?: string
   motif: CoverMotif
 }
 
@@ -51,7 +54,7 @@ export interface Content {
   meta: { title: string; description: string; imageAlt: string }
   hero: { tagline: string; statement: string; buttons: { cv: string; email: string } }
   now: { title: string; updated: string; items: string[] }
-  projects: { title: string; more: string; code: string; items: Project[] }
+  projects: { title: string; more: string; code: string; live: string; items: Project[] }
   experience: {
     title: string
     items: { id: string; period: string; role: string; company: string; location: string; text: string }[]
@@ -102,6 +105,7 @@ const en: Content = {
     title: 'Projects',
     more: 'More',
     code: 'Code',
+    live: 'Live demo',
     items: [
       {
         id: 'lhcb-tau-3mu',
@@ -120,6 +124,7 @@ const en: Content = {
           'Live scores, OTP login and a prediction game with leaderboards; 530+ commits and a live demo. Next: a FastAPI machine-learning service.',
         stack: ['Next.js', 'TypeScript', 'Supabase'],
         url: 'https://github.com/krish2248/futology',
+        live: 'https://krish2248.github.io/futology/',
         motif: 'pitch',
       },
       {
@@ -245,6 +250,7 @@ const de: Content = {
     title: 'Projekte',
     more: 'Weitere',
     code: 'Code',
+    live: 'Live-Demo',
     items: [
       {
         ...en.projects.items[0],

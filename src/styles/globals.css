@@ -32,16 +32,22 @@
 }
 
 @layer base {
+  /* Everything is sized in rem, so this scales the whole desktop layout. */
+  @media (min-width: 1024px) {
+    html { font-size: clamp(14.5px, 11.6px + 0.2vw, 17px); }
+  }
+
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5rem;
+    /* Header height, so a section's top line meets the header's. */
+    scroll-padding-top: 4rem;
   }
 
   body {
     background-color: var(--bg);
     color: var(--ink);
     @apply font-sans antialiased;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 1.6;
     text-rendering: optimizeLegibility;
   }

@@ -31,10 +31,12 @@ export function render(lang: Lang) {
     ...c.projects.more.items.flatMap((p) => [p.title, p.summary, p.url ?? '', p.live ?? '']),
     ...c.experience.items.flatMap((job) => [job.period, job.role, job.company, job.location, job.text]),
     ...c.experience.quotes.flatMap((ref) => [ref.quote, ref.name, ref.role]),
-    ...c.education.items.flatMap((item) => [item.period, item.degree, item.school, ...item.notes]),
+    ...c.education.items.flatMap((item) => [item.period, item.degree, item.school, ...item.notes, ...(item.modules ?? []).flatMap((row) => [row.semester, row.text])]),
     ...c.education.skills.flatMap((row) => [row.group, row.text]),
     site.medium,
-    ...c.bored.items.flatMap((item) => [item.title, item.text, item.url ?? '']),
+    site.youtube,
+    c.bored.youtube.title,
+    ...c.bored.blogs.items.flatMap((blog) => [blog.title, blog.type, blog.url]),
     c.contact.locationValue,
   ].filter(Boolean)
 

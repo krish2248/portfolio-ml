@@ -47,7 +47,7 @@ const Navbar: FC = () => {
           {site.name}
         </a>
 
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1.5">
           <ul className="hidden items-center gap-1 md:flex">
             {navLinks.map((link) => (
               <li key={link.href}>
@@ -55,7 +55,7 @@ const Navbar: FC = () => {
                   href={link.href}
                   aria-current={active === link.href.slice(1) ? 'location' : undefined}
                   className={cn(
-                    'rounded-full px-3 py-1.5 text-sm transition-colors',
+                    'inline-flex h-9 items-center rounded-full px-3.5 text-sm transition-colors',
                     active === link.href.slice(1) ? 'bg-accent-soft text-ink' : 'text-muted hover:text-ink'
                   )}
                 >
@@ -64,8 +64,10 @@ const Navbar: FC = () => {
               </li>
             ))}
           </ul>
-          <LanguageToggle />
-          <ThemeToggle />
+          <div className="flex items-center gap-1 md:-mr-2 md:ml-3">
+            <LanguageToggle />
+            <ThemeToggle />
+          </div>
           <button
             ref={menuButton}
             type="button"

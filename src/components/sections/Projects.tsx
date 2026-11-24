@@ -10,19 +10,29 @@ const Projects: FC = () => {
 
   return (
     <Section id="projects" title={projects.title}>
-      <div className="grid gap-x-6 gap-y-10 sm:grid-cols-2">
-        {projects.items.map((project, i) => (
-          // The first project takes the full row.
-          <ProjectCard key={project.id} project={project} wide={i === 0} />
+      <div className="grid gap-x-10 gap-y-10 sm:grid-cols-2">
+        {projects.items.map((project) => (
+          <ProjectCard key={project.id} project={project} />
         ))}
       </div>
 
-      <h3 className="eyebrow mt-16">{projects.more.title}</h3>
-      <ul className="mt-5 grid gap-x-8 border-t border-line lg:grid-cols-2">
-        {projects.more.items.map((project) => (
-          <SmallCard key={project.id} project={project} liveLabel={projects.more.live} />
-        ))}
-      </ul>
+      {/* A native <details>, so the text stays in the HTML and it works without JavaScript. */}
+      <details className="group/more mt-12">
+        <summary className="inline-flex min-h-11 cursor-pointer list-none items-center gap-2 rounded-md border border-muted px-4 py-2 font-medium text-ink transition-colors hover:border-ink [&::-webkit-details-marker]:hidden">
+          <span className="group-open/more:hidden">
+            {projects.more.title} ({projects.more.items.length})
+          </span>
+          <span className="hidden group-open/more:inline">{projects.more.less}</span>
+          <span aria-hidden="true" className="transition-transform group-open/more:rotate-180">
+            ↓
+          </span>
+        </summary>
+        <ul className="mt-6 grid gap-x-10 border-t border-line lg:grid-cols-2">
+          {projects.more.items.map((project) => (
+            <SmallCard key={project.id} project={project} liveLabel={projects.more.live} />
+          ))}
+        </ul>
+      </details>
 
       <h3 className="eyebrow mt-16">{projects.graph.title}</h3>
       <a
@@ -68,7 +78,7 @@ const Links: FC<{ project: { title: string; url?: string; live?: string }; liveL
 }
 
 const SmallCard: FC<{ project: SmallProject; liveLabel: string }> = ({ project, liveLabel }) => (
-  <li className="grid grid-cols-[5.5rem_1fr] gap-4 border-b border-line py-5 sm:grid-cols-[9rem_1fr] sm:gap-5">
+  <li className="grid grid-cols-[5.5rem_1fr] gap-4 border-b border-line py-5 sm:grid-cols-[8rem_1fr] sm:gap-5">
     <div className="self-start overflow-hidden rounded-md border border-line">
       <ProjectCover motif={project.motif} />
     </div>
@@ -80,13 +90,13 @@ const SmallCard: FC<{ project: SmallProject; liveLabel: string }> = ({ project, 
   </li>
 )
 
-const ProjectCard: FC<{ project: Project; wide: boolean }> = ({ project, wide }) => {
+const ProjectCard: FC<{ project: Project }> = ({ project }) => {
   const { title, badge, summary, stack, url, motif } = project
   const frame = 'block overflow-hidden rounded-lg border border-line'
-  const cover = <ProjectCover motif={motif} caption={url?.replace('https://github.com/', '')} />
+  const cover = <ProjectCover motif={motif} caption={url?.replace('https://github.com/', '')} className="aspect-[5/2]" />
 
   return (
-    <article className={cn('group flex flex-col', wide && 'sm:col-span-2 sm:grid sm:grid-cols-2 sm:gap-6')}>
+    <article className="group flex flex-col">
       {url ? (
         <a
           href={url}
@@ -101,12 +111,7 @@ const ProjectCard: FC<{ project: Project; wide: boolean }> = ({ project, wide })
       ) : (
         <div className={frame}>{cover}</div>
       )}
-      <div className={cn('flex grow flex-col', wide ? 'mt-4 sm:mt-0' : 'mt-4')}>
-        {badge && (
-          <p className="mb-2 self-start rounded border border-accent px-1.5 py-0.5 font-mono text-xs uppercase tracking-wide text-accent">
-            {badge}
-          </p>
-        )}
+      <div className="mt-3 flex grow flex-col">
         <h3 className="text-lg font-medium text-ink">
           {url ? (
             <a href={url} target="_blank" rel="noopener noreferrer" className="inline-block py-px hover:text-accent">
@@ -115,8 +120,13 @@ const ProjectCard: FC<{ project: Project; wide: boolean }> = ({ project, wide })
           ) : (
             title
           )}
+          {badge && (
+            <span className="ml-2.5 inline-block rounded border border-accent px-1.5 py-0.5 align-middle font-mono text-xs uppercase tracking-wide text-accent">
+              {badge}
+            </span>
+          )}
         </h3>
-        <p className="mt-2 max-w-measure leading-relaxed text-ink-2">{summary}</p>
+        <p className="mt-1 max-w-measure leading-relaxed text-ink-2">{summary}</p>
         {(stack || url) && (
           <div className="mt-auto pt-3">
             <p className="font-mono text-sm text-muted">{stack?.join(' · ')}</p>

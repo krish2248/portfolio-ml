@@ -9,7 +9,7 @@ const Footer: FC = () => {
     <footer className="border-t border-line">
       <div className="mx-auto flex max-w-page flex-col gap-2 px-5 py-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between sm:px-8">
         <p>
-          © <span suppressHydrationWarning>{new Date().getFullYear()}</span> {site.fullName} · {c.contact.locationValue}
+          © <span suppressHydrationWarning>{new Date().getFullYear()}</span> {site.name} · {c.contact.locationValue}
         </p>
         <p className="flex flex-wrap gap-x-5">
           {site.legalPublished && (

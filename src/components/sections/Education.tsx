@@ -20,6 +20,16 @@ const Education: FC = () => {
                   {note}
                 </p>
               ))}
+              {item.modules && (
+                <dl className="mt-3 space-y-2">
+                  {item.modules.map((row) => (
+                    <div key={row.semester}>
+                      <dt className="text-sm text-muted">{row.semester}</dt>
+                      <dd className="leading-relaxed text-ink-2">{row.text}</dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
             </li>
           ))}
         </ol>

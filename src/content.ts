@@ -12,7 +12,6 @@ import type { Lang } from './lib/lang'
 
 export const site = {
   name: 'Krish Soni',
-  fullName: 'Krish Hemang Soni',
   email: 'sonikrish2248@gmail.com',
   /** public/cv/Krish_Soni_CV.pdf: replace that file to update the CV, keeping the name. */
   cv: '/cv/Krish_Soni_CV.pdf',
@@ -74,7 +73,7 @@ export interface Content {
     code: string
     live: string
     items: Project[]
-    more: { title: string; live: string; items: SmallProject[] }
+    more: { title: string; less: string; live: string; items: SmallProject[] }
     graph: { title: string; label: string; alt: string }
   }
   experience: {
@@ -85,11 +84,23 @@ export interface Content {
   }
   education: {
     title: string
-    items: { id: string; period: string; degree: string; school: string; notes: string[] }[]
+    items: {
+      id: string
+      period: string
+      degree: string
+      school: string
+      notes: string[]
+      /** Modules by semester, from the TU Dortmund study plan. */
+      modules?: { semester: string; text: string }[]
+    }[]
     skillsTitle: string
     skills: { group: string; text: string }[]
   }
-  bored: { title: string; soon: string; items: { id: string; title: string; text: string; url?: string; motif: CoverMotif }[] }
+  bored: {
+    title: string
+    youtube: { title: string; text: string }
+    blogs: { title: string; items: { title: string; type: string; url: string }[] }
+  }
   contact: {
     title: string
     pitch: string
@@ -173,14 +184,6 @@ const en: Content = {
         motif: 'scatter',
       },
       {
-        id: 'rpsls',
-        title: 'RPSLS: real-time multiplayer game',
-        summary: 'Online rooms, offline mode, installable as a PWA.',
-        stack: ['React', 'Redux Toolkit', 'TypeScript', 'Node.js', 'Socket.IO'],
-        url: 'https://github.com/krish2248/Rock-Paper-Scissors-Lizard-Spock',
-        motif: 'nodes',
-      },
-      {
         id: 'llm-experiments',
         title: 'LLM experiments',
         summary:
@@ -190,8 +193,16 @@ const en: Content = {
     ],
     more: {
       title: 'More projects',
+      less: 'Show fewer projects',
       live: 'Live',
       items: [
+        {
+          id: 'rpsls',
+          title: 'RPSLS: real-time multiplayer game',
+          summary: 'Online rooms, offline mode, installable as a PWA. React, Redux Toolkit, TypeScript, Node.js, Socket.IO.',
+          url: 'https://github.com/krish2248/Rock-Paper-Scissors-Lizard-Spock',
+          motif: 'nodes',
+        },
         {
           id: 'scikit-hep',
           title: 'Scikit-HEP contributions',
@@ -332,7 +343,7 @@ const en: Content = {
     quotes: [
       { quote: quotes.hr, name: 'Sagar Makwana', role: 'Head of HR, PRM & Company' },
       { quote: quotes.hod, name: 'Prof. Prashant J. Viradiya', role: 'Head of Department, Computer Engineering, GMIT' },
-      { quote: quotes.professor, name: 'Prof. Ritesh D. Chimnani', role: 'Assistant Professor, Computer Engineering, GMIT' },
+      { quote: quotes.professor, name: 'Prof. Ritesh D. Chimnani', role: 'Professor of Software Engineering, Department of Computer Engineering, GMIT' },
     ],
   },
   education: {
@@ -343,7 +354,13 @@ const en: Content = {
         period: 'since 10/2026',
         degree: 'M.Sc. Data Science',
         school: 'TU Dortmund University (expected 09/2028)',
-        notes: ['Modules: Statistical Theory, Applied Bayesian Data Analysis, Advanced R, Data Science in Context.'],
+        notes: [],
+        modules: [
+          { semester: 'Semester 1, now', text: 'Statistical Theory, Applied Bayesian Data Analysis, Advanced R, Advanced Python, Data Science in Context' },
+          { semester: 'Semester 2', text: 'Advanced Statistical Learning, Advanced Machine Learning, Methodical Data Science, Visualization of Complex Data Structures' },
+          { semester: 'Semester 3', text: 'Project Work (Advanced Case Studies or external internship, seminar), electives in Advanced Machine Learning and Methodical Data Science' },
+          { semester: 'Semester 4', text: 'Master’s thesis, Advanced Seminar' },
+        ],
       },
       {
         id: 'gtu',
@@ -367,13 +384,17 @@ const en: Content = {
     ],
   },
   bored: {
-    title: 'What I do when I’m bored',
-    soon: 'Coming soon',
-    items: [
-      { id: 'youtube', title: 'YouTube channel', text: 'My channel, @krishsoni1.', url: site.youtube, motif: 'video' },
-      { id: 'journaling', title: 'Journaling guide', text: 'A Medium post, not published yet.', motif: 'journal' },
-      { id: 'coffee', title: 'Coffee guide', text: 'A Medium post, not published yet.', motif: 'cup' },
-    ],
+    title: 'What I do when I’m\u00a0bored',
+    youtube: { title: 'YouTube channel', text: 'My channel, @krishsoni1.' },
+    blogs: {
+      title: 'Medium blogs',
+      // Demo links for now: all three open the Medium profile. Replace each url when the post is published.
+      items: [
+        { title: 'Journaling guide', type: 'Journaling', url: site.medium },
+        { title: 'Coffee guide', type: 'Coffee', url: site.medium },
+        { title: 'Data science notes', type: 'Data science', url: site.medium },
+      ],
+    },
   },
   contact: {
     title: 'Contact',
@@ -449,11 +470,6 @@ const de: Content = {
       },
       {
         ...en.projects.items[3],
-        title: 'RPSLS: Echtzeit-Multiplayer-Spiel',
-        summary: 'Online-Räume, Offline-Modus, als PWA installierbar.',
-      },
-      {
-        ...en.projects.items[4],
         title: 'LLM-Experimente',
         summary:
           'Ein Agent auf Llama 4 über die Groq-API, der Tool-Nutzung erkundet; Vier gewinnt gegen NVIDIA Nemotron, wobei jeder Zug des Modells gegen die Regeln geprüft wird.',
@@ -461,68 +477,74 @@ const de: Content = {
     ],
     more: {
       title: 'Weitere Projekte',
+      less: 'Weniger Projekte anzeigen',
       live: 'Live',
       items: [
         {
           ...en.projects.more.items[0],
+          title: 'RPSLS: Echtzeit-Multiplayer-Spiel',
+          summary: 'Online-Räume, Offline-Modus, als PWA installierbar. React, Redux Toolkit, TypeScript, Node.js, Socket.IO.',
+        },
+        {
+          ...en.projects.more.items[1],
           title: 'Beiträge zu Scikit-HEP',
           summary:
             'In Arbeit: Dokumentation, Tests und Beispiele für die Python-Werkzeuge der Teilchenphysik (uproot, hist).',
         },
         {
-          ...en.projects.more.items[1],
+          ...en.projects.more.items[2],
           summary:
             'Multimodales, erklärbares KI-System für die Medizin, für Forschung und Lehre, mit Interpretierbarkeits-Ausgaben zu den Vorhersagen.',
         },
         {
-          ...en.projects.more.items[2],
+          ...en.projects.more.items[3],
           summary:
             'Onlineshop für PRM & Company auf Shopify mit eigenem JavaScript und CSS: sechs Produktkategorien, Zahlung per UPI, Karte und Nachnahme sowie ein Echtzeit-Dashboard.',
         },
         {
-          ...en.projects.more.items[3],
+          ...en.projects.more.items[4],
           title: 'Immobilienverwaltungssystem',
           summary:
             'Allein bei IT Hub entwickelt, mit PHP, MySQL und JavaScript: Rollen und Rechte, Suche mit Mehrfachfiltern, Lead-Management, Zahlungen über Razorpay und PayPal.',
         },
         {
-          ...en.projects.more.items[4],
+          ...en.projects.more.items[5],
           title: 'Brustkrebs-Diagnosemodell',
           summary:
             'Klassifikationsmodell für die Brustkrebsdiagnose mit Python und scikit-learn.',
         },
         {
-          ...en.projects.more.items[5],
+          ...en.projects.more.items[6],
           summary:
             'Live-Unterricht über die Zoom-API plus Abgabe von Aufgaben, entwickelt unter Betreuung von Lehrenden am GMIT.',
         },
         {
-          ...en.projects.more.items[6],
+          ...en.projects.more.items[7],
           summary:
             'Offline-Diagnose für Akku, Ladevorgang und Temperatur unter Android, mit Kotlin und Jetpack Compose.',
         },
         {
-          ...en.projects.more.items[7],
+          ...en.projects.more.items[8],
           summary:
             'Webspiel in einer einzigen Datei mit Rückgängig, Tipps und 13 Erfolgen, dazu eine native Android-Version in Kotlin.',
         },
         {
-          ...en.projects.more.items[8],
+          ...en.projects.more.items[9],
           summary:
             'Über 60 Specialty Coffees von mehr als 25 indischen Röstereien, mit Aroma-Radardiagrammen und neun Zubereitungsanleitungen. Astro, React, Three.js.',
         },
         {
-          ...en.projects.more.items[9],
+          ...en.projects.more.items[10],
           summary:
             'Archiv meiner 74 Bücher mit Statistik-Dashboard, Genrefiltern, Suche und Lesestatus.',
         },
         {
-          ...en.projects.more.items[10],
+          ...en.projects.more.items[11],
           summary:
             'Neun verzweigte Geschichten, darunter „Der Graf von Monte Christo“.',
         },
         {
-          ...en.projects.more.items[11],
+          ...en.projects.more.items[12],
           summary:
             'Personalisierte Übersicht für Fußballergebnisse.',
         },
@@ -557,7 +579,7 @@ const de: Content = {
     quotes: [
       { quote: quotes.hr, name: 'Sagar Makwana', role: 'Personalleitung, PRM & Company' },
       { quote: quotes.hod, name: 'Prof. Prashant J. Viradiya', role: 'Leitung des Fachbereichs Computer Engineering, GMIT' },
-      { quote: quotes.professor, name: 'Prof. Ritesh D. Chimnani', role: 'Assistant Professor, Computer Engineering, GMIT' },
+      { quote: quotes.professor, name: 'Prof. Ritesh D. Chimnani', role: 'Professor für Software Engineering, Fachbereich Computer Engineering, GMIT' },
     ],
   },
   education: {
@@ -568,7 +590,13 @@ const de: Content = {
         period: 'seit 10/2026',
         degree: 'M.Sc. Data Science',
         school: 'TU Dortmund (voraussichtlich bis 09/2028)',
-        notes: ['Module: Statistical Theory, Applied Bayesian Data Analysis, Advanced R, Data Science in Context.'],
+        notes: [],
+        modules: [
+          { semester: '1. Semester, aktuell', text: 'Statistical Theory, Applied Bayesian Data Analysis, Advanced R, Advanced Python, Data Science in Context' },
+          { semester: '2. Semester', text: 'Advanced Statistical Learning, Advanced Machine Learning, Methodical Data Science, Visualization of Complex Data Structures' },
+          { semester: '3. Semester', text: 'Project Work (Advanced Case Studies oder externes Praktikum, Seminar), Wahlkurse in Advanced Machine Learning und Methodical Data Science' },
+          { semester: '4. Semester', text: 'Masterarbeit, Advanced Seminar' },
+        ],
       },
       {
         id: 'gtu',
@@ -593,12 +621,15 @@ const de: Content = {
   },
   bored: {
     title: 'Was ich mache, wenn mir langweilig ist',
-    soon: 'Demnächst',
-    items: [
-      { ...en.bored.items[0], title: 'YouTube-Kanal', text: 'Mein Kanal, @krishsoni1.' },
-      { ...en.bored.items[1], title: 'Journaling-Leitfaden', text: 'Ein Medium-Beitrag, noch nicht veröffentlicht.' },
-      { ...en.bored.items[2], title: 'Kaffee-Leitfaden', text: 'Ein Medium-Beitrag, noch nicht veröffentlicht.' },
-    ],
+    youtube: { title: 'YouTube-Kanal', text: 'Mein Kanal, @krishsoni1.' },
+    blogs: {
+      title: 'Medium-Blogs',
+      items: [
+        { title: 'Journaling-Leitfaden', type: 'Journaling', url: site.medium },
+        { title: 'Kaffee-Leitfaden', type: 'Kaffee', url: site.medium },
+        { title: 'Data-Science-Notizen', type: 'Data Science', url: site.medium },
+      ],
+    },
   },
   contact: {
     title: 'Kontakt',

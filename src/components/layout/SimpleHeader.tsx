@@ -9,7 +9,9 @@ const SimpleHeader: FC<{ home: string }> = ({ home }) => (
       <a href={home} className="font-serif text-lg font-medium tracking-tight text-ink">
         {site.name}
       </a>
-      <ThemeToggle />
+      <div className="-mr-2">
+        <ThemeToggle />
+      </div>
     </div>
   </header>
 )

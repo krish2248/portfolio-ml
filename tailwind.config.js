@@ -24,7 +24,7 @@ export default {
         serif: ['"Source Serif 4"', 'Georgia', 'serif'],
       },
       maxWidth: {
-        page: '80rem',
+        page: '86rem',
         // Running text: about 60-80 characters per line at 16px.
         measure: '36rem',
       },

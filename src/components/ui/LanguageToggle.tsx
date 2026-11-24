@@ -20,7 +20,7 @@ const LanguageToggle: FC = () => {
           aria-label={langNames[option]}
           title={langNames[option]}
           className={cn(
-            'min-h-9 rounded-full px-2.5 py-1.5 transition-colors',
+            'inline-flex h-9 w-9 items-center justify-center rounded-full transition-colors',
             lang === option ? 'bg-accent-soft text-ink' : 'text-muted hover:text-ink'
           )}
         >

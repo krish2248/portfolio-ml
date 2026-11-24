@@ -4,7 +4,7 @@
 
 Personal portfolio of Krish Hemang Soni. Read this first in any new session.
 
-**State at the end of 24 Nov 2026:** everything is merged, pushed and live; nothing is half done. Tag `stable-2026-11-24` marks it. Start with "Next up" at the bottom. Ask Krish before pushing unless they've said to push in that message.
+**State at the end of 24 Nov 2026:** everything is merged, pushed and live; nothing is half done. Tag `stable-2026-11-24-final` marks it (`stable-2026-11-24` is one step earlier, with the old hero text). Start with "Next up" at the bottom. Ask Krish before pushing unless they've said to push in that message.
 
 ## Who / why
 
@@ -24,7 +24,7 @@ Personal portfolio of Krish Hemang Soni. Read this first in any new session.
 ## Where things live
 
 - `src/content.ts`: **all text, English and German**, in one file (links and quotes shared at the top, then `en`, then `de`). **When you change English, change German too.** Components read it with `useLanguage()` (`src/context/LanguageContext.tsx`), where `c` is the content. Language helpers: `src/lib/lang.ts`. The EN | DE switch sits next to the theme toggle and the choice is saved. English is at `/`, German at `/de/`; `?lang=de` redirects to `/de/`. Reference quotes stay in the original English (Krish: keep them).
-- `src/components/sections/`, in page order (set in `src/App.tsx`; nav in `Navbar.tsx`): Hero with the small Now panel beside it, Experience (with quotes; before Projects), Projects (featured cards, More projects list, GitHub graph), Education & skills side by side, Contact with all socials, "What I do when I'm bored" (YouTube and a Medium blog list: three demo entries that all open the Medium profile until Krish sends the post links). Krish found the sparse version "too empty and small": keep it full. Page width is `max-w-page` (86rem). Projects shows the best four, chosen by Krish (LHCb, FUTOLOGY, Scikit-HEP, MedXAI); the rest are in a native `<details>` behind the "More projects" button.
+- `src/components/sections/`, in page order (set in `src/App.tsx`; nav in `Navbar.tsx`): Hero with the small Now panel beside it, Experience (with quotes; before Projects), Projects (featured cards, More projects list, GitHub graph), Education & skills side by side, Contact with all socials, "What I do when I'm bored" (YouTube and a Medium blog list: three demo entries that all open the Medium profile until Krish sends the post links). Krish found the sparse version "too empty and small": keep it full. Page width is `max-w-page` (86rem). Projects shows the best four, chosen by Krish in this order: LHCb, Scikit-HEP, FUTOLOGY, MedXAI; the rest are in a native `<details>` behind the "More projects" button.
 - GitHub graph: `public/github-graph.svg` is our own copy of ghchart.rshah.org; `scripts/prerender.mjs` refreshes it in `dist/` at each build and the workflow rebuilds daily. Never embed the chart service directly.
 - `src/components/ui/ProjectCover.tsx`: drawn SVG project covers, picked with `motif` in content.ts. Add new ones to `CoverMotif` and `motifs`.
 - `src/styles/globals.css`: colour tokens for light (warm paper `#f6f5f0`) and dark (forest green `#091413`, his choice). Components use the token colours (`bg`, `surface`, `plate`, `ink`, `ink-2`, `muted`, `line`, `line-strong`, `accent`) rather than `dark:` variants.
@@ -53,13 +53,13 @@ Personal portfolio of Krish Hemang Soni. Read this first in any new session.
 | Original retro-terminal site (before Oct 2026) | branch `backup/original-retro-terminal`, tag `pre-redesign-2026-10` | `19904bb` |
 | First editorial redesign (end of Oct 2026) | branch `backup/editorial-oct-2026`, tag `pre-opento-2026-11` | `4fa21b3` |
 | Just before the Nov content rewrite | tag `pre-rewrite-2026-11` | `88eccfa` |
-| Current site, end of 24 Nov 2026 | branch `backup/stable-2026-11-24`, tag `stable-2026-11-24` | see tag |
+| Current site, end of 24 Nov 2026 | branch `backup/stable-2026-11-24`, tag `stable-2026-11-24-final` | see tag |
 
 Local copies (source, built site, screenshots, full git bundle) are in `Desktop/Everything/portfolio-backups/`. The original was rebuilt from source on 24 Nov 2026 and still works (`bun install && bun run build`).
 
-- Look at an old version: `git switch --detach stable-2026-11-24` (or any tag above), then `git switch master`.
+- Look at an old version: `git switch --detach stable-2026-11-24-final` (or any tag above), then `git switch master`.
 - Undo the last change: `git revert <commit>` and push. Prefer this over resetting.
-- Put the whole site back to the end of 24 Nov: `git restore --source=stable-2026-11-24 --staged --worktree .`, commit, push.
+- Put the whole site back to the end of 24 Nov: `git restore --source=stable-2026-11-24-final --staged --worktree .`, commit, push.
 - The two `portfolio-backup-before-*.bundle` files in `Desktop/Everything` are private: never publish or push them.
 
 ## History (Oct 2026)
@@ -104,6 +104,7 @@ All live, in order:
 3. Full-screen hero, about 10% smaller scale on desktop, Medium button, menu highlight bug fixed, "More projects" reveal, Medium blog list, footer name, Prof. Chimnani's title.
 4. Top four projects set, course modules removed, nutrition blog title added.
 5. Created the public repos `lhcb-tau-3mu` and `scikit-hep-contributions` (README only) and linked both.
+6. Hero statement replaced with Krish's own text ("I build models and dashboards teams actually use…"); Scikit-HEP moved to second.
 
 Branches `portfolio-refresh-2026-11`, `layout-update-2026-11` and `sizing-2026-11` are fully merged. Check scripts are in `scripts/checks/`. `vite preview` serves the start page for unknown addresses, so test with `scripts/checks/serve.mjs`.
 

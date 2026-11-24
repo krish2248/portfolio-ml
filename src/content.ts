@@ -135,7 +135,7 @@ const en: Content = {
   hero: {
     tagline: 'Data scientist · M.Sc. Data Science student at TU Dortmund',
     statement:
-      'I turn messy data into decisions: 17 months of pharma sales analytics, now applying statistics and machine learning to particle-physics data.',
+      'I build models and dashboards teams actually use (17 months in pharma analytics). Off the clock, every curiosity turns into a full research project: surveyed, sorted, charted.',
     buttons: { cv: 'Download CV', email: 'Email' },
   },
   now: {
@@ -164,6 +164,15 @@ const en: Content = {
         motif: 'tracks',
       },
       {
+        id: 'scikit-hep',
+        title: 'Scikit-HEP contributions',
+        badge: 'In progress',
+        summary: 'Documentation, tests and examples for the Python tools used in particle-physics analysis.',
+        stack: ['Python', 'uproot', 'hist'],
+        url: 'https://github.com/krish2248/scikit-hep-contributions',
+        motif: 'histogram',
+      },
+      {
         id: 'futology',
         title: 'FUTOLOGY: football analytics web app',
         summary:
@@ -172,15 +181,6 @@ const en: Content = {
         url: 'https://github.com/krish2248/futology',
         live: 'https://krish2248.github.io/futology/',
         motif: 'pitch',
-      },
-      {
-        id: 'scikit-hep',
-        title: 'Scikit-HEP contributions',
-        badge: 'In progress',
-        summary: 'Documentation, tests and examples for the Python tools used in particle-physics analysis.',
-        stack: ['Python', 'uproot', 'hist'],
-        url: 'https://github.com/krish2248/scikit-hep-contributions',
-        motif: 'histogram',
       },
       {
         id: 'medxai',
@@ -426,7 +426,7 @@ const de: Content = {
   hero: {
     tagline: 'Data Scientist · Masterstudent Data Science an der TU Dortmund',
     statement:
-      'Ich mache aus unübersichtlichen Daten Entscheidungen: 17 Monate Vertriebsanalyse in der Pharmabranche, jetzt Statistik und Machine Learning auf Daten aus der Teilchenphysik.',
+      'Ich baue Modelle und Dashboards, die Teams wirklich nutzen (17 Monate Pharma-Analytics). Nach Feierabend wird aus jeder Neugier ein ganzes Forschungsprojekt: erhoben, sortiert, visualisiert.',
     buttons: { cv: 'Lebenslauf herunterladen (Englisch)', email: 'E-Mail' },
   },
   now: {
@@ -453,15 +453,15 @@ const de: Content = {
       },
       {
         ...en.projects.items[1],
-        title: 'FUTOLOGY: Web-App für Fußballanalysen',
-        summary:
-          'Live-Ergebnisse, OTP-Login und ein Tippspiel mit Ranglisten; über 530 Commits und eine Live-Demo. Als Nächstes: ein Machine-Learning-Service mit FastAPI.',
-      },
-      {
-        ...en.projects.items[2],
         title: 'Beiträge zu Scikit-HEP',
         badge: 'In Arbeit',
         summary: 'Dokumentation, Tests und Beispiele für die Python-Werkzeuge, mit denen in der Teilchenphysik Daten ausgewertet werden.',
+      },
+      {
+        ...en.projects.items[2],
+        title: 'FUTOLOGY: Web-App für Fußballanalysen',
+        summary:
+          'Live-Ergebnisse, OTP-Login und ein Tippspiel mit Ranglisten; über 530 Commits und eine Live-Demo. Als Nächstes: ein Machine-Learning-Service mit FastAPI.',
       },
       {
         ...en.projects.items[3],

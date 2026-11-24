@@ -28,7 +28,7 @@ const ProjectCover: FC<ProjectCoverProps> = ({ motif, caption, className }) => (
   >
     <svg
       viewBox="0 0 320 180"
-      className="absolute inset-0 h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+      className="absolute inset-0 h-full w-full transition-transform duration-500 ease-out motion-safe:group-hover:scale-[1.03]"
       fill="none"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -37,7 +37,7 @@ const ProjectCover: FC<ProjectCoverProps> = ({ motif, caption, className }) => (
       {motifs[motif]}
     </svg>
     {caption && (
-      <span className="absolute bottom-2.5 left-3 rounded bg-plate px-1.5 py-0.5 font-mono text-[11px] text-muted">
+      <span className="absolute bottom-2.5 left-3 rounded bg-plate px-1.5 py-0.5 font-mono text-xs text-muted">
         {caption}
       </span>
     )}

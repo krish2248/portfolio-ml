@@ -9,7 +9,7 @@ const Contact: FC = () => {
   return (
     <Section id="contact" title={contact.title}>
       <dl className="max-w-xl border-t border-line">
-        <div className="grid grid-cols-[7rem_1fr] gap-3 border-b border-line py-3">
+        <div className="grid min-h-14 grid-cols-[7rem_1fr] items-center gap-3 border-b border-line py-2">
           <dt className="text-sm leading-6 text-muted">{contact.email}</dt>
           <dd className="min-w-0 break-words">
             <a href={`mailto:${site.email}`} className="link text-ink">
@@ -17,7 +17,7 @@ const Contact: FC = () => {
             </a>
           </dd>
         </div>
-        <div className="grid grid-cols-[7rem_1fr] gap-3 border-b border-line py-3">
+        <div className="grid min-h-14 grid-cols-[7rem_1fr] items-center gap-3 border-b border-line py-2">
           <dt className="text-sm leading-6 text-muted">{contact.location}</dt>
           <dd className="text-ink-2">{contact.locationValue}</dd>
         </div>

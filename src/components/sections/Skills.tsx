@@ -7,9 +7,9 @@ const Skills: FC = () => {
 
   return (
     <Section id="skills" title={skills.title}>
-      <ul className="border-t border-line">
+      <ul className="max-w-measure border-t border-line">
         {skills.rows.map((row) => (
-          <li key={row} className="border-b border-line py-3 text-sm text-ink-2">
+          <li key={row} className="border-b border-line py-3 text-ink-2">
             {row}
           </li>
         ))}

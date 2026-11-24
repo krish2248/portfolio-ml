@@ -9,7 +9,7 @@ const LanguageToggle: FC = () => {
   const { lang, setLang, c } = useLanguage()
 
   return (
-    <div role="group" aria-label={c.ui.language} className="flex items-center font-mono text-xs">
+    <div role="group" aria-label={c.ui.language} className="flex items-center font-mono text-sm">
       {langs.map((option) => (
         <button
           key={option}
@@ -20,7 +20,7 @@ const LanguageToggle: FC = () => {
           aria-label={langNames[option]}
           title={langNames[option]}
           className={cn(
-            'rounded-full px-2 py-1.5 transition-colors',
+            'min-h-9 rounded-full px-2.5 py-1.5 transition-colors',
             lang === option ? 'bg-accent-soft text-ink' : 'text-muted hover:text-ink'
           )}
         >

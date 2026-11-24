@@ -37,6 +37,8 @@ Personal portfolio of Krish Hemang Soni. Read this first in any new session.
 - Keep the editorial layout: a label column on the left and content on the right, with one green accent colour.
 - Only claim things in `src/content.ts` / his CV.
 
+- Readability floor (24 Nov 2026): running text at least 16px and capped with `max-w-measure` (35rem, 60-80 characters); labels at least 14px, badges and cover captions 12px; text contrast at least 4.5:1 in both themes; links and controls at least 24px tall; everything keyboard-usable. Reduced motion is handled in globals.css.
+
 ## History (Oct 2026)
 
 | Commit | What |

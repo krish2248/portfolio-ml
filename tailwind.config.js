@@ -25,6 +25,8 @@ export default {
       },
       maxWidth: {
         page: '68rem',
+        // Running text: about 60-80 characters per line at 16px.
+        measure: '35rem',
       },
     },
   },

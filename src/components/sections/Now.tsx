@@ -7,7 +7,7 @@ const Now: FC = () => {
 
   return (
     <Section id="now" title={now.title} note={now.updated}>
-      <ul className="max-w-3xl border-t border-line">
+      <ul className="max-w-measure border-t border-line">
         {now.items.map((item) => (
           <li key={item} className="border-b border-line py-3 text-ink-2">
             {item}

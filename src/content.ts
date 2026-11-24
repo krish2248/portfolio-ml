@@ -67,6 +67,7 @@ export interface Content {
   nav: { now: string; projects: string; experience: string; education: string; contact: string }
   ui: {
     skipLink: string
+    mainNav: string
     menuOpen: string
     menuClose: string
     toLight: string
@@ -95,10 +96,10 @@ const en: Content = {
     title: 'Now',
     updated: 'Updated November 2026',
     items: [
-      'Building an LHCb τ → μμμ decay classifier (XGBoost + SHAP), in progress',
+      'Building an LHCb τ → μμμ decay classifier (XGBoost + SHAP), in progress',
       'Contributing to Scikit-HEP (uproot, hist), in progress',
       'Studying Statistical Theory, Applied Bayesian Data Analysis and Advanced R at TU Dortmund',
-      'Open to Werkstudent, HiWi and internship roles in data science: up to 20 h/week during lectures, full-time in semester breaks',
+      'Open to Werkstudent, HiWi and internship roles in data science: up to 20 h/week during lectures, full-time in semester breaks',
     ],
   },
   projects: {
@@ -109,7 +110,7 @@ const en: Content = {
     items: [
       {
         id: 'lhcb-tau-3mu',
-        title: 'LHCb τ → μμμ decay classifier',
+        title: 'LHCb τ → μμμ decay classifier',
         badge: 'In progress',
         summary:
           'XGBoost classifier with SHAP explanations on LHCb data from Kaggle’s “Flavours of Physics” challenge, designed to pass the challenge’s real-vs-simulated agreement test and mass-correlation test.',
@@ -212,6 +213,7 @@ const en: Content = {
   nav: { now: 'Now', projects: 'Projects', experience: 'Experience', education: 'Education', contact: 'Contact' },
   ui: {
     skipLink: 'Skip to content',
+    mainNav: 'Main',
     menuOpen: 'Menu',
     menuClose: 'Close',
     toLight: 'Switch to light mode',
@@ -240,10 +242,10 @@ const de: Content = {
     title: 'Aktuell',
     updated: 'Stand: November 2026',
     items: [
-      'Entwicklung eines LHCb-Klassifikators für den Zerfall τ → μμμ (XGBoost + SHAP), in Arbeit',
+      'Entwicklung eines LHCb-Klassifikators für den Zerfall τ → μμμ (XGBoost + SHAP), in Arbeit',
       'Beiträge zu Scikit-HEP (uproot, hist), in Arbeit',
       'Studium an der TU Dortmund: Statistical Theory, Applied Bayesian Data Analysis und Advanced R',
-      'Offen für Werkstudenten-, HiWi- und Praktikumsstellen in Data Science: bis zu 20 Std./Woche in der Vorlesungszeit, Vollzeit in der vorlesungsfreien Zeit',
+      'Offen für Werkstudenten-, HiWi- und Praktikumsstellen in Data Science: bis zu 20 Std./Woche in der Vorlesungszeit, Vollzeit in der vorlesungsfreien Zeit',
     ],
   },
   projects: {
@@ -254,7 +256,7 @@ const de: Content = {
     items: [
       {
         ...en.projects.items[0],
-        title: 'LHCb-Klassifikator für den Zerfall τ → μμμ',
+        title: 'LHCb-Klassifikator für den Zerfall τ → μμμ',
         badge: 'In Arbeit',
         summary:
           'XGBoost-Klassifikator mit SHAP-Erklärungen auf LHCb-Daten aus der Kaggle-Challenge „Flavours of Physics“, ausgelegt darauf, den Übereinstimmungstest zwischen echten und simulierten Daten sowie den Massenkorrelationstest der Challenge zu bestehen.',
@@ -334,6 +336,7 @@ const de: Content = {
   nav: { now: 'Aktuell', projects: 'Projekte', experience: 'Erfahrung', education: 'Ausbildung', contact: 'Kontakt' },
   ui: {
     skipLink: 'Zum Inhalt springen',
+    mainNav: 'Hauptnavigation',
     menuOpen: 'Menü',
     menuClose: 'Schließen',
     toLight: 'Zum hellen Modus wechseln',

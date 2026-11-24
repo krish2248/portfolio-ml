@@ -61,8 +61,9 @@
 @layer components {
   /* Underlined text link that picks up the accent on hover. */
   .link {
-    @apply underline decoration-1 underline-offset-[3px] transition-colors;
-    text-decoration-color: var(--line-strong);
+    /* inline-block + padding: at least 24px tall, so links are easy to tap. */
+    @apply inline-block py-1 underline decoration-1 underline-offset-[3px] transition-colors;
+    text-decoration-color: var(--muted);
   }
   .link:hover {
     color: var(--accent);
@@ -70,7 +71,7 @@
   }
 
   .eyebrow {
-    @apply font-mono text-xs uppercase tracking-[0.08em] text-muted;
+    @apply font-mono text-sm uppercase tracking-[0.08em] text-muted;
   }
 }
 
@@ -78,6 +79,9 @@
   html { scroll-behavior: auto; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
   }
 }

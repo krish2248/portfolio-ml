@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
 import { site } from '@/content'
 import { useScrollSpy } from '@/hooks/useScrollSpy'
@@ -15,6 +15,7 @@ const Navbar: FC = () => {
   const [scrolled, setScrolled] = useState(false)
   const active = useScrollSpy({ sectionIds, offset: 120 })
   const { c } = useLanguage()
+  const menuButton = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -25,7 +26,11 @@ const Navbar: FC = () => {
 
   useEffect(() => {
     if (!menuOpen) return
-    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setMenuOpen(false)
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return
+      setMenuOpen(false)
+      menuButton.current?.focus()
+    }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [menuOpen])
@@ -37,7 +42,7 @@ const Navbar: FC = () => {
         scrolled || menuOpen ? 'border-line bg-bg' : 'border-transparent bg-bg'
       )}
     >
-      <nav className="mx-auto flex h-16 max-w-page items-center justify-between px-5 sm:px-8" aria-label="Main">
+      <nav className="mx-auto flex h-16 max-w-page items-center justify-between px-5 sm:px-8" aria-label={c.ui.mainNav}>
         <a href="#top" className="font-serif text-lg font-medium tracking-tight text-ink" onClick={() => setMenuOpen(false)}>
           {site.name}
         </a>
@@ -62,6 +67,7 @@ const Navbar: FC = () => {
           <LanguageToggle />
           <ThemeToggle />
           <button
+            ref={menuButton}
             type="button"
             className="ml-1 rounded-full px-3 py-1.5 text-sm text-ink-2 hover:bg-accent-soft md:hidden"
             aria-expanded={menuOpen}

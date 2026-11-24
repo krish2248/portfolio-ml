@@ -25,7 +25,7 @@ const Page: FC = () => {
         {c.ui.skipLink}
       </a>
       <Navbar />
-      <main id="main">
+      <main id="main" tabIndex={-1} className="outline-none">
         <Hero />
         <Now />
         <Experience />

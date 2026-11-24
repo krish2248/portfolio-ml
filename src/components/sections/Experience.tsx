@@ -10,13 +10,13 @@ const Experience: FC = () => {
       <ol className="space-y-10">
         {experience.items.map((job) => (
           <li key={job.id} className="grid gap-2 sm:grid-cols-[9.5rem_1fr] sm:gap-6">
-            <div className="font-mono text-xs leading-6 text-muted">{job.period}</div>
+            <div className="font-mono text-sm leading-6 text-muted">{job.period}</div>
             <div>
-              <h3 className="font-medium text-ink">
+              <h3 className="text-lg font-medium text-ink">
                 {job.role} <span className="font-normal text-ink-2">· {job.company}</span>
               </h3>
               <p className="text-sm text-muted">{job.location}</p>
-              <p className="mt-2 text-sm leading-relaxed text-ink-2">{job.text}</p>
+              <p className="mt-2 max-w-measure leading-relaxed text-ink-2">{job.text}</p>
             </div>
           </li>
         ))}

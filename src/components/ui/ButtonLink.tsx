@@ -17,10 +17,10 @@ export const ButtonLink: FC<ButtonLinkProps> = ({ href, children, variant = 'sec
     download={download}
     {...(external && { target: '_blank', rel: 'noopener noreferrer' })}
     className={cn(
-      'inline-flex h-10 items-center rounded-md px-4 text-sm font-medium transition-colors',
+      'inline-flex min-h-11 items-center rounded-md px-4 py-2 font-medium transition-colors',
       variant === 'primary'
         ? 'bg-ink text-bg hover:bg-accent'
-        : 'border border-line-strong text-ink hover:border-ink',
+        : 'border border-muted text-ink hover:border-ink',
       className
     )}
   >

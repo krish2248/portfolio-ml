@@ -17,7 +17,7 @@ const Projects: FC = () => {
         ))}
       </div>
 
-      <p className="mt-12 flex flex-wrap gap-x-5 gap-y-2 border-t border-line pt-4 text-sm">
+      <p className="mt-12 flex flex-wrap items-center gap-x-5 gap-y-1 border-t border-line pt-4">
         <span className="text-muted">{projects.more}</span>
         {moreProjects.map((project) => (
           <a key={project.url} href={project.url} target="_blank" rel="noopener noreferrer" className="link">
@@ -53,24 +53,24 @@ const ProjectCard: FC<{ project: Project; wide: boolean }> = ({ project, wide })
       )}
       <div className={cn('flex grow flex-col', wide ? 'mt-4 sm:mt-0' : 'mt-4')}>
         {badge && (
-          <p className="mb-2 self-start rounded border border-accent px-1.5 py-0.5 font-mono text-[11px] uppercase tracking-wide text-accent">
+          <p className="mb-2 self-start rounded border border-accent px-1.5 py-0.5 font-mono text-xs uppercase tracking-wide text-accent">
             {badge}
           </p>
         )}
         <h3 className="text-lg font-medium text-ink">
           {url ? (
-            <a href={url} target="_blank" rel="noopener noreferrer" className="hover:text-accent">
+            <a href={url} target="_blank" rel="noopener noreferrer" className="inline-block py-px hover:text-accent">
               {title}
             </a>
           ) : (
             title
           )}
         </h3>
-        <p className="mt-2 text-sm leading-relaxed text-ink-2">{summary}</p>
+        <p className="mt-2 max-w-measure leading-relaxed text-ink-2">{summary}</p>
         {(stack || url) && (
-          <div className="mt-auto flex items-end justify-between gap-4 pt-4">
-            <span className="font-mono text-xs text-muted">{stack?.join(' · ')}</span>
-            <span className="flex shrink-0 gap-4 text-sm">
+          <div className="mt-auto pt-3">
+            <p className="font-mono text-sm text-muted">{stack?.join(' · ')}</p>
+            <p className="mt-1 flex gap-4">
               {live && (
                 <a href={live} target="_blank" rel="noopener noreferrer" className="link">
                   {projects.live}
@@ -83,7 +83,7 @@ const ProjectCard: FC<{ project: Project; wide: boolean }> = ({ project, wide })
                   <span className="sr-only">: {title}</span> ↗
                 </a>
               )}
-            </span>
+            </p>
           </div>
         )}
       </div>

@@ -34,6 +34,7 @@ export function render(lang: Lang) {
     ...c.education.items.flatMap((item) => [item.period, item.degree, item.school, ...item.notes]),
     ...c.education.skills.flatMap((row) => [row.group, row.text]),
     site.medium,
+    ...c.bored.items.flatMap((item) => [item.title, item.text, item.url ?? '']),
     c.contact.locationValue,
   ].filter(Boolean)
 

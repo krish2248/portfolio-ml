@@ -19,6 +19,7 @@ export const site = {
   github: 'https://github.com/krish2248',
   linkedin: 'https://www.linkedin.com/in/krish-soni-460932228/',
   medium: 'https://medium.com/@krish2248',
+  youtube: 'https://www.youtube.com/@krishsoni1',
   source: 'https://github.com/krish2248/portfolio-ml',
   /**
    * true builds /impressum and /datenschutz, links them in the footer and adds them to the sitemap.
@@ -88,6 +89,7 @@ export interface Content {
     skillsTitle: string
     skills: { group: string; text: string }[]
   }
+  bored: { title: string; soon: string; items: { id: string; title: string; text: string; url?: string; motif: CoverMotif }[] }
   contact: {
     title: string
     pitch: string
@@ -118,7 +120,7 @@ const en: Content = {
   meta: {
     title: 'Krish Soni · Data Scientist · M.Sc. Data Science, TU Dortmund',
     description:
-      'Data scientist with 17 months in pharma sales analytics and M.Sc. Data Science student at TU Dortmund. Python, statistics, machine learning; now working with particle-physics data. Open to Werkstudent, HiWi and internship roles.',
+      'Data scientist with 17 months in pharma sales analytics and M.Sc. Data Science student at TU Dortmund. Python, statistics, machine learning; now working with particle-physics data. Open to work, internship and research opportunities.',
     imageAlt: 'Krish Soni, Data Scientist, M.Sc. Data Science at TU Dortmund. sonikrish.com',
   },
   hero: {
@@ -191,6 +193,21 @@ const en: Content = {
       live: 'Live',
       items: [
         {
+          id: 'scikit-hep',
+          title: 'Scikit-HEP contributions',
+          summary:
+            'In progress: documentation, tests and examples for the Python tools used in particle-physics analysis (uproot, hist).',
+          motif: 'tracks',
+        },
+        {
+          id: 'medxai',
+          title: 'MedXAI',
+          summary:
+            'Multi-modal medical explainable-AI system for research and teaching, with interpretability output for its predictions.',
+          url: 'https://github.com/krish2248/medxai',
+          motif: 'pulse',
+        },
+        {
           id: 'prm-herbovilla',
           title: 'PRM Herbovilla',
           summary:
@@ -212,7 +229,7 @@ const en: Content = {
           title: 'Breast Cancer Diagnosis Predictor',
           summary:
             'Classification model for breast-cancer diagnosis in Python and scikit-learn.',
-          motif: 'pulse',
+          motif: 'scatter',
         },
         {
           id: 'virtual-classroom',
@@ -341,12 +358,21 @@ const en: Content = {
     ],
     skillsTitle: 'Skills',
     skills: [
-      { group: 'Data and statistics', text: 'Python (pandas, NumPy, scikit-learn, XGBoost, Matplotlib, Seaborn), SQL, R, regression, hypothesis testing, data visualisation' },
+      { group: 'Data and statistics', text: 'Python (pandas, NumPy, scikit-learn, XGBoost, Matplotlib, Seaborn), SQL, R' },
       { group: 'Software and web', text: 'TypeScript, JavaScript, React, Next.js, Node.js, PHP, MySQL, PostgreSQL/Supabase, REST APIs, Socket.IO' },
-      { group: 'Tools', text: 'Git and GitHub, Jupyter, LaTeX, Excel, Shopify' },
+      { group: 'Tools', text: 'Git and GitHub, Excel' },
       { group: 'Learning now', text: 'Scikit-HEP tools for particle physics (uproot, hist)' },
-      { group: 'Basic knowledge', text: 'Java, Kotlin, Flutter/Dart, TensorFlow' },
+      { group: 'Basic knowledge', text: 'TensorFlow' },
       { group: 'Languages', text: 'English C1 · German A1 · Hindi and Gujarati (native)' },
+    ],
+  },
+  bored: {
+    title: 'What I do when I’m bored',
+    soon: 'Coming soon',
+    items: [
+      { id: 'youtube', title: 'YouTube channel', text: 'My channel, @krishsoni1.', url: site.youtube, motif: 'video' },
+      { id: 'journaling', title: 'Journaling guide', text: 'A Medium post, not published yet.', motif: 'journal' },
+      { id: 'coffee', title: 'Coffee guide', text: 'A Medium post, not published yet.', motif: 'cup' },
     ],
   },
   contact: {
@@ -379,7 +405,7 @@ const de: Content = {
   meta: {
     title: 'Krish Soni · Data Scientist · M.Sc. Data Science, TU Dortmund',
     description:
-      'Data Scientist mit 17 Monaten Erfahrung in der Pharma-Vertriebsanalyse und Masterstudent Data Science an der TU Dortmund. Python, Statistik, Machine Learning; aktuell mit Daten aus der Teilchenphysik. Offen für Werkstudenten-, HiWi- und Praktikumsstellen.',
+      'Data Scientist mit 17 Monaten Erfahrung in der Pharma-Vertriebsanalyse und Masterstudent Data Science an der TU Dortmund. Python, Statistik, Machine Learning; aktuell mit Daten aus der Teilchenphysik. Offen für Jobs, Praktika und Forschung.',
     imageAlt: 'Krish Soni, Data Scientist, M.Sc. Data Science an der TU Dortmund. sonikrish.com',
   },
   hero: {
@@ -439,53 +465,64 @@ const de: Content = {
       items: [
         {
           ...en.projects.more.items[0],
+          title: 'Beiträge zu Scikit-HEP',
+          summary:
+            'In Arbeit: Dokumentation, Tests und Beispiele für die Python-Werkzeuge der Teilchenphysik (uproot, hist).',
+        },
+        {
+          ...en.projects.more.items[1],
+          summary:
+            'Multimodales, erklärbares KI-System für die Medizin, für Forschung und Lehre, mit Interpretierbarkeits-Ausgaben zu den Vorhersagen.',
+        },
+        {
+          ...en.projects.more.items[2],
           summary:
             'Onlineshop für PRM & Company auf Shopify mit eigenem JavaScript und CSS: sechs Produktkategorien, Zahlung per UPI, Karte und Nachnahme sowie ein Echtzeit-Dashboard.',
         },
         {
-          ...en.projects.more.items[1],
+          ...en.projects.more.items[3],
           title: 'Immobilienverwaltungssystem',
           summary:
             'Allein bei IT Hub entwickelt, mit PHP, MySQL und JavaScript: Rollen und Rechte, Suche mit Mehrfachfiltern, Lead-Management, Zahlungen über Razorpay und PayPal.',
         },
         {
-          ...en.projects.more.items[2],
+          ...en.projects.more.items[4],
           title: 'Brustkrebs-Diagnosemodell',
           summary:
             'Klassifikationsmodell für die Brustkrebsdiagnose mit Python und scikit-learn.',
         },
         {
-          ...en.projects.more.items[3],
+          ...en.projects.more.items[5],
           summary:
             'Live-Unterricht über die Zoom-API plus Abgabe von Aufgaben, entwickelt unter Betreuung von Lehrenden am GMIT.',
         },
         {
-          ...en.projects.more.items[4],
+          ...en.projects.more.items[6],
           summary:
             'Offline-Diagnose für Akku, Ladevorgang und Temperatur unter Android, mit Kotlin und Jetpack Compose.',
         },
         {
-          ...en.projects.more.items[5],
+          ...en.projects.more.items[7],
           summary:
             'Webspiel in einer einzigen Datei mit Rückgängig, Tipps und 13 Erfolgen, dazu eine native Android-Version in Kotlin.',
         },
         {
-          ...en.projects.more.items[6],
+          ...en.projects.more.items[8],
           summary:
             'Über 60 Specialty Coffees von mehr als 25 indischen Röstereien, mit Aroma-Radardiagrammen und neun Zubereitungsanleitungen. Astro, React, Three.js.',
         },
         {
-          ...en.projects.more.items[7],
+          ...en.projects.more.items[9],
           summary:
             'Archiv meiner 74 Bücher mit Statistik-Dashboard, Genrefiltern, Suche und Lesestatus.',
         },
         {
-          ...en.projects.more.items[8],
+          ...en.projects.more.items[10],
           summary:
             'Neun verzweigte Geschichten, darunter „Der Graf von Monte Christo“.',
         },
         {
-          ...en.projects.more.items[9],
+          ...en.projects.more.items[11],
           summary:
             'Personalisierte Übersicht für Fußballergebnisse.',
         },
@@ -546,12 +583,21 @@ const de: Content = {
     ],
     skillsTitle: 'Kenntnisse',
     skills: [
-      { group: 'Daten und Statistik', text: 'Python (pandas, NumPy, scikit-learn, XGBoost, Matplotlib, Seaborn), SQL, R, Regression, Hypothesentests, Datenvisualisierung' },
+      { group: 'Daten und Statistik', text: 'Python (pandas, NumPy, scikit-learn, XGBoost, Matplotlib, Seaborn), SQL, R' },
       { group: 'Software und Web', text: 'TypeScript, JavaScript, React, Next.js, Node.js, PHP, MySQL, PostgreSQL/Supabase, REST-APIs, Socket.IO' },
-      { group: 'Werkzeuge', text: 'Git und GitHub, Jupyter, LaTeX, Excel, Shopify' },
+      { group: 'Werkzeuge', text: 'Git und GitHub, Excel' },
       { group: 'Lerne gerade', text: 'Scikit-HEP-Werkzeuge für die Teilchenphysik (uproot, hist)' },
-      { group: 'Grundkenntnisse', text: 'Java, Kotlin, Flutter/Dart, TensorFlow' },
+      { group: 'Grundkenntnisse', text: 'TensorFlow' },
       { group: 'Sprachen', text: 'Englisch C1 · Deutsch A1 · Hindi und Gujarati (Muttersprachen)' },
+    ],
+  },
+  bored: {
+    title: 'Was ich mache, wenn mir langweilig ist',
+    soon: 'Demnächst',
+    items: [
+      { ...en.bored.items[0], title: 'YouTube-Kanal', text: 'Mein Kanal, @krishsoni1.' },
+      { ...en.bored.items[1], title: 'Journaling-Leitfaden', text: 'Ein Medium-Beitrag, noch nicht veröffentlicht.' },
+      { ...en.bored.items[2], title: 'Kaffee-Leitfaden', text: 'Ein Medium-Beitrag, noch nicht veröffentlicht.' },
     ],
   },
   contact: {

@@ -26,6 +26,8 @@ export type CoverMotif =
   | 'books'
   | 'branches'
   | 'scores'
+  | 'video'
+  | 'journal'
 
 interface ProjectCoverProps {
   motif: CoverMotif
@@ -414,6 +416,30 @@ const motifs: Record<CoverMotif, ReactNode> = {
           </g>
         )
       })}
+    </>
+  ),
+
+  // Video player with a scrubber
+  video: (
+    <>
+      <rect x="70" y="28" width="180" height="104" rx="8" {...ink} />
+      <path d="M146 60 L182 80 L146 100 Z" fill="currentColor" opacity="0.9" />
+      <line x1="70" y1="150" x2="250" y2="150" {...ink} />
+      <line x1="70" y1="150" x2="148" y2="150" {...accent} />
+      <circle cx="148" cy="150" r="4.5" fill="currentColor" />
+    </>
+  ),
+
+  // Open notebook with a bookmark
+  journal: (
+    <>
+      <g {...ink}>
+        <path d="M160 40 C 132 26, 100 28, 72 36 V 146 C 100 138, 132 138, 160 150 Z" />
+        <path d="M160 40 C 188 26, 220 28, 248 36 V 146 C 220 138, 188 138, 160 150" />
+        <path d="M178 62 C 196 56, 214 55, 232 58 M178 82 C 196 76, 214 75, 232 78" />
+      </g>
+      <path d="M88 60 C 106 56, 124 57, 142 63 M88 80 C 106 76, 124 77, 142 83 M88 100 C 102 97, 112 97, 122 99" {...accent} />
+      <path d="M216 30 V 74 L223 67 L230 74 V 31" fill="currentColor" opacity="0.85" />
     </>
   ),
 }

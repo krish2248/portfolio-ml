@@ -4,7 +4,7 @@ import { LanguageProvider, useLanguage } from './context/LanguageContext'
 import { Lang } from './lib/lang'
 import { Navbar, Footer } from './components/layout'
 import type { Page } from './lib/pages'
-import { Legal, NotFound, Hero, Projects, Experience, Education, Contact } from './components/sections'
+import { Legal, NotFound, Hero, Projects, Experience, Education, Contact, Bored } from './components/sections'
 
 // The legal pages are German only; the 404 page carries both languages.
 const App: FC<{ lang: Lang; page: Page }> = ({ lang, page }) => (
@@ -35,6 +35,7 @@ const Layout: FC<{ page: Page }> = ({ page }) => {
             <Projects />
             <Education />
             <Contact />
+            <Bored />
           </main>
         </>
       ) : page === 'notFound' ? (

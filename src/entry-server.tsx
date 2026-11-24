@@ -31,7 +31,7 @@ export function render(lang: Lang) {
     ...c.projects.more.items.flatMap((p) => [p.title, p.summary, p.url ?? '', p.live ?? '']),
     ...c.experience.items.flatMap((job) => [job.period, job.role, job.company, job.location, job.text]),
     ...c.experience.quotes.flatMap((ref) => [ref.quote, ref.name, ref.role]),
-    ...c.education.items.flatMap((item) => [item.period, item.degree, item.school, ...item.notes, ...(item.modules ?? []).flatMap((row) => [row.semester, row.text])]),
+    ...c.education.items.flatMap((item) => [item.period, item.degree, item.school, ...item.notes]),
     ...c.education.skills.flatMap((row) => [row.group, row.text]),
     site.medium,
     site.youtube,

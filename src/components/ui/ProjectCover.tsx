@@ -28,6 +28,7 @@ export type CoverMotif =
   | 'scores'
   | 'video'
   | 'journal'
+  | 'histogram'
 
 interface ProjectCoverProps {
   motif: CoverMotif
@@ -440,6 +441,24 @@ const motifs: Record<CoverMotif, ReactNode> = {
       </g>
       <path d="M88 60 C 106 56, 124 57, 142 63 M88 80 C 106 76, 124 77, 142 83 M88 100 C 102 97, 112 97, 122 99" {...accent} />
       <path d="M216 30 V 74 L223 67 L230 74 V 31" fill="currentColor" opacity="0.85" />
+    </>
+  ),
+
+  // Step histogram with a fitted peak, as in an invariant-mass plot
+  histogram: (
+    <>
+      <g {...ink}>
+        <line x1="40" y1="152" x2="284" y2="152" />
+        <line x1="40" y1="28" x2="40" y2="152" />
+      </g>
+      <path
+        d="M48 152 V134 H66 V130 H84 V126 H102 V118 H120 V96 H138 V60 H156 V44 H174 V66 H192 V100 H210 V122 H228 V128 H246 V134 H264 V138 H276 V152"
+        stroke="var(--muted)"
+        strokeWidth="1.4"
+        fill="currentColor"
+        fillOpacity="0.12"
+      />
+      <path d="M48 136 C 96 130, 108 118, 124 92 C 138 62, 150 44, 160 44 C 172 44, 184 70, 198 100 C 212 124, 234 132, 276 140" {...accent} />
     </>
   ),
 }

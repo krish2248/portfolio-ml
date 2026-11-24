@@ -90,8 +90,6 @@ export interface Content {
       degree: string
       school: string
       notes: string[]
-      /** Modules by semester, from the TU Dortmund study plan. */
-      modules?: { semester: string; text: string }[]
     }[]
     skillsTitle: string
     skills: { group: string; text: string }[]
@@ -176,19 +174,21 @@ const en: Content = {
         motif: 'pitch',
       },
       {
-        id: 'auto-valuator',
-        title: 'Auto-Valuator: used-car price prediction',
-        summary: 'Five regression models compared on age, mileage, make and condition; best R² above 0.85.',
-        stack: ['Python', 'scikit-learn', 'XGBoost'],
-        url: 'https://github.com/krish2248/Auto-Valuator',
-        motif: 'scatter',
+        id: 'scikit-hep',
+        title: 'Scikit-HEP contributions',
+        badge: 'In progress',
+        summary: 'Documentation, tests and examples for the Python tools used in particle-physics analysis.',
+        stack: ['Python', 'uproot', 'hist'],
+        motif: 'histogram',
       },
       {
-        id: 'llm-experiments',
-        title: 'LLM experiments',
+        id: 'medxai',
+        title: 'MedXAI',
         summary:
-          'An agent on Llama 4 via the Groq API exploring tool use; Connect 4 against NVIDIA Nemotron with every model move validated against the rules.',
-        motif: 'board',
+          'Multi-modal medical explainable-AI system for research and teaching, with interpretability output for its predictions.',
+        stack: ['Python', 'Explainable AI'],
+        url: 'https://github.com/krish2248/medxai',
+        motif: 'pulse',
       },
     ],
     more: {
@@ -204,19 +204,19 @@ const en: Content = {
           motif: 'nodes',
         },
         {
-          id: 'scikit-hep',
-          title: 'Scikit-HEP contributions',
+          id: 'llm-experiments',
+          title: 'LLM experiments',
           summary:
-            'In progress: documentation, tests and examples for the Python tools used in particle-physics analysis (uproot, hist).',
-          motif: 'tracks',
+            'An agent on Llama 4 via the Groq API exploring tool use; Connect 4 against NVIDIA Nemotron with every model move validated against the rules.',
+          motif: 'board',
         },
         {
-          id: 'medxai',
-          title: 'MedXAI',
+          id: 'auto-valuator',
+          title: 'Auto-Valuator: used-car price prediction',
           summary:
-            'Multi-modal medical explainable-AI system for research and teaching, with interpretability output for its predictions.',
-          url: 'https://github.com/krish2248/medxai',
-          motif: 'pulse',
+            'Five regression models compared on age, mileage, make and condition; best R² above 0.85. Python, scikit-learn, XGBoost.',
+          url: 'https://github.com/krish2248/Auto-Valuator',
+          motif: 'scatter',
         },
         {
           id: 'prm-herbovilla',
@@ -355,12 +355,6 @@ const en: Content = {
         degree: 'M.Sc. Data Science',
         school: 'TU Dortmund University (expected 09/2028)',
         notes: [],
-        modules: [
-          { semester: 'Semester 1, now', text: 'Statistical Theory, Applied Bayesian Data Analysis, Advanced R, Advanced Python, Data Science in Context' },
-          { semester: 'Semester 2', text: 'Advanced Statistical Learning, Advanced Machine Learning, Methodical Data Science, Visualization of Complex Data Structures' },
-          { semester: 'Semester 3', text: 'Project Work (Advanced Case Studies or external internship, seminar), electives in Advanced Machine Learning and Methodical Data Science' },
-          { semester: 'Semester 4', text: 'Master’s thesis, Advanced Seminar' },
-        ],
       },
       {
         id: 'gtu',
@@ -369,7 +363,6 @@ const en: Content = {
         school: 'GMIT, degree by Gujarat Technological University',
         notes: [
           'CGPA 7.73/10 (about 2.1 on the German scale), top 15% of the cohort, top 5% of the class in Software Engineering.',
-          'Courses: Probability and Statistics, Discrete Mathematics, Data Structures, Algorithms, Database Systems, Artificial Intelligence, Big Data Analytics.',
         ],
       },
     ],
@@ -392,7 +385,7 @@ const en: Content = {
       items: [
         { title: 'Journaling guide', type: 'Journaling', url: site.medium },
         { title: 'Coffee guide', type: 'Coffee', url: site.medium },
-        { title: 'Data science notes', type: 'Data science', url: site.medium },
+        { title: 'Meatless, not macro-less: nutrition-maxing as a vegetarian', type: 'Nutrition', url: site.medium },
       ],
     },
   },
@@ -465,14 +458,14 @@ const de: Content = {
       },
       {
         ...en.projects.items[2],
-        title: 'Auto-Valuator: Preisprognose für Gebrauchtwagen',
-        summary: 'Fünf Regressionsmodelle im Vergleich, anhand von Alter, Laufleistung, Marke und Zustand; bestes R² über 0,85.',
+        title: 'Beiträge zu Scikit-HEP',
+        badge: 'In Arbeit',
+        summary: 'Dokumentation, Tests und Beispiele für die Python-Werkzeuge, mit denen in der Teilchenphysik Daten ausgewertet werden.',
       },
       {
         ...en.projects.items[3],
-        title: 'LLM-Experimente',
         summary:
-          'Ein Agent auf Llama 4 über die Groq-API, der Tool-Nutzung erkundet; Vier gewinnt gegen NVIDIA Nemotron, wobei jeder Zug des Modells gegen die Regeln geprüft wird.',
+          'Multimodales, erklärbares KI-System für die Medizin, für Forschung und Lehre, mit Interpretierbarkeits-Ausgaben zu den Vorhersagen.',
       },
     ],
     more: {
@@ -487,14 +480,15 @@ const de: Content = {
         },
         {
           ...en.projects.more.items[1],
-          title: 'Beiträge zu Scikit-HEP',
+          title: 'LLM-Experimente',
           summary:
-            'In Arbeit: Dokumentation, Tests und Beispiele für die Python-Werkzeuge der Teilchenphysik (uproot, hist).',
+            'Ein Agent auf Llama 4 über die Groq-API, der Tool-Nutzung erkundet; Vier gewinnt gegen NVIDIA Nemotron, wobei jeder Zug des Modells gegen die Regeln geprüft wird.',
         },
         {
           ...en.projects.more.items[2],
+          title: 'Auto-Valuator: Preisprognose für Gebrauchtwagen',
           summary:
-            'Multimodales, erklärbares KI-System für die Medizin, für Forschung und Lehre, mit Interpretierbarkeits-Ausgaben zu den Vorhersagen.',
+            'Fünf Regressionsmodelle im Vergleich, anhand von Alter, Laufleistung, Marke und Zustand; bestes R² über 0,85. Python, scikit-learn, XGBoost.',
         },
         {
           ...en.projects.more.items[3],
@@ -591,12 +585,6 @@ const de: Content = {
         degree: 'M.Sc. Data Science',
         school: 'TU Dortmund (voraussichtlich bis 09/2028)',
         notes: [],
-        modules: [
-          { semester: '1. Semester, aktuell', text: 'Statistical Theory, Applied Bayesian Data Analysis, Advanced R, Advanced Python, Data Science in Context' },
-          { semester: '2. Semester', text: 'Advanced Statistical Learning, Advanced Machine Learning, Methodical Data Science, Visualization of Complex Data Structures' },
-          { semester: '3. Semester', text: 'Project Work (Advanced Case Studies oder externes Praktikum, Seminar), Wahlkurse in Advanced Machine Learning und Methodical Data Science' },
-          { semester: '4. Semester', text: 'Masterarbeit, Advanced Seminar' },
-        ],
       },
       {
         id: 'gtu',
@@ -605,7 +593,6 @@ const de: Content = {
         school: 'GMIT, Abschluss der Gujarat Technological University',
         notes: [
           'CGPA 7,73/10 (entspricht ca. der Note 2,1), obere 15 % des Jahrgangs, obere 5 % des Kurses in Software Engineering.',
-          'Module: Wahrscheinlichkeitsrechnung und Statistik, Diskrete Mathematik, Datenstrukturen, Algorithmen, Datenbanksysteme, Künstliche Intelligenz, Big Data Analytics.',
         ],
       },
     ],
@@ -627,7 +614,7 @@ const de: Content = {
       items: [
         { title: 'Journaling-Leitfaden', type: 'Journaling', url: site.medium },
         { title: 'Kaffee-Leitfaden', type: 'Kaffee', url: site.medium },
-        { title: 'Data-Science-Notizen', type: 'Data Science', url: site.medium },
+        { title: 'Fleischlos, nicht makrolos: Nutrition-Maxing als Vegetarier', type: 'Ernährung', url: site.medium },
       ],
     },
   },

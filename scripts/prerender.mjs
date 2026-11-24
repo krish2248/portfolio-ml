@@ -78,6 +78,18 @@ for (const lang of ['en', 'de']) {
   console.log('prerendered 404')
 }
 
+// Refresh our copy of the GitHub contribution graph. Visitors never contact the chart service;
+// if it is down, the copy in public/ is used.
+try {
+  const res = await fetch('https://ghchart.rshah.org/1d6b4f/krish2248', { signal: AbortSignal.timeout(15000) })
+  const svg = await res.text()
+  if (!res.ok || !svg.includes('<svg') || !svg.includes('data-date') || /<script|href=|url\(/i.test(svg)) throw new Error('unexpected content')
+  await writeFile(new URL('github-graph.svg', DIST), svg)
+  console.log('github graph refreshed')
+} catch (error) {
+  console.log(`github graph: kept the saved copy (${error.message})`)
+}
+
 const legalPages = renderLegal()
 for (const { page, html: app, title, description } of legalPages) {
   const url = `${SITE}/${page}/`

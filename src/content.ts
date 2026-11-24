@@ -18,6 +18,7 @@ export const site = {
   cv: '/cv/Krish_Soni_CV.pdf',
   github: 'https://github.com/krish2248',
   linkedin: 'https://www.linkedin.com/in/krish-soni-460932228/',
+  medium: 'https://medium.com/@krish2248',
   source: 'https://github.com/krish2248/portfolio-ml',
   /**
    * true builds /impressum and /datenschutz, links them in the footer and adds them to the sitemap.
@@ -25,13 +26,6 @@ export const site = {
    */
   legalPublished: false,
 }
-
-/** "More" line under the projects. */
-export const moreProjects = [
-  { title: 'Coffee Journal', url: 'https://krish2248.github.io/Coffee-Journal' },
-  { title: 'Vellum Codex', url: 'https://krish2248.github.io/Vellum-Codex' },
-  { title: '2048 Dark', url: 'https://krish2248.github.io/2048-Dark' },
-]
 
 /** Quotes from the recommendation letters, always in the original English. */
 export const quotes = {
@@ -61,21 +55,49 @@ export interface Project {
   motif: CoverMotif
 }
 
+export interface SmallProject {
+  id: string
+  title: string
+  summary: string
+  url?: string
+  live?: string
+  motif: CoverMotif
+}
+
 export interface Content {
   meta: { title: string; description: string; imageAlt: string }
   hero: { tagline: string; statement: string; buttons: { cv: string; email: string } }
   now: { title: string; updated: string; items: string[] }
-  projects: { title: string; more: string; code: string; live: string; items: Project[] }
+  projects: {
+    title: string
+    code: string
+    live: string
+    items: Project[]
+    more: { title: string; live: string; items: SmallProject[] }
+    graph: { title: string; label: string; alt: string }
+  }
   experience: {
     title: string
     items: { id: string; period: string; role: string; company: string; location: string; text: string }[]
     quotesTitle: string
     quotes: { quote: string; name: string; role: string }[]
   }
-  education: { title: string; items: { id: string; period: string; degree: string; school: string; note?: string }[] }
-  skills: { title: string; rows: string[] }
-  contact: { title: string; email: string; location: string; locationValue: string }
-  nav: { now: string; projects: string; experience: string; education: string; contact: string }
+  education: {
+    title: string
+    items: { id: string; period: string; degree: string; school: string; notes: string[] }[]
+    skillsTitle: string
+    skills: { group: string; text: string }[]
+  }
+  contact: {
+    title: string
+    pitch: string
+    email: string
+    cv: string
+    cvValue: string
+    location: string
+    locationValue: string
+  }
+  nav: { projects: string; experience: string; education: string; contact: string }
   ui: {
     skipLink: string
     mainNav: string
@@ -111,13 +133,12 @@ const en: Content = {
     items: [
       'Building an LHCb τ → μμμ decay classifier (XGBoost + SHAP), in progress',
       'Contributing to Scikit-HEP (uproot, hist), in progress',
-      'Studying Statistical Theory, Applied Bayesian Data Analysis and Advanced R at TU Dortmund',
-      'Open to Werkstudent, HiWi and internship roles in data science: up to 20 h/week during lectures, full-time in semester breaks',
+      'Studying M.Sc. Data Science at TU Dortmund, semester 1',
+      'Open to work, internship and research opportunities',
     ],
   },
   projects: {
     title: 'Projects',
-    more: 'More',
     code: 'Code',
     live: 'Live demo',
     items: [
@@ -165,6 +186,102 @@ const en: Content = {
         motif: 'board',
       },
     ],
+    more: {
+      title: 'More projects',
+      live: 'Live',
+      items: [
+        {
+          id: 'prm-herbovilla',
+          title: 'PRM Herbovilla',
+          summary:
+            'Online shop for PRM & Company on Shopify with custom JavaScript and CSS: six product categories, UPI, card and cash-on-delivery payments, and a real-time dashboard.',
+          url: 'https://github.com/krish2248/PRM-SHOPIFY',
+          live: 'https://prmherbovilla.com',
+          motif: 'bars',
+        },
+        {
+          id: 'rems',
+          title: 'Real Estate Management System',
+          summary:
+            'Built solo at IT Hub in PHP, MySQL and JavaScript: role-based access, multi-criteria search, lead management, Razorpay and PayPal payments.',
+          url: 'https://github.com/krish2248/REMS',
+          motif: 'listings',
+        },
+        {
+          id: 'breast-cancer',
+          title: 'Breast Cancer Diagnosis Predictor',
+          summary:
+            'Classification model for breast-cancer diagnosis in Python and scikit-learn.',
+          motif: 'pulse',
+        },
+        {
+          id: 'virtual-classroom',
+          title: 'Virtual Classroom',
+          summary:
+            'Live classes through the Zoom API plus assignment submission, built under faculty supervision at GMIT.',
+          url: 'https://github.com/krish2248/Virtual-Classroom-Using-Zoom-API',
+          motif: 'classroom',
+        },
+        {
+          id: 'ampere',
+          title: 'Ampere',
+          summary:
+            'Offline battery, charging and thermal diagnostics for Android, in Kotlin and Jetpack Compose.',
+          url: 'https://github.com/krish2248/ampere',
+          motif: 'battery',
+        },
+        {
+          id: '2048-dark',
+          title: '2048 Dark',
+          summary:
+            'Single-file web game with undo, hints and 13 achievements, plus a native Android version in Kotlin.',
+          url: 'https://github.com/krish2248/2048-Dark',
+          live: 'https://krish2248.github.io/2048-Dark/',
+          motif: 'tiles',
+        },
+        {
+          id: 'coffee-journal',
+          title: 'Coffee Journal',
+          summary:
+            '60+ specialty coffees from 25+ Indian roasters, with flavour radar charts and nine brewing guides. Astro, React, Three.js.',
+          url: 'https://github.com/krish2248/Coffee-Journal',
+          live: 'https://krish2248.github.io/Coffee-Journal/',
+          motif: 'cup',
+        },
+        {
+          id: 'vellum-codex',
+          title: 'Vellum Codex',
+          summary:
+            'Archive of my 74 books, with a statistics dashboard, genre filters, search and reading status.',
+          url: 'https://github.com/krish2248/Vellum-Codex',
+          live: 'https://krish2248.github.io/Vellum-Codex/',
+          motif: 'books',
+        },
+        {
+          id: 'text-adventure',
+          title: 'Text Adventure',
+          summary:
+            'Nine branching stories, including The Count of Monte Cristo.',
+          url: 'https://github.com/krish2248/Text-Adventure-Game',
+          live: 'https://krish2248.github.io/Text-Adventure-Game/',
+          motif: 'branches',
+        },
+        {
+          id: 'fut-score',
+          title: 'Fut-Score',
+          summary:
+            'Personalised football scores hub.',
+          url: 'https://github.com/krish2248/Fut-Score',
+          live: 'https://futology.vercel.app',
+          motif: 'scores',
+        },
+      ],
+    },
+    graph: {
+      title: 'On GitHub',
+      label: 'GitHub contribution graph, opens GitHub profile',
+      alt: 'Krish Soni’s GitHub contributions over the past year',
+    },
   },
   experience: {
     title: 'Experience',
@@ -202,28 +319,46 @@ const en: Content = {
     ],
   },
   education: {
-    title: 'Education',
+    title: 'Education & skills',
     items: [
-      { id: 'tu-dortmund', period: 'since 10/2026', degree: 'M.Sc. Data Science', school: 'TU Dortmund University (expected 09/2028)' },
+      {
+        id: 'tu-dortmund',
+        period: 'since 10/2026',
+        degree: 'M.Sc. Data Science',
+        school: 'TU Dortmund University (expected 09/2028)',
+        notes: ['Modules: Statistical Theory, Applied Bayesian Data Analysis, Advanced R, Data Science in Context.'],
+      },
       {
         id: 'gtu',
         period: '2021 – 2025',
         degree: 'B.E. Computer Engineering',
         school: 'GMIT, degree by Gujarat Technological University',
-        note: 'CGPA 7.73/10, top 15% of the cohort.',
+        notes: [
+          'CGPA 7.73/10 (about 2.1 on the German scale), top 15% of the cohort, top 5% of the class in Software Engineering.',
+          'Courses: Probability and Statistics, Discrete Mathematics, Data Structures, Algorithms, Database Systems, Artificial Intelligence, Big Data Analytics.',
+        ],
       },
     ],
-  },
-  skills: {
-    title: 'Skills',
-    rows: [
-      'Python (pandas, NumPy, scikit-learn, XGBoost), SQL, R, statistics',
-      'TypeScript, React, Next.js, Node.js',
-      'Git',
+    skillsTitle: 'Skills',
+    skills: [
+      { group: 'Data and statistics', text: 'Python (pandas, NumPy, scikit-learn, XGBoost, Matplotlib, Seaborn), SQL, R, regression, hypothesis testing, data visualisation' },
+      { group: 'Software and web', text: 'TypeScript, JavaScript, React, Next.js, Node.js, PHP, MySQL, PostgreSQL/Supabase, REST APIs, Socket.IO' },
+      { group: 'Tools', text: 'Git and GitHub, Jupyter, LaTeX, Excel, Shopify' },
+      { group: 'Learning now', text: 'Scikit-HEP tools for particle physics (uproot, hist)' },
+      { group: 'Basic knowledge', text: 'Java, Kotlin, Flutter/Dart, TensorFlow' },
+      { group: 'Languages', text: 'English C1 · German A1 · Hindi and Gujarati (native)' },
     ],
   },
-  contact: { title: 'Contact', email: 'Email', location: 'Location', locationValue: 'Dortmund, Germany' },
-  nav: { now: 'Now', projects: 'Projects', experience: 'Experience', education: 'Education', contact: 'Contact' },
+  contact: {
+    title: 'Contact',
+    pitch: 'Email is the quickest way to reach me.',
+    email: 'Email',
+    cv: 'CV',
+    cvValue: 'Download PDF',
+    location: 'Location',
+    locationValue: 'Dortmund, Germany',
+  },
+  nav: { projects: 'Projects', experience: 'Experience', education: 'Education', contact: 'Contact' },
   ui: {
     skipLink: 'Skip to content',
     mainNav: 'Main',
@@ -259,13 +394,12 @@ const de: Content = {
     items: [
       'Entwicklung eines LHCb-Klassifikators für den Zerfall τ → μμμ (XGBoost + SHAP), in Arbeit',
       'Beiträge zu Scikit-HEP (uproot, hist), in Arbeit',
-      'Studium an der TU Dortmund: Statistical Theory, Applied Bayesian Data Analysis und Advanced R',
-      'Offen für Werkstudenten-, HiWi- und Praktikumsstellen in Data Science: bis zu 20 Std./Woche in der Vorlesungszeit, Vollzeit in der vorlesungsfreien Zeit',
+      'M.Sc. Data Science an der TU Dortmund, 1. Semester',
+      'Offen für Jobs, Praktika und Forschung',
     ],
   },
   projects: {
     title: 'Projekte',
-    more: 'Weitere',
     code: 'Code',
     live: 'Live-Demo',
     items: [
@@ -299,6 +433,69 @@ const de: Content = {
           'Ein Agent auf Llama 4 über die Groq-API, der Tool-Nutzung erkundet; Vier gewinnt gegen NVIDIA Nemotron, wobei jeder Zug des Modells gegen die Regeln geprüft wird.',
       },
     ],
+    more: {
+      title: 'Weitere Projekte',
+      live: 'Live',
+      items: [
+        {
+          ...en.projects.more.items[0],
+          summary:
+            'Onlineshop für PRM & Company auf Shopify mit eigenem JavaScript und CSS: sechs Produktkategorien, Zahlung per UPI, Karte und Nachnahme sowie ein Echtzeit-Dashboard.',
+        },
+        {
+          ...en.projects.more.items[1],
+          title: 'Immobilienverwaltungssystem',
+          summary:
+            'Allein bei IT Hub entwickelt, mit PHP, MySQL und JavaScript: Rollen und Rechte, Suche mit Mehrfachfiltern, Lead-Management, Zahlungen über Razorpay und PayPal.',
+        },
+        {
+          ...en.projects.more.items[2],
+          title: 'Brustkrebs-Diagnosemodell',
+          summary:
+            'Klassifikationsmodell für die Brustkrebsdiagnose mit Python und scikit-learn.',
+        },
+        {
+          ...en.projects.more.items[3],
+          summary:
+            'Live-Unterricht über die Zoom-API plus Abgabe von Aufgaben, entwickelt unter Betreuung von Lehrenden am GMIT.',
+        },
+        {
+          ...en.projects.more.items[4],
+          summary:
+            'Offline-Diagnose für Akku, Ladevorgang und Temperatur unter Android, mit Kotlin und Jetpack Compose.',
+        },
+        {
+          ...en.projects.more.items[5],
+          summary:
+            'Webspiel in einer einzigen Datei mit Rückgängig, Tipps und 13 Erfolgen, dazu eine native Android-Version in Kotlin.',
+        },
+        {
+          ...en.projects.more.items[6],
+          summary:
+            'Über 60 Specialty Coffees von mehr als 25 indischen Röstereien, mit Aroma-Radardiagrammen und neun Zubereitungsanleitungen. Astro, React, Three.js.',
+        },
+        {
+          ...en.projects.more.items[7],
+          summary:
+            'Archiv meiner 74 Bücher mit Statistik-Dashboard, Genrefiltern, Suche und Lesestatus.',
+        },
+        {
+          ...en.projects.more.items[8],
+          summary:
+            'Neun verzweigte Geschichten, darunter „Der Graf von Monte Christo“.',
+        },
+        {
+          ...en.projects.more.items[9],
+          summary:
+            'Personalisierte Übersicht für Fußballergebnisse.',
+        },
+      ],
+    },
+    graph: {
+      title: 'Auf GitHub',
+      label: 'GitHub-Beitragsgrafik, öffnet das GitHub-Profil',
+      alt: 'Krish Sonis GitHub-Beiträge im letzten Jahr',
+    },
   },
   experience: {
     title: 'Erfahrung',
@@ -327,28 +524,46 @@ const de: Content = {
     ],
   },
   education: {
-    title: 'Ausbildung',
+    title: 'Ausbildung & Kenntnisse',
     items: [
-      { id: 'tu-dortmund', period: 'seit 10/2026', degree: 'M.Sc. Data Science', school: 'TU Dortmund (voraussichtlich bis 09/2028)' },
+      {
+        id: 'tu-dortmund',
+        period: 'seit 10/2026',
+        degree: 'M.Sc. Data Science',
+        school: 'TU Dortmund (voraussichtlich bis 09/2028)',
+        notes: ['Module: Statistical Theory, Applied Bayesian Data Analysis, Advanced R, Data Science in Context.'],
+      },
       {
         id: 'gtu',
         period: '2021 – 2025',
         degree: 'B.E. Computer Engineering',
         school: 'GMIT, Abschluss der Gujarat Technological University',
-        note: 'CGPA 7,73/10, obere 15 % des Jahrgangs.',
+        notes: [
+          'CGPA 7,73/10 (entspricht ca. der Note 2,1), obere 15 % des Jahrgangs, obere 5 % des Kurses in Software Engineering.',
+          'Module: Wahrscheinlichkeitsrechnung und Statistik, Diskrete Mathematik, Datenstrukturen, Algorithmen, Datenbanksysteme, Künstliche Intelligenz, Big Data Analytics.',
+        ],
       },
     ],
-  },
-  skills: {
-    title: 'Kenntnisse',
-    rows: [
-      'Python (pandas, NumPy, scikit-learn, XGBoost), SQL, R, Statistik',
-      'TypeScript, React, Next.js, Node.js',
-      'Git',
+    skillsTitle: 'Kenntnisse',
+    skills: [
+      { group: 'Daten und Statistik', text: 'Python (pandas, NumPy, scikit-learn, XGBoost, Matplotlib, Seaborn), SQL, R, Regression, Hypothesentests, Datenvisualisierung' },
+      { group: 'Software und Web', text: 'TypeScript, JavaScript, React, Next.js, Node.js, PHP, MySQL, PostgreSQL/Supabase, REST-APIs, Socket.IO' },
+      { group: 'Werkzeuge', text: 'Git und GitHub, Jupyter, LaTeX, Excel, Shopify' },
+      { group: 'Lerne gerade', text: 'Scikit-HEP-Werkzeuge für die Teilchenphysik (uproot, hist)' },
+      { group: 'Grundkenntnisse', text: 'Java, Kotlin, Flutter/Dart, TensorFlow' },
+      { group: 'Sprachen', text: 'Englisch C1 · Deutsch A1 · Hindi und Gujarati (Muttersprachen)' },
     ],
   },
-  contact: { title: 'Kontakt', email: 'E-Mail', location: 'Wohnort', locationValue: 'Dortmund, Deutschland' },
-  nav: { now: 'Aktuell', projects: 'Projekte', experience: 'Erfahrung', education: 'Ausbildung', contact: 'Kontakt' },
+  contact: {
+    title: 'Kontakt',
+    pitch: 'Am schnellsten erreichen Sie mich per E-Mail.',
+    email: 'E-Mail',
+    cv: 'Lebenslauf',
+    cvValue: 'PDF herunterladen (Englisch)',
+    location: 'Wohnort',
+    locationValue: 'Dortmund, Deutschland',
+  },
+  nav: { projects: 'Projekte', experience: 'Erfahrung', education: 'Ausbildung', contact: 'Kontakt' },
   ui: {
     skipLink: 'Zum Inhalt springen',
     mainNav: 'Hauptnavigation',

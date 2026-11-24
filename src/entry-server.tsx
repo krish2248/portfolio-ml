@@ -5,7 +5,7 @@
 import { StrictMode } from 'react'
 import { renderToString } from 'react-dom/server'
 import App from './App'
-import { content, moreProjects, notFound, site } from './content'
+import { content, notFound, site } from './content'
 import { hasPlaceholders, legal } from './legal'
 import { Lang } from './lib/lang'
 import { legalPages } from './lib/pages'
@@ -28,11 +28,12 @@ export function render(lang: Lang) {
     c.now.updated,
     ...c.now.items,
     ...c.projects.items.flatMap((p) => [p.title, p.badge ?? '', p.summary, p.url ?? '', p.live ?? '', ...(p.stack ?? [])]),
-    ...moreProjects.flatMap((p) => [p.title, p.url]),
+    ...c.projects.more.items.flatMap((p) => [p.title, p.summary, p.url ?? '', p.live ?? '']),
     ...c.experience.items.flatMap((job) => [job.period, job.role, job.company, job.location, job.text]),
     ...c.experience.quotes.flatMap((ref) => [ref.quote, ref.name, ref.role]),
-    ...c.education.items.flatMap((item) => [item.period, item.degree, item.school, item.note ?? '']),
-    ...c.skills.rows,
+    ...c.education.items.flatMap((item) => [item.period, item.degree, item.school, ...item.notes]),
+    ...c.education.skills.flatMap((row) => [row.group, row.text]),
+    site.medium,
     c.contact.locationValue,
   ].filter(Boolean)
 

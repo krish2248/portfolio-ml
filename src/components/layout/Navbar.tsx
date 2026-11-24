@@ -6,7 +6,7 @@ import { useLanguage } from '@/context/LanguageContext'
 import ThemeToggle from '../ui/ThemeToggle'
 import LanguageToggle from '../ui/LanguageToggle'
 
-const sections = ['now', 'experience', 'projects', 'education', 'contact'] as const
+const sections = ['experience', 'projects', 'education', 'contact'] as const
 const navLinks = sections.map((key) => ({ key, href: `#${key}` }))
 const sectionIds = [...sections]
 

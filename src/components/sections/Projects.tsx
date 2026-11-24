@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { moreProjects, Project } from '@/content'
+import { Project, site, SmallProject } from '@/content'
 import { cn } from '@/lib/utils'
 import { useLanguage } from '@/context/LanguageContext'
 import Section from '../layout/Section'
@@ -17,21 +17,71 @@ const Projects: FC = () => {
         ))}
       </div>
 
-      <p className="mt-12 flex flex-wrap items-center gap-x-5 gap-y-1 border-t border-line pt-4">
-        <span className="text-muted">{projects.more}</span>
-        {moreProjects.map((project) => (
-          <a key={project.url} href={project.url} target="_blank" rel="noopener noreferrer" className="link">
-            {project.title}
-          </a>
+      <h3 className="eyebrow mt-16">{projects.more.title}</h3>
+      <ul className="mt-5 grid gap-x-8 border-t border-line lg:grid-cols-2">
+        {projects.more.items.map((project) => (
+          <SmallCard key={project.id} project={project} liveLabel={projects.more.live} />
         ))}
-      </p>
+      </ul>
+
+      <h3 className="eyebrow mt-16">{projects.graph.title}</h3>
+      <a
+        href={site.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-5 block rounded-lg border border-line bg-surface p-4 transition-colors hover:border-line-strong"
+        aria-label={projects.graph.label}
+      >
+        {/* Our own copy, refreshed at every deploy (scripts/prerender.mjs). Inverted in dark mode so empty cells go dark. */}
+        <img
+          src="/github-graph.svg"
+          alt={projects.graph.alt}
+          width={663}
+          height={104}
+          loading="lazy"
+          className="h-auto w-full dark:hue-rotate-180 dark:invert"
+        />
+      </a>
     </Section>
   )
 }
 
-const ProjectCard: FC<{ project: Project; wide: boolean }> = ({ project, wide }) => {
+const Links: FC<{ project: { title: string; url?: string; live?: string }; liveLabel?: string }> = ({ project, liveLabel }) => {
   const { projects } = useLanguage().c
-  const { title, badge, summary, stack, url, live, motif } = project
+
+  return (
+    <p className="mt-1 flex gap-4">
+      {project.live && (
+        <a href={project.live} target="_blank" rel="noopener noreferrer" className="link">
+          {liveLabel ?? projects.live}
+          <span className="sr-only">: {project.title}</span> ↗
+        </a>
+      )}
+      {project.url && (
+        <a href={project.url} target="_blank" rel="noopener noreferrer" className="link">
+          {projects.code}
+          <span className="sr-only">: {project.title}</span> ↗
+        </a>
+      )}
+    </p>
+  )
+}
+
+const SmallCard: FC<{ project: SmallProject; liveLabel: string }> = ({ project, liveLabel }) => (
+  <li className="grid grid-cols-[5.5rem_1fr] gap-4 border-b border-line py-5 sm:grid-cols-[9rem_1fr] sm:gap-5">
+    <div className="self-start overflow-hidden rounded-md border border-line">
+      <ProjectCover motif={project.motif} />
+    </div>
+    <div className="min-w-0">
+      <h4 className="font-medium text-ink">{project.title}</h4>
+      <p className="mt-1 leading-snug text-ink-2">{project.summary}</p>
+      {(project.url || project.live) && <Links project={project} liveLabel={liveLabel} />}
+    </div>
+  </li>
+)
+
+const ProjectCard: FC<{ project: Project; wide: boolean }> = ({ project, wide }) => {
+  const { title, badge, summary, stack, url, motif } = project
   const frame = 'block overflow-hidden rounded-lg border border-line'
   const cover = <ProjectCover motif={motif} caption={url?.replace('https://github.com/', '')} />
 
@@ -70,20 +120,7 @@ const ProjectCard: FC<{ project: Project; wide: boolean }> = ({ project, wide })
         {(stack || url) && (
           <div className="mt-auto pt-3">
             <p className="font-mono text-sm text-muted">{stack?.join(' · ')}</p>
-            <p className="mt-1 flex gap-4">
-              {live && (
-                <a href={live} target="_blank" rel="noopener noreferrer" className="link">
-                  {projects.live}
-                  <span className="sr-only">: {title}</span> ↗
-                </a>
-              )}
-              {url && (
-                <a href={url} target="_blank" rel="noopener noreferrer" className="link">
-                  {projects.code}
-                  <span className="sr-only">: {title}</span> ↗
-                </a>
-              )}
-            </p>
+            {url && <Links project={project} />}
           </div>
         )}
       </div>

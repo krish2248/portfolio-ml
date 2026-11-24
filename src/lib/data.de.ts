@@ -173,13 +173,13 @@ export const contentDe: Content = {
     statement:
       'Ich verwandle unübersichtliche Geschäftsdaten in Entscheidungen und baue die Software, die diese Entscheidungen sichtbar macht.',
     intro:
-      'Bis Oktober 2026 war ich Data Scientist bei PRM & Company, einem Pharmaunternehmen in Indien. Dort habe ich die Vertriebs- und Marketinganalysen verantwortet und den Onlineshop sowie das KPI-Dashboard des Unternehmens aufgebaut. Seit dem Wintersemester 2026/27 studiere ich Data Science (M.Sc.) an der TU Dortmund.',
+      'Bis Oktober 2026 war ich Data Scientist bei PRM & Company, einem Pharma-Marketingunternehmen in Indien. Dort habe ich die Vertriebs- und Marketinganalysen verantwortet und den Onlineshop sowie das KPI-Dashboard des Unternehmens aufgebaut. Seit dem Wintersemester 2026/27 studiere ich Data Science (M.Sc.) an der TU Dortmund.',
     location: 'Dortmund, Deutschland',
-    updated: 'Oktober 2026',
+    updated: 'November 2026',
   },
   availability: {
     ...contentEn.availability,
-    roles: ['Werkstudent', 'Praktikum', 'HiWi / studentische Hilfskraft'],
+    headline: 'Offen für Jobs / Forschung',
     terms: 'Dortmund oder remote · bis zu 20 Std./Woche im Semester, Vollzeit in der vorlesungsfreien Zeit',
   },
   quickFacts: [
@@ -191,16 +191,12 @@ export const contentDe: Content = {
   ],
   openTo: [
     {
-      title: 'Werkstudent',
+      title: 'Jobs',
       body: 'Data Science, Analytics oder ML Engineering in einem Produkt- oder Fachteam: Reporting und Dashboards, Datenpipelines, statistische Analysen, Prognosen und die internen Tools dazu.',
     },
     {
-      title: 'Praktikum',
-      body: 'Ein Praktikum in Data Science oder ML Engineering in der vorlesungsfreien Zeit – am liebsten dort, wo Modelle tatsächlich bei Nutzern oder in Entscheidungen ankommen, statt im Notebook zu bleiben.',
-    },
-    {
-      title: 'HiWi / studentische Hilfskraft',
-      body: 'Unterstützung eines Lehrstuhls oder einer Forschungsgruppe an der TU Dortmund bei Datenaufbereitung, statistischer Analyse, Tooling für Experimente, Visualisierung oder Web-Frontends für Forschungssoftware.',
+      title: 'Forschung',
+      body: 'Unterstützung eines Lehrstuhls oder einer Forschungsgruppe bei Datenaufbereitung, statistischer Analyse, Tooling für Experimente, Visualisierung oder Web-Frontends für Forschungssoftware.',
     },
   ],
   featuredProjects: withProjectText(contentEn.featuredProjects),

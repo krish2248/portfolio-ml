@@ -6,8 +6,8 @@ const OpenTo: FC = () => {
   const { t, c } = useLanguage()
 
   return (
-    <Section id="open-to" title={t.openTo.title} note={t.openTo.note(c.availability.from)}>
-      <div className="grid gap-px overflow-hidden rounded-lg border border-line bg-line md:grid-cols-3">
+    <Section id="open-to" title={t.openTo.title} note={t.openTo.note}>
+      <div className="grid gap-px overflow-hidden rounded-lg border border-line bg-line md:grid-cols-2">
         {c.openTo.map((item) => (
           <div key={item.title} className="bg-surface p-5 sm:p-6">
             <h3 className="font-medium text-ink">{item.title}</h3>

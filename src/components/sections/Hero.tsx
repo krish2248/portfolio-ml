@@ -17,11 +17,10 @@ const Hero: FC = () => {
           <p className="mt-5 max-w-2xl text-ink-2">{siteConfig.intro}</p>
 
           <div className="mt-10 max-w-2xl rounded-lg border border-line bg-surface p-5 sm:p-6">
-            <p className="flex items-center gap-2 text-sm font-medium text-accent">
+            <p className="flex items-center gap-2 text-lg font-medium text-accent">
               <span className="h-2 w-2 rounded-full bg-accent" aria-hidden="true" />
-              {t.hero.availableFrom(availability.from)}
+              {availability.headline}
             </p>
-            <p className="mt-2 text-lg text-ink">{availability.roles.join(' · ')}</p>
             <p className="mt-1 text-sm text-muted">{availability.terms}</p>
             <div className="mt-5 flex flex-wrap gap-2">
               <ButtonLink href={socialLinks.email} variant="primary">

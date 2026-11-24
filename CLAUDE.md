@@ -5,10 +5,10 @@ Personal portfolio of Krish Hemang Soni. Read this first in any new session.
 ## Who / why
 
 - Krish is doing an **M.Sc. Data Science at TU Dortmund**, winter intake 2026/27, 2026–2028. He lives in Dortmund.
-- He was a **Data Scientist at PRM & Company (PRM Pharmaceuticals)** in Bhavnagar, India, from 2 Jun 2025 to **31 Oct 2026**. Describe PRM as "a pharmaceutical company": never "manufacturer", and don't mention manufacturing. His PRM work: data analysis, data visualisation (Python libraries only), website development. Do **not** add SEO or app development to the PRM entry.
-- The site's goal is to land **Werkstudent, internship and HiWi / research assistant** roles in data science, analytics and ML engineering, available from **November 2026**.
+- He was a **Data Scientist at PRM & Company (PRM Pharmaceuticals)** in Bhavnagar, India, from 2 Jun 2025 to **31 Oct 2026**. Describe PRM as "a pharmaceutical **marketing** company" (Krish, 24 Nov 2026): it does not manufacture, so never "manufacturer" and don't mention manufacturing. His PRM work: data analysis, data visualisation (Python libraries only), website development. Do **not** add SEO or app development to the PRM entry.
+- The site's goal is to land work or research in data science, analytics and ML engineering. The site says only **"Open to work / research"**: Krish asked (24 Nov 2026) not to name Werkstudent, internship or HiWi, so don't re-add them. (Past internships in Experience stay.)
 - Content source: his **final CVs (Oct 2026)** in Downloads: `CV_Krish_Soni.pdf` (English, photo, address, DOB), `Lebenslauf_Krish_Soni.pdf` (German version of it) and `Resume_Krish_Soni.pdf` (no photo, address or DOB; has the full project list). Older drafts like `Krish_Hemang_Soni_CV_Academic.pdf`, the PRM recommendation letter and a LinkedIn post are background only. The site must not claim more than the final CVs (e.g. FUTOLOGY's ML features are a *next milestone*, not shipped).
-- Only `Resume_Krish_Soni.pdf` is public (`public/Krish_Soni_Resume.pdf`). Krish chose not to publish the CV/Lebenslauf because they show his home address and date of birth. Never put those on the site.
+- **Public CV:** `public/Krish_Soni_CV.pdf` (since 24 Nov 2026), a privacy-safe build of his Nov 2026 CV: Personal Details block and phone/address removed, PRM reworded as a marketing company. Never publish his phone number, street address, date of birth, residence-permit details or photo, including inside a PDF. His private CV (`Krish_Soni_CV.pdf`) and its HTML source (`Krish_Soni_CV_source.zip`) are in Downloads and are **not** safe to publish as they are. Older CVs: `Desktop/Everything/Docs all/Resume work`.
 - Note: the CVs themselves call PRM a "manufacturer" and mention manufacturing orders; the site rule below still applies to the site.
 
 ## Stack and deploy
@@ -26,7 +26,7 @@ Personal portfolio of Krish Hemang Soni. Read this first in any new session.
 - `src/styles/globals.css`: colour tokens for light (warm paper `#f6f5f0`) and dark (forest green `#091413`, his choice). Components use the token colours (`bg`, `surface`, `plate`, `ink`, `ink-2`, `muted`, `line`, `line-strong`, `accent`) rather than `dark:` variants.
   - The cover colour is named `plate` because `bg-cover` clashes with a built-in Tailwind utility.
   - Opacity modifiers like `bg-bg/95` don't work on these `var()` colours.
-- `public/`: `Krish_Soni_Resume.pdf` (CV button in Hero + Contact via `siteConfig.resumeUrl`), `og-image.jpg` (1200×630 social preview with the "ks" logo, **no photo**). Source is `scripts/og-card.html`; to regenerate after a name/role/availability change, edit it and run Chrome headless: `chrome --headless=new --hide-scrollbars --window-size=1200,630 --virtual-time-budget=8000 --screenshot=og.png file:///<abs path>/scripts/og-card.html`, then save as JPEG to `public/og-image.jpg`.
+- `public/`: `Krish_Soni_CV.pdf` (CV button in Hero + Contact via `siteConfig.resumeUrl`), `og-image.jpg` (1200×630 social preview with the "ks" logo, **no photo**). Source is `scripts/og-card.html`; to regenerate after a name/role/availability change, edit it and run Chrome headless: `chrome --headless=new --hide-scrollbars --window-size=1200,630 --virtual-time-budget=8000 --screenshot=og.png file:///<abs path>/scripts/og-card.html`, then save as JPEG to `public/og-image.jpg`.
 - Fonts: IBM Plex Sans (body), IBM Plex Mono (metadata), Source Serif 4 (headings), loaded in `index.html`.
 - Medium handle is `@krish2248` (confirmed by Krish, 28 Oct 2026).
 
@@ -54,6 +54,7 @@ Personal portfolio of Krish Hemang Soni. Read this first in any new session.
 | tag `pre-i18n-2026-10` (= `9769df9`) | Backup before the German version |
 | `efb3832` | EN/DE language switch, full German translation |
 | tag `pre-nophoto-2026-10` (= `e70749d`) | Backup before removing the hero photo |
+| tag `pre-opento-2026-11` (= `ba8cc26`) | Backup before the 24 Nov 2026 changes (roles wording, resume PDF removed, PRM as marketing company) |
 | `714081c` | Hero photo removed in both themes (Krish's request). `ffee1c9` also accidentally committed `.claude/settings.local.json` (only a permission allowlist line, harmless) |
 
 **Undo:**
@@ -83,7 +84,6 @@ Krish said he is **"just getting started"** and that **there's a lot to change i
 
 ## Next up (pending)
 
-1. **Updated resume from Krish.** He is reworking it (a lot to change, including removing "manufacturer"/manufacturing wording). When it arrives: replace `public/Krish_Soni_Resume.pdf`, re-check the site against it, and mirror every content change in **both** `data.ts` and `data.de.ts`. Re-read it fully before publishing (privacy: no address or DOB on the public file).
+1. **Sync site content to the Nov 2026 CV** in both `data.ts` and `data.de.ts` (LHCb classifier, Scikit-HEP, Bayesian module and so on), once Krish confirms. The CV links `krish2248/lhcb-tau-3mu`, which returned 404 on 24 Nov 2026.
 2. Have a German speaker review the German text (hero statement and "Offen für" first).
-3. Optional: drop the reference quotes if he'd rather keep them CV-only.
-4. After 31 Oct 2026, re-read the hero/intro so PRM reads as a past job.
+3. Reference quotes stay (Krish, 24 Nov 2026).

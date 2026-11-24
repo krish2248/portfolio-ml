@@ -11,20 +11,19 @@ export const siteConfig = {
   statement:
     'I turn messy business data into decisions, and build the software that puts those decisions in front of people.',
   intro:
-    'Until October 2026 I was the data scientist at PRM & Company, a pharmaceutical company in India, where I ran sales and marketing analytics and built the company’s online shop and KPI dashboard. I’ve now started the M.Sc. in Data Science at TU Dortmund.',
+    'Until October 2026 I was the data scientist at PRM & Company, a pharmaceutical marketing company in India, where I ran sales and marketing analytics and built the company’s online shop and KPI dashboard. I’ve now started the M.Sc. in Data Science at TU Dortmund.',
   description:
-    'Krish Soni, M.Sc. Data Science student at TU Dortmund. Open to Werkstudent, internship and HiWi / research assistant roles in data science, analytics and ML engineering.',
+    'Krish Soni, M.Sc. Data Science student at TU Dortmund. Open to work and research in data science, analytics and ML engineering.',
   email: 'sonikrish2248@gmail.com',
   location: 'Dortmund, Germany',
-  // Public CV (no address or date of birth). Set to '' to hide the CV links.
-  resumeUrl: '/Krish_Soni_Resume.pdf',
+  // Public CV (no phone, address, photo or date of birth). '' hides the CV links.
+  resumeUrl: '',
   siteUrl: 'https://sonikrish.com/',
-  updated: 'October 2026',
+  updated: 'November 2026',
 }
 
 export const availability = {
-  from: 'November 2026',
-  roles: ['Werkstudent', 'Internship', 'HiWi / research assistant'],
+  headline: 'Open to work / research',
   terms: 'Dortmund or remote · up to 20 h/week during the semester, full-time in semester breaks',
 }
 
@@ -57,16 +56,12 @@ export const quickFacts = [
 
 export const openTo = [
   {
-    title: 'Werkstudent',
+    title: 'Work',
     body: 'Data science, analytics or ML engineering in a product or business team: reporting and dashboards, data pipelines, statistical analysis, forecasting, and the internal tools around them.',
   },
   {
-    title: 'Internship',
-    body: 'A data science or ML engineering internship during the semester breaks, ideally where models actually reach users or decisions rather than staying in a notebook.',
-  },
-  {
-    title: 'HiWi / research assistant',
-    body: 'Supporting a chair or research group at TU Dortmund with data preparation, statistical analysis, experiment tooling, visualisation, or web front ends for research software.',
+    title: 'Research',
+    body: 'Supporting a chair or research group with data preparation, statistical analysis, experiment tooling, visualisation, or web front ends for research software.',
   },
 ]
 

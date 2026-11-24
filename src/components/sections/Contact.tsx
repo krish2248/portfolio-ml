@@ -5,7 +5,7 @@ import Section from '../layout/Section'
 
 const Contact: FC = () => {
   const { t, c } = useLanguage()
-  const { siteConfig, availability } = c
+  const { siteConfig } = c
   const links = [
     { label: t.contact.email, value: siteConfig.email, href: socialLinks.email },
     { label: 'LinkedIn', value: 'krish-soni-460932228', href: socialLinks.linkedin },
@@ -16,7 +16,7 @@ const Contact: FC = () => {
 
   return (
     <Section id="contact" title={t.contact.title}>
-      <p className="max-w-2xl font-serif text-2xl leading-snug text-ink sm:text-3xl">{t.contact.pitch(availability.from)}</p>
+      <p className="max-w-2xl font-serif text-2xl leading-snug text-ink sm:text-3xl">{t.contact.pitch}</p>
       <a
         href={socialLinks.email}
         className="mt-6 inline-block text-lg text-accent underline decoration-1 underline-offset-4 hover:text-ink"

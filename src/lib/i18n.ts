@@ -18,13 +18,12 @@ const uiEn = {
   theme: { toLight: 'Switch to light mode', toDark: 'Switch to dark mode' },
   language: { label: 'Language', names: { en: 'English', de: 'Deutsch' } },
   hero: {
-    availableFrom: (from: string) => `Available from ${from}`,
     email: 'Email me',
     cv: 'CV (PDF)',
   },
   openTo: {
     title: 'Open to',
-    note: (from: string) => `From ${from}, alongside my M.Sc.`,
+    note: 'Alongside my M.Sc.',
   },
   experience: {
     title: 'Experience',
@@ -60,8 +59,7 @@ const uiEn = {
   },
   contact: {
     title: 'Contact',
-    pitch: (from: string) =>
-      `Hiring a Werkstudent, intern or HiWi from ${from}? Email is the quickest way to reach me.`,
+    pitch: 'Have work or research in mind? Email is the quickest way to reach me.',
     email: 'Email',
     cv: 'CV',
     cvValue: 'Download PDF',
@@ -85,13 +83,12 @@ const uiDe: UI = {
   theme: { toLight: 'Zum hellen Modus wechseln', toDark: 'Zum dunklen Modus wechseln' },
   language: { label: 'Sprache', names: { en: 'English', de: 'Deutsch' } },
   hero: {
-    availableFrom: (from: string) => `Verfügbar ab ${from}`,
     email: 'E-Mail schreiben',
     cv: 'Lebenslauf (PDF, Englisch)',
   },
   openTo: {
     title: 'Offen für',
-    note: (from: string) => `Ab ${from}, neben meinem Masterstudium.`,
+    note: 'Neben meinem Masterstudium.',
   },
   experience: {
     title: 'Erfahrung',
@@ -126,8 +123,7 @@ const uiDe: UI = {
   },
   contact: {
     title: 'Kontakt',
-    pitch: (from: string) =>
-      `Sie suchen ab ${from} einen Werkstudenten, Praktikanten oder eine HiWi-Kraft? Am schnellsten erreichen Sie mich per E-Mail.`,
+    pitch: 'Sie haben einen Job oder ein Forschungsprojekt für mich? Am schnellsten erreichen Sie mich per E-Mail.',
     email: 'E-Mail',
     cv: 'Lebenslauf',
     cvValue: 'PDF herunterladen (Englisch)',

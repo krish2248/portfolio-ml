@@ -12,8 +12,10 @@ export const siteConfig = {
     'I turn messy business data into decisions, and build the software that puts those decisions in front of people.',
   intro:
     'Until October 2026 I was the data scientist at PRM & Company, a pharmaceutical marketing company in India, where I ran sales and marketing analytics and built the company’s online shop and KPI dashboard. I’ve now started the M.Sc. in Data Science at TU Dortmund.',
+  /** Page title and description; index.html must match (checked at build time). */
+  title: 'Krish Soni · Data Scientist · M.Sc. Data Science, TU Dortmund',
   description:
-    'Krish Soni, M.Sc. Data Science student at TU Dortmund. Open to work and research in data science, analytics and ML engineering.',
+    'Data scientist with 17 months in pharma sales analytics and M.Sc. Data Science student at TU Dortmund. Python, statistics, machine learning; now working with particle-physics data. Open to work and research.',
   email: 'sonikrish2248@gmail.com',
   location: 'Dortmund, Germany',
   // Public CV (no phone, address, photo or date of birth). '' hides the CV links.

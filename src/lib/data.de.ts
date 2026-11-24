@@ -174,6 +174,8 @@ export const contentDe: Content = {
       'Ich verwandle unübersichtliche Geschäftsdaten in Entscheidungen und baue die Software, die diese Entscheidungen sichtbar macht.',
     intro:
       'Bis Oktober 2026 war ich Data Scientist bei PRM & Company, einem Pharma-Marketingunternehmen in Indien. Dort habe ich die Vertriebs- und Marketinganalysen verantwortet und den Onlineshop sowie das KPI-Dashboard des Unternehmens aufgebaut. Seit dem Wintersemester 2026/27 studiere ich Data Science (M.Sc.) an der TU Dortmund.',
+    description:
+      'Data Scientist mit 17 Monaten Erfahrung in der Pharma-Vertriebsanalyse und Masterstudent Data Science an der TU Dortmund. Python, Statistik, Machine Learning; aktuell mit Daten aus der Teilchenphysik. Offen für Jobs und Forschung.',
     location: 'Dortmund, Deutschland',
     updated: 'November 2026',
   },

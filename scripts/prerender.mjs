@@ -22,17 +22,30 @@ function replaceOnce(html, from, to) {
   return html.replace(from, () => to)
 }
 
+/** Title and description each appear three times: page, Open Graph, Twitter. */
+function replaceThree(html, from, to) {
+  if (html.split(from).length !== 4) throw new Error(`prerender: expected 3 copies in index.html of "${from}"`)
+  return html.replaceAll(from, () => to)
+}
+
 const decode = (html) =>
   html.replaceAll('&lt;', '<').replaceAll('&gt;', '>').replaceAll('&quot;', '"').replaceAll('&#x27;', "'").replaceAll('&amp;', '&')
 
+const { title: enTitle, description: enDescription } = render('en')
+
 for (const lang of ['en', 'de']) {
-  const { html: app, mustContain } = render(lang)
+  const { html: app, mustContain, title, description } = render(lang)
   // The footer year comes from the build machine's clock; everything else is from the content files.
   let html = replaceOnce(template, '<div id="root"></div>', `<div id="root">${app}</div>`)
+  html = replaceThree(html, enTitle, title)
+  html = replaceThree(html, enDescription, description)
 
   if (lang === 'de') {
     html = replaceOnce(html, '<html lang="en">', '<html lang="de">')
     html = replaceOnce(html, `<link rel="canonical" href="${SITE}/" />`, `<link rel="canonical" href="${SITE}/de/" />`)
+    html = replaceOnce(html, `<meta property="og:url" content="${SITE}/" />`, `<meta property="og:url" content="${SITE}/de/" />`)
+    html = replaceOnce(html, 'content="en_GB"', 'content="de_DE"')
+    html = replaceOnce(html, 'Krish Soni, Data Scientist, M.Sc. Data Science at TU Dortmund.', 'Krish Soni, Data Scientist, M.Sc. Data Science an der TU Dortmund.')
   }
 
   // React puts <!-- --> between neighbouring text nodes; readers ignore it.

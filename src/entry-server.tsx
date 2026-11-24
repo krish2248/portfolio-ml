@@ -34,5 +34,5 @@ export function render(lang: Lang) {
     ...c.references.flatMap((ref) => [ref.quote, ref.name, ref.role]),
   ]
 
-  return { html, mustContain }
+  return { html, mustContain, title: c.siteConfig.title, description: c.siteConfig.description }
 }

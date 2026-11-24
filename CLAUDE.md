@@ -74,7 +74,7 @@ History was rewritten and force-pushed twice on 24 Nov 2026 to drop private file
 
 ## Session log: 24 Nov 2026 (branch `portfolio-refresh-2026-11`)
 
-Live on `master` the same day: PRM wording, old resume PDF removed, clean public CV; history cleaned twice. On the branch, in order:
+Live on `master` the same day: PRM wording, old resume PDF removed, clean public CV; history cleaned twice. Merged and deployed the same day, in order:
 1. Pre-rendered `/` and `/de/` to static HTML.
 2. Head tags, JSON-LD, sitemap, robots, icons, new preview image.
 3. Site synced to the Nov 2026 CV, then all copy replaced by Krish's text and moved to `src/content.ts`.
@@ -103,6 +103,6 @@ Krish said he is **"just getting started"** and that **there's a lot to change i
 
 ## Next up (pending)
 
-1. The `krish2248/lhcb-tau-3mu` repo doesn't exist yet on GitHub, public or private (checked 24 Nov 2026), but the CV and site link to it. Krish wants it public and the link kept.
+1. `krish2248/lhcb-tau-3mu` was created (public) on 24 Nov 2026 with only a README saying the code isn't published yet; Krish still has to add the code.
 2. Have a German speaker review the German text (hero statement and "Offen für" first).
 3. Reference quotes stay; don't list spoken languages on the site (Krish, 24 Nov 2026).

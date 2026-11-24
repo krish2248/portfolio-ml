@@ -1,18 +1,20 @@
 import { FC, useEffect, useState } from 'react'
 import { cn } from '@/lib/utils'
-import { navLinks, siteConfig } from '@/lib/data'
+import { site } from '@/content'
 import { useScrollSpy } from '@/hooks/useScrollSpy'
 import { useLanguage } from '@/context/LanguageContext'
 import ThemeToggle from '../ui/ThemeToggle'
 import LanguageToggle from '../ui/LanguageToggle'
 
-const sectionIds = navLinks.map((link) => link.href.slice(1))
+const sections = ['now', 'projects', 'experience', 'education', 'contact'] as const
+const navLinks = sections.map((key) => ({ key, href: `#${key}` }))
+const sectionIds = [...sections]
 
 const Navbar: FC = () => {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const active = useScrollSpy({ sectionIds, offset: 120 })
-  const { t } = useLanguage()
+  const { c } = useLanguage()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -37,7 +39,7 @@ const Navbar: FC = () => {
     >
       <nav className="mx-auto flex h-16 max-w-page items-center justify-between px-5 sm:px-8" aria-label="Main">
         <a href="#top" className="font-serif text-lg font-medium tracking-tight text-ink" onClick={() => setMenuOpen(false)}>
-          {siteConfig.name}
+          {site.name}
         </a>
 
         <div className="flex items-center gap-1">
@@ -52,7 +54,7 @@ const Navbar: FC = () => {
                     active === link.href.slice(1) ? 'bg-accent-soft text-ink' : 'text-muted hover:text-ink'
                   )}
                 >
-                  {t.nav[link.key]}
+                  {c.nav[link.key]}
                 </a>
               </li>
             ))}
@@ -66,7 +68,7 @@ const Navbar: FC = () => {
             aria-controls="mobile-menu"
             onClick={() => setMenuOpen((open) => !open)}
           >
-            {menuOpen ? t.menu.close : t.menu.open}
+            {menuOpen ? c.ui.menuClose : c.ui.menuOpen}
           </button>
         </div>
       </nav>
@@ -80,7 +82,7 @@ const Navbar: FC = () => {
                 onClick={() => setMenuOpen(false)}
                 className="block border-b border-line py-3 text-base text-ink-2 last:border-0"
               >
-                {t.nav[link.key]}
+                {c.nav[link.key]}
               </a>
             </li>
           ))}

@@ -5,16 +5,13 @@
  */
 
 import { createContext, useContext, useEffect, useMemo, useState, useCallback, ReactNode } from 'react'
-import { contentEn, Content } from '@/lib/data'
-import { contentDe } from '@/lib/data.de'
-import { ui, langPath, Lang, UI } from '@/lib/i18n'
+import { content, Content } from '@/content'
+import { langPath, Lang } from '@/lib/lang'
 
 interface LanguageContextValue {
   lang: Lang
   setLang: (lang: Lang) => void
-  /** Interface text. */
-  t: UI
-  /** CV content. */
+  /** All text, in the current language. */
   c: Content
 }
 
@@ -41,7 +38,7 @@ export function LanguageProvider({ initialLang, children }: { initialLang: Lang;
   }, [])
 
   const value = useMemo(
-    () => ({ lang, setLang, t: ui[lang], c: lang === 'de' ? contentDe : contentEn }),
+    () => ({ lang, setLang, c: content[lang] }),
     [lang, setLang]
   )
 

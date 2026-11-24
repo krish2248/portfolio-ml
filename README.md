@@ -15,10 +15,9 @@ bun run build    # type-check + production build into dist/
 
 ## Where things live
 
-- `src/lib/data.ts`: all content (intro, availability, projects, experience, education, skills).
+- `src/content.ts`: all text, English and German.
 - `src/components/sections/`: one component per page section.
 - `src/components/ui/ProjectCover.tsx`: the drawn project thumbnails. Pick one with a project's `motif`.
 - `src/styles/globals.css`: colour tokens for light and dark mode.
 
-To publish the CV, put the PDF in `public/` and set `siteConfig.resumeUrl` (for example
-`'/Krish_Soni_CV.pdf'`); the CV button appears automatically.
+The CV is `public/cv/Krish_Soni_CV.pdf`; its path is `site.cv` in `src/content.ts`.

@@ -1,91 +1,84 @@
 import { FC } from 'react'
-import { Project } from '@/lib/data'
+import { moreProjects, Project } from '@/content'
+import { cn } from '@/lib/utils'
 import { useLanguage } from '@/context/LanguageContext'
 import Section from '../layout/Section'
 import ProjectCover from '../ui/ProjectCover'
 
-/** "github.com/krish2248/futology" → "krish2248/futology"; otherwise the live domain. */
-export function coverCaption(project: Project): string | undefined {
-  if (project.githubUrl) return project.githubUrl.replace('https://github.com/', '')
-  if (project.liveUrl) return new URL(project.liveUrl).hostname
-  return undefined
-}
-
 const Projects: FC = () => {
-  const { t, c } = useLanguage()
+  const { projects } = useLanguage().c
 
   return (
-    <Section id="projects" title={t.projects.title} note={t.projects.note}>
+    <Section id="projects" title={projects.title}>
       <div className="grid gap-x-6 gap-y-10 sm:grid-cols-2">
-        {c.featuredProjects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+        {projects.items.map((project, i) => (
+          // The first project takes the full row.
+          <ProjectCard key={project.id} project={project} wide={i === 0} codeLabel={projects.code} />
         ))}
       </div>
 
-      <h3 className="eyebrow mt-16">{t.projects.more}</h3>
-      <ul className="mt-4 border-t border-line">
-        {c.moreProjects.map((project) => (
-          <li key={project.id} className="grid gap-1 border-b border-line py-4 sm:grid-cols-[14rem_1fr_auto] sm:items-baseline sm:gap-6">
-            <span className="font-medium text-ink">{project.title}</span>
-            <span className="text-sm text-ink-2">
-              {project.summary} <span className="text-muted">{project.technologies.join(', ')}</span>
-            </span>
-            <ProjectLinks project={project} />
-          </li>
+      <p className="mt-12 flex flex-wrap gap-x-5 gap-y-2 border-t border-line pt-4 text-sm">
+        <span className="text-muted">{projects.more}</span>
+        {moreProjects.map((project) => (
+          <a key={project.url} href={project.url} target="_blank" rel="noopener noreferrer" className="link">
+            {project.title}
+          </a>
         ))}
-      </ul>
+      </p>
     </Section>
   )
 }
 
-const ProjectCard: FC<{ project: Project }> = ({ project }) => {
-  const primaryUrl = project.liveUrl ?? project.githubUrl
+const ProjectCard: FC<{ project: Project; wide: boolean; codeLabel: string }> = ({ project, wide, codeLabel }) => {
+  const { title, badge, summary, stack, url, motif } = project
+  const frame = 'block overflow-hidden rounded-lg border border-line'
+  const cover = <ProjectCover motif={motif} caption={url?.replace('https://github.com/', '')} />
 
   return (
-    <article className="group flex flex-col">
-      <a
-        href={primaryUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        tabIndex={-1}
-        aria-hidden="true"
-        className="block overflow-hidden rounded-lg border border-line transition-colors group-hover:border-line-strong"
-      >
-        <ProjectCover motif={project.motif} caption={coverCaption(project)} />
-      </a>
-      <div className="mt-4 flex items-baseline justify-between gap-4">
+    <article className={cn('group flex flex-col', wide && 'sm:col-span-2 sm:grid sm:grid-cols-2 sm:gap-6')}>
+      {url ? (
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          tabIndex={-1}
+          aria-hidden="true"
+          className={cn(frame, 'self-start transition-colors group-hover:border-line-strong', 'w-full')}
+        >
+          {cover}
+        </a>
+      ) : (
+        <div className={frame}>{cover}</div>
+      )}
+      <div className={cn('flex grow flex-col', wide ? 'mt-4 sm:mt-0' : 'mt-4')}>
+        {badge && (
+          <p className="mb-2 self-start rounded border border-accent px-1.5 py-0.5 font-mono text-[11px] uppercase tracking-wide text-accent">
+            {badge}
+          </p>
+        )}
         <h3 className="text-lg font-medium text-ink">
-          <a href={primaryUrl} target="_blank" rel="noopener noreferrer" className="hover:text-accent">
-            {project.title}
-          </a>
+          {url ? (
+            <a href={url} target="_blank" rel="noopener noreferrer" className="hover:text-accent">
+              {title}
+            </a>
+          ) : (
+            title
+          )}
         </h3>
-        <span className="shrink-0 font-mono text-xs text-muted">{project.kind}</span>
-      </div>
-      <p className="mt-2 text-sm leading-relaxed text-ink-2">{project.summary}</p>
-      <div className="mt-auto flex flex-wrap items-center justify-between gap-3 pt-4">
-        <span className="font-mono text-xs text-muted">{project.technologies.join(' · ')}</span>
-        <ProjectLinks project={project} />
+        <p className="mt-2 text-sm leading-relaxed text-ink-2">{summary}</p>
+        {(stack || url) && (
+          <div className="mt-auto flex items-end justify-between gap-4 pt-4">
+            <span className="font-mono text-xs text-muted">{stack?.join(' · ')}</span>
+            {url && (
+              <a href={url} target="_blank" rel="noopener noreferrer" className="link shrink-0 text-sm">
+                {codeLabel}
+                <span className="sr-only">: {title}</span> ↗
+              </a>
+            )}
+          </div>
+        )}
       </div>
     </article>
-  )
-}
-
-export const ProjectLinks: FC<{ project: Project }> = ({ project }) => {
-  const { t } = useLanguage()
-
-  return (
-    <span className="flex gap-4 text-sm">
-      {project.liveUrl && (
-        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="link">
-          {t.projects.live}<span className="sr-only">{t.projects.liveSr(project.title)}</span> ↗
-        </a>
-      )}
-      {project.githubUrl && (
-        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="link">
-          {t.projects.code}<span className="sr-only">{t.projects.codeSr(project.title)}</span> ↗
-        </a>
-      )}
-    </span>
   )
 }
 

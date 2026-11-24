@@ -31,21 +31,21 @@ function replaceThree(html, from, to) {
 const decode = (html) =>
   html.replaceAll('&lt;', '<').replaceAll('&gt;', '>').replaceAll('&quot;', '"').replaceAll('&#x27;', "'").replaceAll('&amp;', '&')
 
-const { title: enTitle, description: enDescription } = render('en')
+const { meta: en } = render('en')
 
 for (const lang of ['en', 'de']) {
-  const { html: app, mustContain, title, description } = render(lang)
+  const { html: app, mustContain, meta } = render(lang)
   // The footer year comes from the build machine's clock; everything else is from the content files.
   let html = replaceOnce(template, '<div id="root"></div>', `<div id="root">${app}</div>`)
-  html = replaceThree(html, enTitle, title)
-  html = replaceThree(html, enDescription, description)
+  html = replaceThree(html, en.title, meta.title)
+  html = replaceThree(html, en.description, meta.description)
+  html = replaceOnce(html, en.imageAlt, meta.imageAlt)
 
   if (lang === 'de') {
     html = replaceOnce(html, '<html lang="en">', '<html lang="de">')
     html = replaceOnce(html, `<link rel="canonical" href="${SITE}/" />`, `<link rel="canonical" href="${SITE}/de/" />`)
     html = replaceOnce(html, `<meta property="og:url" content="${SITE}/" />`, `<meta property="og:url" content="${SITE}/de/" />`)
     html = replaceOnce(html, 'content="en_GB"', 'content="de_DE"')
-    html = replaceOnce(html, 'Krish Soni, Data Scientist, M.Sc. Data Science at TU Dortmund.', 'Krish Soni, Data Scientist, M.Sc. Data Science an der TU Dortmund.')
   }
 
   // React puts <!-- --> between neighbouring text nodes; readers ignore it.

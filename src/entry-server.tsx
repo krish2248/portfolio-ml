@@ -5,12 +5,11 @@
 import { StrictMode } from 'react'
 import { renderToString } from 'react-dom/server'
 import App from './App'
-import { contentEn } from './lib/data'
-import { contentDe } from './lib/data.de'
-import { Lang } from './lib/i18n'
+import { content, moreProjects, site } from './content'
+import { Lang } from './lib/lang'
 
 export function render(lang: Lang) {
-  const c = lang === 'de' ? contentDe : contentEn
+  const c = content[lang]
   const html = renderToString(
     <StrictMode>
       <App lang={lang} />
@@ -18,21 +17,22 @@ export function render(lang: Lang) {
   )
 
   // The build fails if any of these is missing from the HTML.
-  const projects = [...c.featuredProjects, ...c.moreProjects, ...c.personalProjects]
   const mustContain = [
-    c.siteConfig.name,
-    c.siteConfig.statement,
-    c.siteConfig.intro,
-    c.availability.headline,
-    c.availability.terms,
-    ...c.quickFacts.flatMap((fact) => [fact.label, fact.value]),
-    ...c.openTo.flatMap((item) => [item.title, item.body]),
-    ...c.experiences.flatMap((job) => [job.title, job.company, job.period, ...job.points]),
-    ...c.education.flatMap((item) => [item.degree, item.institution, ...item.details]),
-    ...c.skills.flatMap((row) => [row.group, ...row.items]),
-    ...projects.flatMap((project) => [project.title, project.summary]),
-    ...c.references.flatMap((ref) => [ref.quote, ref.name, ref.role]),
-  ]
+    site.name,
+    site.email,
+    site.cv,
+    c.hero.tagline,
+    c.hero.statement,
+    c.now.updated,
+    ...c.now.items,
+    ...c.projects.items.flatMap((p) => [p.title, p.badge ?? '', p.summary, p.url ?? '', ...(p.stack ?? [])]),
+    ...moreProjects.flatMap((p) => [p.title, p.url]),
+    ...c.experience.items.flatMap((job) => [job.period, job.role, job.company, job.location, job.text]),
+    ...c.experience.quotes.flatMap((ref) => [ref.quote, ref.name, ref.role]),
+    ...c.education.items.flatMap((item) => [item.period, item.degree, item.school, item.note ?? '']),
+    ...c.skills.rows,
+    c.contact.locationValue,
+  ].filter(Boolean)
 
-  return { html, mustContain, title: c.siteConfig.title, description: c.siteConfig.description }
+  return { html, mustContain, meta: c.meta }
 }

@@ -6,9 +6,9 @@ Personal portfolio of Krish Hemang Soni. Read this first in any new session.
 
 - Krish is doing an **M.Sc. Data Science at TU Dortmund**, winter intake 2026/27, 2026–2028. He lives in Dortmund.
 - He was a **Data Scientist at PRM & Company (PRM Pharmaceuticals)** in Bhavnagar, India, from 2 Jun 2025 to **31 Oct 2026**. Describe PRM as "a pharmaceutical **marketing** company" (Krish, 24 Nov 2026): it does not manufacture, so never "manufacturer" and don't mention manufacturing. His PRM work: data analysis, data visualisation (Python libraries only), website development. Do **not** add SEO or app development to the PRM entry.
-- The site's goal is to land work or research in data science, analytics and ML engineering. The site says only **"Open to work / research"**: Krish asked (24 Nov 2026) not to name Werkstudent, internship or HiWi, so don't re-add them. (Past internships in Experience stay.)
-- Content source: his **Nov 2026 CV** (`Krish_Soni_CV.pdf` + HTML source in Downloads); the site was synced to it on 24 Nov 2026. Don't edit the published CV unless Krish asks. Older sources, the **Oct 2026 CVs**: `CV_Krish_Soni.pdf` (English, photo, address, DOB), `Lebenslauf_Krish_Soni.pdf` (German version of it) and `Resume_Krish_Soni.pdf` (no photo, address or DOB; has the full project list). Older drafts like `Krish_Hemang_Soni_CV_Academic.pdf`, the PRM recommendation letter and a LinkedIn post are background only. The site must not claim more than the CVs (e.g. FUTOLOGY's ML service is a *next milestone*; LHCb and Scikit-HEP are *in progress*). Projects only in older CVs (MedXAI, REMS, Virtual Classroom and so on) stay unless Krish removes them.
-- **Public CV:** `public/Krish_Soni_CV.pdf` (since 24 Nov 2026), a privacy-safe build of his Nov 2026 CV: Personal Details block and phone/address removed, PRM reworded as a marketing company. Never publish his phone number, street address, date of birth, residence-permit details or photo, including inside a PDF. His private CV (`Krish_Soni_CV.pdf`) and its HTML source (`Krish_Soni_CV_source.zip`) are in Downloads and are **not** safe to publish as they are. Older CVs: `Desktop/Everything/Docs all/Resume work`.
+- The site's goal is to land **Werkstudent, HiWi and internship** roles in data science. Wording (Krish, 24 Nov 2026, final): "Open to Werkstudent, HiWi and internship roles" in the Now section and meta description. This replaced the short-lived "open to work / research" wording of the same day.
+- **Content source: the text Krish supplied on 24 Nov 2026**, which is `src/content.ts`. Do not invent facts, numbers, dates or projects beyond it. Never mention training colleagues, MedXAI, bootcamps, quiz judging or YouTube. Describe the shop exactly as "on Shopify with custom JavaScript and CSS". The published CV stays as it is unless Krish asks.
+- **Public CV:** `public/cv/Krish_Soni_CV.pdf` (since 24 Nov 2026), a privacy-safe build of his Nov 2026 CV: Personal Details block and phone/address removed, PRM reworded as a marketing company. Never publish his phone number, street address, date of birth, residence-permit details or photo, including inside a PDF. His private CV (`Krish_Soni_CV.pdf`) and its HTML source (`Krish_Soni_CV_source.zip`) are in Downloads and are **not** safe to publish as they are. Older CVs: `Desktop/Everything/Docs all/Resume work`.
 - Note: the CVs themselves call PRM a "manufacturer" and mention manufacturing orders; the site rule below still applies to the site.
 
 ## Stack and deploy
@@ -19,23 +19,23 @@ Personal portfolio of Krish Hemang Soni. Read this first in any new session.
 
 ## Where things live
 
-- `src/lib/data.ts`: **all content**: site config, availability, open-to roles, projects (featured, more, personal), experience, education, skills, references, study repos.
-- **Two languages (EN/DE).** `src/lib/data.ts` is the English content; `src/lib/data.de.ts` overrides the text by id (projects, jobs, education) for German. Interface text (nav, titles, buttons) is in `src/lib/i18n.ts`. Components read both through `useLanguage()` (`src/context/LanguageContext.tsx`): `t` = interface text, `c` = content. The EN | DE switch sits next to the theme toggle; default is English, the choice is saved. English is at `/`, German at `/de/`; `?lang=de` links redirect to `/de/`. **When you change English content, update data.de.ts too.** Reference quotes stay in the original English.
-- `src/components/sections/`: Hero, OpenTo, Experience (includes the references quotes), Education (includes skills), Projects, Elsewhere, Contact. That is also the page order (set in `src/App.tsx`; nav order in `navLinks` in data.ts).
-- `src/components/ui/ProjectCover.tsx`: drawn SVG project thumbnails. Each project picks one with `motif` in data.ts. To add a motif, add it to the `CoverMotif` type and the `motifs` map.
+- `src/content.ts`: **all text, English and German**, in one file (links and quotes shared at the top, then `en`, then `de`). **When you change English, change German too.** Components read it with `useLanguage()` (`src/context/LanguageContext.tsx`), where `c` is the content. Language helpers: `src/lib/lang.ts`. The EN | DE switch sits next to the theme toggle and the choice is saved. English is at `/`, German at `/de/`; `?lang=de` redirects to `/de/`. Reference quotes stay in the original English (Krish: keep them).
+- `src/components/sections/`, in page order (set in `src/App.tsx`; nav in `Navbar.tsx`): Hero, Now, Projects, Experience (with quotes), Education, Skills, Contact.
+- `src/components/ui/ProjectCover.tsx`: drawn SVG project covers, picked with `motif` in content.ts. Add new ones to `CoverMotif` and `motifs`. Ten unused covers were deleted on 24 Nov 2026 (in git: `git show pre-rewrite-2026-11:src/components/ui/ProjectCover.tsx`).
 - `src/styles/globals.css`: colour tokens for light (warm paper `#f6f5f0`) and dark (forest green `#091413`, his choice). Components use the token colours (`bg`, `surface`, `plate`, `ink`, `ink-2`, `muted`, `line`, `line-strong`, `accent`) rather than `dark:` variants.
   - The cover colour is named `plate` because `bg-cover` clashes with a built-in Tailwind utility.
   - Opacity modifiers like `bg-bg/95` don't work on these `var()` colours.
-- `public/`: `Krish_Soni_CV.pdf` (CV button in Hero + Contact via `siteConfig.resumeUrl`), `og-image.jpg` (1200×630 social preview with the "ks" logo, **no photo**). Source is `scripts/og-card.html`; to regenerate after a name/role/availability change, edit it and run Chrome headless: `chrome --headless=new --hide-scrollbars --window-size=1200,630 --virtual-time-budget=8000 --screenshot=og.png file:///<abs path>/scripts/og-card.html`, then save as JPEG to `public/og-image.jpg`.
-- Head/SEO: English title and description are in `index.html` and `siteConfig` (data.ts), German in data.de.ts; the build fails if they drift apart. Descriptions end "Open to work and research". `public/` also has `robots.txt`, `sitemap.xml` (add new routes), `favicon.svg`/`.ico` and `apple-touch-icon.png` (from the ks logo).
+- `public/`: `cv/Krish_Soni_CV.pdf` (Download CV button; path in `site.cv`), `og-image.jpg` (1200×630 social preview with the "ks" logo, **no photo**). Source is `scripts/og-card.html`; to regenerate after a name/role/availability change, edit it and run Chrome headless: `chrome --headless=new --hide-scrollbars --window-size=1200,630 --virtual-time-budget=8000 --screenshot=og.png file:///<abs path>/scripts/og-card.html`, then save as JPEG to `public/og-image.jpg`.
+- Head/SEO: title and description are in `content.ts` (`meta`); the English ones are repeated in `index.html` and the build fails if they differ. `public/` also has `robots.txt`, `sitemap.xml` (add new routes), `favicon.svg`/`.ico` and `apple-touch-icon.png`.
 - Fonts: IBM Plex Sans (body), IBM Plex Mono (metadata), Source Serif 4 (headings), loaded in `index.html`.
 - Medium handle is `@krish2248` (confirmed by Krish, 28 Oct 2026).
 
 ## Design rules Krish asked for
 
 - It should look deliberate, **not "vibe-coded"**. Avoid fake terminal commands, emoji icons, ASCII boxes, macOS window dots, typewriter effects, inflated stats, generic GitHub OG thumbnails and hover wobble everywhere.
+- The site is **not** retro-terminal any more. Prompts Krish pastes may still say so; keep the editorial design unless he says otherwise himself.
 - Keep the editorial layout: a label column on the left and content on the right, with one green accent colour.
-- Only claim things his CV supports.
+- Only claim things in `src/content.ts` / his CV.
 
 ## History (Oct 2026)
 
@@ -49,24 +49,24 @@ Personal portfolio of Krish Hemang Soni. Read this first in any new session.
 | tag `pre-reorder-2026-10` (= `5ebf85d`) | Backup before the section reorder (old order: Open to, Projects, Experience, Education, Elsewhere, Contact) |
 | `69a4029` | Sections and nav reordered: Open to, Experience, Education & skills, Projects, Elsewhere, Contact |
 | tag `pre-cv-2026-10` (= `fbe0d16`) | Backup before the final-CV sync |
-| `05cff9e` | Final CV sync: resume PDF, hero photo (since removed), OG image, German A1, content matched to final CVs |
-| `6fe44b2` | Medium handle changed to `@krish2248` |
-| `17f5a2d` | Green-lit portrait in dark mode (later removed) |
-| tag `pre-i18n-2026-10` (= `17f5a2d`) | Backup before the German version |
-| `100a928` | EN/DE language switch, full German translation |
-| tag `pre-nophoto-2026-10` (= `5ed48dc`) | Backup before removing the hero photo |
-| tag `pre-opento-2026-11` (= `362abe1`) | Backup before the 24 Nov 2026 changes (roles wording, resume PDF removed, PRM as marketing company) |
-| `ea7859d` | Hero photo removed in both themes (Krish's request). `05e19eb` also accidentally committed `.claude/settings.local.json` (only a permission allowlist line, harmless) |
+| `326fd92` | Final CV sync: resume PDF, hero photo (since removed), OG image, German A1, content matched to final CVs |
+| `ed16713` | Medium handle changed to `@krish2248` |
+| `4e0646e` | Green-lit portrait in dark mode (later removed) |
+| tag `pre-i18n-2026-10` (= `4e0646e`) | Backup before the German version |
+| `91178c3` | EN/DE language switch, full German translation |
+| tag `pre-nophoto-2026-10` (= `67646c3`) | Backup before removing the hero photo |
+| tag `pre-opento-2026-11` (= `4fa21b3`) | Backup before the 24 Nov 2026 changes (roles wording, resume PDF removed, PRM as marketing company) |
+| `8529879` | Hero photo removed in both themes (Krish's request). `943ea76` also accidentally committed `.claude/settings.local.json` (only a permission allowlist line, harmless) |
 
-History was rewritten and force-pushed on 24 Nov 2026 to drop a private file, so hashes from 28 Oct 2026 on differ from older notes. Don't push from an old clone.
+History was rewritten and force-pushed twice on 24 Nov 2026 to drop private files and photos, so hashes from 28 Oct 2026 on differ from older notes. Don't push from an old clone.
 
 **Undo:**
 - Everything: `git revert 944f13f 3f18dd9 a1a92f9`.
 - One file: `git checkout pre-redesign-2026-10 -- <path>`.
 - View the old version: `git show pre-redesign-2026-10:<path>`.
-- Photo removal only: `git revert ea7859d` (brings both portraits back).
-- German version only: `git revert 100a928`.
-- Final-CV sync only: `git revert 05cff9e`.
+- German version only: `git revert 91178c3`.
+- Content rewrite only: tag `pre-rewrite-2026-11` is the state just before it (old `data.ts` content, Open to, Elsewhere).
+- Final-CV sync only: `git revert 326fd92`.
 - Section order only: `git revert 69a4029`, or `git checkout pre-reorder-2026-10 -- src/App.tsx src/lib/data.ts`.
 
 ## Session log: 28 Oct 2026

@@ -6,7 +6,7 @@
 import { StrictMode } from 'react'
 import { createRoot, hydrateRoot } from 'react-dom/client'
 import App from './App'
-import { langFromPath } from './lib/i18n'
+import { langFromPath } from './lib/lang'
 import './styles/globals.css'
 
 // Get root element

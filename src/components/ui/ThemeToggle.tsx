@@ -4,8 +4,8 @@ import { useLanguage } from '@/context/LanguageContext'
 
 const ThemeToggle: FC = () => {
   const { toggleTheme, isDark } = useTheme()
-  const { t } = useLanguage()
-  const label = isDark ? t.theme.toLight : t.theme.toDark
+  const { c } = useLanguage()
+  const label = isDark ? c.ui.toLight : c.ui.toDark
 
   return (
     <button

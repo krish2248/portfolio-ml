@@ -1,12 +1,13 @@
 import { FC } from 'react'
 import { ThemeProvider } from './context/ThemeContext'
 import { LanguageProvider, useLanguage } from './context/LanguageContext'
+import { Lang } from './lib/i18n'
 import { Navbar, Footer } from './components/layout'
 import { Hero, OpenTo, Projects, Experience, Education, Elsewhere, Contact } from './components/sections'
 
-const App: FC = () => (
+const App: FC<{ lang: Lang }> = ({ lang }) => (
   <ThemeProvider>
-    <LanguageProvider>
+    <LanguageProvider initialLang={lang}>
       <Page />
     </LanguageProvider>
   </ThemeProvider>

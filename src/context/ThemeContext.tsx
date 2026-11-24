@@ -8,7 +8,8 @@ import { createContext, useContext, useEffect, useState, useCallback, ReactNode 
 type Theme = 'dark' | 'light'
 
 interface ThemeContextValue {
-  theme: Theme
+  /** null until hydrated. */
+  theme: Theme | null
   toggleTheme: () => void
   isDark: boolean
 }
@@ -19,12 +20,16 @@ const STORAGE_KEY = 'portfolio-theme'
 const THEME_COLORS: Record<Theme, string> = { light: '#f6f5f0', dark: '#091413' }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  // index.html has already put the right class on <html> before React loads.
-  const [theme, setTheme] = useState<Theme>(() =>
-    document.documentElement.classList.contains('dark') ? 'dark' : 'light'
-  )
+  // index.html puts the right class on <html> before first paint. The pre-rendered HTML can't know it,
+  // so React picks it up after hydration.
+  const [theme, setTheme] = useState<Theme | null>(null)
 
   useEffect(() => {
+    setTheme(document.documentElement.classList.contains('dark') ? 'dark' : 'light')
+  }, [])
+
+  useEffect(() => {
+    if (!theme) return
     const root = document.documentElement
     root.classList.remove('dark', 'light')
     root.classList.add(theme)

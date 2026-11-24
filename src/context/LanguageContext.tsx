@@ -1,12 +1,13 @@
 /**
  * Language context: English/German, persisted to localStorage.
- * English is the default; the choice is remembered per visitor and `?lang=de` links straight to German.
+ * English is at `/`, German at `/de/`, both pre-rendered. index.html sends `?lang=de` links and visitors
+ * who chose German before to `/de/` before first paint.
  */
 
 import { createContext, useContext, useEffect, useMemo, useState, useCallback, ReactNode } from 'react'
 import { contentEn, Content } from '@/lib/data'
 import { contentDe } from '@/lib/data.de'
-import { ui, Lang, UI } from '@/lib/i18n'
+import { ui, langPath, Lang, UI } from '@/lib/i18n'
 
 interface LanguageContextValue {
   lang: Lang
@@ -21,20 +22,7 @@ const LanguageContext = createContext<LanguageContextValue | undefined>(undefine
 
 const STORAGE_KEY = 'portfolio-lang'
 
-/** `?lang=de` in the URL wins (handy for links sent to German recruiters), then the saved choice. */
-function initialLang(): Lang {
-  const fromUrl = new URLSearchParams(window.location.search).get('lang')
-  if (fromUrl === 'en' || fromUrl === 'de') return fromUrl
-  try {
-    const saved = localStorage.getItem(STORAGE_KEY)
-    if (saved === 'en' || saved === 'de') return saved
-  } catch {
-    // Storage can be blocked (private mode); fall back to English.
-  }
-  return 'en'
-}
-
-export function LanguageProvider({ children }: { children: ReactNode }) {
+export function LanguageProvider({ initialLang, children }: { initialLang: Lang; children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>(initialLang)
 
   useEffect(() => {
@@ -43,6 +31,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   const setLang = useCallback((next: Lang) => {
     setLangState(next)
+    // Keep the address in step, so reloading or sharing it gives the same language.
+    window.history.replaceState(null, '', langPath[next] + window.location.hash)
     try {
       localStorage.setItem(STORAGE_KEY, next)
     } catch {

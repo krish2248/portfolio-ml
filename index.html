@@ -31,6 +31,20 @@
       html.dark { background-color: #091413; }
     </style>
 
+    <!-- `?lang=` links and the saved language choice: open the matching pre-rendered page. -->
+    <script>
+      (function () {
+        var params = new URLSearchParams(location.search), asked = params.get('lang'), saved = null;
+        try { saved = localStorage.getItem('portfolio-lang'); } catch (e) {}
+        var page = /^\/de(\/|$)/.test(location.pathname) ? 'de' : 'en';
+        var want = asked === 'en' || asked === 'de' ? asked : page === 'en' && saved === 'de' ? 'de' : page;
+        if (want === page) return;
+        if (want === 'de') params.delete('lang');
+        var query = params.toString();
+        location.replace((want === 'de' ? '/de/' : '/') + (query ? '?' + query : '') + location.hash);
+      })();
+    </script>
+
     <!-- Apply the saved theme (or the system preference) before first paint. -->
     <script>
       (function () {
@@ -44,11 +58,5 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <noscript>
-      <p style="font-family: system-ui, sans-serif; padding: 2rem; max-width: 40rem;">
-        Krish Soni · M.Sc. Data Science, TU Dortmund ·
-        <a href="mailto:sonikrish2248@gmail.com">sonikrish2248@gmail.com</a>
-      </p>
-    </noscript>
   </body>
 </html>

@@ -15,12 +15,12 @@ Personal portfolio of Krish Hemang Soni. Read this first in any new session.
 
 - React 18, TypeScript, Vite and Tailwind 3. No animation library.
 - **Pushing to `master` deploys to GitHub Pages** at sonikrish.com through `.github/workflows/deploy.yml`. Remote: `github.com/krish2248/portfolio-ml`.
-- `bun run build` type-checks and builds. Run it before every push.
+- `bun run build` type-checks, builds and **pre-renders** `/` and `/de/` (`src/entry-server.tsx` + `scripts/prerender.mjs`, no extra packages). The build fails if content is missing from the HTML. Run it before every push. Components must not read `window`/`document`/`localStorage` while rendering, only in effects, or hydration breaks.
 
 ## Where things live
 
 - `src/lib/data.ts`: **all content**: site config, availability, open-to roles, projects (featured, more, personal), experience, education, skills, references, study repos.
-- **Two languages (EN/DE).** `src/lib/data.ts` is the English content; `src/lib/data.de.ts` overrides the text by id (projects, jobs, education) for German. Interface text (nav, titles, buttons) is in `src/lib/i18n.ts`. Components read both through `useLanguage()` (`src/context/LanguageContext.tsx`): `t` = interface text, `c` = content. The EN | DE switch sits next to the theme toggle; default is English, the choice is saved, and `?lang=de` links straight to German. **When you change English content, update data.de.ts too.** Reference quotes stay in the original English.
+- **Two languages (EN/DE).** `src/lib/data.ts` is the English content; `src/lib/data.de.ts` overrides the text by id (projects, jobs, education) for German. Interface text (nav, titles, buttons) is in `src/lib/i18n.ts`. Components read both through `useLanguage()` (`src/context/LanguageContext.tsx`): `t` = interface text, `c` = content. The EN | DE switch sits next to the theme toggle; default is English, the choice is saved. English is at `/`, German at `/de/`; `?lang=de` links redirect to `/de/`. **When you change English content, update data.de.ts too.** Reference quotes stay in the original English.
 - `src/components/sections/`: Hero, OpenTo, Experience (includes the references quotes), Education (includes skills), Projects, Elsewhere, Contact. That is also the page order (set in `src/App.tsx`; nav order in `navLinks` in data.ts).
 - `src/components/ui/ProjectCover.tsx`: drawn SVG project thumbnails. Each project picks one with `motif` in data.ts. To add a motif, add it to the `CoverMotif` type and the `motifs` map.
 - `src/styles/globals.css`: colour tokens for light (warm paper `#f6f5f0`) and dark (forest green `#091413`, his choice). Components use the token colours (`bg`, `surface`, `plate`, `ink`, `ink-2`, `muted`, `line`, `line-strong`, `accent`) rather than `dark:` variants.

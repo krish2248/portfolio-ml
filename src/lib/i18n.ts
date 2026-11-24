@@ -5,6 +5,11 @@
 
 export type Lang = 'en' | 'de'
 
+/** English lives at `/`, German at `/de/`. */
+export const langPath: Record<Lang, string> = { en: '/', de: '/de/' }
+
+export const langFromPath = (pathname: string): Lang => (/^\/de(\/|$)/.test(pathname) ? 'de' : 'en')
+
 const uiEn = {
   skipLink: 'Skip to content',
   nav: {

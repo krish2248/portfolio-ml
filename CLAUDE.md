@@ -15,7 +15,7 @@ Personal portfolio of Krish Hemang Soni. Read this first in any new session.
 
 - React 18, TypeScript, Vite and Tailwind 3. No animation library.
 - **Pushing to `master` deploys to GitHub Pages** at sonikrish.com through `.github/workflows/deploy.yml`. Remote: `github.com/krish2248/portfolio-ml`.
-- `bun run build` type-checks, builds and **pre-renders** `/` and `/de/` (`src/entry-server.tsx` + `scripts/prerender.mjs`, no extra packages). The build fails if content is missing from the HTML. Run it before every push. Components must not read `window`/`document`/`localStorage` while rendering, only in effects, or hydration breaks.
+- `bun run build` type-checks, builds and **pre-renders** `/`, `/de/` and `404.html` (`src/entry-server.tsx` + `scripts/prerender.mjs`, no extra packages). The build fails if content is missing from the HTML. Run it before every push. Components must not read `window`/`document`/`localStorage` while rendering, only in effects, or hydration breaks.
 
 ## Where things live
 
@@ -71,6 +71,19 @@ History was rewritten and force-pushed twice on 24 Nov 2026 to drop private file
 - Content rewrite only: tag `pre-rewrite-2026-11` is the state just before it (old `data.ts` content, Open to, Elsewhere).
 - Final-CV sync only: `git revert 326fd92`.
 - Section order only: `git revert 69a4029`, or `git checkout pre-reorder-2026-10 -- src/App.tsx src/lib/data.ts`.
+
+## Session log: 24 Nov 2026 (branch `portfolio-refresh-2026-11`)
+
+Live on `master` the same day: PRM wording, old resume PDF removed, clean public CV; history cleaned twice. On the branch, in order:
+1. Pre-rendered `/` and `/de/` to static HTML.
+2. Head tags, JSON-LD, sitemap, robots, icons, new preview image.
+3. Site synced to the Nov 2026 CV, then all copy replaced by Krish's text and moved to `src/content.ts`.
+4. CV at `/cv/Krish_Soni_CV.pdf` with a Download CV button; FUTOLOGY demo link; Experience before Projects.
+5. Readability and accessibility pass.
+6. Self-hosted fonts, no third-party requests; unpublished Impressum/Datenschutz templates.
+7. Bilingual 404 page, preview image and touch icon compressed, links and stale text checked.
+
+Krish plans to fix the old projects in the coming days. Test with a server that behaves like GitHub Pages (404.html, directory redirects): `vite preview` serves the start page for unknown addresses.
 
 ## Session log: 28 Oct 2026
 

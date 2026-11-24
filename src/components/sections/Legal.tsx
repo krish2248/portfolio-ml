@@ -1,9 +1,8 @@
 import { FC } from 'react'
-import { site } from '@/content'
 import { hasPlaceholders, legal } from '@/legal'
 import { langPath } from '@/lib/lang'
 import type { LegalPage } from '@/lib/pages'
-import ThemeToggle from '../ui/ThemeToggle'
+import SimpleHeader from '../layout/SimpleHeader'
 
 /** Highlights [[placeholders]] so none can be missed. */
 const Text: FC<{ children: string }> = ({ children }) => (
@@ -26,14 +25,7 @@ const Legal: FC<{ page: LegalPage }> = ({ page }) => {
 
   return (
     <>
-      <header className="border-b border-line">
-        <div className="mx-auto flex h-16 max-w-page items-center justify-between px-5 sm:px-8">
-          <a href={langPath.de} className="font-serif text-lg font-medium tracking-tight text-ink">
-            {site.name}
-          </a>
-          <ThemeToggle />
-        </div>
-      </header>
+      <SimpleHeader home={langPath.de} />
       <main id="main" tabIndex={-1} className="mx-auto max-w-page px-5 py-14 outline-none sm:px-8 md:py-20">
         <div className="max-w-measure">
           {hasPlaceholders(text) && (

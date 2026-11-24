@@ -41,6 +41,12 @@ export const quotes = {
     'A curious, disciplined, and methodical learner. He was always receptive to feedback, improving his code structure and documentation after every review.',
 }
 
+/** 404 page. */
+export const notFound = {
+  en: { title: 'Page not found', text: 'There is nothing at this address.', link: 'Go to the start page' },
+  de: { text: 'Unter dieser Adresse gibt es nichts.', link: 'Zur Startseite' },
+}
+
 // ─── Shape ───────────────────────────────────────────────────────────────────
 
 export interface Project {

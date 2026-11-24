@@ -4,6 +4,7 @@
  *
  *   dist/index.html     English
  *   dist/de/index.html  German
+ *   dist/404.html       served by GitHub Pages for every unknown address
  *   dist/impressum, dist/datenschutz   only when site.legalPublished (src/content.ts)
  *
  * Runs after `vite build` (client) and `vite build --ssr` (src/entry-server.tsx).
@@ -14,7 +15,7 @@ const SSR_DIR = new URL('../node_modules/.prerender/', import.meta.url)
 const DIST = new URL('../dist/', import.meta.url)
 const SITE = 'https://sonikrish.com'
 
-const { render, renderLegal } = await import(new URL('entry-server.js', SSR_DIR).href)
+const { render, renderLegal, renderNotFound } = await import(new URL('entry-server.js', SSR_DIR).href)
 const template = await readFile(new URL('index.html', DIST), 'utf8')
 
 /** Replaces exactly one occurrence, and fails the build instead of silently shipping an empty page. */
@@ -64,6 +65,17 @@ for (const lang of ['en', 'de']) {
   await mkdir(new URL('.', out), { recursive: true })
   await writeFile(out, html)
   console.log(`prerendered ${lang}: ${html.length} chars, ${mustContain.length} strings checked`)
+}
+
+{
+  const { html: app, title, description } = renderNotFound()
+  let html = replaceOnce(template, '<div id="root"></div>', `<div id="root">${app}</div>`)
+  html = replaceThree(html, en.title, title)
+  html = replaceThree(html, en.description, description)
+  html = replaceOnce(html, `    <link rel="canonical" href="${SITE}/" />`, '    <meta name="robots" content="noindex" />')
+  html = html.replace(/ *<link rel="alternate" hreflang=[^>]*>\r?\n/g, '').replace(/ *<meta property="og:url"[^>]*>\r?\n/, '')
+  await writeFile(new URL('404.html', DIST), html)
+  console.log('prerendered 404')
 }
 
 const legalPages = renderLegal()

@@ -4,12 +4,12 @@ import { LanguageProvider, useLanguage } from './context/LanguageContext'
 import { Lang } from './lib/lang'
 import { Navbar, Footer } from './components/layout'
 import type { Page } from './lib/pages'
-import { Legal, Hero, Now, Projects, Experience, Education, Skills, Contact } from './components/sections'
+import { Legal, NotFound, Hero, Now, Projects, Experience, Education, Skills, Contact } from './components/sections'
 
+// The legal pages are German only; the 404 page carries both languages.
 const App: FC<{ lang: Lang; page: Page }> = ({ lang, page }) => (
   <ThemeProvider>
-    {/* The legal pages are German only. */}
-    <LanguageProvider initialLang={page === 'home' ? lang : 'de'}>
+    <LanguageProvider initialLang={page === 'home' ? lang : page === 'notFound' ? 'en' : 'de'}>
       <Layout page={page} />
     </LanguageProvider>
   </ThemeProvider>
@@ -39,6 +39,8 @@ const Layout: FC<{ page: Page }> = ({ page }) => {
             <Contact />
           </main>
         </>
+      ) : page === 'notFound' ? (
+        <NotFound />
       ) : (
         <Legal page={page} />
       )}

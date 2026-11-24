@@ -5,7 +5,7 @@
 import { StrictMode } from 'react'
 import { renderToString } from 'react-dom/server'
 import App from './App'
-import { content, moreProjects, site } from './content'
+import { content, moreProjects, notFound, site } from './content'
 import { hasPlaceholders, legal } from './legal'
 import { Lang } from './lib/lang'
 import { legalPages } from './lib/pages'
@@ -37,6 +37,15 @@ export function render(lang: Lang) {
   ].filter(Boolean)
 
   return { html, mustContain, meta: c.meta, cv: site.cv }
+}
+
+export function renderNotFound() {
+  const html = renderToString(
+    <StrictMode>
+      <App lang="en" page="notFound" />
+    </StrictMode>
+  )
+  return { html, title: `${notFound.en.title} · ${site.name}`, description: notFound.en.text }
 }
 
 /** The legal pages to publish; none unless `site.legalPublished`. */

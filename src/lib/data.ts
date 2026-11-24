@@ -17,7 +17,7 @@ export const siteConfig = {
   email: 'sonikrish2248@gmail.com',
   location: 'Dortmund, Germany',
   // Public CV (no phone, address, photo or date of birth). '' hides the CV links.
-  resumeUrl: '',
+  resumeUrl: '/Krish_Soni_CV.pdf',
   siteUrl: 'https://sonikrish.com/',
   updated: 'November 2026',
 }

@@ -4,6 +4,7 @@
  *
  *   dist/index.html     English
  *   dist/de/index.html  German
+ *   dist/impressum, dist/datenschutz   only when site.legalPublished (src/content.ts)
  *
  * Runs after `vite build` (client) and `vite build --ssr` (src/entry-server.tsx).
  */
@@ -13,7 +14,7 @@ const SSR_DIR = new URL('../node_modules/.prerender/', import.meta.url)
 const DIST = new URL('../dist/', import.meta.url)
 const SITE = 'https://sonikrish.com'
 
-const { render } = await import(new URL('entry-server.js', SSR_DIR).href)
+const { render, renderLegal } = await import(new URL('entry-server.js', SSR_DIR).href)
 const template = await readFile(new URL('index.html', DIST), 'utf8')
 
 /** Replaces exactly one occurrence, and fails the build instead of silently shipping an empty page. */
@@ -63,6 +64,27 @@ for (const lang of ['en', 'de']) {
   await mkdir(new URL('.', out), { recursive: true })
   await writeFile(out, html)
   console.log(`prerendered ${lang}: ${html.length} chars, ${mustContain.length} strings checked`)
+}
+
+const legalPages = renderLegal()
+for (const { page, html: app, title, description } of legalPages) {
+  const url = `${SITE}/${page}/`
+  let html = replaceOnce(template, '<div id="root"></div>', `<div id="root">${app}</div>`)
+  html = replaceThree(html, en.title, title)
+  html = replaceThree(html, en.description, description)
+  html = replaceOnce(html, '<html lang="en">', '<html lang="de">')
+  html = replaceOnce(html, `<link rel="canonical" href="${SITE}/" />`, `<link rel="canonical" href="${url}" />`)
+  html = replaceOnce(html, `<meta property="og:url" content="${SITE}/" />`, `<meta property="og:url" content="${url}" />`)
+  html = replaceOnce(html, 'content="en_GB"', 'content="de_DE"')
+  html = html.replace(/ *<link rel="alternate" hreflang=[^>]*>\r?\n/g, '')
+  await mkdir(new URL(`${page}/`, DIST), { recursive: true })
+  await writeFile(new URL(`${page}/index.html`, DIST), html)
+  console.log(`prerendered ${page}`)
+}
+if (legalPages.length) {
+  const file = new URL('sitemap.xml', DIST)
+  const urls = legalPages.map(({ page }) => `  <url>\n    <loc>${SITE}/${page}/</loc>\n  </url>\n`).join('')
+  await writeFile(file, replaceOnce(await readFile(file, 'utf8'), '</urlset>', `${urls}</urlset>`))
 }
 
 await rm(SSR_DIR, { recursive: true, force: true })

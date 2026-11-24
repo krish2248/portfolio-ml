@@ -7,6 +7,8 @@ import { StrictMode } from 'react'
 import { createRoot, hydrateRoot } from 'react-dom/client'
 import App from './App'
 import { langFromPath } from './lib/lang'
+import { pageFromPath } from './lib/pages'
+import './styles/fonts.css'
 import './styles/globals.css'
 
 // Get root element
@@ -18,7 +20,7 @@ if (!rootElement) {
 
 const app = (
   <StrictMode>
-    <App lang={langFromPath(window.location.pathname)} />
+    <App lang={langFromPath(window.location.pathname)} page={pageFromPath(window.location.pathname)} />
   </StrictMode>
 )
 

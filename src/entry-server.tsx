@@ -6,13 +6,15 @@ import { StrictMode } from 'react'
 import { renderToString } from 'react-dom/server'
 import App from './App'
 import { content, moreProjects, site } from './content'
+import { hasPlaceholders, legal } from './legal'
 import { Lang } from './lib/lang'
+import { legalPages } from './lib/pages'
 
 export function render(lang: Lang) {
   const c = content[lang]
   const html = renderToString(
     <StrictMode>
-      <App lang={lang} />
+      <App lang={lang} page="home" />
     </StrictMode>
   )
 
@@ -35,4 +37,19 @@ export function render(lang: Lang) {
   ].filter(Boolean)
 
   return { html, mustContain, meta: c.meta, cv: site.cv }
+}
+
+/** The legal pages to publish; none unless `site.legalPublished`. */
+export function renderLegal() {
+  if (!site.legalPublished) return []
+  return legalPages.map((page) => {
+    const text = legal[page]
+    if (hasPlaceholders(text)) throw new Error(`src/legal.ts: ${page} still has [[placeholders]], so it can't be published`)
+    const html = renderToString(
+      <StrictMode>
+        <App lang="de" page={page} />
+      </StrictMode>
+    )
+    return { page, html, title: `${text.title} · ${site.name}`, description: text.description }
+  })
 }

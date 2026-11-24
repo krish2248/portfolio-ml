@@ -27,7 +27,8 @@ Personal portfolio of Krish Hemang Soni. Read this first in any new session.
   - Opacity modifiers like `bg-bg/95` don't work on these `var()` colours.
 - `public/`: `cv/Krish_Soni_CV.pdf` (Download CV button; path in `site.cv`), `og-image.jpg` (1200×630 social preview with the "ks" logo, **no photo**). Source is `scripts/og-card.html`; to regenerate after a name/role/availability change, edit it and run Chrome headless: `chrome --headless=new --hide-scrollbars --window-size=1200,630 --virtual-time-budget=8000 --screenshot=og.png file:///<abs path>/scripts/og-card.html`, then save as JPEG to `public/og-image.jpg`.
 - Head/SEO: title and description are in `content.ts` (`meta`); the English ones are repeated in `index.html` and the build fails if they differ. `public/` also has `robots.txt`, `sitemap.xml` (add new routes), `favicon.svg`/`.ico` and `apple-touch-icon.png`.
-- Fonts: IBM Plex Sans (body), IBM Plex Mono (metadata), Source Serif 4 (headings), loaded in `index.html`.
+- Fonts: IBM Plex Sans (body), IBM Plex Mono (metadata), Source Serif 4 (headings). **Self-hosted** in `src/assets/fonts` via `src/styles/fonts.css`; Latin plus Greek for Plex Sans, only the weights used. Never add Google Fonts, analytics, embeds or other third-party requests: the site makes none (24 Nov 2026).
+- Legal pages: `/impressum` and `/datenschutz` are templates in `src/legal.ts` (preview with `bun dev`). Not built, linked or in the sitemap while `site.legalPublished` is false; the build fails if it's true while a `[[placeholder]]` is left. Krish decides whether to publish; never fill in their personal data unasked.
 - Medium handle is `@krish2248` (confirmed by Krish, 28 Oct 2026).
 
 ## Design rules Krish asked for
@@ -89,6 +90,6 @@ Krish said he is **"just getting started"** and that **there's a lot to change i
 
 ## Next up (pending)
 
-1. Publish the `krish2248/lhcb-tau-3mu` repo: the CV and the site both link it and it returned 404 on 24 Nov 2026. Krish said to keep the link.
+1. The `krish2248/lhcb-tau-3mu` repo doesn't exist yet on GitHub, public or private (checked 24 Nov 2026), but the CV and site link to it. Krish wants it public and the link kept.
 2. Have a German speaker review the German text (hero statement and "Offen für" first).
-3. Reference quotes stay (Krish, 24 Nov 2026).
+3. Reference quotes stay; don't list spoken languages on the site (Krish, 24 Nov 2026).

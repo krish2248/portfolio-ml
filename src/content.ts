@@ -19,6 +19,11 @@ export const site = {
   github: 'https://github.com/krish2248',
   linkedin: 'https://www.linkedin.com/in/krish-soni-460932228/',
   source: 'https://github.com/krish2248/portfolio-ml',
+  /**
+   * true builds /impressum and /datenschutz, links them in the footer and adds them to the sitemap.
+   * Fill in src/legal.ts first: the build stops if a placeholder is left.
+   */
+  legalPublished: false,
 }
 
 /** "More" line under the projects. */
@@ -74,6 +79,8 @@ export interface Content {
     toDark: string
     language: string
     source: string
+    impressum: string
+    privacy: string
   }
 }
 
@@ -220,6 +227,8 @@ const en: Content = {
     toDark: 'Switch to dark mode',
     language: 'Language',
     source: 'Source',
+    impressum: 'Impressum',
+    privacy: 'Privacy (German)',
   },
 }
 
@@ -343,6 +352,8 @@ const de: Content = {
     toDark: 'Zum dunklen Modus wechseln',
     language: 'Sprache',
     source: 'Quellcode',
+    impressum: 'Impressum',
+    privacy: 'Datenschutz',
   },
 }
 

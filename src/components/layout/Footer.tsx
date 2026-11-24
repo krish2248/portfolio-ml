@@ -11,7 +11,17 @@ const Footer: FC = () => {
         <p>
           © <span suppressHydrationWarning>{new Date().getFullYear()}</span> {site.fullName} · {c.contact.locationValue}
         </p>
-        <p>
+        <p className="flex flex-wrap gap-x-5">
+          {site.legalPublished && (
+            <>
+              <a href="/impressum/" className="link">
+                {c.ui.impressum}
+              </a>
+              <a href="/datenschutz/" className="link">
+                {c.ui.privacy}
+              </a>
+            </>
+          )}
           <a href={site.source} target="_blank" rel="noopener noreferrer" className="link">
             {c.ui.source}
           </a>

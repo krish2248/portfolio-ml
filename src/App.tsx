@@ -3,17 +3,19 @@ import { ThemeProvider } from './context/ThemeContext'
 import { LanguageProvider, useLanguage } from './context/LanguageContext'
 import { Lang } from './lib/lang'
 import { Navbar, Footer } from './components/layout'
-import { Hero, Now, Projects, Experience, Education, Skills, Contact } from './components/sections'
+import type { Page } from './lib/pages'
+import { Legal, Hero, Now, Projects, Experience, Education, Skills, Contact } from './components/sections'
 
-const App: FC<{ lang: Lang }> = ({ lang }) => (
+const App: FC<{ lang: Lang; page: Page }> = ({ lang, page }) => (
   <ThemeProvider>
-    <LanguageProvider initialLang={lang}>
-      <Page />
+    {/* The legal pages are German only. */}
+    <LanguageProvider initialLang={page === 'home' ? lang : 'de'}>
+      <Layout page={page} />
     </LanguageProvider>
   </ThemeProvider>
 )
 
-const Page: FC = () => {
+const Layout: FC<{ page: Page }> = ({ page }) => {
   const { c } = useLanguage()
 
   return (
@@ -24,16 +26,22 @@ const Page: FC = () => {
       >
         {c.ui.skipLink}
       </a>
-      <Navbar />
-      <main id="main" tabIndex={-1} className="outline-none">
-        <Hero />
-        <Now />
-        <Experience />
-        <Projects />
-        <Education />
-        <Skills />
-        <Contact />
-      </main>
+      {page === 'home' ? (
+        <>
+          <Navbar />
+          <main id="main" tabIndex={-1} className="outline-none">
+            <Hero />
+            <Now />
+            <Experience />
+            <Projects />
+            <Education />
+            <Skills />
+            <Contact />
+          </main>
+        </>
+      ) : (
+        <Legal page={page} />
+      )}
       <Footer />
     </>
   )

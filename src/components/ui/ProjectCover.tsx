@@ -50,6 +50,29 @@ const ink = { stroke: 'var(--muted)', strokeWidth: 1.2, opacity: 0.55 }
 const accent = { stroke: 'currentColor', strokeWidth: 1.6 }
 
 const motifs: Record<CoverMotif, ReactNode> = {
+  // Tau decay: three muon tracks from a displaced vertex, crossing detector layers
+  tracks: (
+    <>
+      <g {...ink}>
+        {[130, 172, 214, 256].map((x) => (
+          <line key={x} x1={x} y1="26" x2={x} y2="154" />
+        ))}
+        <path d="M36 90 L64 52 M36 90 L70 130 M36 90 L60 146" />
+      </g>
+      <path d="M36 90 L92 90" {...accent} strokeDasharray="4 4" />
+      <g {...accent}>
+        <path d="M92 90 C 150 82, 220 60, 284 34" />
+        <path d="M92 90 C 150 92, 220 92, 284 88" />
+        <path d="M92 90 C 150 100, 220 124, 284 150" />
+      </g>
+      {[[130, 84], [172, 74], [214, 62], [256, 46], [130, 91], [172, 91], [214, 91], [256, 90], [130, 97], [172, 107], [214, 121], [256, 138]].map(([x, y]) => (
+        <circle key={`${x}-${y}`} cx={x} cy={y} r="3" fill="currentColor" />
+      ))}
+      <circle cx="36" cy="90" r="4" fill="var(--muted)" />
+      <circle cx="92" cy="90" r="5" fill="currentColor" />
+    </>
+  ),
+
   // Football pitch with a highlighted pass
   pitch: (
     <>

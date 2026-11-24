@@ -6,16 +6,33 @@
 
 import { contentEn, Content, Project, Experience, Education } from './data'
 
-const projectText: Record<string, Pick<Project, 'kind' | 'summary'>> = {
+const projectText: Record<string, Pick<Project, 'kind' | 'summary'> & { title?: string }> = {
+  'lhcb-tau-3mu': {
+    title: 'LHCb-Klassifikator für τ → μμμ',
+    kind: 'ML · In Arbeit',
+    summary:
+      'XGBoost-Klassifikator mit SHAP-Erklärungen auf LHCb-Daten aus der Kaggle-Challenge „Flavours of Physics“; ausgelegt darauf, den Übereinstimmungstest zwischen echten und simulierten Daten sowie den Massenkorrelationstest der Challenge zu bestehen.',
+  },
+  'scikit-hep': {
+    title: 'Beiträge zu Scikit-HEP',
+    kind: 'Open Source',
+    summary:
+      'In Arbeit: Dokumentation, Tests und Beispiele für die Python-Werkzeuge, mit denen in der Teilchenphysik Daten ausgewertet werden.',
+  },
+  'breast-cancer': {
+    title: 'Brustkrebs-Diagnosemodell',
+    kind: 'ML',
+    summary: 'Klassifikationsmodell für die Brustkrebsdiagnose.',
+  },
   futology: {
     kind: 'Web · Analytics',
     summary:
-      'Web-App für Fußballanalysen mit Live-Ergebnissen, OTP-Login und einem Tippspiel mit Ranglisten; über 530 Commits in zwei Iterationen. Nächster Meilenstein: ein ML-Service mit FastAPI – XGBoost-Spielprognose, k-Means-Clustering von Spielertypen und SHAP-basierte Transferwerte.',
+      'Web-App für Fußballanalysen auf Basis von API-Football mit Live-Ergebnissen, OTP-Login und einem Tippspiel mit Ranglisten; über 530 Commits. Nächster Meilenstein: ein Machine-Learning-Service mit FastAPI.',
   },
   'prm-commerce': {
     kind: 'Beruf · Datenprodukt',
     summary:
-      'Onlineshop im Direktvertrieb, den ich für PRM & Company konzipiert und gebaut habe: Katalog, Warenkorb, Checkout, Zahlungen und Bestellverwaltung, dazu ein Live-Dashboard mit Umsatzentwicklung, regionalen Bestellungen und Topsellern.',
+      'Onlineshop im Direktvertrieb, den ich für PRM & Company konzipiert und gebaut habe: sechs Produktkategorien, Zahlung per UPI, Karte und Nachnahme, dazu ein Echtzeit-Dashboard mit Umsatzentwicklung, regionalen Bestellungen, Topsellern und Live-KPIs.',
   },
   medxai: {
     kind: 'ML · Explainable AI',
@@ -25,12 +42,12 @@ const projectText: Record<string, Pick<Project, 'kind' | 'summary'>> = {
   'auto-valuator': {
     kind: 'ML · Regression',
     summary:
-      'Schätzt den Wiederverkaufswert eines Gebrauchtwagens anhand von Alter, Laufleistung, Marke und Zustand. Fünf Regressionsmodelle im Vergleich; das beste erreicht ein R² über 0,85.',
+      'Schätzt den Preis eines Gebrauchtwagens anhand von Alter, Laufleistung, Marke und Zustand. Fünf Regressionsmodelle im Vergleich; das beste erreicht ein R² über 0,85.',
   },
   rems: {
     kind: 'Full Stack · Praktikum',
     summary:
-      'Produktivsystem, das ich bei IT Hub allein entwickelt habe: Rollen und Rechte für Käufer, Verkäufer, Makler und Admins, Suche mit Mehrfachfiltern, Lead-Management, Zahlungsanbindung und Dokumentenprüfung.',
+      'System, das ich bei IT Hub allein entwickelt habe: Rollen und Rechte für Käufer, Verkäufer, Makler und Admins, Suche mit Mehrfachfiltern, Lead-Management sowie Zahlungen über Razorpay und PayPal.',
   },
   'connect4-nemotron': {
     kind: 'LLM · Spiel',
@@ -39,7 +56,7 @@ const projectText: Record<string, Pick<Project, 'kind' | 'summary'>> = {
   },
   'ai-agent': {
     kind: 'LLM',
-    summary: 'Mein erster LLM-Agent: Llama 4 über die Groq-API, um Tool-Nutzung und mehrstufige Aufgaben zu erkunden.',
+    summary: 'LLM-Agent auf Llama 4 über die Groq-API, um Tool-Nutzung und mehrstufige Aufgaben zu erkunden.',
   },
   'virtual-classroom': {
     kind: 'Full Stack',
@@ -56,7 +73,7 @@ const projectText: Record<string, Pick<Project, 'kind' | 'summary'>> = {
   },
   rpsls: {
     kind: 'Echtzeit-Web',
-    summary: 'Online-Multiplayer-Spiel mit eigenem Socket.IO-Spielserver, Offline-Modus und als PWA installierbar.',
+    summary: 'Echtzeit-Multiplayer-Spiel mit Online-Räumen, Offline-Modus und als PWA installierbar.',
   },
   'fut-score': { kind: 'Fußball', summary: 'Personalisierte Übersicht für Fußballergebnisse.' },
   'coffee-journal': {
@@ -81,12 +98,14 @@ const experienceText: Record<string, Partial<Experience>> = {
     type: 'Vollzeit',
     points: [
       'Analyse und Visualisierung von Verkaufs-, Online-Bestell-, Bewertungs- und Einkaufsdaten in Python; daraus entstanden die Diagramme und Kennzahlen für Vertriebs- und Marketingentscheidungen.',
-      'Auswertung von Verkaufsförderungsaktionen und Identifikation schwacher Regionen und Produkte. Die Ergebnisse veränderten die Vertriebsstrategie: 8 % Umsatzerholung in diesen Regionen und 17 % Wachstum in den Zielsegmenten.',
+      'Auswertung von Verkaufsförderungsaktionen und Identifikation schwacher Regionen und Produkte. Die Ergebnisse veränderten die Vertriebsstrategie: +8 % Umsatz in zuvor schwachen Gebieten und +17 % in den Zielsegmenten.',
       'Modellierung der Nachfrage nach Saison und Region, um zu entscheiden, welche Produkte wann und wo forciert werden; dieselbe Analyse diente der Zielgruppenauswahl für Social-Media-Kampagnen.',
-      'Zusammenführung uneinheitlicher Vertriebs- und Betriebsdaten aus mehreren Quellen zu prüfungsfähigen Datensätzen für die Jahreshauptversammlung sowie Excel-Reporting für die Geschäftsleitung, z. B. eine Versandanalyse mit 1.427 Sendungen.',
-      'Konzeption und Aufbau von prmherbovilla.com, dem Onlineshop des Unternehmens im Direktvertrieb, mit Live-KPI-Dashboard für das Business-Team.',
+      'Zusammenführung uneinheitlicher Vertriebs- und Betriebsdaten aus mehreren Quellen zu prüfungsfähigen Datensätzen für die Jahreshauptversammlung sowie Management-Reporting, z. B. eine Versandanalyse mit 1.427 Sendungen in zwei Bundesstaaten und KPI-Tracking für den Außendienst.',
+      'Aufbau eines statistischen Echtzeit-Dashboards auf den Daten des Onlineshops für das Business-Team: Umsatzentwicklung, regionale Bestellverteilung, Topseller und Live-KPIs.',
+      'Aufbau und Launch des Direktvertriebs-Onlineshops prmherbovilla.com auf Shopify mit eigenem JavaScript und CSS (sechs Produktkategorien; Zahlung per UPI, Karte und Nachnahme).',
+      'Analyse des indischen Marktes für pflanzliche Hustenbonbons (nationale Marken und 39 regionale Anbieter), um unbesetzte Bundesstaaten für neue Produkte zu finden.',
     ],
-    stack: 'Python, pandas, Matplotlib, Seaborn, Excel, statistische Analyse, Shopify',
+    stack: 'Python, pandas, Matplotlib, Seaborn, XGBoost, Excel, Shopify',
   },
   ithub: {
     title: 'Full-Stack-Entwickler (Praktikum)',
@@ -94,9 +113,9 @@ const experienceText: Record<string, Partial<Experience>> = {
     period: 'Jan. 2025 – Apr. 2025',
     type: 'Praktikum',
     points: [
-      'Alleinige Entwicklung eines produktiv eingesetzten Immobilienverwaltungssystems nach einem 12-wöchigen Meilensteinplan.',
-      'Entwurf des relationalen Schemas aus ER-Modellen; schnellere Immobiliensuche über große Datenmengen durch Indizes, Query-Optimierung und Caching.',
-      'Rollenbasierte Zugriffskontrolle und Anbindung von Razorpay und PayPal; Unit-, Integrations-, Last- und Sicherheitstests.',
+      'Alleinige Entwicklung eines Immobilienverwaltungssystems: Rollen und Rechte für Käufer, Verkäufer, Makler und Admins, Suche mit Mehrfachfiltern, Lead-Management, Zahlungen über Razorpay und PayPal.',
+      'Entwurf des relationalen Schemas aus einem ER-Modell; schnellere Suche durch Indizes, Query-Optimierung und Caching.',
+      'Unit-, Integrations-, Abnahme-, Last- und Sicherheitstests; strukturiertes Fehler-Logging und automatische Backups.',
     ],
   },
   infolabz: {
@@ -105,7 +124,7 @@ const experienceText: Record<string, Partial<Experience>> = {
     period: 'Juni 2024 – Juli 2024',
     type: 'Praktikum',
     points: [
-      'Plattformübergreifende News-App auf Basis der Inshorts News API mit Material UI, List- und Grid-Buildern und JSON-Parsing.',
+      'Zweiwöchiges Sommerpraktikum: plattformübergreifende News-App in Flutter und Dart auf Basis der Inshorts News API (REST, JSON).',
     ],
     stack: 'Flutter, Dart, REST-APIs',
   },
@@ -125,14 +144,14 @@ const educationText: Record<string, Partial<Education>> = {
     location: 'Dortmund, Deutschland',
     period: 'Okt. 2026 – Sep. 2028 (voraussichtlich)',
     details: [
-      'Module im 1. Semester: Statistical Theory (maßtheoretische Wahrscheinlichkeitstheorie, Entscheidungstheorie), Advanced R, Data Science in Context.',
+      'Module: Statistical Theory (maßtheoretische Wahrscheinlichkeitstheorie, Entscheidungstheorie), Applied Bayesian Data Analysis, Advanced R, Data Science in Context.',
     ],
   },
   gtu: {
     location: 'Bhavnagar, Indien',
     period: 'Juni 2021 – Mai 2025',
     details: [
-      'CGPA 7,73 / 10, obere 15 % des Jahrgangs. Entspricht ca. der Note 2,1 (modifizierte bayerische Formel); ca. 240 ECTS.',
+      'CGPA 7,73 / 10 (entspricht ca. der Note 2,1); obere 15 % des Jahrgangs; obere 5 % des Kurses in Software Engineering; ca. 240 ECTS.',
       'Relevante Module: Wahrscheinlichkeitsrechnung und Statistik, Diskrete Mathematik, Datenstrukturen, Algorithmen, Datenbanksysteme, Künstliche Intelligenz, Big Data Analytics.',
     ],
   },
@@ -145,23 +164,24 @@ const referenceRoles: Record<string, string> = {
 }
 
 const skillGroups: Record<string, string> = {
-  'Data & ML': 'Daten & ML',
-  Statistics: 'Statistik',
-  Languages: 'Programmiersprachen',
-  'Web & apps': 'Web & Apps',
-  'Data stores': 'Datenbanken',
-  'LLM tooling': 'LLM-Tools',
+  'Data & statistics': 'Daten & Statistik',
+  'Software & web': 'Software & Web',
   Tools: 'Werkzeuge',
+  'Learning now': 'Lerne gerade',
+  'Basic knowledge': 'Grundkenntnisse',
+  Languages: 'Sprachen',
 }
 
 const skillItems: Record<string, string> = {
   'Hypothesis testing': 'Hypothesentests',
-  Forecasting: 'Prognosen',
-  'Sentiment analysis': 'Sentimentanalyse',
+  'Data visualisation': 'Datenvisualisierung',
   'REST APIs': 'REST-APIs',
-  'ER modelling': 'ER-Modellierung',
-  'Indexing & query optimisation': 'Indizes & Query-Optimierung',
-  'Local quantised models': 'Lokale quantisierte Modelle',
+  'Git and GitHub': 'Git und GitHub',
+  'Excel (pivot tables, SUMIFS, INDEX/MATCH)': 'Excel (Pivot-Tabellen, SUMIFS, INDEX/MATCH)',
+  'Scikit-HEP Python tools for particle physics (uproot, hist)': 'Scikit-HEP: Python-Werkzeuge für die Teilchenphysik (uproot, hist)',
+  'English C1 (IELTS Academic 7.5)': 'Englisch C1 (IELTS Academic 7,5)',
+  'German A1 (course at TU Dortmund)': 'Deutsch A1 (Kurs an der TU Dortmund)',
+  'Hindi and Gujarati (native)': 'Hindi und Gujarati (Muttersprachen)',
 }
 
 const withProjectText = (list: Project[]) => list.map((p) => ({ ...p, ...projectText[p.id] }))
@@ -169,11 +189,11 @@ const withProjectText = (list: Project[]) => list.map((p) => ({ ...p, ...project
 export const contentDe: Content = {
   siteConfig: {
     ...contentEn.siteConfig,
-    role: 'Masterstudent Data Science, TU Dortmund',
+    role: 'Data Scientist · Masterstudent Data Science, TU Dortmund',
     statement:
       'Ich verwandle unübersichtliche Geschäftsdaten in Entscheidungen und baue die Software, die diese Entscheidungen sichtbar macht.',
     intro:
-      'Bis Oktober 2026 war ich Data Scientist bei PRM & Company, einem Pharma-Marketingunternehmen in Indien. Dort habe ich die Vertriebs- und Marketinganalysen verantwortet und den Onlineshop sowie das KPI-Dashboard des Unternehmens aufgebaut. Seit dem Wintersemester 2026/27 studiere ich Data Science (M.Sc.) an der TU Dortmund.',
+      'Bis Oktober 2026 war ich Data Scientist bei PRM & Company, einem Pharma-Marketingunternehmen in Indien. Dort habe ich die Vertriebs- und Marketinganalysen verantwortet und den Onlineshop sowie das KPI-Dashboard des Unternehmens aufgebaut. Seit dem Wintersemester 2026/27 studiere ich Data Science (M.Sc.) an der TU Dortmund und wende Statistik und Machine Learning auf Daten aus der Teilchenphysik an.',
     description:
       'Data Scientist mit 17 Monaten Erfahrung in der Pharma-Vertriebsanalyse und Masterstudent Data Science an der TU Dortmund. Python, Statistik, Machine Learning; aktuell mit Daten aus der Teilchenphysik. Offen für Jobs und Forschung.',
     location: 'Dortmund, Deutschland',

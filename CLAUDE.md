@@ -7,7 +7,7 @@ Personal portfolio of Krish Hemang Soni. Read this first in any new session.
 - Krish is doing an **M.Sc. Data Science at TU Dortmund**, winter intake 2026/27, 2026–2028. He lives in Dortmund.
 - He was a **Data Scientist at PRM & Company (PRM Pharmaceuticals)** in Bhavnagar, India, from 2 Jun 2025 to **31 Oct 2026**. Describe PRM as "a pharmaceutical **marketing** company" (Krish, 24 Nov 2026): it does not manufacture, so never "manufacturer" and don't mention manufacturing. His PRM work: data analysis, data visualisation (Python libraries only), website development. Do **not** add SEO or app development to the PRM entry.
 - The site's goal is to land work or research in data science, analytics and ML engineering. The site says only **"Open to work / research"**: Krish asked (24 Nov 2026) not to name Werkstudent, internship or HiWi, so don't re-add them. (Past internships in Experience stay.)
-- Content source: his **final CVs (Oct 2026)** in Downloads: `CV_Krish_Soni.pdf` (English, photo, address, DOB), `Lebenslauf_Krish_Soni.pdf` (German version of it) and `Resume_Krish_Soni.pdf` (no photo, address or DOB; has the full project list). Older drafts like `Krish_Hemang_Soni_CV_Academic.pdf`, the PRM recommendation letter and a LinkedIn post are background only. The site must not claim more than the final CVs (e.g. FUTOLOGY's ML features are a *next milestone*, not shipped).
+- Content source: his **Nov 2026 CV** (`Krish_Soni_CV.pdf` + HTML source in Downloads); the site was synced to it on 24 Nov 2026. Don't edit the published CV unless Krish asks. Older sources, the **Oct 2026 CVs**: `CV_Krish_Soni.pdf` (English, photo, address, DOB), `Lebenslauf_Krish_Soni.pdf` (German version of it) and `Resume_Krish_Soni.pdf` (no photo, address or DOB; has the full project list). Older drafts like `Krish_Hemang_Soni_CV_Academic.pdf`, the PRM recommendation letter and a LinkedIn post are background only. The site must not claim more than the CVs (e.g. FUTOLOGY's ML service is a *next milestone*; LHCb and Scikit-HEP are *in progress*). Projects only in older CVs (MedXAI, REMS, Virtual Classroom and so on) stay unless Krish removes them.
 - **Public CV:** `public/Krish_Soni_CV.pdf` (since 24 Nov 2026), a privacy-safe build of his Nov 2026 CV: Personal Details block and phone/address removed, PRM reworded as a marketing company. Never publish his phone number, street address, date of birth, residence-permit details or photo, including inside a PDF. His private CV (`Krish_Soni_CV.pdf`) and its HTML source (`Krish_Soni_CV_source.zip`) are in Downloads and are **not** safe to publish as they are. Older CVs: `Desktop/Everything/Docs all/Resume work`.
 - Note: the CVs themselves call PRM a "manufacturer" and mention manufacturing orders; the site rule below still applies to the site.
 
@@ -27,6 +27,7 @@ Personal portfolio of Krish Hemang Soni. Read this first in any new session.
   - The cover colour is named `plate` because `bg-cover` clashes with a built-in Tailwind utility.
   - Opacity modifiers like `bg-bg/95` don't work on these `var()` colours.
 - `public/`: `Krish_Soni_CV.pdf` (CV button in Hero + Contact via `siteConfig.resumeUrl`), `og-image.jpg` (1200×630 social preview with the "ks" logo, **no photo**). Source is `scripts/og-card.html`; to regenerate after a name/role/availability change, edit it and run Chrome headless: `chrome --headless=new --hide-scrollbars --window-size=1200,630 --virtual-time-budget=8000 --screenshot=og.png file:///<abs path>/scripts/og-card.html`, then save as JPEG to `public/og-image.jpg`.
+- Head/SEO: English title and description are in `index.html` and `siteConfig` (data.ts), German in data.de.ts; the build fails if they drift apart. Descriptions end "Open to work and research". `public/` also has `robots.txt`, `sitemap.xml` (add new routes), `favicon.svg`/`.ico` and `apple-touch-icon.png` (from the ks logo).
 - Fonts: IBM Plex Sans (body), IBM Plex Mono (metadata), Source Serif 4 (headings), loaded in `index.html`.
 - Medium handle is `@krish2248` (confirmed by Krish, 28 Oct 2026).
 
@@ -48,22 +49,24 @@ Personal portfolio of Krish Hemang Soni. Read this first in any new session.
 | tag `pre-reorder-2026-10` (= `5ebf85d`) | Backup before the section reorder (old order: Open to, Projects, Experience, Education, Elsewhere, Contact) |
 | `69a4029` | Sections and nav reordered: Open to, Experience, Education & skills, Projects, Elsewhere, Contact |
 | tag `pre-cv-2026-10` (= `fbe0d16`) | Backup before the final-CV sync |
-| `73b652c` | Final CV sync: resume PDF, hero photo (since removed), OG image, German A1, content matched to final CVs |
-| `01dfccb` | Medium handle changed to `@krish2248` |
-| `9769df9` | Green-lit portrait in dark mode (later removed) |
-| tag `pre-i18n-2026-10` (= `9769df9`) | Backup before the German version |
-| `efb3832` | EN/DE language switch, full German translation |
-| tag `pre-nophoto-2026-10` (= `e70749d`) | Backup before removing the hero photo |
-| tag `pre-opento-2026-11` (= `ba8cc26`) | Backup before the 24 Nov 2026 changes (roles wording, resume PDF removed, PRM as marketing company) |
-| `714081c` | Hero photo removed in both themes (Krish's request). `ffee1c9` also accidentally committed `.claude/settings.local.json` (only a permission allowlist line, harmless) |
+| `05cff9e` | Final CV sync: resume PDF, hero photo (since removed), OG image, German A1, content matched to final CVs |
+| `6fe44b2` | Medium handle changed to `@krish2248` |
+| `17f5a2d` | Green-lit portrait in dark mode (later removed) |
+| tag `pre-i18n-2026-10` (= `17f5a2d`) | Backup before the German version |
+| `100a928` | EN/DE language switch, full German translation |
+| tag `pre-nophoto-2026-10` (= `5ed48dc`) | Backup before removing the hero photo |
+| tag `pre-opento-2026-11` (= `362abe1`) | Backup before the 24 Nov 2026 changes (roles wording, resume PDF removed, PRM as marketing company) |
+| `ea7859d` | Hero photo removed in both themes (Krish's request). `05e19eb` also accidentally committed `.claude/settings.local.json` (only a permission allowlist line, harmless) |
+
+History was rewritten and force-pushed on 24 Nov 2026 to drop a private file, so hashes from 28 Oct 2026 on differ from older notes. Don't push from an old clone.
 
 **Undo:**
 - Everything: `git revert 944f13f 3f18dd9 a1a92f9`.
 - One file: `git checkout pre-redesign-2026-10 -- <path>`.
 - View the old version: `git show pre-redesign-2026-10:<path>`.
-- Photo removal only: `git revert 714081c` (brings both portraits back).
-- German version only: `git revert efb3832`.
-- Final-CV sync only: `git revert 73b652c`.
+- Photo removal only: `git revert ea7859d` (brings both portraits back).
+- German version only: `git revert 100a928`.
+- Final-CV sync only: `git revert 05cff9e`.
 - Section order only: `git revert 69a4029`, or `git checkout pre-reorder-2026-10 -- src/App.tsx src/lib/data.ts`.
 
 ## Session log: 28 Oct 2026
@@ -84,6 +87,6 @@ Krish said he is **"just getting started"** and that **there's a lot to change i
 
 ## Next up (pending)
 
-1. **Sync site content to the Nov 2026 CV** in both `data.ts` and `data.de.ts` (LHCb classifier, Scikit-HEP, Bayesian module and so on), once Krish confirms. The CV links `krish2248/lhcb-tau-3mu`, which returned 404 on 24 Nov 2026.
+1. Publish the `krish2248/lhcb-tau-3mu` repo: the CV and the site both link it and it returned 404 on 24 Nov 2026. Krish said to keep the link.
 2. Have a German speaker review the German text (hero statement and "Offen für" first).
 3. Reference quotes stay (Krish, 24 Nov 2026).

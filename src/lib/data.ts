@@ -7,11 +7,11 @@
 export const siteConfig = {
   name: 'Krish Soni',
   fullName: 'Krish Hemang Soni',
-  role: 'M.Sc. Data Science student, TU Dortmund',
+  role: 'Data Scientist · M.Sc. Data Science student, TU Dortmund',
   statement:
     'I turn messy business data into decisions, and build the software that puts those decisions in front of people.',
   intro:
-    'Until October 2026 I was the data scientist at PRM & Company, a pharmaceutical marketing company in India, where I ran sales and marketing analytics and built the company’s online shop and KPI dashboard. I’ve now started the M.Sc. in Data Science at TU Dortmund.',
+    'Until October 2026 I was the data scientist at PRM & Company, a pharmaceutical marketing company in India, where I ran sales and marketing analytics and built the company’s online shop and KPI dashboard. I’ve now started the M.Sc. in Data Science at TU Dortmund and am applying statistics and machine learning to particle-physics data.',
   /** Page title and description; index.html must match (checked at build time). */
   title: 'Krish Soni · Data Scientist · M.Sc. Data Science, TU Dortmund',
   description:
@@ -70,6 +70,7 @@ export const openTo = [
 // ─── Projects ────────────────────────────────────────────────────────────────
 
 export type CoverMotif =
+  | 'tracks'
   | 'pitch'
   | 'pulse'
   | 'scatter'
@@ -99,11 +100,22 @@ export interface Project {
 
 export const featuredProjects: Project[] = [
   {
+    id: 'lhcb-tau-3mu',
+    title: 'LHCb τ → μμμ decay classifier',
+    kind: 'ML · In progress',
+    summary:
+      'Building an XGBoost classifier with SHAP explanations on LHCb data from Kaggle’s “Flavours of Physics” challenge, designed to pass the challenge’s real-vs-simulated agreement test and mass-correlation test.',
+    technologies: ['Python', 'XGBoost', 'SHAP'],
+    motif: 'tracks',
+    githubUrl: 'https://github.com/krish2248/lhcb-tau-3mu',
+    year: '2026',
+  },
+  {
     id: 'futology',
     title: 'FUTOLOGY',
     kind: 'Web · Analytics',
     summary:
-      'Football analytics web app with live scores, OTP login and a prediction game with leaderboards; 530+ commits across two iterations. Next milestone: a FastAPI ML service with an XGBoost match predictor, k-means player clustering and SHAP-based transfer valuation.',
+      'Football analytics web app on API-Football with live scores, OTP login and a prediction game with leaderboards; 530+ commits. Next milestone: a FastAPI machine-learning service.',
     technologies: ['Next.js', 'TypeScript', 'Supabase'],
     motif: 'pitch',
     liveUrl: 'https://krish2248.github.io/futology/',
@@ -115,8 +127,8 @@ export const featuredProjects: Project[] = [
     title: 'PRM Herbovilla',
     kind: 'Work · Data product',
     summary:
-      'Direct-to-consumer shop I designed and built for PRM & Company: catalogue, cart, checkout, payments and order management, with a live dashboard for revenue trends, regional orders and top products.',
-    technologies: ['Shopify', 'Liquid', 'Analytics'],
+      'Direct-to-consumer shop I designed and built for PRM & Company: six product categories, UPI, card and cash-on-delivery payments, with a real-time dashboard for revenue trends, regional orders, top products and live KPIs.',
+    technologies: ['Shopify', 'JavaScript', 'CSS'],
     motif: 'bars',
     liveUrl: 'https://prmherbovilla.com',
     githubUrl: 'https://github.com/krish2248/PRM-SHOPIFY',
@@ -138,7 +150,7 @@ export const featuredProjects: Project[] = [
     title: 'Auto-Valuator',
     kind: 'ML · Regression',
     summary:
-      'Predicts the resale value of a used car from age, mileage, make and condition. Five regression models compared; the best reaches R² above 0.85.',
+      'Predicts the price of a used car from age, mileage, make and condition. Five regression models compared; the best reaches R² above 0.85.',
     technologies: ['Python', 'scikit-learn', 'XGBoost'],
     motif: 'scatter',
     githubUrl: 'https://github.com/krish2248/Auto-Valuator',
@@ -149,10 +161,32 @@ export const featuredProjects: Project[] = [
     title: 'Real Estate Management System',
     kind: 'Full stack · Internship',
     summary:
-      'Production system I built solo at IT Hub: role-based access for buyers, sellers, agents and admins, multi-criteria search, lead management, payment gateways and document verification.',
+      'System I built solo at IT Hub: role-based access for buyers, sellers, agents and admins, multi-criteria search, lead management, and Razorpay and PayPal payments.',
     technologies: ['PHP', 'MySQL', 'JavaScript'],
     motif: 'listings',
     githubUrl: 'https://github.com/krish2248/REMS',
+    year: '2025',
+  },
+]
+
+export const moreProjects: Project[] = [
+  {
+    id: 'scikit-hep',
+    title: 'Scikit-HEP contributions',
+    kind: 'Open source',
+    summary:
+      'In progress: contributing documentation, tests and examples to the Python tools used for particle-physics analysis.',
+    technologies: ['Python', 'uproot', 'hist'],
+    motif: 'nodes',
+    year: '2026',
+  },
+  {
+    id: 'breast-cancer',
+    title: 'Breast Cancer Diagnosis Predictor',
+    kind: 'ML',
+    summary: 'Classification model for breast-cancer diagnosis.',
+    technologies: ['Python', 'scikit-learn'],
+    motif: 'scatter',
     year: '2025',
   },
   {
@@ -166,14 +200,11 @@ export const featuredProjects: Project[] = [
     githubUrl: 'https://github.com/krish2248/Connect4-nemotron-ultra-',
     year: '2026',
   },
-]
-
-export const moreProjects: Project[] = [
   {
     id: 'ai-agent',
     title: 'AI Agent v14',
     kind: 'LLM',
-    summary: 'My first LLM agent: Llama-4 through the Groq API, exploring tool use and multi-step tasks.',
+    summary: 'LLM agent on Llama 4 through the Groq API, exploring tool use and multi-step tasks.',
     technologies: ['Python', 'Groq API'],
     motif: 'nodes',
     githubUrl: 'https://github.com/krish2248/AI-Agent-V.14',
@@ -214,8 +245,8 @@ export const moreProjects: Project[] = [
     id: 'rpsls',
     title: 'Rock-Paper-Scissors-Lizard-Spock',
     kind: 'Real-time web',
-    summary: 'Online multiplayer game with a separate Socket.IO game server, an offline mode, and installable as a PWA.',
-    technologies: ['React', 'Redux Toolkit', 'Socket.IO'],
+    summary: 'Real-time multiplayer game with online rooms, an offline mode, and installable as a PWA.',
+    technologies: ['React', 'Redux Toolkit', 'TypeScript', 'Node.js/Express', 'Socket.IO'],
     motif: 'nodes',
     githubUrl: 'https://github.com/krish2248/Rock-Paper-Scissors-Lizard-Spock',
     year: '2025',
@@ -293,12 +324,14 @@ export const experiences: Experience[] = [
     type: 'Full-time',
     points: [
       'Analysed and visualised data across the commercial pipeline (sales, online orders, customer reviews and purchase orders) in Python, producing the charts and statistics behind sales and marketing decisions.',
-      'Evaluated promotional schemes and isolated underperforming regions and products. The findings changed distribution strategy: 8% sales recovery in those regions and 17% growth in the targeted product segments.',
+      'Evaluated promotional schemes and isolated underperforming regions and products. The findings reshaped distribution strategy: +8% sales in previously underperforming areas and +17% in the targeted product segments.',
       'Modelled demand by season and geography to decide which products to push where and when; the same analysis targeted the social-media ad campaigns.',
-      'Consolidated inconsistent multi-source sales and operations data into audit-ready datasets for Annual General Meeting reporting, and built Excel reporting for management, such as a dispatch analysis of 1,427 shipments.',
-      'Designed and built prmherbovilla.com, the company’s direct-to-consumer shop, with a live KPI dashboard for the business team.',
+      'Consolidated inconsistent multi-source sales and operations data into audit-ready datasets for Annual General Meeting reporting, and built management reporting, such as a dispatch analysis of 1,427 shipments across two states and field-force KPI tracking.',
+      'Built a real-time statistical dashboard on the online shop’s data for the business team: revenue trends, regional order distribution, top-selling products and live KPIs.',
+      'Built and launched the direct-to-consumer shop prmherbovilla.com on Shopify with custom JavaScript and CSS (six product categories; UPI, card and cash-on-delivery payments).',
+      'Mapped India’s herbal cough-drop market, national brands and 39 regional producers, to find white-space states for new products.',
     ],
-    stack: 'Python, pandas, Matplotlib, Seaborn, Excel, statistical analysis, Shopify',
+    stack: 'Python, pandas, Matplotlib, Seaborn, XGBoost, Excel, Shopify',
   },
   {
     id: 'ithub',
@@ -308,11 +341,11 @@ export const experiences: Experience[] = [
     period: 'Jan 2025 – Apr 2025',
     type: 'Internship',
     points: [
-      'Sole developer of a production Real Estate Management System, delivered against a 12-week milestone plan.',
-      'Designed the relational schema from ER models and sped up property search over large datasets with indexing, query optimisation and caching.',
-      'Built role-based access control and Razorpay / PayPal integration, and ran unit, integration, load and security testing.',
+      'Sole developer of a real-estate management system: role-based access for buyers, sellers, agents and admins, multi-criteria search, lead management, Razorpay and PayPal payments.',
+      'Designed the relational schema from an ER model; sped up search through indexing, query optimisation and caching.',
+      'Ran unit, integration, user-acceptance, load and security tests; added structured error logging and automated backups.',
     ],
-    stack: 'PHP, MySQL, JavaScript, Apache',
+    stack: 'PHP, MySQL, JavaScript',
   },
   {
     id: 'infolabz',
@@ -322,7 +355,7 @@ export const experiences: Experience[] = [
     period: 'Jun 2024 – Jul 2024',
     type: 'Internship',
     points: [
-      'Built a cross-platform news app on the Inshorts News API with Material UI, list and grid builders, and JSON parsing.',
+      'Two-week summer internship: built a cross-platform news app in Flutter and Dart on the Inshorts News API (REST, JSON).',
     ],
     stack: 'Flutter, Dart, REST APIs',
   },
@@ -359,7 +392,7 @@ export const education: Education[] = [
     location: 'Dortmund, Germany',
     period: 'Oct 2026 – Sep 2028 (expected)',
     details: [
-      'Current modules: Statistical Theory (measure-theoretic probability, decision theory), Advanced R, Data Science in Context.',
+      'Modules: Statistical Theory (measure-theoretic probability, decision theory), Applied Bayesian Data Analysis, Advanced R, Data Science in Context.',
     ],
   },
   {
@@ -369,7 +402,7 @@ export const education: Education[] = [
     location: 'Bhavnagar, India',
     period: 'Jun 2021 – May 2025',
     details: [
-      'CGPA 7.73 / 10, top 15% of the cohort. About German grade 2.1 (modified Bavarian formula) and 240 ECTS.',
+      'CGPA 7.73 / 10 (about 2.1 on the German scale); top 15% of the cohort; top 5% of the class in Software Engineering; about 240 ECTS.',
       'Relevant courses: Probability and Statistics, Discrete Mathematics, Data Structures, Algorithms, Database Systems, Artificial Intelligence, Big Data Analytics.',
     ],
   },
@@ -378,13 +411,12 @@ export const education: Education[] = [
 // ─── Skills ──────────────────────────────────────────────────────────────────
 
 export const skills: { group: string; items: string[] }[] = [
-  { group: 'Data & ML', items: ['pandas', 'NumPy', 'scikit-learn', 'XGBoost', 'TensorFlow', 'Matplotlib', 'Seaborn', 'Jupyter', 'Excel'] },
-  { group: 'Statistics', items: ['Hypothesis testing', 'Regression', 'Clustering', 'Forecasting', 'Sentiment analysis'] },
-  { group: 'Languages', items: ['Python', 'SQL', 'R', 'TypeScript', 'JavaScript', 'Java', 'PHP', 'Kotlin', 'Dart'] },
-  { group: 'Web & apps', items: ['React', 'Next.js', 'Node.js', 'Tailwind CSS', 'REST APIs', 'Socket.IO', 'Flutter', 'Jetpack Compose'] },
-  { group: 'Data stores', items: ['MySQL', 'PostgreSQL / Supabase', 'ER modelling', 'Indexing & query optimisation'] },
-  { group: 'LLM tooling', items: ['Groq API', 'NVIDIA Nemotron', 'Local quantised models'] },
-  { group: 'Tools', items: ['Git', 'Shopify (Liquid)', 'LaTeX', 'Apache', 'VS Code'] },
+  { group: 'Data & statistics', items: ['Python (pandas, NumPy, scikit-learn, XGBoost, Matplotlib, Seaborn)', 'SQL', 'R', 'Regression', 'Hypothesis testing', 'Data visualisation'] },
+  { group: 'Software & web', items: ['TypeScript', 'JavaScript', 'React', 'Next.js', 'Node.js', 'PHP', 'MySQL', 'PostgreSQL / Supabase', 'REST APIs', 'Socket.IO'] },
+  { group: 'Tools', items: ['Git and GitHub', 'Jupyter', 'LaTeX', 'Excel (pivot tables, SUMIFS, INDEX/MATCH)', 'Shopify'] },
+  { group: 'Learning now', items: ['Scikit-HEP Python tools for particle physics (uproot, hist)'] },
+  { group: 'Basic knowledge', items: ['Java', 'Kotlin', 'Flutter/Dart', 'TensorFlow'] },
+  { group: 'Languages', items: ['English C1 (IELTS Academic 7.5)', 'German A1 (course at TU Dortmund)', 'Hindi and Gujarati (native)'] },
 ]
 
 // ─── References ──────────────────────────────────────────────────────────────

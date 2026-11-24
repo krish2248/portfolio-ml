@@ -1,15 +1,19 @@
 # Project context: sonikrish.com
 
+> This file is public on GitHub. Keep private details out of it.
+
 Personal portfolio of Krish Hemang Soni. Read this first in any new session.
+
+**State at the end of 24 Nov 2026:** everything is merged, pushed and live; nothing is half done. Tag `stable-2026-11-24` marks it. Start with "Next up" at the bottom. Ask Krish before pushing unless they've said to push in that message.
 
 ## Who / why
 
 - Krish is doing an **M.Sc. Data Science at TU Dortmund**, winter intake 2026/27, 2026–2028. He lives in Dortmund.
 - He was a **Data Scientist at PRM & Company (PRM Pharmaceuticals)** in Bhavnagar, India, from 2 Jun 2025 to **31 Oct 2026**. Describe PRM as "a pharmaceutical **marketing** company" (Krish, 24 Nov 2026): it does not manufacture, so never "manufacturer" and don't mention manufacturing. His PRM work: data analysis, data visualisation (Python libraries only), website development. Do **not** add SEO or app development to the PRM entry.
 - The site's goal is to land work, internship and research roles in data science. Wording in the Now panel (Krish, evening of 24 Nov 2026): "Open to work, internship and research opportunities". The meta description ends the same way; no Werkstudent/HiWi wording (Krish, final).
-- **Content source: the text Krish supplied on 24 Nov 2026**, plus the older projects, full skills list, modules and courses he asked to bring back the same evening (all from his CV and the earlier site), in `src/content.ts`. Do not invent facts, numbers, dates or projects beyond it. Never mention training colleagues, bootcamps or quiz judging. (MedXAI and YouTube were on that list too, but Krish brought both back on the evening of 24 Nov 2026.) Describe the shop exactly as "on Shopify with custom JavaScript and CSS". The published CV stays as it is unless Krish asks. No course modules on the site, for either degree (Krish, 24 Nov 2026). Prof. Chimnani is "Professor of Software Engineering, Department of Computer Engineering", not Assistant Professor (the CV still says Assistant).
+- **Content source: the text Krish supplied on 24 Nov 2026**, plus the older projects and skills he asked to bring back the same evening (all from his CV and the earlier site), in `src/content.ts`. Do not invent facts, numbers, dates or projects beyond it. Never mention training colleagues, bootcamps or quiz judging. (MedXAI and YouTube were on that list too, but Krish brought both back on the evening of 24 Nov 2026.) Describe the shop exactly as "on Shopify with custom JavaScript and CSS". The published CV stays as it is unless Krish asks. No course modules on the site, for either degree (Krish, 24 Nov 2026). Prof. Chimnani is "Professor of Software Engineering, Department of Computer Engineering", not Assistant Professor (the CV still says Assistant).
 - **Public CV:** `public/cv/Krish_Soni_CV.pdf` (since 24 Nov 2026), a privacy-safe build of his Nov 2026 CV: Personal Details block and phone/address removed, PRM reworded as a marketing company. Never publish his phone number, street address, date of birth, residence-permit details or photo, including inside a PDF. His private CV (`Krish_Soni_CV.pdf`) and its HTML source (`Krish_Soni_CV_source.zip`) are in Downloads and are **not** safe to publish as they are. Older CVs: `Desktop/Everything/Docs all/Resume work`.
-- Note: the CVs themselves call PRM a "manufacturer" and mention manufacturing orders; the site rule below still applies to the site.
+- Note: the private CV and older CVs call PRM a "manufacturer" and mention manufacturing orders; the site rule below still applies to the site.
 
 ## Stack and deploy
 
@@ -38,10 +42,25 @@ Personal portfolio of Krish Hemang Soni. Read this first in any new session.
 - The site is **not** retro-terminal any more. Prompts Krish pastes may still say so; keep the editorial design unless he says otherwise himself.
 - Keep the editorial layout: a label column on the left and content on the right, with one green accent colour.
 - Only claim things in `src/content.ts` / his CV.
-
 - Size (Krish, late 24 Nov 2026: "too zoomed in"): from 1024px the root font size is `clamp(14.5px, 11.6px + 0.2vw, 17px)`, so the whole desktop layout scales in rem; phones keep 16px. This replaced the 16px floor on desktop. Krish's own screen is about 1426x772 CSS px: check there first.
 - The hero fills the first screen (`min-h-svh`); Experience must not be visible on load.
 - Readability (24 Nov 2026): running text 1rem and capped with `max-w-measure` (36rem, 60-80 characters); labels at least 14px, badges and cover captions 12px; text contrast at least 4.5:1 in both themes; links and controls at least 24px tall; everything keyboard-usable. Reduced motion is handled in globals.css.
+
+## Backups and how to go back
+
+| What | On GitHub | Commit |
+|---|---|---|
+| Original retro-terminal site (before Oct 2026) | branch `backup/original-retro-terminal`, tag `pre-redesign-2026-10` | `19904bb` |
+| First editorial redesign (end of Oct 2026) | branch `backup/editorial-oct-2026`, tag `pre-opento-2026-11` | `4fa21b3` |
+| Just before the Nov content rewrite | tag `pre-rewrite-2026-11` | `88eccfa` |
+| Current site, end of 24 Nov 2026 | branch `backup/stable-2026-11-24`, tag `stable-2026-11-24` | see tag |
+
+Local copies (source, built site, screenshots, full git bundle) are in `Desktop/Everything/portfolio-backups/`. The original was rebuilt from source on 24 Nov 2026 and still works (`bun install && bun run build`).
+
+- Look at an old version: `git switch --detach stable-2026-11-24` (or any tag above), then `git switch master`.
+- Undo the last change: `git revert <commit>` and push. Prefer this over resetting.
+- Put the whole site back to the end of 24 Nov: `git restore --source=stable-2026-11-24 --staged --worktree .`, commit, push.
+- The two `portfolio-backup-before-*.bundle` files in `Desktop/Everything` are private: never publish or push them.
 
 ## History (Oct 2026)
 
@@ -64,18 +83,9 @@ Personal portfolio of Krish Hemang Soni. Read this first in any new session.
 | tag `pre-opento-2026-11` (= `4fa21b3`) | Backup before the 24 Nov 2026 changes (roles wording, resume PDF removed, PRM as marketing company) |
 | `8529879` | Hero photo removed in both themes (Krish's request). `943ea76` also accidentally committed `.claude/settings.local.json` (only a permission allowlist line, harmless) |
 
-History was rewritten and force-pushed twice on 24 Nov 2026 to drop private files and photos, so hashes from 28 Oct 2026 on differ from older notes. Don't push from an old clone.
+Hashes from 28 Oct 2026 on were renumbered on 24 Nov 2026, so older notes may differ. Don't push from an old clone.
 
-**Undo:**
-- Everything: `git revert 944f13f 3f18dd9 a1a92f9`.
-- One file: `git checkout pre-redesign-2026-10 -- <path>`.
-- View the old version: `git show pre-redesign-2026-10:<path>`.
-- German version only: `git revert 91178c3`.
-- Content rewrite only: tag `pre-rewrite-2026-11` is the state just before it (old `data.ts` content, Open to, Elsewhere).
-- Final-CV sync only: `git revert 326fd92`.
-- Section order only: `git revert 69a4029`, or `git checkout pre-reorder-2026-10 -- src/App.tsx src/lib/data.ts`.
-
-## Session log: 24 Nov 2026 (branch `portfolio-refresh-2026-11`)
+## Session log: 24 Nov 2026, afternoon
 
 Live on `master` the same day: PRM wording, old resume PDF removed, clean public CV; history cleaned twice. Merged and deployed the same day, in order:
 1. Pre-rendered `/` and `/de/` to static HTML.
@@ -86,7 +96,16 @@ Live on `master` the same day: PRM wording, old resume PDF removed, clean public
 6. Self-hosted fonts, no third-party requests; unpublished Impressum/Datenschutz templates.
 7. Bilingual 404 page, preview image and touch icon compressed, links and stale text checked.
 
-Krish plans to fix the old projects in the coming days. Test with a server that behaves like GitHub Pages (404.html, directory redirects): `vite preview` serves the start page for unknown addresses.
+## Session log: 24 Nov 2026, evening
+
+All live, in order:
+1. Now panel beside the hero, wider page, all old projects and the GitHub graph back, education and skills side by side, all socials in Contact.
+2. Skills trimmed to Krish's list, spoken languages back, "What I do when I'm bored" added, MedXAI and YouTube back, description wording changed.
+3. Full-screen hero, about 10% smaller scale on desktop, Medium button, menu highlight bug fixed, "More projects" reveal, Medium blog list, footer name, Prof. Chimnani's title.
+4. Top four projects set, course modules removed, nutrition blog title added.
+5. Created the public repos `lhcb-tau-3mu` and `scikit-hep-contributions` (README only) and linked both.
+
+Branches `portfolio-refresh-2026-11`, `layout-update-2026-11` and `sizing-2026-11` are fully merged. Check scripts are in `scripts/checks/`. `vite preview` serves the start page for unknown addresses, so test with `scripts/checks/serve.mjs`.
 
 ## Session log: 28 Oct 2026
 
@@ -106,6 +125,10 @@ Krish said he is **"just getting started"** and that **there's a lot to change i
 
 ## Next up (pending)
 
-1. `krish2248/lhcb-tau-3mu` was created (public) on 24 Nov 2026 with only a README saying the code isn't published yet; Krish still has to add the code.
-2. Have a German speaker review the German text (hero statement and "Offen für" first).
-3. Reference quotes stay, and all three people are fine with being named (Krish, 24 Nov 2026). Spoken languages are listed under skills. Krish removed from skills: regression, hypothesis testing, data visualisation, Jupyter, LaTeX, Shopify, Java, Kotlin, Flutter/Dart; and doesn't want clustering, forecasting, sentiment analysis, Tailwind, Jetpack Compose, ER modelling, query optimisation, Groq API, Nemotron, local models, Apache or VS Code (24 Nov 2026). Impressum/Datenschutz: not needed, Krish said no. The current CV is final for now.
+1. **Fix the old projects** (Krish wants to start on these; ask which one first).
+2. Krish sends a GitHub Support ticket (details in Claude's private memory, not here: this file is public).
+3. Add code to `lhcb-tau-3mu` and real pull requests or issues to `scikit-hep-contributions` (both README only).
+4. Replace the three demo Medium links in `bored.blogs` when the posts are published (journaling, coffee, vegetarian nutrition).
+5. The CV still says "Assistant Professor" for Prof. Chimnani; the site says Professor of Software Engineering.
+6. Have a German speaker review the German text (hero statement, Now panel and the blog titles first).
+7. Decided, don't reopen: reference quotes stay, and all three people are fine with being named (Krish, 24 Nov 2026). Spoken languages are listed under skills. Krish removed from skills: regression, hypothesis testing, data visualisation, Jupyter, LaTeX, Shopify, Java, Kotlin, Flutter/Dart; and doesn't want clustering, forecasting, sentiment analysis, Tailwind, Jetpack Compose, ER modelling, query optimisation, Groq API, Nemotron, local models, Apache or VS Code (24 Nov 2026). Impressum/Datenschutz: not needed, Krish said no. The current CV is final for now.

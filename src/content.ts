@@ -179,6 +179,7 @@ const en: Content = {
         badge: 'In progress',
         summary: 'Documentation, tests and examples for the Python tools used in particle-physics analysis.',
         stack: ['Python', 'uproot', 'hist'],
+        url: 'https://github.com/krish2248/scikit-hep-contributions',
         motif: 'histogram',
       },
       {
